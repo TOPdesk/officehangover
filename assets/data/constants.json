@@ -1,0 +1,57 @@
+{
+  "backgroung_color":"#000",
+  "initial_frame": 130,
+  "player_body":{
+    "x": 27,
+    "y": 47
+  },
+  "player_body_attack": {
+    "x": 46,
+    "y": 50
+  },
+  "animation_walk_right": [143,144,145,146,147,148,149,150,151],
+  "animation_walk_left": [117,118,119,120,121,122,123,124,125],
+  "animation_walk_down": [130,131,132,133,134,135,136,137,138],
+  "animation_walk_up": [104,105,106,107,108,109,110,111,112],
+  "player_speed": 90,
+  "frames": 10,
+  "initial_position":{
+    "x": 500,
+    "y": 200
+  },
+  "initial_position_c1":{
+    "x": 180,
+    "y": 480
+  },
+  "initial_position_c2":{
+    "x": 720,
+    "y": 50
+  },
+  "velocity":{
+    "character1": {
+      "velocity": 200
+    },
+    "character2": {
+      "velocity": 150
+    }
+  },
+  "player_data": {
+    "items": [],
+    "health": 25,
+    "attack": 12,
+    "defense": 8,
+    "gold": 100,
+    "quests": [
+      {
+        "name": "Find the Magic Scroll",
+        "code": "magic-scroll",
+        "isCompleted": false
+      },
+      {
+        "name": "Find the Helmet of the Golds",
+        "code": "gods-helmet",
+        "isCompleted": false
+      }
+    ]
+  }
+}
