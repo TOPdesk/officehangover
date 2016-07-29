@@ -1,4 +1,6 @@
-var RPG = RPG || {}
+'use strict';
+
+var RPG = RPG || {};
 
 RPG.PreloadState = {
     preload: function (){

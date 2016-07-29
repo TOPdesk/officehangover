@@ -1,4 +1,6 @@
-var RPG = RPG || {}
+'use strict';
+
+var RPG = RPG || {};
 
 RPG.HealthBar = function (state, x, y, key, scale) {
     this.game = state.game;

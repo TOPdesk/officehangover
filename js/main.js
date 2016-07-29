@@ -1,4 +1,6 @@
-var RPG = RPG || {}
+'use strict';
+
+var RPG = RPG || {};
 
 var gameConstant = {
     width: 1024,

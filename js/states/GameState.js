@@ -1,4 +1,6 @@
-var RPG = RPG || {}
+'use strict';
+
+var RPG = RPG || {};
 
 RPG.GameState = {
     init: function () {
@@ -9,10 +11,10 @@ RPG.GameState = {
         this.cursors = this.game.input.keyboard.createCursorKeys();
 
         this.gameData = JSON.parse(this.game.cache.getText('constants'));
+
+
     },
     create: function () {
-
-
 
             this.game.VirtualPad = this.game.plugins.add(Phaser.Plugin.VirtualPad);
 

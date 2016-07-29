@@ -1,4 +1,6 @@
-var RPG = RPG || {}
+'use strict';
+
+var RPG = RPG || {};
 
 RPG.Player = function (state, x, y, data, character, hb){
     Phaser.Sprite.call(this, state.game, x, y, character, state.gameData.initial_frame);
@@ -39,6 +41,7 @@ RPG.Player.prototype.collectItem = function(item) {
 };
 
 RPG.Player.prototype.addItemData = function (item){
+    var key;
     for ( key in item.data){
         if ( this.data[key]){
             this.data[key] += parseInt(item.data[key]);
