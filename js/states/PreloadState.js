@@ -13,11 +13,15 @@ RPG.PreloadState = {
 
             this.load.image('background', 'assets/images/floor-plan.png');
 
-            this.load.text('constants', 'assets/data/constants.json');
-
             this.load.image('bar', 'assets/images/bar-health.png');
 
             this.game.load.bitmapFont('desyrel', 'assets/fonts/nokia16black.png', 'assets/fonts/nokia16black.xml');
+
+            //load text
+            this.load.text('constants', 'assets/data/constants.json');
+            this.load.text('text', 'assets/data/text.json');
+
+            //load menu
 
         }
     },
