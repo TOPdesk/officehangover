@@ -12,8 +12,8 @@ RPG.BootState = {
         this.load.image('preloadBar', 'assets/images/bar.png');
     },
     create: function (){
-        this.game.stage.backgroundColor = "#fff";
-        this.state.start('PreloadState');
+        this.game.stage.backgroundColor = Constants.BACKGROUND_BOOT_STATE;
+        this.state.start(Constants.PRELOAD_STATE);
     }
 
 };

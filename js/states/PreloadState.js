@@ -7,22 +7,20 @@ RPG.PreloadState = {
 
         if (!this.loadLevel) {
             //load all images
-            this.load.spritesheet('character1', 'assets/images/character1.png', 64, 64, 273);
-            this.load.spritesheet('character2', 'assets/images/character2.png', 64, 64, 273);
-            this.load.spritesheet('player', 'assets/images/player.png', 64, 64, 273);
+            //params: the reference object, the src for the image, the next two are the size for the frame, total frames in the sheet
+            this.load.spritesheet(Constants.CHARACTER1_SPRITE, 'assets/images/character1.png', 64, 64, 273);
+            this.load.spritesheet(Constants.CHARACTER2_SPRITE, 'assets/images/character2.png', 64, 64, 273);
+            this.load.spritesheet(Constants.PLAYER_SPRITE, 'assets/images/player.png', 64, 64, 273);
 
-            this.load.image('background', 'assets/images/floor-plan.png');
+            this.load.image(Constants.SCENE, 'assets/images/floor-plan.png');
 
-            this.load.image('bar', 'assets/images/bar-health.png');
+            this.load.image(Constants.STAMINA_BAR, 'assets/images/bar-health.png');
 
             this.game.load.bitmapFont('desyrel', 'assets/fonts/nokia16black.png', 'assets/fonts/nokia16black.xml');
 
             //load text
-            this.load.text('constants', 'assets/data/constants.json');
-            this.load.text('text', 'assets/data/text.json');
-
-            //load menu
-
+            this.load.text(Constants.PLAYER_DATA, 'assets/data/player_data.json');
+            this.load.text(Constants.GAME_TEXT, 'assets/data/text.json');
         }
     },
     init: function (level){
@@ -31,9 +29,9 @@ RPG.PreloadState = {
     },
     create: function (){
         if (this.loadLevel){
-            this.state.start('GameState', true, false, this.currentLevel)
+            this.state.start(Constants.GAME_STATE, true, false, this.currentLevel)
         }else {
-            this.state.start('HomeState');
+            this.state.start(Constants.HOME_STATE);
         }
     }
 };
