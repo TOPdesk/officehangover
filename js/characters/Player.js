@@ -3,39 +3,43 @@
 var RPG = RPG || {};
 
 RPG.Player = function (state, x, y, data, character, hb){
-    Phaser.Sprite.call(this, state.game, x, y, character, state.gameData.initial_frame);
+    Phaser.Sprite.call(this, state.game, x, y, Constants.PLAYER_SPRITE, state.playerData[character].initial_frame);
     hb = hb || 0;
 
     this.state = state;
     this.game = state.game;
     this.data = Object.create(data);
-    this.gameData = state.gameData;
+    this.playerData = state.playerData;
     this.anchor.setTo(0.5);
     this.hb = hb;
 
 
-    this.animations.add('walk_right', this.gameData.animation_walk_right, this.gameData.frames, true);
-    this.animations.add('walk_up', this.gameData.animation_walk_up,  this.gameData.frames, true);
-    this.animations.add('walk_left', this.gameData.animation_walk_left,  this.gameData.frames, true);
-    this.animations.add('walk_down', this.gameData.animation_walk_down,  this.gameData.frames, true);
-    if (hb ==1) {
-        this.healthBar = new RPG.HealthBar(state, this.x, this.y, 'bar', this.data.health);
-        this.game.add.existing(this.healthBar);
+    this.animations.add('walk_right', this.playerData.animation_walk_right, this.playerData.frames, true);
+    this.animations.add('walk_up', this.playerData.animation_walk_up,  this.playerData.frames, true);
+    this.animations.add('walk_left', this.playerData.animation_walk_left,  this.playerData.frames, true);
+    this.animations.add('walk_down', this.playerData.animation_walk_down,  this.playerData.frames, true);
+    this.animations.add('wake_up', this.playerData.animation_wake_up,  this.playerData.frames, false);
+
+    if (hb == 1) {
+        this.staminaBar = new RPG.StaminaBar(state, this.x, this.y, 'bar', this.data.stamina);
+        this.game.add.existing(this.staminaBar);
     }
 
     this.game.physics.arcade.enable(this);
-    this.body.setSize(this.gameData.player_body.x, this.gameData.player_body.y, null, (this.height-this.gameData.player_body.y)/6);
+    this.body.setSize(this.playerData.player_body.x, this.playerData.player_body.y, null, (this.height-this.playerData.player_body.y)/6);
     this.scale.setTo(0.5);
 };
 
 RPG.Player.prototype = Object.create(Phaser.Sprite.prototype);
 RPG.Player.prototype.constructor = RPG.Player;
 
+/* NOT NEEDED RIGHT NOW BUT WILL BE USEFUL IN THE FUTURE*/
+/*
 RPG.Player.prototype.collectItem = function(item) {
     this.addItemData(item);
     this.state.refreshStats();
-    if (item.data.health) {
-        this.healthBar.refreshHealthbar(this.data.health)
+    if (item.data.stamina) {
+        this.staminaBar.refreshStaminabar(this.data.stamina)
     }
     item.kill();
 };
@@ -68,10 +72,10 @@ RPG.Player.prototype.checkQuestCompletion = function(item) {
 
 RPG.Player.prototype.update = function() {
     if (this.hb) {
-        this.healthBar.x = this.x;
-        this.healthBar.y = this.y - 15;
+        this.staminaBar.x = this.x;
+        this.staminaBar.y = this.y - 15;
 
-        this.healthBar.body.velocity = this.body.velocity;
+        this.staminaBar.body.velocity = this.body.velocity;
     }
-};
+};*/
 
