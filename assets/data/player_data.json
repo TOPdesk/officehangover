@@ -33,12 +33,13 @@
   },
   "player": {
     "initial_frame": 130,
+    "stamina": 25,
     "items": [],
     "quests": [
     ]
   },
   "player_wake_up": {
     "initial_frame": 265,
-    "health": 25
+    "stamina": 25
   }
 }

@@ -69,7 +69,7 @@ RPG.Player.prototype.checkQuestCompletion = function(item) {
         i++;
     }
 };
-
+*/
 RPG.Player.prototype.update = function() {
     if (this.hb) {
         this.staminaBar.x = this.x;
@@ -77,5 +77,5 @@ RPG.Player.prototype.update = function() {
 
         this.staminaBar.body.velocity = this.body.velocity;
     }
-};*/
+};
 
