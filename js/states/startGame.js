@@ -13,10 +13,9 @@ RPG.StartGame = {
     },
     create: function () {
         this.game.stage.backgroundColor = this.playerData.background_color;
-
-        this.background = this.game.add.sprite(280, 30, Constants.SCENE);
-        this.background.width = this.game.world.width + 100;
-        this.background.height = this.game.world.height + 100;
+        this.background = this.game.add.sprite(0, -30, Constants.SCENE);
+        this.background.width = this.game.world.width;
+        this.background.height = this.game.world.height ;
         this.background.inputEnabled = true;
         this.game.world.sendToBack(this.background);
 
@@ -24,7 +23,7 @@ RPG.StartGame = {
 
         this.player = new RPG.Player(this, this.playerData.initial_position.x, this.playerData.initial_position.y, this.playerData.player_wake_up, Constants.PLAYER_START_DATA_INIT, 1);
         this.add.existing(this.player);
-        this.player.body.collideWorldBounds = true;
+        //this.player.body.collideWorldBounds = true;
         this.game.camera.follow(this.player);
         this.uiBlocked = true;
         this.wakeUp();
