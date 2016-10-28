@@ -2,6 +2,11 @@
 
 var RPG = RPG || {};
 
+var layer1;
+var layer2;
+var layer3;
+var layer4;
+
 RPG.GameState = {
     init: function () {
 
@@ -11,22 +16,23 @@ RPG.GameState = {
         this.cursors = this.game.input.keyboard.createCursorKeys();
 
         this.playerData = JSON.parse(this.game.cache.getText(Constants.PLAYER_DATA));
-
-
     },
     create: function () {
-
+    		
             this.game.VirtualPad = this.game.plugins.add(Phaser.Plugin.VirtualPad);
 
             this.game.stage.backgroundColor = this.playerData.background_color;
 
             this.map = this.game.add.tilemap(Constants.TILEMAP_FLOOR1);
             this.map.addTilesetImage('officehangover', Constants.TILESET_IMAGE);
-            this.map.createLayer('Floor and Walls');
+            
+            this.collisionLayer = this.map.createLayer('Floor and Walls');
             this.map.createLayer('Shadows');
             this.map.createLayer('Bottom Objects');
-            this.map.createLayer('Top Objects').resizeWorld();            
-            
+            this.map.createLayer('Top Objects').resizeWorld();
+
+            this.initialiseCollisionLayer();
+
             this.player = new RPG.Player(this, this.playerData.initial_position.x, this.playerData.initial_position.y, this.playerData.player, Constants.PLAYER_DATA_INIT, 1);
             this.add.existing(this.player);
             this.player.body.collideWorldBounds = true;
@@ -36,11 +42,9 @@ RPG.GameState = {
             this.add.existing(this.character1);
             this.character1.body.collideWorldBounds = true;
 
-
             this.character2 = new RPG.Player(this, this.playerData.initial_position_c2.x, this.playerData.initial_position_c2.y, this.playerData.player, Constants.CHARACTER2_DATA_INIT);
             this.add.existing(this.character2);
             this.character2.body.collideWorldBounds = true;
-
 
             this.initGUI();
 
@@ -50,21 +54,43 @@ RPG.GameState = {
 
     },
     update: function () {
-        /*this.game.physics.arcade.collide(this.player, this.collisionLayer);
-
+        this.game.physics.arcade.collide( this.player, this.collisionLayer);
+        
+        /*
         this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
-
         this.game.physics.arcade.collide(this.player, this.enemies, this.attack, null, this);*/
 
         if (!this.uiBlocked){
             this.cursorMovement();
+        }
+        
+    },
+    initialiseCollisionLayer: function () {
+    	
+    	// copy the 'blocking' property from all three layers to the bottom layer, the 'collisionLayer'.
+        var tileProperties = this.map.tilesets[this.map.getTilesetIndex('officehangover')].tileProperties;
+        for (var x = 0; x < this.map.width; ++x) {
+        	for (var y = 0; y < this.map.width; ++y) {
+        		var tile1 = this.map.getTile(x, y, 0);
+        		var tile2 = this.map.getTile(x, y, 2);
+        		var tile3 = this.map.getTile(x, y, 3);
+        		
+        		if (tile1 == null) continue;
+        		
+        		if (tile1.properties['blocking'])
+        			tile1.setCollision(true, true, true, true);
+        		if (tile2 != null && tile2.properties['blocking'])
+        			tile1.setCollision(true, true, true, true);
+        		if (tile3 != null && tile3.properties['blocking'])
+        			tile1.setCollision(true, true, true, true);
+        	}
         }
 
     },
     gameOver: function () {
         this.game.state.start('GameState', true, false, this.currentLevel);
     },
-    wakeUp: function (){
+    wakeUp: function () {
     	this.uiBlocked = true;
         var anim = this.player.play(Constants.ANIMATION_WAKE_UP);
         this.player.animations.currentAnim.onComplete.add(function () {	this.uiBlocked = false;}, this);
