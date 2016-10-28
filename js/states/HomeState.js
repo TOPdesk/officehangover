@@ -37,7 +37,7 @@ RPG.HomeState = {
             this.game.Text.setup();
             
             this.game.Text.create(this.textData.intro_text, menuPositionX/2, menuPositionY, {}, (function(){
-                this.state.start(Constants.START_STATE);
+                this.state.start(Constants.GAME_STATE);
             }).bind(this));
 
         }, this);

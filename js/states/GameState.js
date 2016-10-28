@@ -46,7 +46,7 @@ RPG.GameState = {
 
             this.character1Movement();
             this.character2Movement();
-
+            this.wakeUp();
 
     },
     update: function () {
@@ -63,6 +63,11 @@ RPG.GameState = {
     },
     gameOver: function () {
         this.game.state.start('GameState', true, false, this.currentLevel);
+    },
+    wakeUp: function (){
+    	this.uiBlocked = true;
+        var anim = this.player.play(Constants.ANIMATION_WAKE_UP);
+        this.player.animations.currentAnim.onComplete.add(function () {	this.uiBlocked = false;}, this);
     },
     cursorMovement: function () {
         this.player.body.velocity.x = 0;
