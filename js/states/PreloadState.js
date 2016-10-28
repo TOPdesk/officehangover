@@ -21,6 +21,9 @@ RPG.PreloadState = {
             //load text
             this.load.text(Constants.PLAYER_DATA, 'assets/data/player_data.json');
             this.load.text(Constants.GAME_TEXT, 'assets/data/text.json');
+            
+            this.load.image(Constants.TILESET_IMAGE, 'assets/images/tileset1.png');
+            this.load.tilemap(Constants.TILEMAP_FLOOR1, 'assets/data/floor1-tilemap.json', null, Phaser.Tilemap.TILED_JSON);
         }
     },
     init: function (level){

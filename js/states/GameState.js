@@ -20,12 +20,13 @@ RPG.GameState = {
 
             this.game.stage.backgroundColor = this.playerData.background_color;
 
-            this.background = this.game.add.sprite(0, -30, Constants.SCENE);
-            this.background.width = this.game.world.width + 100;
-            this.background.height = this.game.world.height + 100;
-            this.background.inputEnabled = true;
-            this.game.world.sendToBack(this.background);
-
+            this.map = this.game.add.tilemap(Constants.TILEMAP_FLOOR1);
+            this.map.addTilesetImage('officehangover', Constants.TILESET_IMAGE);
+            this.map.createLayer('Floor and Walls');
+            this.map.createLayer('Shadows');
+            this.map.createLayer('Bottom Objects');
+            this.map.createLayer('Top Objects').resizeWorld();            
+            
             this.player = new RPG.Player(this, this.playerData.initial_position.x, this.playerData.initial_position.y, this.playerData.player, Constants.PLAYER_DATA_INIT, 1);
             this.add.existing(this.player);
             this.player.body.collideWorldBounds = true;

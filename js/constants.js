@@ -26,6 +26,9 @@ var Constants = (function (){
     Constants.CHARACTER2_SPRITE = 'character2';
     Constants.SCENE = 'background';
     Constants.STAMINA_BAR = 'bar';
-    Constants.ANIMATION_WAKE_UP = 'wake_up'
+    Constants.ANIMATION_WAKE_UP = 'wake_up';
+    Constants.TILESET_IMAGE = 'tileset1';
+    Constants.TILEMAP_FLOOR1 = 'tilemap_floor1';
+    
     return Constants;
 })();
