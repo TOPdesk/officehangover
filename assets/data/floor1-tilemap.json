@@ -43,8 +43,84 @@
          "width":55,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":52,
+         "name":"Objects",
+         "objects":[
+                {
+                 "ellipse":true,
+                 "height":0,
+                 "id":4,
+                 "name":"Player Start",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Start",
+                 "visible":true,
+                 "width":0,
+                 "x":828,
+                 "y":556
+                }, 
+                {
+                 "ellipse":true,
+                 "height":0,
+                 "id":5,
+                 "name":"Character1",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":448,
+                 "y":430
+                }, 
+                {
+                 "ellipse":true,
+                 "height":0,
+                 "id":6,
+                 "name":"Character2",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":1263,
+                 "y":687
+                }, 
+                {
+                 "ellipse":true,
+                 "height":0,
+                 "id":7,
+                 "name":"Character3",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":1356,
+                 "y":1237
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":55,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":1,
+ "nextobjectid":8,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":32,

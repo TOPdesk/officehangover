@@ -33,29 +33,14 @@ RPG.GameState = {
 
             this.initialiseCollisionLayer();
 
-            this.player = new RPG.Player(this, this.playerData.initial_position.x, this.playerData.initial_position.y, this.playerData.player, Constants.PLAYER_DATA_INIT, 1);
-            this.add.existing(this.player);
-            this.player.body.collideWorldBounds = true;
-            this.game.camera.follow(this.player);
-
-            this.character1 = new RPG.Player(this, this.playerData.initial_position_c1.x, this.playerData.initial_position_c1.y, this.playerData.player, Constants.CHARACTER1_DATA_INIT);
-            this.add.existing(this.character1);
-            this.character1.body.collideWorldBounds = true;
-
-            this.character2 = new RPG.Player(this, this.playerData.initial_position_c2.x, this.playerData.initial_position_c2.y, this.playerData.player, Constants.CHARACTER2_DATA_INIT);
-            this.add.existing(this.character2);
-            this.character2.body.collideWorldBounds = true;
-
-            this.initGUI();
-
-            this.character1Movement();
-            this.character2Movement();
+            this.initialiseCharacters();
+            
             this.wakeUp();
 
     },
     update: function () {
         this.game.physics.arcade.collide( this.player, this.collisionLayer);
-        
+        this.game.physics.arcade.collide( this.characters, this.collisionLayer, this.setRandomDirection, null, this);
         /*
         this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
         this.game.physics.arcade.collide(this.player, this.enemies, this.attack, null, this);*/
@@ -64,6 +49,45 @@ RPG.GameState = {
             this.cursorMovement();
         }
         
+        for (var key in this.characters) {
+        	this.updateCharacter(this.characters[key]);
+        }
+        
+    },
+    initialiseCharacters: function() {
+    	
+    	this.characters = []
+    	
+    	for (var key in this.map.objects.Objects)
+    	{
+    		var obj = this.map.objects.Objects[key]
+    		
+    		if (obj.type == "Start")
+    		{
+    	        this.player = new RPG.Player(this, obj.x, obj.y, this.playerData.player, Constants.PLAYER_DATA_INIT, 1);
+    	        this.add.existing(this.player);
+    	        this.player.body.collideWorldBounds = true;
+    	        this.game.camera.follow(this.player);
+    		} 
+    		else if (obj.type == "Character")
+    		{
+    	        var character = new RPG.Player(this, obj.x, obj.y, this.playerData.player, Constants.PLAYER_DATA_INIT);
+    	        this.add.existing(character);
+    	        character.body.collideWorldBounds = true;
+    	        this.setRandomDirection (character);
+    	        this.characters.push(character);
+    		}
+    		else {
+    			console.error ("Map contains object of undefined type " + obj.type)
+    		}
+    		
+    	}
+    	
+    	if (!this.player) {
+    		console.error ("No player start position found on map!")
+    	}
+
+        this.initGUI();
     },
     initialiseCollisionLayer: function () {
     	
@@ -128,9 +152,6 @@ RPG.GameState = {
             this.player.frame = this.playerData.initial_frame;
         }
 
-        this.checkCharacter(this.character1);
-        this.checkCharacter2(this.character2);
-
     },
     initGUI: function () {
         this.game.VirtualPad.setup(this.player, {
@@ -145,65 +166,36 @@ RPG.GameState = {
             action: false
         })
     },
-    character1Movement: function (){
-        this.character1.body.velocity.y = 100;
-        this.character1.direction = 1;
-        this.character1.body.velocity.x = 0;
-        this.character1.play('walk_down');
+    
+    setRandomDirection : function (character) {
+    	this.setDirection (character, Math.floor (Math.random() * 4))
     },
-    character2Movement: function (){
-        this.character2.body.velocity.x = 50;
-        this.character2.direction = 1;
-        this.character2.body.velocity.y = 0;
-        this.character2.play('walk_right');
-    },
-    checkCharacter: function (character){
-        if (character.body.position.y > this.game.world.height - 55 && character.body.position.x <= this.playerData.initial_position_c1.x){
+    
+    setDirection : function (character, direction) {
+    	if (direction == 0) {
             character.body.velocity.y = 0;
             character.body.velocity.x = 100;
             character.play('walk_right');
         }
-
-        if (character.body.position.x > this.game.world.width - 105){
+    	else if (direction == 1) {    	
             character.body.velocity.x = 0;
             character.body.velocity.y = -100;
             character.play('walk_up');
         }
-
-        if(character.body.position.x >=  this.game.world.width - 105 &&  character.body.position.y < (this.game.world.height - this.game.world.height/4)){
+    	else if (direction == 2) {
             character.body.velocity.x = -100;
             character.body.velocity.y = 0;
             character.play('walk_left');
         }
-
-        if(character.body.position.x <= this.playerData.initial_position_c1.x && character.body.position.y <= this.playerData.initial_position_c1.y){
+    	else if (direction == 3) {
             character.body.velocity.y = 100;
             character.body.velocity.x = 0;
             character.play('walk_down');
-        }
+        }    
     },
-    checkCharacter2: function (character){
-        if (character.body.position.x > this.game.world.width - (this.game.world.width/9)){
-            character.body.velocity.y = 50;
-            character.body.velocity.x = 0;
-            character.play('walk_down');
-        }
-
-        if (character.body.position.y > 220){
-            character.body.velocity.x = -50;
-            character.body.velocity.y = 0;
-            character.play('walk_left');
-        }
-
-        if( character.body.position.x <= this.playerData.initial_position_c2.x && character.body.position.y >= this.playerData.initial_position_c2.y ){
-            character.body.velocity.y = -50;
-            character.body.velocity.x = 0;
-            character.play('walk_up');
-        }
-
-        if(character.body.position.y <= this.playerData.initial_position_c2.y && character.body.position.x <= this.playerData.initial_position_c2.x){
-            this.character2Movement();
-        }
+    
+    updateCharacter: function (character) {
+    	// add more logic here, called every tick
     },
     // uncomment to help debug character bounding boxes
     /*
