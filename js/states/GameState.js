@@ -204,6 +204,16 @@ RPG.GameState = {
         if(character.body.position.y <= this.playerData.initial_position_c2.y && character.body.position.x <= this.playerData.initial_position_c2.x){
             this.character2Movement();
         }
+    },
+    // uncomment to help debug character bounding boxes
+    /*
+    render: function () {
+    	//this.game.debug.bodyInfo(this.player, 32, 32);    	 
+    	this.game.debug.body(this.player);
+    	this.game.debug.body(this.character1);
+    	this.game.debug.body(this.character2);
     }
+    */
+    
 };
 

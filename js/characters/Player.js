@@ -26,8 +26,7 @@ RPG.Player = function (state, x, y, data, character, hb){
     }
 
     this.game.physics.arcade.enable(this);
-    this.body.setSize(this.playerData.player_body.x, this.playerData.player_body.y, null, (this.height-this.playerData.player_body.y)/6);
-    this.scale.setTo(0.5);
+    this.body.setSize(this.playerData.player_body.width, this.playerData.player_body.height, this.playerData.player_body.left, this.playerData.player_body.top);
 };
 
 RPG.Player.prototype = Object.create(Phaser.Sprite.prototype);
