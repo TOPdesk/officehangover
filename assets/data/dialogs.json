@@ -1,0 +1,29 @@
+{"coffee_machine": [
+  {"id":1, "message": "The coffee machine shows an error message.","reply_options": [2, 3], "actions": []},
+  {"id":2, "message": "Press info.","reply_options": [4], "actions": []},
+  {"id":3, "message": "Walk away..","reply_options": [], "actions": ["close_dialog"]},
+  {"id":4, "message": "Please fix me, error e1029","reply_options": [5,6], "actions": []},
+  {"id":5, "message": "Ok. ","reply_options": [], "actions": ["close_dialog"]},
+  {"id":6, "message": "How can I do this?","reply_options": [7], "actions": []},
+  {"id":7, "message": "Find a pc and log a call.","reply_options": [], "actions": ["close_dialog"]}
+],
+"PC": [
+    {"id":8, "message": "What would you like to do?", "reply_options": [9, 10, 11, 12], "actions": []},
+    {"id":9, "message": "Check facebook", "reply_options": [13], "actions": []},
+    {"id":10, "message": "Check e-mail", "reply_options": [14], "actions": []},
+    {"id":11, "message": "Log a call", "reply_options": [17], "actions": []},
+    {"id":12, "message": "Search for error e1029", "reply_options": [21], "actions": []},
+    {"id":13, "message": "One hour passed... You feel tired. What would you like to do?", "reply_options": [9, 10, 11, 12], "actions": ["lower_energy"]},
+    {"id":14, "message": "You have 1 new email.", "reply_options": [15, 16], "actions": []},
+    {"id":15, "message": "Open it.", "reply_options": [24], "actions": []},
+    {"id":16, "message": "Let's not go into this now. Log a call.", "reply_options": [17], "actions": []},
+    {"id":17, "message": "What is the problem?", "reply_options": [18, 19], "actions": []},
+    {"id":18, "message": "The coffee machine is broken, it shows error e1029. Submit your call.", "reply_options": [20], "actions": []},
+    {"id":19, "message": "I lost my phone battery.", "reply_options": [], "actions": []},
+    {"id":20, "message": "Thanks for registering your call. Our coffee machine repairmen will arrive within 15 minutes.", "reply_options": [], "actions": ["close_dialog"]},
+    {"id":21, "message": "You find 1 knowledge item.", "reply_options": [22, 23], "actions": ["close_dialog"]},
+    {"id":22, "message": "Read it", "reply_options": [], "actions": []},
+    {"id":23, "message": "I am too tired for this, log a call.", "reply_options": [17], "actions": []},
+    {"id":24, "message": "You see some pictures from yesterdays party. This is uncool. You regret opening the email. You feel tired, lets get this coffee machine fixed, log a call.", "reply_options": [17], "actions": ["lower_energy"]},
+    {"id":25, "message": "Thanks for registering your call. You can get a new phone battery at our ICT department at the 14th floor.", "reply_options": [], "actions": ["close_dialog"]}
+]}
