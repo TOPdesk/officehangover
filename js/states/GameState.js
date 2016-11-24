@@ -14,6 +14,10 @@ RPG.GameState = {
         this.game.physics.arcade.gravity.y = 0;
 
         this.cursors = this.game.input.keyboard.createCursorKeys();
+        this.spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+        //  Stop the following keys from propagating up to the browser
+        this.game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR ]);
 
         this.playerData = JSON.parse(this.game.cache.getText(Constants.PLAYER_DATA));
     },
@@ -39,6 +43,7 @@ RPG.GameState = {
 
     },
     update: function () {
+        this.game.physics.arcade.collide( this.player, this.collisionLayer, this.isActionAvailable, null, this);
         this.game.physics.arcade.collide( this.player, this.collisionLayer);
         this.game.physics.arcade.collide( this.characters, this.collisionLayer, this.setRandomDirection, null, this);
         /*
@@ -206,6 +211,16 @@ RPG.GameState = {
     	this.game.debug.body(this.character2);
     }
     */
+    isActionAvailable: function (){
+      if (this.spaceKey.isDown){
+          this.callAction();
+          //trigger the action here without the callAction function
+      }
+    },
+
+    callAction: function (){
+        //new Action();
+    }
     
 };
 
