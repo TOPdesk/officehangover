@@ -221,7 +221,7 @@ RPG.GameState = {
     	this.game.debug.body(this.player);
     	this.game.debug.body(this.character1);
     	this.game.debug.body(this.character2);
-    }
+    },
     */
     isActionAvailable: function (){
       if (this.spaceKey.isDown){
@@ -229,10 +229,17 @@ RPG.GameState = {
           //trigger the action here without the callAction function
       }
     },
-
     callAction: function (){
         //new Action();
-    }
-    
+    	
+    	//TEMP: call openDialog directly for testing
+    	this.openDialog(null);
+    },    
+    openDialog: function(dialogTree) {
+
+    	this.dialog = new RPG.Dialog(this, dialogTree);
+    	this.dialog.popup();
+    },
+
 };
 
