@@ -82,6 +82,18 @@ RPG.GameState = {
     	        this.setRandomDirection (character);
     	        this.characters.push(character);
     		}
+    		else if (obj.type == "PC")
+    		{
+    	        var sprite = new Phaser.Sprite(this, obj.x, obj.y, Constants.PC_SPRITE);
+    	        this.add.existing(sprite);
+    	        this.characters.push(sprite);
+    		}
+    		else if (obj.type == "CoffeeMachine")
+    		{
+    	        var sprite = new Phaser.Sprite(this, obj.x, obj.y, Constants.COFFEE_MACHINE_SPRITE);
+    	        this.add.existing(sprite);
+    	        this.characters.push(sprite);
+    		}    		
     		else {
     			console.error ("Map contains object of undefined type " + obj.type)
     		}

@@ -112,6 +112,38 @@
                  "width":0,
                  "x":1356,
                  "y":1237
+                }, 
+                {
+                 "ellipse":true,
+                 "height":0,
+                 "id":8,
+                 "name":"CoffeeMachine",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"CoffeeMachine",
+                 "visible":true,
+                 "width":0,
+                 "x":1150,
+                 "y":1254
+                }, 
+                {
+                 "ellipse":true,
+                 "height":0,
+                 "id":11,
+                 "name":"PC",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"PC",
+                 "visible":true,
+                 "width":0,
+                 "x":685,
+                 "y":321
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -120,7 +152,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":8,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":32,
