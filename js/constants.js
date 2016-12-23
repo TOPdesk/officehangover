@@ -17,6 +17,7 @@ var Constants = (function (){
 
     Constants.PLAYER_DATA = 'player_data';
     Constants.GAME_TEXT = 'text';
+    Constants.DIALOGS = 'dialogs';
     Constants.PLAYER_START_DATA_INIT = 'player_wake_up';
     Constants.PLAYER_DATA_INIT = 'player';
     Constants.PLAYER_SPRITE = 'player';

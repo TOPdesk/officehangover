@@ -225,19 +225,20 @@ RPG.GameState = {
     */
     isActionAvailable: function (){
       if (this.spaceKey.isDown){
-          this.callAction();
+		 //somehow find out which object was collided
+          this.callAction(1, "PC");
           //trigger the action here without the callAction function
       }
     },
-    callAction: function (){
+    callAction: function (dialogid, objectname){
         //new Action();
     	
     	//TEMP: call openDialog directly for testing
-    	this.openDialog(null);
+    	this.openDialog(dialogid, objectname);
     },    
-    openDialog: function(dialogTree) {
+    openDialog: function(dialogid, objectname) {
 
-    	this.dialog = new RPG.Dialog(this, dialogTree);
+    	this.dialog = new RPG.Dialog(this, dialogid, objectname);
     	this.dialog.popup();
     },
 
