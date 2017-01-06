@@ -227,7 +227,7 @@ RPG.GameState = {
     */
     isActionAvailable: function (character) {
       if (this.spaceKey.isDown) {
-        //somehow find out which object was collided
+          
         if (character.key == "pc" || character.key == "coffeemachine") {
           this.callAction(1, character.key);
         }
