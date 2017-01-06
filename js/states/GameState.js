@@ -75,14 +75,14 @@ RPG.GameState = {
     	        this.player.body.collideWorldBounds = true;
     	        this.game.camera.follow(this.player);
     		}
-    		/*else if (obj.type == "Character")
+    		else if (obj.type == "Character")
     		{
     	        var character = new RPG.Player(this, obj.x, obj.y, this.playerData.player, Constants.PLAYER_DATA_INIT);
     	        this.add.existing(character);
     	        character.body.collideWorldBounds = true;
     	        this.setRandomDirection (character);
     	        this.characters.push(character);
-    		}*/
+    		}
     		else if (obj.type == "PC")
     		{
     	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'pc');
