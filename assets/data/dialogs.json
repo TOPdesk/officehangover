@@ -1,4 +1,4 @@
-{"coffee_machine": {"start_options": [1,8], "messages": [
+{"coffeemachine": {"start_options": [1,8], "messages": [
   {"id":1, "message": "The coffee machine shows an error message.","reply_options": [2, 3], "actions": [], "conditions": ["state.coffee_machine.broken"]},
   {"id":2, "message": "Press info.","reply_options": [4], "actions": [], "conditions": ["state.coffee_machine.broken"]},
   {"id":3, "message": "Walk away..","reply_options": [], "actions": ["close_dialog"], "conditions": ["state.coffee_machine.broken"]},
@@ -9,7 +9,7 @@
   {"id":8, "message": "What would you like to drink?","reply_options": [9], "actions": [], "conditions": ["state.coffee_machine.ok"]},
   {"id":9, "message": "Coffee","reply_options": [], "actions": ["close_dialog", "increase_energy"], "conditions": ["state.coffee_machine.ok"]}
 ]},
-"PC": {"start_options": [1], "messages": [
+"pc": {"start_options": [1], "messages": [
     {"id":1, "message": "What would you like to do?", "reply_options": [2, 3, 4, 5], "actions": [], "conditions": []},
     {"id":2, "message": "Check facebook", "reply_options": [6], "actions": [], "conditions": []},
     {"id":3, "message": "Check e-mail", "reply_options": [7], "actions": [], "conditions": []},

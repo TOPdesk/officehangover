@@ -22,14 +22,14 @@ RPG.GameState = {
         this.playerData = JSON.parse(this.game.cache.getText(Constants.PLAYER_DATA));
     },
     create: function () {
-    		
+
             this.game.VirtualPad = this.game.plugins.add(Phaser.Plugin.VirtualPad);
 
             this.game.stage.backgroundColor = this.playerData.background_color;
 
             this.map = this.game.add.tilemap(Constants.TILEMAP_FLOOR1);
             this.map.addTilesetImage('officehangover', Constants.TILESET_IMAGE);
-            
+
             this.collisionLayer = this.map.createLayer('Floor and Walls');
             this.map.createLayer('Shadows');
             this.map.createLayer('Bottom Objects');
@@ -38,12 +38,12 @@ RPG.GameState = {
             this.initialiseCollisionLayer();
 
             this.initialiseCharacters();
-            
+
             this.wakeUp();
 
     },
     update: function () {
-        this.game.physics.arcade.collide( this.player, this.collisionLayer, this.isActionAvailable, null, this);
+        this.game.physics.arcade.collide( this.gameobjects, this.player, this.isActionAvailable, null, this);
         this.game.physics.arcade.collide( this.player, this.collisionLayer);
         this.game.physics.arcade.collide( this.characters, this.collisionLayer, this.setRandomDirection, null, this);
         /*
@@ -53,53 +53,54 @@ RPG.GameState = {
         if (!this.uiBlocked){
             this.cursorMovement();
         }
-        
+
         for (var key in this.characters) {
         	this.updateCharacter(this.characters[key]);
         }
-        
+
     },
     initialiseCharacters: function() {
-    	
+
     	this.characters = []
-    	
+        this.gameobjects = []
+
     	for (var key in this.map.objects.Objects)
     	{
     		var obj = this.map.objects.Objects[key]
-    		
+
     		if (obj.type == "Start")
     		{
     	        this.player = new RPG.Player(this, obj.x, obj.y, this.playerData.player, Constants.PLAYER_DATA_INIT, 1);
     	        this.add.existing(this.player);
     	        this.player.body.collideWorldBounds = true;
     	        this.game.camera.follow(this.player);
-    		} 
-    		else if (obj.type == "Character")
+    		}
+    		/*else if (obj.type == "Character")
     		{
     	        var character = new RPG.Player(this, obj.x, obj.y, this.playerData.player, Constants.PLAYER_DATA_INIT);
     	        this.add.existing(character);
     	        character.body.collideWorldBounds = true;
     	        this.setRandomDirection (character);
     	        this.characters.push(character);
-    		}
+    		}*/
     		else if (obj.type == "PC")
     		{
-    	        var sprite = new Phaser.Sprite(this, obj.x, obj.y, Constants.PC_SPRITE);
+    	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'pc');
     	        this.add.existing(sprite);
-    	        this.characters.push(sprite);
+    	        this.gameobjects.push(sprite);
     		}
     		else if (obj.type == "CoffeeMachine")
     		{
-    	        var sprite = new Phaser.Sprite(this, obj.x, obj.y, Constants.COFFEE_MACHINE_SPRITE);
+    	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'coffeemachine');
     	        this.add.existing(sprite);
-    	        this.characters.push(sprite);
-    		}    		
+    	        this.gameobjects.push(sprite);
+    		}
     		else {
     			console.error ("Map contains object of undefined type " + obj.type)
     		}
-    		
+
     	}
-    	
+
     	if (!this.player) {
     		console.error ("No player start position found on map!")
     	}
@@ -107,7 +108,7 @@ RPG.GameState = {
         this.initGUI();
     },
     initialiseCollisionLayer: function () {
-    	
+
     	// copy the 'blocking' property from all three layers to the bottom layer, the 'collisionLayer'.
         var tileProperties = this.map.tilesets[this.map.getTilesetIndex('officehangover')].tileProperties;
         for (var x = 0; x < this.map.width; ++x) {
@@ -115,9 +116,9 @@ RPG.GameState = {
         		var tile1 = this.map.getTile(x, y, 0);
         		var tile2 = this.map.getTile(x, y, 2);
         		var tile3 = this.map.getTile(x, y, 3);
-        		
+
         		if (tile1 == null) continue;
-        		
+
         		if (tile1.properties['blocking'])
         			tile1.setCollision(true, true, true, true);
         		if (tile2 != null && tile2.properties['blocking'])
@@ -183,18 +184,18 @@ RPG.GameState = {
             action: false
         })
     },
-    
+
     setRandomDirection : function (character) {
     	this.setDirection (character, Math.floor (Math.random() * 4))
     },
-    
+
     setDirection : function (character, direction) {
     	if (direction == 0) {
             character.body.velocity.y = 0;
             character.body.velocity.x = 100;
             character.play('walk_right');
         }
-    	else if (direction == 1) {    	
+    	else if (direction == 1) {
             character.body.velocity.x = 0;
             character.body.velocity.y = -100;
             character.play('walk_up');
@@ -208,34 +209,36 @@ RPG.GameState = {
             character.body.velocity.y = 100;
             character.body.velocity.x = 0;
             character.play('walk_down');
-        }    
+        }
     },
-    
+
     updateCharacter: function (character) {
     	// add more logic here, called every tick
     },
     // uncomment to help debug character bounding boxes
     /*
     render: function () {
-    	//this.game.debug.bodyInfo(this.player, 32, 32);    	 
+    	//this.game.debug.bodyInfo(this.player, 32, 32);
     	this.game.debug.body(this.player);
-    	this.game.debug.body(this.character1);
-    	this.game.debug.body(this.character2);
+        for (var i = 0; i < this.characters.length; ++i) {
+    	   this.game.debug.body(this.characters[i]);
+        }
     },
     */
-    isActionAvailable: function (){
-      if (this.spaceKey.isDown){
-		 //somehow find out which object was collided
-          this.callAction(1, "PC");
-          //trigger the action here without the callAction function
+    isActionAvailable: function (character) {
+      if (this.spaceKey.isDown) {
+        //somehow find out which object was collided
+        if (character.key == "pc" || character.key == "coffeemachine") {
+          this.callAction(1, character.key);
+        }
       }
     },
     callAction: function (dialogid, objectname){
         //new Action();
-    	
+
     	//TEMP: call openDialog directly for testing
     	this.openDialog(dialogid, objectname);
-    },    
+    },
     openDialog: function(dialogid, objectname) {
 
     	this.dialog = new RPG.Dialog(this, dialogid, objectname);
@@ -243,4 +246,3 @@ RPG.GameState = {
     },
 
 };
-

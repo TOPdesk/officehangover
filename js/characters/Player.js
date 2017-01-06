@@ -13,7 +13,6 @@ RPG.Player = function (state, x, y, data, character, hb){
     this.anchor.setTo(0.5);
     this.hb = hb;
 
-
     this.animations.add('walk_right', this.playerData.animation_walk_right, this.playerData.frames, true);
     this.animations.add('walk_up', this.playerData.animation_walk_up,  this.playerData.frames, true);
     this.animations.add('walk_left', this.playerData.animation_walk_left,  this.playerData.frames, true);
@@ -26,7 +25,8 @@ RPG.Player = function (state, x, y, data, character, hb){
     }
 
     this.game.physics.arcade.enable(this);
-    this.body.setSize(this.playerData.player_body.width, this.playerData.player_body.height, this.playerData.player_body.left, this.playerData.player_body.top);
+    var bodySize = data.body_size
+    this.body.setSize(bodySize.width, bodySize.height, bodySize.left, bodySize.top);
 };
 
 RPG.Player.prototype = Object.create(Phaser.Sprite.prototype);
@@ -77,4 +77,3 @@ RPG.Player.prototype.update = function() {
         this.staminaBar.body.velocity = this.body.velocity;
     }
 };
-

@@ -1,10 +1,22 @@
 {
   "backgroung_color":"#000",
-  "player_body":{
-    "width": 24,
-    "height": 24,
-    "top": 40,
-    "left": 20
+  "pc": {
+    "body_size": {
+      "width": 32,
+      "height": 20,
+      "top": 4,
+      "left": 0
+    },
+    "sprite": "pc"
+  },
+  "coffeemachine" : {
+    "body_size": {
+      "width": 32,
+      "height": 40,
+      "top": 20,
+      "left": 0
+    },
+    "sprite": "coffeemachine"
   },
   "animation_walk_right": [143,144,145,146,147,148,149,150,151],
   "animation_walk_left": [117,118,119,120,121,122,123,124,125],
@@ -22,6 +34,12 @@
     }
   },
   "player": {
+    "body_size": {
+      "width": 24,
+      "height": 24,
+      "top": 40,
+      "left": 20
+    },
     "initial_frame": 130,
     "stamina": 25,
     "items": [],
