@@ -4,10 +4,8 @@ var RPG = RPG || {};
 
 RPG.StaminaBar = function (state, x, y, key, scale) {
     this.game = state.game;
-
     Phaser.Sprite.call(this, state.game, x, y, key);
-
-    this.anchor.setTo(0.5);
+    this.anchor.setTo(0.5, 2.5);
     this.refreshStaminabar(scale);
 
     this.game.physics.arcade.enable(this);

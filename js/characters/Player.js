@@ -2,16 +2,18 @@
 
 var RPG = RPG || {};
 
-RPG.Player = function (state, x, y, data, character, hb){
+RPG.Player = function (state, x, y, data, character, isMainCharacter){
     Phaser.Sprite.call(this, state.game, x, y, Constants.PLAYER_SPRITE, state.playerData[character].initial_frame);
-    hb = hb || 0;
+    isMainCharacter = isMainCharacter || 0;
 
     this.state = state;
     this.game = state.game;
     this.data = Object.create(data);
     this.playerData = state.playerData;
     this.anchor.setTo(0.5);
-    this.hb = hb;
+    this.hb = isMainCharacter;
+    this.x = x;
+    this.y = y;
 
     this.animations.add('walk_right', this.playerData.animation_walk_right, this.playerData.frames, true);
     this.animations.add('walk_up', this.playerData.animation_walk_up,  this.playerData.frames, true);
@@ -19,7 +21,7 @@ RPG.Player = function (state, x, y, data, character, hb){
     this.animations.add('walk_down', this.playerData.animation_walk_down,  this.playerData.frames, true);
     this.animations.add('wake_up', this.playerData.animation_wake_up,  this.playerData.frames, false);
 
-    if (hb == 1) {
+    if (isMainCharacter == 1) {
         this.staminaBar = new RPG.StaminaBar(state, this.x, this.y, 'bar', this.data.stamina);
         this.game.add.existing(this.staminaBar);
     }
