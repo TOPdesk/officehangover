@@ -167,7 +167,7 @@ RPG.GameState = {
 
         if (this.player.body.velocity.x == 0 && this.player.body.velocity.y == 0) {
             this.player.animations.stop();
-            this.player.frame = this.playerData.initial_frame;
+            this.player.frame = this.playerData.player.initial_frame;
         }
 
     },
