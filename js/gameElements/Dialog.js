@@ -52,31 +52,45 @@ RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
 	this.objects.push(bg);
 
 	var currentObjectDialog = dialog.findDialog(objectDialogs.messages, id);
+
 	var msgWidget = this.game.add.text(this.x, yy, currentObjectDialog.message, {'fill': '#FFA500'});
+	msgWidget.wordWrap = true;
+	msgWidget.wordWrapWidth = dialog.w
+
 	msgWidget.fixedToCamera = true;
-	yy += this.lineHeight;
+	yy += this.lineHeight; //TODO - multi-line?
+
 	this.objects.push(msgWidget);
 
-	currentObjectDialog.reply_options.forEach (function(option) {
-		var optionInfo = dialog.findDialog(objectDialogs.messages, option);
-		if (dialog.conditionsSatisfyGameState(optionInfo.conditions)) {
-			var optionWidget = game.add.text(dialog.x, yy, optionInfo.message, {'fill': '#00FFA5'});
-			yy += dialog.lineHeight;
-			optionWidget.fixedToCamera = true;
-			optionWidget.inputEnabled = true;
-			optionWidget.events.onInputDown.add(function () {
-				if (optionInfo.reply_options.length == 1) {
-					dialog.close();
-					dialog.showDialog(objectDialogs, optionInfo.reply_options[0]);
-				}
-				else {
-					dialog.close();
-				}
+	currentObjectDialog.replies.forEach (function(replyOption) {
 
-			}, this);
+		var optionWidget = game.add.text(dialog.x, yy, replyOption.message, {'fill': '#00FFA5'});
+		optionWidget.wordWrap = true;
+		optionWidget.wordWrapWidth = dialog.w
 
-			dialog.objects.push(optionWidget);
-		}
+		yy += dialog.lineHeight; //TODO: multi-line?
+
+		optionWidget.fixedToCamera = true;
+		optionWidget.inputEnabled = true;
+		optionWidget.events.onInputDown.add(function () {
+
+			dialog.close();
+			if (replyOption.goto) {
+				dialog.showDialog(objectDialogs, replyOption.goto);
+			}
+			if (replyOption.actions) {
+				replyOption.actions.forEach(function(action) { /* TODO ACTION*/ })
+			}
+			if (replyOption.setflag) {
+				replyOption.setflag.forEach(function(flag) { game.flags[flag] = 1 })
+			}
+			if (replyOption.clearflag) {
+				replyOption.clearflag.forEach(function(flag) { game.flags[flag] = 0 })
+			}
+
+		}, this);
+
+		dialog.objects.push(optionWidget);
 	});
 }
 
@@ -91,19 +105,17 @@ RPG.Dialog.prototype.findDialog = function(dialogs, idToFind) {
 
 RPG.Dialog.prototype.conditionsSatisfyGameState = function(conditions) {
 	for (var i = 0; i < conditions.length; i++) {
-		if (conditions[i] !== "state.coffee_machine.broken") {
-			return false;
-		}
+
 	}
 	return true;
 }
 
 RPG.Dialog.prototype.close = function() {
-	
+
 	this.state.uiBlocked = false;
-	
+
 	// destroy all components of the dialog
-	this.objects.forEach (function(element) { 
+	this.objects.forEach (function(element) {
 		element.destroy();
 	});
 

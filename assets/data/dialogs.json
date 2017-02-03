@@ -1,32 +1,84 @@
-{"coffeemachine": {"start_options": [1,8], "messages": [
-  {"id":1, "message": "The coffee machine shows an error message.","reply_options": [2, 3], "actions": [], "conditions": ["state.coffee_machine.broken"]},
-  {"id":2, "message": "Press info.","reply_options": [4], "actions": [], "conditions": ["state.coffee_machine.broken"]},
-  {"id":3, "message": "Walk away..","reply_options": [], "actions": ["close_dialog"], "conditions": ["state.coffee_machine.broken"]},
-  {"id":4, "message": "Please fix me, error e1029","reply_options": [5,6], "actions": [], "conditions": ["state.coffee_machine.broken"]},
-  {"id":5, "message": "Ok. ","reply_options": [], "actions": ["close_dialog"], "conditions": ["state.coffee_machine.broken"]},
-  {"id":6, "message": "How can I do this?","reply_options": [7], "actions": [], "conditions": ["state.coffee_machine.broken"]},
-  {"id":7, "message": "Find a pc and log a call.","reply_options": [], "actions": ["close_dialog"], "conditions": ["state.coffee_machine.broken"]},
-  {"id":8, "message": "What would you like to drink?","reply_options": [9], "actions": [], "conditions": ["state.coffee_machine.ok"]},
-  {"id":9, "message": "Coffee","reply_options": [], "actions": ["close_dialog", "increase_energy"], "conditions": ["state.coffee_machine.ok"]}
+{
+"coffeemachine": {"start_options": [1,8], "messages": [
+  { "id":1, "conditions": ["state.coffee_machine.broken"],
+      "message": "The coffee machine shows an error message.",
+      "replies": [
+          {"message": "Press info.", "setflag": ["state.error_seen"], "goto": 4},
+          {"message": "Walk away..", "actions": ["close_dialog"]}
+      ]
+  }, { "id":4,
+      "message": "Please fix me, error e1029",
+      "replies": [
+          {"message": "Ok.", "actions": ["close_dialog"] },
+          {"message": "How can I do this?", "goto": 7}
+      ]
+  }, { "id":7,
+      "message": "Find a pc and log a call.",
+      "replies": [
+          {"message": "Ok.", "actions": ["close_dialog"]}
+      ]
+  }, { "id":8,
+      "message": "What would you like to drink?",
+      "replies": [
+          {"message": "Coffee","goto": 9 }
+      ]
+  }, {
+      "id": 9, "conditions": ["state.coffee_machine.fixed"],
+      "message": "The machine serves you your drink",
+      "replies": [
+          { "message": "Ok", "actions": ["close_dialog", "increase_energy"] }
+      ]
+  }
 ]},
+
 "pc": {"start_options": [1], "messages": [
-    {"id":1, "message": "What would you like to do?", "reply_options": [2, 3, 4, 5], "actions": [], "conditions": []},
-    {"id":2, "message": "Check facebook", "reply_options": [6], "actions": [], "conditions": []},
-    {"id":3, "message": "Check e-mail", "reply_options": [7], "actions": [], "conditions": []},
-    {"id":4, "message": "Log a call", "reply_options": [10], "actions": [], "conditions": []},
-    {"id":5, "message": "Search for error e1029", "reply_options": [14], "actions": [], "conditions": ["state.coffee_machine.broken"]},
-    {"id":6, "message": "One hour passed... You feel tired. What would you like to do?", "reply_options": [2, 3, 4, 5], "actions": ["lower_energy"], "conditions": []},
-    {"id":7, "message": "You have 1 new email.", "reply_options": [8, 9], "actions": [], "conditions": []},
-    {"id":8, "message": "Open it.", "reply_options": [17], "actions": [], "conditions": []},
-    {"id":9, "message": "Let's not go into this now. Log a call.", "reply_options": [10], "actions": [], "conditions": []},
-    {"id":10, "message": "What is the problem?", "reply_options": [11, 12], "actions": [], "conditions": []},
-    {"id":11, "message": "The coffee machine is broken, it shows error e1029. Submit your call.", "reply_options": [13], "actions": [], "conditions": ["state.coffee_machine.broken"]},
-    {"id":12, "message": "I lost my phone battery.", "reply_options": [18], "actions": [], "conditions": ["state.phone.battery_missing"]},
-    {"id":13, "message": "Thanks for registering your call. Our coffee machine repairmen will arrive within 15 minutes.", "reply_options": [], "actions": ["close_dialog"], "conditions": ["state.coffee_machine.broken"]},
-    {"id":14, "message": "You find 1 knowledge item.", "reply_options": [15, 16], "actions": ["close_dialog"], "conditions": []},
-    {"id":15, "message": "Read it", "reply_options": [19], "actions": [], "conditions": []},
-    {"id":16, "message": "I am too tired for this, log a call.", "reply_options": [10], "actions": [], "conditions": []},
-    {"id":17, "message": "You see some pictures from yesterdays party. This is uncool. You regret opening the email. You feel tired, lets get this coffee machine fixed, log a call.", "reply_options": [10], "actions": ["lower_energy"], "conditions": []},
-    {"id":18, "message": "Thanks for registering your call. You can get a new phone battery at our ICT department at the 14th floor.", "reply_options": [], "actions": ["close_dialog"], "conditions": ["state.phone.battery_missing"]},
-    {"id":19, "message": "It says log a call, a repairman will come to fix this. The machine has to be opened up and a switch needs to be replaced. Let's log a call.", "reply_options": [10], "actions": [], "conditions": ["state.coffee_machine.broken"]}
+
+    {"id":1, "message": "What would you like to do?",
+        "replies": [
+            {"message": "Check facebook", "goto": 6},
+            {"message": "Check e-mail", "goto": 7},
+            {"message": "Log a call", "goto": 10},
+            {"conditions": ["state.error_seen"], "message": "Search for error e1029", "goto": 14 }
+        ]
+    }, { "id":6, "message": "One hour passed... You feel tired.",
+        "replies": [
+            {"message": "What a waste of time!", "actions": ["lower_energy"], "goto": 1 }
+        ]
+    }, { "id":7, "message": "You have 1 new email.",
+        "replies": [
+            {"message": "Open it.", "goto": 17 },
+            {"message": "Let's not go into this now. Log a call.", "goto": 10 }
+        ]
+    }, { "id":10, "message": "What is the problem?",
+        "replies": [
+            { "conditions": ["state.error_seen", "state.coffee_machine.broken"],
+                "message": "The coffee machine is broken, it shows error e1029. Submit your call.", "goto": 13 },
+            { "conditions": ["state.phone.battery_missing"],
+                "message": "I lost my phone battery.", "goto": 18 },
+            { "conditions": ["otherwise"],
+                "message": "There is no problem!", "goto": 1 }
+        ]
+    }, {"id":13, "message": "Thanks for registering your call. Our coffee machine repairmen will arrive within 15 minutes.",
+        "replies": [
+            { "message": "Thank you!", "clearflag": ["state.coffee_machine.broken"], "actions": [ "close_dialog" ] }
+        ]
+    }, { "id":14, "message": "You find 1 knowledge item.",
+        "replies": [
+            { "message": "Read it", "goto": 19 },
+            { "message": "I am too tired for this, log a call.", "goto": 10 }
+        ]
+    }, {"id":17, "message": "You see some pictures from yesterdays party. Apparently there were some uniformed police agents at the party. You wonder why?",
+        "replies": [
+            { "message": "Ok", "goto": 1, "actions": ["lower_energy"] }
+        ]
+    }, {"id":18, "message": "Thanks for registering your call. You can get a new phone battery at our ICT department at the 14th floor.",
+        "replies": [
+            { "message": "Thank you!", "clearflag": "state.phone.battery_missing", "actions": ["close_dialog"] }
+        ]
+    }, {"id":19, "message": "It says log a call, a repairman will come to fix this. The machine has to be opened up and a switch needs to be replaced. Let's log a call.",
+        "replies": [
+            { "message": "Ok.", "goto": 1 }
+        ]
+    }
+
 ]}}
