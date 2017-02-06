@@ -2,11 +2,10 @@
 
 var RPG = RPG || {};
 
-RPG.Dialog = function (state, dialogid, objectname) {
+RPG.Dialog = function (state, objectname) {
 
 	this.state = state;
 	this.game = state.game;
-    this.dialogid =  dialogid;
 	this.objectname = objectname;
 	this.dialogs = JSON.parse(this.game.cache.getText(Constants.DIALOGS));
 
@@ -17,7 +16,13 @@ RPG.Dialog.prototype.constructor = RPG.Dialog;
 
 RPG.Dialog.prototype.popup = function() {
 	var objectDialogs = this.dialogs[this.objectname];
-	this.showDialog(objectDialogs, this.dialogid);
+	this.showStartDialog(objectDialogs);
+}
+
+RPG.Dialog.prototype.showStartDialog = function(objectDialogs) {
+	var dialog = this;
+	var dialogStartId = dialog.findDialogStart(objectDialogs.start_options, objectDialogs.messages);
+	dialog.showDialog(objectDialogs, dialogStartId);
 }
 
 RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
@@ -55,7 +60,7 @@ RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
 
 	var msgWidget = this.game.add.text(this.x, yy, currentObjectDialog.message, {'fill': '#FFA500'});
 	msgWidget.wordWrap = true;
-	msgWidget.wordWrapWidth = dialog.w
+	msgWidget.wordWrapWidth = dialog.w;
 
 	msgWidget.fixedToCamera = true;
 	yy += this.lineHeight; //TODO - multi-line?
@@ -63,7 +68,6 @@ RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
 	this.objects.push(msgWidget);
 
 	currentObjectDialog.replies.forEach (function(replyOption) {
-
 		if (replyOption.condition) {
 			var result = dialog.conditionsSatisfyGameState(replyOption.condition);
 			if (!result) return; // skip this option
@@ -71,14 +75,13 @@ RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
 
 		var optionWidget = game.add.text(dialog.x, yy, replyOption.message, {'fill': '#00FFA5'});
 		optionWidget.wordWrap = true;
-		optionWidget.wordWrapWidth = dialog.w
+		optionWidget.wordWrapWidth = dialog.w;
 
 		yy += dialog.lineHeight; //TODO: multi-line?
 
 		optionWidget.fixedToCamera = true;
 		optionWidget.inputEnabled = true;
 		optionWidget.events.onInputDown.add(function () {
-
 			dialog.close();
 			if (replyOption.goto) {
 				dialog.showDialog(objectDialogs, replyOption.goto);
@@ -98,6 +101,19 @@ RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
 		dialog.objects.push(optionWidget);
 	});
 }
+
+RPG.Dialog.prototype.findDialogStart = function(startOptions, objectMessages) {
+	var dialog = this;
+	for (var i = 0; i < startOptions.length; i++) {
+		var startOptionId = startOptions[i];
+		var startOptionValue = dialog.findDialog(objectMessages, startOptionId);
+		// first option that has no condition or a condition that is satisfied
+		if (!startOptionValue.condition || dialog.conditionsSatisfyGameState(startOptionValue.condition)) {
+			return startOptionId;
+		}
+	}
+	//TODO do we need error handling?
+};
 
 RPG.Dialog.prototype.findDialog = function(dialogs, idToFind) {
 	for (var i = 0; i < dialogs.length; i++) {

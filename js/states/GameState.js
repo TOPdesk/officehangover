@@ -262,19 +262,19 @@ RPG.GameState = {
       if (this.spaceKey.isDown) {
 
         if (character.key == "pc" || character.key == "coffeemachine") {
-          this.callAction(1, character.key);
+          this.callAction(character.key);
         }
       }
     },
-    callAction: function (dialogid, objectname){
+    callAction: function (objectname){
         //new Action();
 
     	//TEMP: call openDialog directly for testing
-    	this.openDialog(dialogid, objectname);
+    	this.openDialog(objectname);
     },
-    openDialog: function(dialogid, objectname) {
+    openDialog: function(objectname) {
 
-    	this.dialog = new RPG.Dialog(this, dialogid, objectname);
+    	this.dialog = new RPG.Dialog(this, objectname);
     	this.dialog.popup();
     },
 
