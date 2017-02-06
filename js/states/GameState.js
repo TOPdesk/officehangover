@@ -10,6 +10,8 @@ var layer4;*/
 RPG.GameState = {
     init: function () {
 
+        this.flags = {}
+
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.game.physics.arcade.gravity.y = 0;
 
@@ -258,7 +260,7 @@ RPG.GameState = {
     */
     isActionAvailable: function (character) {
       if (this.spaceKey.isDown) {
-          
+
         if (character.key == "pc" || character.key == "coffeemachine") {
           this.callAction(1, character.key);
         }

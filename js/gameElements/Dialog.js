@@ -18,11 +18,11 @@ RPG.Dialog.prototype.constructor = RPG.Dialog;
 RPG.Dialog.prototype.popup = function() {
 	var objectDialogs = this.dialogs[this.objectname];
 	this.showDialog(objectDialogs, this.dialogid);
-
 }
 
 RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
 	var game = this.game;
+	var state = this.state;
 	var dialog = this;
 
 	this.state.uiBlocked = true;
@@ -64,6 +64,11 @@ RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
 
 	currentObjectDialog.replies.forEach (function(replyOption) {
 
+		if (replyOption.condition) {
+			var result = dialog.conditionsSatisfyGameState(replyOption.condition);
+			if (!result) return; // skip this option
+		}
+
 		var optionWidget = game.add.text(dialog.x, yy, replyOption.message, {'fill': '#00FFA5'});
 		optionWidget.wordWrap = true;
 		optionWidget.wordWrapWidth = dialog.w
@@ -82,10 +87,10 @@ RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
 				replyOption.actions.forEach(function(action) { /* TODO ACTION*/ })
 			}
 			if (replyOption.setflag) {
-				replyOption.setflag.forEach(function(flag) { game.flags[flag] = 1 })
+				replyOption.setflag.forEach(function(flag) { console.log("Flag " + flag + " is set"); state.flags[flag] = 1 })
 			}
 			if (replyOption.clearflag) {
-				replyOption.clearflag.forEach(function(flag) { game.flags[flag] = 0 })
+				replyOption.clearflag.forEach(function(flag) { console.log("Flag " + flag + " is cleared"); state.flags[flag] = 0 })
 			}
 
 		}, this);
@@ -103,11 +108,12 @@ RPG.Dialog.prototype.findDialog = function(dialogs, idToFind) {
 	return null;
 };
 
-RPG.Dialog.prototype.conditionsSatisfyGameState = function(conditions) {
-	for (var i = 0; i < conditions.length; i++) {
-
-	}
-	return true;
+RPG.Dialog.prototype.conditionsSatisfyGameState = function(condition) {
+	// turn the condition string into a javascript function and evaluate it
+	var conditionFunc = new Function("state", condition);
+	var result = conditionFunc(this.state);
+	console.log("Checking condition: " + condition + " which results in " + result);
+	return result;
 }
 
 RPG.Dialog.prototype.close = function() {

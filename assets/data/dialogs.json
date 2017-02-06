@@ -1,9 +1,9 @@
 {
 "coffeemachine": {"start_options": [1,8], "messages": [
-  { "id":1, "conditions": ["state.coffee_machine.broken"],
+  { "id":1, "condition": "return !(state.flags.l1_coffee_machine_fixed);",
       "message": "The coffee machine shows an error message.",
       "replies": [
-          {"message": "Press info.", "setflag": ["state.error_seen"], "goto": 4},
+          {"message": "Press info.", "setflag": ["l1_error_seen"], "goto": 4},
           {"message": "Walk away..", "actions": ["close_dialog"]}
       ]
   }, { "id":4,
@@ -23,7 +23,7 @@
           {"message": "Coffee","goto": 9 }
       ]
   }, {
-      "id": 9, "conditions": ["state.coffee_machine.fixed"],
+      "id": 9, "condition": "return state.flags.l1_coffee_machine_fixed;",
       "message": "The machine serves you your drink",
       "replies": [
           { "message": "Ok", "actions": ["close_dialog", "increase_energy"] }
@@ -38,7 +38,8 @@
             {"message": "Check facebook", "goto": 6},
             {"message": "Check e-mail", "goto": 7},
             {"message": "Log a call", "goto": 10},
-            {"conditions": ["state.error_seen"], "message": "Search for error e1029", "goto": 14 }
+            {"condition": "return state.flags.l1_error_seen;", "message": "Search for error e1029", "goto": 14 },
+            {"message": "Leave...", "action": "close_dialog"}
         ]
     }, { "id":6, "message": "One hour passed... You feel tired.",
         "replies": [
@@ -49,18 +50,17 @@
             {"message": "Open it.", "goto": 17 },
             {"message": "Let's not go into this now. Log a call.", "goto": 10 }
         ]
-    }, { "id":10, "message": "What is the problem?",
+    }, { "id":10, "message": "You are making a ticket in TOPerations. What seems to be the problem?",
         "replies": [
-            { "conditions": ["state.error_seen", "state.coffee_machine.broken"],
+            { "condition": "return (state.flags.l1_error_seen && !state.flags.l1_coffee_machine_fixed);",
                 "message": "The coffee machine is broken, it shows error e1029. Submit your call.", "goto": 13 },
-            { "conditions": ["state.phone.battery_missing"],
+            { "condition": "return state.flags.phone_battery_missing;",
                 "message": "I lost my phone battery.", "goto": 18 },
-            { "conditions": ["otherwise"],
-                "message": "There is no problem!", "goto": 1 }
+            { "message": "On second thought, nevermind...", "goto": 1 }
         ]
     }, {"id":13, "message": "Thanks for registering your call. Our coffee machine repairmen will arrive within 15 minutes.",
         "replies": [
-            { "message": "Thank you!", "clearflag": ["state.coffee_machine.broken"], "actions": [ "close_dialog" ] }
+            { "message": "Thank you!", "setflag": ["l1_coffee_machine_fixed"], "actions": [ "close_dialog" ] }
         ]
     }, { "id":14, "message": "You find 1 knowledge item.",
         "replies": [
