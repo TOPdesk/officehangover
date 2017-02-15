@@ -2,8 +2,8 @@
 
 var RPG = RPG || {};
 
-RPG.Player = function (state, x, y, data, character, isMainCharacter){
-    Phaser.Sprite.call(this, state.game, x, y, Constants.PLAYER_SPRITE, state.playerData[character].initial_frame);
+RPG.Player = function (state, x, y, spriteName, data, character, isMainCharacter){
+    Phaser.Sprite.call(this, state.game, x, y, spriteName.toLowerCase(), state.playerData[character].initial_frame);
     isMainCharacter = isMainCharacter || 0;
 
     this.state = state;

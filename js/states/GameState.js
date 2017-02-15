@@ -77,14 +77,14 @@ RPG.GameState = {
 
     		if (obj.type == "Start")
     		{
-    	        this.player = new RPG.Player(this, obj.x, obj.y, this.playerData.player, Constants.PLAYER_DATA_INIT, 1);
+    	        this.player = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, 1);
     	        this.add.existing(this.player);
     	        this.player.body.collideWorldBounds = true;
     	        this.game.camera.follow(this.player);
     		}
     		else if (obj.type == "Character")
     		{
-    	        var character = new RPG.Player(this, obj.x, obj.y, this.playerData.player, Constants.PLAYER_DATA_INIT);
+    	        var character = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT);
     	        this.add.existing(character);
     	        character.body.collideWorldBounds = true;
     	        this.setRandomDirection (character);
