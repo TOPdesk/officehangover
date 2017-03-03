@@ -6,6 +6,7 @@ RPG.PreloadState = {
     preload: function (){
 
         if (!this.loadLevel) {
+            this.load.onLoadComplete.add(this.processMaps, this);
             //load all images
             //params: the reference object, the src for the image, the next two are the size for the frame, total frames in the sheet
             this.load.spritesheet(Constants.CHARACTER1_SPRITE, 'assets/images/character1.png', 64, 64, 273);
@@ -13,7 +14,7 @@ RPG.PreloadState = {
             this.load.spritesheet(Constants.CHARACTER3_SPRITE, 'assets/images/character3.png', 64, 64, 273);
 
             this.load.spritesheet(Constants.PLAYER_SPRITE, 'assets/images/player.png', 64, 64, 273);
-            
+
             this.load.image(Constants.COFFEE_MACHINE_SPRITE, 'assets/images/assets_coffee_machine.png');
             this.load.image(Constants.PC_SPRITE, 'assets/images/assets_monitor.png');
 
@@ -27,10 +28,20 @@ RPG.PreloadState = {
             this.load.text(Constants.PLAYER_DATA, 'assets/data/player_data.json');
             this.load.text(Constants.GAME_TEXT, 'assets/data/text.json');
             this.load.text(Constants.DIALOGS, 'assets/data/dialogs.json');
-            
+
             this.load.image(Constants.TILESET_IMAGE, 'assets/images/tileset1.png');
-            this.load.tilemap(Constants.TILEMAP_FLOOR1, 'assets/data/floor1-tilemap.json', null, Phaser.Tilemap.TILED_JSON);
+
+            this.load.json('floor1-tilemap-json', 'assets/data/floor1-tilemap.json');
+            this.load.json('tileset.json', 'assets/data/tileset.json');
         }
+    },
+    processMaps: function() {
+        // after loading all data, put the tilemap.json and the tileset.json together,
+        // and convert them to Phaser tilemaps.
+        var map1 = this.game.cache.getJSON('floor1-tilemap-json');
+        var tileset1 = this.game.cache.getJSON('tileset.json');
+        map1.tilesets[0] = tileset1;
+        this.load.tilemap(Constants.TILEMAP_FLOOR1, null, map1, Phaser.Tilemap.TILED_JSON);
     },
     init: function (level){
         this.currentLevel = level || 'world';
