@@ -30,7 +30,8 @@ var Constants = (function (){
     Constants.STAMINA_BAR = 'bar';
     Constants.ANIMATION_WAKE_UP = 'wake_up';
     Constants.TILESET_IMAGE = 'tileset1';
+    Constants.TILESET_DATA = 'tileset1.json';
     Constants.TILEMAP_FLOOR1 = 'tilemap_floor1';
-    
+
     return Constants;
 })();
