@@ -48,7 +48,103 @@
          "draworder":"topdown",
          "height":52,
          "name":"Objects",
-         "objects":[],
+         "objects":[
+                {
+                 "ellipse":true,
+                 "height":18,
+                 "id":1,
+                 "name":"Player Start",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Start",
+                 "visible":true,
+                 "width":19,
+                 "x":738,
+                 "y":112
+                }, 
+                {
+                 "ellipse":true,
+                 "height":28,
+                 "id":2,
+                 "name":"Character1",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":34,
+                 "x":129,
+                 "y":435
+                }, 
+                {
+                 "ellipse":true,
+                 "height":27,
+                 "id":3,
+                 "name":"Character2",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":24,
+                 "x":1523,
+                 "y":520
+                }, 
+                {
+                 "ellipse":true,
+                 "height":28,
+                 "id":4,
+                 "name":"Character3",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":26,
+                 "x":1447,
+                 "y":1026
+                }, 
+                {
+                 "ellipse":true,
+                 "height":21,
+                 "id":5,
+                 "name":"PC",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"PC",
+                 "visible":true,
+                 "width":24,
+                 "x":659,
+                 "y":506
+                }, 
+                {
+                 "ellipse":true,
+                 "height":24,
+                 "id":6,
+                 "name":"CoffeeMachine",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"CoffeeMachine",
+                 "visible":true,
+                 "width":25,
+                 "x":1085,
+                 "y":1233
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -56,23 +152,18 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1,
+ "nextobjectid":7,
  "orientation":"orthogonal",
+ "properties":
+    {
+
+    },
  "renderorder":"right-down",
  "tileheight":32,
  "tilesets":[
         {
-         "columns":20,
          "firstgid":1,
-         "image":"..\/images\/tileset1.png",
-         "imageheight":1280,
-         "imagewidth":640,
-         "margin":0,
-         "name":"tileset1",
-         "spacing":0,
-         "tilecount":800,
-         "tileheight":32,
-         "tilewidth":32
+         "source":"tileset.json"
         }],
  "tilewidth":32,
  "version":1,

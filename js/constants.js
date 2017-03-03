@@ -32,6 +32,7 @@ var Constants = (function (){
     Constants.TILESET_IMAGE = 'tileset1';
     Constants.TILESET_DATA = 'tileset1.json';
     Constants.TILEMAP_FLOOR1 = 'tilemap_floor1';
+    Constants.TILEMAP_FLOOR2 = 'tilemap_floor2';
 
     return Constants;
 })();

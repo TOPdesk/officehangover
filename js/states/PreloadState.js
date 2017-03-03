@@ -32,16 +32,21 @@ RPG.PreloadState = {
             this.load.image(Constants.TILESET_IMAGE, 'assets/images/tileset1.png');
 
             this.load.json('floor1-tilemap-json', 'assets/data/floor1-tilemap.json');
+            this.load.json('floor2-tilemap-json', 'assets/data/floor2-tilemap.json');
             this.load.json('tileset.json', 'assets/data/tileset.json');
         }
     },
     processMaps: function() {
         // after loading all data, put the tilemap.json and the tileset.json together,
-        // and convert them to Phaser tilemaps.
         var map1 = this.game.cache.getJSON('floor1-tilemap-json');
+        var map2 = this.game.cache.getJSON('floor2-tilemap-json');
         var tileset1 = this.game.cache.getJSON('tileset.json');
         map1.tilesets[0] = tileset1;
+        map2.tilesets[0] = tileset1;
+
+        // and convert them to Phaser tilemaps.
         this.load.tilemap(Constants.TILEMAP_FLOOR1, null, map1, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap(Constants.TILEMAP_FLOOR2, null, map2, Phaser.Tilemap.TILED_JSON);
     },
     init: function (level){
         this.currentLevel = level || 'world';
