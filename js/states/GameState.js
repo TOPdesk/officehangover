@@ -25,7 +25,8 @@ RPG.GameState = {
     },
     create: function () {
             this.game.stage.backgroundColor = this.playerData.background_color;
-            this.map = this.game.add.tilemap(Constants.TILEMAP_FLOOR1);
+
+            this.map = this.game.add.tilemap(Constants.TILEMAP_FLOOR2);
             this.map.addTilesetImage('officehangover', Constants.TILESET_IMAGE);
 
             this.collisionLayer = this.map.createLayer('Floor and Walls');
