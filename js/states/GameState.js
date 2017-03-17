@@ -12,6 +12,9 @@ RPG.GameState = {
 
         this.flags = {}
 
+        //Flag to made the action of an object available.
+        this.collideObjects = false;
+
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.game.physics.arcade.gravity.y = 0;
 
@@ -144,7 +147,6 @@ RPG.GameState = {
         this.player.animations.currentAnim.onComplete.add(function () {	this.uiBlocked = false;}, this);
     },
     cursorMovement: function () {
-        console.log("I am moving");
         this.player.body.velocity.x = 0;
         this.player.body.velocity.y = 0;
 

@@ -3,7 +3,6 @@
 var RPG = RPG || {};
 
 RPG.Dialog = function (state, objectname) {
-
 	this.state = state;
 	this.game = state.game;
 	this.objectname = objectname;
@@ -135,6 +134,7 @@ RPG.Dialog.prototype.conditionsSatisfyGameState = function(condition) {
 RPG.Dialog.prototype.close = function() {
 
 	this.state.uiBlocked = false;
+	this.state.collideObjects = false;
 
 	// destroy all components of the dialog
 	this.objects.forEach (function(element) {
