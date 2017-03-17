@@ -50,7 +50,7 @@ RPG.GameState = {
         }
     },
     update: function () {
-        this.game.physics.arcade.collide( this.gameobjects, this.player, this.isActionAvailable, null, this);
+        this.game.physics.arcade.overlap( this.gameobjects, this.player, this.isActionAvailable, null, this);
         this.game.physics.arcade.collide( this.player, this.collisionLayer);
         this.game.physics.arcade.collide( this.characters, this.collisionLayer, this.setRandomDirection, null, this);
         /*
