@@ -254,20 +254,24 @@ RPG.GameState = {
     // uncomment to help debug character bounding boxes
     /*
     render: function () {
-    	//this.game.debug.bodyInfo(this.player, 32, 32);
+    	this.game.debug.bodyInfo(this.player, 32, 32);
     	this.game.debug.body(this.player);
-        for (var i = 0; i < this.characters.length; ++i) {
-    	   this.game.debug.body(this.characters[i]);
-        }
-    },
-    */
-    isActionAvailable: function (character) {
-      if (this.spaceKey.isDown) {
 
-        if (character.key == "pc" || character.key == "coffeemachine") {
-          this.callAction(character.key);
+        for (var i = 0; i < this.characters.length; ++i) {
+            this.game.debug.body(this.characters[i]);
         }
-      }
+        for (var i = 0; i < this.gameobjects.length; ++i) {
+    	   this.game.debug.body(this.gameobjects[i]);
+    	   this.game.debug.bodyInfo(this.gameobjects[i], 32, 32);
+        }
+    },*/
+    isActionAvailable: function (character) {
+        if (this.spaceKey.isDown && !this.collideObjects) {
+            this.collideObjects = true;
+            if (character.key == "pc" || character.key == "coffeemachine") {
+              this.callAction(character.key);
+            }
+        }
     },
     callAction: function (objectname){
         //new Action();
