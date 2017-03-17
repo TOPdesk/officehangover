@@ -51,10 +51,11 @@ RPG.GameState = {
     },
     update: function () {
         this.game.physics.arcade.overlap( this.gameobjects, this.player, this.isActionAvailable, null, this);
+        this.game.physics.arcade.collide( this.characters, this.player, this.isCharacterAvailable, null, this);
         this.game.physics.arcade.collide( this.player, this.collisionLayer);
         this.game.physics.arcade.collide( this.characters, this.collisionLayer, this.setRandomDirection, null, this);
-        /*
-        this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
+
+        /*this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
         this.game.physics.arcade.collide(this.player, this.enemies, this.attack, null, this);*/
 
         if (!this.uiBlocked){
@@ -252,8 +253,8 @@ RPG.GameState = {
     	// add more logic here, called every tick
     },
     // uncomment to help debug character bounding boxes
-    /*
-    render: function () {
+
+    /*render: function () {
     	this.game.debug.bodyInfo(this.player, 32, 32);
     	this.game.debug.body(this.player);
 
@@ -265,6 +266,24 @@ RPG.GameState = {
     	   this.game.debug.bodyInfo(this.gameobjects[i], 32, 32);
         }
     },*/
+    stopCharacter: function (character){
+        character.body.velocity.x = 0;
+        character.body.velocity.y = 0;
+        character.animations.stop();
+        character.frame = this.playerData.initial_frame;
+    },
+    isCharacterAvailable: function (character){
+        this.stopCharacter(character);
+
+        if (this.spaceKey.isDown && !this.collideObjects) {
+            this.collideObjects = true;
+        }
+
+        if (this.collideObjects && (character.body.velocity.x == 0 && character.body.velocity.y == 0)){
+            this.collideObjects = false;
+            this.setDirection(character, 0);
+        }
+    },
     isActionAvailable: function (character) {
         if (this.spaceKey.isDown && !this.collideObjects) {
             this.collideObjects = true;
@@ -280,7 +299,6 @@ RPG.GameState = {
     	this.openDialog(objectname);
     },
     openDialog: function(objectname) {
-
     	this.dialog = new RPG.Dialog(this, objectname);
     	this.dialog.popup();
     },
