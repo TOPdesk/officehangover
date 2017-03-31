@@ -54,7 +54,7 @@ RPG.GameState = {
 
         this.initialiseCharacters();
 
-        if (this.currentLevel == 1) {
+        if (this.currentLevel == 0) {
             this.wakeUp();
         }
     },
