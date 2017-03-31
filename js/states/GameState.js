@@ -40,6 +40,9 @@ RPG.GameState = {
         this.initLevel();
     },
     initLevel: function() {
+        // clear any leftovers from previous level
+        this.game.world.removeAll();
+
         var tilemap = Constants.TILEMAP_FLOORS[this.currentLevel]
 
         this.map = this.game.add.tilemap(tilemap);
