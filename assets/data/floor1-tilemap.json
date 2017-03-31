@@ -54,6 +54,10 @@
                  "height":0,
                  "id":4,
                  "name":"Player Start",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Start",
                  "visible":true,
@@ -66,6 +70,10 @@
                  "height":0,
                  "id":5,
                  "name":"Character1",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -78,6 +86,10 @@
                  "height":0,
                  "id":6,
                  "name":"Character2",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -90,6 +102,10 @@
                  "height":0,
                  "id":7,
                  "name":"Character3",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -102,6 +118,10 @@
                  "height":0,
                  "id":8,
                  "name":"CoffeeMachine",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"CoffeeMachine",
                  "visible":true,
@@ -114,12 +134,31 @@
                  "height":0,
                  "id":11,
                  "name":"PC",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"PC",
                  "visible":true,
                  "width":0,
                  "x":685,
                  "y":321
+                }, 
+                {
+                 "height":70,
+                 "id":12,
+                 "name":"Exit1",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Exit",
+                 "visible":true,
+                 "width":115,
+                 "x":869,
+                 "y":35
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -128,8 +167,12 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":12,
+ "nextobjectid":13,
  "orientation":"orthogonal",
+ "properties":
+    {
+
+    },
  "renderorder":"right-down",
  "tileheight":32,
  "tilesets":[
