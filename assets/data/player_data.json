@@ -30,6 +30,21 @@
     },
     "sprite": "coffeemachine"
   },
+  "Exit" : {
+    "body_size": {
+      "width": 100,
+      "height": 100,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 100,
+      "height": 100,
+      "top": -12,
+      "left": -12
+    },
+    "sprite": null
+  },
   "animation_walk_right": [143,144,145,146,147,148,149,150,151],
   "animation_walk_left": [117,118,119,120,121,122,123,124,125],
   "animation_walk_down": [130,131,132,133,134,135,136,137,138],

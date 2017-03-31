@@ -116,6 +116,11 @@ RPG.GameState = {
     	        this.add.existing(sprite);
     	        this.gameobjects.push(sprite);
     		}
+            else if (obj.type == "Exit") {
+    	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'Exit');
+    	        this.add.existing(sprite);
+    	        this.gameobjects.push(sprite);
+    		}
     		else {
     			console.error ("Map contains object of undefined type " + obj.type)
     		}
@@ -299,6 +304,11 @@ RPG.GameState = {
             if (character.key == "pc" || character.key == "coffeemachine") {
               this.callAction(character.key);
             }
+        }
+
+        if (character.key == "Exit") {
+            this.currentLevel = 1;
+            this.initLevel();
         }
     },
     callAction: function (objectname){
