@@ -7,6 +7,12 @@
       "top": -2,
       "left": -2
     },
+    "trigger_box": {
+      "width": 56,
+      "height": 56,
+      "top": -12,
+      "left": -12
+    },
     "sprite": "pc"
   },
   "coffeemachine" : {
@@ -15,6 +21,12 @@
       "height": 68,
       "top": -2,
       "left": -2
+    },
+    "trigger_box": {
+      "width": 56,
+      "height": 88,
+      "top": -12,
+      "left": -12
     },
     "sprite": "coffeemachine"
   },
@@ -36,8 +48,8 @@
   "player": {
     "body_size": {
       "width": 32,
-      "height": 56,
-      "top": 8,
+      "height": 24,
+      "top": 40,
       "left": 16
     },
     "initial_frame": 130,
