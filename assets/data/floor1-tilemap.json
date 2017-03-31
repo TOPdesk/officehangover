@@ -6,7 +6,7 @@
          "name":"Floor and Walls",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":55,
          "x":0,
          "y":0
@@ -17,7 +17,7 @@
          "name":"Shadows",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":55,
          "x":0,
          "y":0
@@ -39,7 +39,7 @@
          "name":"Top Objects",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":55,
          "x":0,
          "y":0
@@ -130,7 +130,7 @@
                 }, 
                 {
                  "ellipse":true,
-                 "height":0,
+                 "height":20,
                  "id":13,
                  "name":"BeerCrate",
                  "properties":
@@ -140,9 +140,9 @@
                  "rotation":0,
                  "type":"BeerCrate",
                  "visible":true,
-                 "width":0,
-                 "x":979,
-                 "y":95
+                 "width":23,
+                 "x":957,
+                 "y":69
                 }, 
                 {
                  "ellipse":true,
