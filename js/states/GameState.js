@@ -120,6 +120,11 @@ RPG.GameState = {
     	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'Exit');
     	        this.add.existing(sprite);
     	        this.gameobjects.push(sprite);
+            }
+            else if (obj.type == "BeerCrate") {
+                var sprite = new RPG.GameObject(this, obj.x, obj.y, 'BeerCrate');
+                this.add.existing(sprite);
+    	        this.gameobjects.push(sprite);
     		}
     		else {
     			console.error ("Map contains object of undefined type " + obj.type)

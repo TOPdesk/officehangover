@@ -114,38 +114,6 @@
                  "y":1237
                 }, 
                 {
-                 "ellipse":true,
-                 "height":0,
-                 "id":8,
-                 "name":"CoffeeMachine",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"CoffeeMachine",
-                 "visible":true,
-                 "width":0,
-                 "x":1150,
-                 "y":1254
-                }, 
-                {
-                 "ellipse":true,
-                 "height":0,
-                 "id":11,
-                 "name":"PC",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"PC",
-                 "visible":true,
-                 "width":0,
-                 "x":685,
-                 "y":321
-                }, 
-                {
                  "height":70,
                  "id":12,
                  "name":"Exit1",
@@ -156,9 +124,73 @@
                  "rotation":0,
                  "type":"Exit",
                  "visible":true,
-                 "width":115,
+                 "width":93,
                  "x":869,
                  "y":35
+                }, 
+                {
+                 "ellipse":true,
+                 "height":0,
+                 "id":13,
+                 "name":"BeerCrate",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"BeerCrate",
+                 "visible":true,
+                 "width":0,
+                 "x":979,
+                 "y":95
+                }, 
+                {
+                 "ellipse":true,
+                 "height":20,
+                 "id":16,
+                 "name":"BeerCrate",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"BeerCrate",
+                 "visible":true,
+                 "width":18,
+                 "x":1005,
+                 "y":103
+                }, 
+                {
+                 "ellipse":true,
+                 "height":0,
+                 "id":17,
+                 "name":"BeerCrate",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"BeerCrate",
+                 "visible":true,
+                 "width":0,
+                 "x":999,
+                 "y":154
+                }, 
+                {
+                 "ellipse":true,
+                 "height":0,
+                 "id":18,
+                 "name":"BeerCrate",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"BeerCrate",
+                 "visible":true,
+                 "width":0,
+                 "x":959,
+                 "y":129
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -167,7 +199,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":13,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "properties":
     {

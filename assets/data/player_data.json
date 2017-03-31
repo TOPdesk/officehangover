@@ -15,6 +15,21 @@
     },
     "sprite": "pc"
   },
+  "BeerCrate": {
+    "body_size": {
+      "width": 32,
+      "height": 24,
+      "top": 0,
+      "left": 0
+    },
+    "trigger_box": {
+      "width": 32,
+      "height": 24,
+      "top": 0,
+      "left": 0
+    },
+    "sprite": "BeerCrate"
+  },
   "coffeemachine" : {
     "body_size": {
       "width": 36,
