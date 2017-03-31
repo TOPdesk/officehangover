@@ -25,28 +25,37 @@ RPG.GameState = {
         this.game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR ]);
 
         this.playerData = JSON.parse(this.game.cache.getText(Constants.PLAYER_DATA));
+        this.currentLevel = 0; // zero meaning level 1, 1 meaning level 2 of course.
     },
     create: function () {
-            this.game.stage.backgroundColor = this.playerData.background_color;
 
-            this.map = this.game.add.tilemap(Constants.TILEMAP_FLOOR2);
-            this.map.addTilesetImage('officehangover', Constants.TILESET_IMAGE);
-
-            this.collisionLayer = this.map.createLayer('Floor and Walls');
-            this.map.createLayer('Shadows');
-            this.map.createLayer('Bottom Objects');
-            this.map.createLayer('Top Objects').resizeWorld();
-
-            this.initialiseCollisionLayer();
-
-            this.initialiseCharacters();
-
-            this.wakeUp();
+        this.game.stage.backgroundColor = this.playerData.background_color;
 
         if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
             this.game.VirtualPad = this.game.plugins.add(Phaser.Plugin.VirtualPad);
             this.initGUI();
             this.touchScreen = true;
+        }
+
+        this.initLevel();
+    },
+    initLevel: function() {
+        var tilemap = Constants.TILEMAP_FLOORS[this.currentLevel]
+
+        this.map = this.game.add.tilemap(tilemap);
+        this.map.addTilesetImage('officehangover', Constants.TILESET_IMAGE);
+
+        this.collisionLayer = this.map.createLayer('Floor and Walls');
+        this.map.createLayer('Shadows');
+        this.map.createLayer('Bottom Objects');
+        this.map.createLayer('Top Objects').resizeWorld();
+
+        this.initialiseCollisionLayer();
+
+        this.initialiseCharacters();
+
+        if (this.currentLevel == 1) {
+            this.wakeUp();
         }
     },
     update: function () {

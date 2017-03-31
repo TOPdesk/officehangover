@@ -45,8 +45,8 @@ RPG.PreloadState = {
         map2.tilesets[0] = tileset1;
 
         // and convert them to Phaser tilemaps.
-        this.load.tilemap(Constants.TILEMAP_FLOOR1, null, map1, Phaser.Tilemap.TILED_JSON);
-        this.load.tilemap(Constants.TILEMAP_FLOOR2, null, map2, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap(Constants.TILEMAP_FLOORS[0], null, map1, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap(Constants.TILEMAP_FLOORS[1], null, map2, Phaser.Tilemap.TILED_JSON);
     },
     init: function (level){
         this.currentLevel = level || 'world';
