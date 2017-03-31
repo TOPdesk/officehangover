@@ -89,6 +89,10 @@ RPG.GameState = {
     	{
     		var obj = this.map.objects.Objects[key]
 
+            // snap to grid:
+            obj.x = Math.round(obj.x/32)*32;
+            obj.y = Math.round(obj.y/32)*32;
+
     		if (obj.type == "Start")
     		{
     	        this.player = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, 1);
@@ -123,6 +127,11 @@ RPG.GameState = {
             }
             else if (obj.type == "BeerCrate") {
                 var sprite = new RPG.GameObject(this, obj.x, obj.y, 'BeerCrate');
+                this.add.existing(sprite);
+    	        this.gameobjects.push(sprite);
+    		}
+            else if (obj.type == "Door") {
+                var sprite = new RPG.Door(this, obj.x, obj.y, 'Door');
                 this.add.existing(sprite);
     	        this.gameobjects.push(sprite);
     		}
@@ -310,8 +319,10 @@ RPG.GameState = {
               this.callAction(character.key);
             }
         }
-
-        if (character.key == "Exit") {
+        if (character.key == "Door") {
+            character.openDoor();
+        }
+        else if (character.key == "Exit") {
             this.currentLevel = 1;
             this.initLevel();
         }

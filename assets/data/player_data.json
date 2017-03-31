@@ -60,6 +60,15 @@
     },
     "sprite": null
   },
+  "Door" : {
+    "body_size": {
+      "width": 64,
+      "height": 96,
+      "top": 0,
+      "left": 0
+    },
+    "sprite": "Door"
+  },
   "animation_walk_right": [143,144,145,146,147,148,149,150,151],
   "animation_walk_left": [117,118,119,120,121,122,123,124,125],
   "animation_walk_down": [130,131,132,133,134,135,136,137,138],
