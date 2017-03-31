@@ -21,10 +21,10 @@ RPG.Player = function (state, x, y, spriteName, data, character, isMainCharacter
     this.animations.add('walk_down', this.playerData.animation_walk_down,  this.playerData.frames, true);
     this.animations.add('wake_up', this.playerData.animation_wake_up,  this.playerData.frames, false);
 
-    if (isMainCharacter == 1) {
+    /*if (isMainCharacter == 1) {
         this.staminaBar = new RPG.StaminaBar(state, this.x, this.y, 'bar', this.data.stamina);
         this.game.add.existing(this.staminaBar);
-    }
+    }*/
 
     this.game.physics.arcade.enable(this);
     var bodySize = data.body_size
@@ -73,9 +73,12 @@ RPG.Player.prototype.checkQuestCompletion = function(item) {
 */
 RPG.Player.prototype.update = function() {
     if (this.hb) {
-        this.staminaBar.x = this.x;
-        this.staminaBar.y = this.y - 15;
-
-        this.staminaBar.body.velocity = this.body.velocity;
+        //this.updateStamina();
     }
 };
+
+RPG.Player.prototype.updateStamina = function (){
+    this.staminaBar.x = this.x;
+    this.staminaBar.y = this.y - 15;
+    this.staminaBar.body.velocity = this.body.velocity;
+}
