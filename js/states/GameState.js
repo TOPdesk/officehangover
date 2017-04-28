@@ -112,12 +112,12 @@ RPG.GameState = {
     		else if (obj.type == "Character")
     		{
     	        var character = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT);
-    	        var character2 = character.addShadow();
+    	        //var character2 = character.addShadow();
     	        this.add.existing(character);
     	        character.body.collideWorldBounds = true;
     	        this.setRandomDirection (character);
     	        this.characters.push(character);
-    	        this.charactersshadow.push(character2);
+    	        //this.charactersshadow.push(character2);
 
     		}
     		else if (obj.type == "PC")
@@ -144,7 +144,7 @@ RPG.GameState = {
             else if (obj.type == "BeerCrate") {
                 var sprite = new RPG.GameObject(this, obj.x, obj.y, 'BeerCrate');
                 this.add.existing(sprite);
-                var sprite2 = sprite.addShadow();
+                //var sprite2 = sprite.addShadow();
     	        this.gameobjects.push(sprite);
                 this.gameshadowobjects.push(sprite2);
     		}
