@@ -13,8 +13,8 @@ RPG.GameState = {
         this.flags = {};
 
         //Flag to made the action of an object available.
-        this.isExecutingTask = false;
-        this.isCharacterOnHold = false;
+        //this.isExecutingTask = false;
+        //this.isCharacterOnHold = false;
 
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.game.physics.arcade.gravity.y = 0;
@@ -64,6 +64,7 @@ RPG.GameState = {
     },
     update: function () {
         this.game.physics.arcade.overlap( this.gameshadowobjects, this.player, this.isActionAvailable, null, this);
+        this.game.physics.arcade.collide( this.gameobjects, this.player, this.isActionAvailable, null, this);
         this.game.physics.arcade.collide( this.gameobjects, this.player, this.isDoor, null, this);
         this.game.physics.arcade.collide( this.characters, this.player, this.isCharacterAvailable, null, this);
         this.game.physics.arcade.collide( this.player, this.collisionLayer);
@@ -296,7 +297,7 @@ RPG.GameState = {
 
     updateCharacter: function (character) {
     	// add more logic here, called every tick
-        if (this.isCharacterOnHold == false && this.isExecutingTask == false && (character.body.velocity.x == 0 && character.body.velocity.y == 0)){
+        if (character.isCharacterOnHold == false && character.isExecutingTask == false && (character.body.velocity.x == 0 && character.body.velocity.y == 0)){
             this.setDirection(character, 0);
         }
     },
@@ -323,22 +324,22 @@ RPG.GameState = {
     },
     isCharacterAvailable: function (character){
         this.stopCharacter(character);
-        this.isCharacterOnHold = true;
+        character.isCharacterOnHold = true;
 
         this.game.time.events.add(Phaser.Timer.SECOND * 4, function (){
-            this.isCharacterOnHold = false;
+            character.isCharacterOnHold = false;
         }, this);
 
-        if (this.spaceKey.isDown && !this.isExecutingTask) {
-            this.isExecutingTask = true;
+        if (this.spaceKey.isDown && !character.isExecutingTask) {
+            character.isExecutingTask = true;
             //hack to trigger the dialogs!
             character.key = "pc";
             this.callAction(character.key);
         }
     },
     isActionAvailable: function (character) {
-        if (this.spaceKey.isDown && !this.isExecutingTask) {
-            this.isExecutingTask = true;
+        if (this.spaceKey.isDown && !character.isExecutingTask) {
+            character.isExecutingTask = true;
             if (character.key == "pc" || character.key == "coffeemachine") {
               this.callAction(character.key);
             }

@@ -14,7 +14,11 @@ RPG.Player = function (state, x, y, spriteName, data, character, isMainCharacter
     this.hb = isMainCharacter;
     this.x = x;
     this.y = y;
-
+    this.spriteName = spriteName.toLowerCase();
+    this.initialFrame = state.playerData[character].initial_frame;
+    this.isExecutingTask = false;
+    this.isCharacterOnHold = false;
+    
     this.animations.add('walk_right', this.playerData.animation_walk_right, this.playerData.frames, true);
     this.animations.add('walk_up', this.playerData.animation_walk_up,  this.playerData.frames, true);
     this.animations.add('walk_left', this.playerData.animation_walk_left,  this.playerData.frames, true);

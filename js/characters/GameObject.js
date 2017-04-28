@@ -11,6 +11,8 @@ RPG.GameObject = function (state, x, y, key) {
     this.data = Object.create(state.playerData[key]);
     this.playerData = state.playerData;
     this.anchor.setTo(0.5);
+    this.isExecutingTask = false;
+    this.isCharacterOnHold = false;
 
     this.game.physics.arcade.enable(this);
     var bodySize = this.data.body_size
