@@ -334,14 +334,14 @@ RPG.GameState = {
             character.isExecutingTask = true;
             //hack to trigger the dialogs!
             character.key = "pc";
-            this.callAction(character.key);
+            this.callAction(character.key, character);
         }
     },
     isActionAvailable: function (character) {
         if (this.spaceKey.isDown && !character.isExecutingTask) {
             character.isExecutingTask = true;
             if (character.key == "pc" || character.key == "coffeemachine") {
-              this.callAction(character.key);
+              this.callAction(character.key, character);
             }
         }
         if (character.key == "Door") {
@@ -361,14 +361,14 @@ RPG.GameState = {
             this.initLevel();
         }
     },
-    callAction: function (objectname){
+    callAction: function (objectname, character){
         //new Action();
 
     	//TEMP: call openDialog directly for testing
-    	this.openDialog(objectname);
+    	this.openDialog(objectname, character);
     },
-    openDialog: function(objectname) {
-    	this.dialog = new RPG.Dialog(this, objectname);
+    openDialog: function(objectname, character) {
+    	this.dialog = new RPG.Dialog(this, objectname, character);
     	this.dialog.popup();
     },
 
