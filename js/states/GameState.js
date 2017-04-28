@@ -123,18 +123,18 @@ RPG.GameState = {
     		else if (obj.type == "PC")
     		{
     	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'pc');
-                var sprite2 = sprite.addShadow();
+                //var sprite2 = sprite.addShadow();
     	        this.add.existing(sprite);
     	        this.gameobjects.push(sprite);
-    	        this.gameshadowobjects.push(sprite2);
+    	        //this.gameshadowobjects.push(sprite2);
     		}
     		else if (obj.type == "CoffeeMachine")
     		{
     	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'coffeemachine');
-                var sprite2 = sprite.addShadow();
+                //var sprite2 = sprite.addShadow();
                 this.add.existing(sprite);
     	        this.gameobjects.push(sprite);
-                this.gameshadowobjects.push(sprite2);
+                //this.gameshadowobjects.push(sprite2);
     		}
             else if (obj.type == "Exit") {
     	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'Exit');
@@ -146,7 +146,7 @@ RPG.GameState = {
                 this.add.existing(sprite);
                 //var sprite2 = sprite.addShadow();
     	        this.gameobjects.push(sprite);
-                this.gameshadowobjects.push(sprite2);
+                //this.gameshadowobjects.push(sprite2);
     		}
             else if (obj.type == "Door") {
                 var sprite = new RPG.Door(this, obj.x, obj.y, 'Door');
