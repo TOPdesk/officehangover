@@ -17,7 +17,7 @@ RPG.Door = function (state, x, y, key) {
     this.anchor.setTo(0, 0);
 
     this.game.physics.arcade.enable(this);
-    var bodySize = this.data.body_size
+    var bodySize = this.data.body_size;
     this.body.setSize(bodySize.width, bodySize.height, bodySize.left, bodySize.top);
     this.body.immovable = true
 };
@@ -27,4 +27,6 @@ RPG.Door.prototype.constructor = RPG.Door;
 
 RPG.Door.prototype.openDoor = function() {
     this.play('open');
+    var bodySize = this.data.body_size;
+    this.body.setSize(0, 0, bodySize.left, bodySize.top);
 };
