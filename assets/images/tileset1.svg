@@ -28,7 +28,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -354,6 +354,43 @@
        r="31.278415"
        gradientTransform="matrix(0.97808458,-0.46734264,0.37677551,0.76439419,-449.814,154.68318)"
        gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5562">
+      <stop
+         style="stop-color:#5bf5ff;stop-opacity:1;"
+         offset="0"
+         id="stop5558" />
+      <stop
+         id="stop5566"
+         offset="0.26339278"
+         style="stop-color:#5bf5ff;stop-opacity:0.361" />
+      <stop
+         style="stop-color:#5bf5ff;stop-opacity:0;"
+         offset="1"
+         id="stop5560" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4965">
+      <use
+         x="0"
+         y="0"
+         xlink:href="#g4961"
+         id="use4967"
+         width="100%"
+         height="100%" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5562"
+       id="linearGradient4971"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.75590492,0,0,0.75590548,-96.000101,255.49607)"
+       x1="-169.33333"
+       y1="85.333321"
+       x2="-127"
+       y2="85.333321" />
   </defs>
   <sodipodi:namedview
      pagecolor="#b99e72"
@@ -368,9 +405,9 @@
      inkscape:window-height="1137"
      id="namedview3462"
      showgrid="true"
-     inkscape:zoom="1.061765"
-     inkscape:cx="195.26662"
-     inkscape:cy="1038.0429"
+     inkscape:zoom="4.24706"
+     inkscape:cx="348.09422"
+     inkscape:cy="737.56525"
      inkscape:window-x="-8"
      inkscape:window-y="88"
      inkscape:window-maximized="1"
@@ -2529,4 +2566,64 @@
      cy="165.36104"
      rx="27.56547"
      ry="26.526114" />
+  <g
+     id="g4963"
+     clip-path="url(#clipPath4965)"
+     transform="translate(640.00003,287.99997)">
+    <g
+       inkscape:label="Clip"
+       id="g4961">
+      <rect
+         ry="0.12626898"
+         y="288"
+         x="-224"
+         height="63.999992"
+         width="31.999975"
+         id="rect5499-7"
+         style="opacity:0.25;fill:url(#linearGradient4971);fill-opacity:1;stroke:#f2e9f5;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         transform="scale(1,-1)"
+         ry="0.050619699"
+         y="-290.5657"
+         x="-224"
+         height="2.5656819"
+         width="31.999975"
+         id="rect5524-4"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#f2e9f5;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         transform="scale(1,-1)"
+         ry="0.050619699"
+         y="-352"
+         x="-224"
+         height="2.5656822"
+         width="31.999975"
+         id="rect5524-0-0"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#f2e9f5;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         ry="0.050619796"
+         y="288"
+         x="-224"
+         height="63.999992"
+         width="2.8139577"
+         id="rect5541-8"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#f2e9f5;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         ry="0.050619796"
+         y="288"
+         x="-194.81396"
+         height="63.999992"
+         width="2.8139577"
+         id="rect5541-9-3"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#f2e9f5;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         transform="scale(1,-1)"
+         ry="0.050619699"
+         y="-288"
+         x="-224"
+         height="2.5656822"
+         width="31.999975"
+         id="rect5524-7-6"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#f2e9f5;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+  </g>
 </svg>
