@@ -22,3 +22,17 @@ RPG.GameObject = function (state, x, y, key) {
 
 RPG.GameObject.prototype = Object.create(Phaser.Sprite.prototype);
 RPG.GameObject.prototype.constructor = RPG.GameObject;
+
+/** called whenever a player collides with this game object */
+RPG.GameObject.prototype.handleCollision = function () {
+    if (this.state.spaceKey.isDown && !this.isExecutingTask) {
+        this.isExecutingTask = true;
+        if (this.key == "pc" || this.key == "coffeemachine") {
+          this.state.callAction(this.key, this);
+        }
+    }
+    else if (this.key == "Exit") {
+        this.state.currentLevel = 1;
+        this.state.initLevel();
+    }
+};

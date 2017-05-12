@@ -2,11 +2,6 @@
 
 var RPG = RPG || {};
 
-/*var layer1;
-var layer2;
-var layer3;
-var layer4;*/
-
 RPG.GameState = {
     init: function () {
 
@@ -43,7 +38,7 @@ RPG.GameState = {
     initLevel: function() {
         // clear any leftovers from previous level
         this.game.world.removeAll();
-        
+
         var tilemap = Constants.TILEMAP_FLOORS[this.currentLevel];
 
         this.map = this.game.add.tilemap(tilemap);
@@ -59,16 +54,15 @@ RPG.GameState = {
         this.initialiseCharacters();
 
         if (this.currentLevel == 0) {
-            this.wakeUp();
+            this.player.wakeUp();
         }
     },
     update: function () {
-        this.game.physics.arcade.overlap( this.gameshadowobjects, this.player, this.isActionAvailable, null, this);
-        this.game.physics.arcade.collide( this.gameobjects, this.player, this.isActionAvailable, null, this);
-        this.game.physics.arcade.collide( this.gameobjects, this.player, this.isDoor, null, this);
-        this.game.physics.arcade.collide( this.characters, this.player, this.isCharacterAvailable, null, this);
-        this.game.physics.arcade.collide( this.player, this.collisionLayer);
-        this.game.physics.arcade.collide( this.characters, this.collisionLayer, this.setRandomDirection, null, this);
+        this.game.physics.arcade.overlap( this.gameshadowobjects, this.player, function(gameobj) { gameobj.handleCollision() }, null, this);
+        this.game.physics.arcade.collide( this.gameobjects, this.player, function(gameobj) { gameobj.handleCollision() }, null, this);
+        this.game.physics.arcade.collide( this.characters, this.player, function(character) { character.handleCollision() }, null, this);
+        this.game.physics.arcade.collide( this.player, this.collisionLayer );
+        this.game.physics.arcade.collide( this.characters, this.collisionLayer, function(character) { character.setRandomDirection() }, null, this);
 
         /*this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
         this.game.physics.arcade.collide(this.player, this.enemies, this.attack, null, this);*/
@@ -82,10 +76,8 @@ RPG.GameState = {
         }
 
         for (var key in this.characters) {
-        	this.updateCharacter(this.characters[key]);
+        	this.characters[key].update();
         }
-
-
     },
     initialiseCharacters: function() {
 
@@ -104,18 +96,18 @@ RPG.GameState = {
 
     		if (obj.type == "Start")
     		{
-    	        this.player = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, 1);
+    	        this.player = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT);
     	        this.add.existing(this.player);
     	        this.player.body.collideWorldBounds = true;
     	        this.game.camera.follow(this.player);
     		}
     		else if (obj.type == "Character")
     		{
-    	        var character = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT);
+    	        var character = new RPG.Character(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT);
     	        //var character2 = character.addShadow();
     	        this.add.existing(character);
     	        character.body.collideWorldBounds = true;
-    	        this.setRandomDirection (character);
+    	        character.setRandomDirection();
     	        this.characters.push(character);
     	        //this.charactersshadow.push(character2);
 
@@ -188,11 +180,7 @@ RPG.GameState = {
     gameOver: function () {
         this.game.state.start('GameState', true, false, this.currentLevel);
     },
-    wakeUp: function () {
-    	this.uiBlocked = true;
-        this.player.play(Constants.ANIMATION_WAKE_UP);
-        this.player.animations.currentAnim.onComplete.add(function () {	this.uiBlocked = false;}, this);
-    },
+
     cursorMovement: function () {
         this.player.body.velocity.x = 0;
         this.player.body.velocity.y = 0;
@@ -268,39 +256,6 @@ RPG.GameState = {
         })
     },
 
-    setRandomDirection : function (character) {
-    	this.setDirection (character, Math.floor (Math.random() * 4))
-    },
-
-    setDirection : function (character, direction) {
-    	if (direction == 0) {
-            character.body.velocity.y = 0;
-            character.body.velocity.x = 100;
-            character.play('walk_right');
-        }
-    	else if (direction == 1) {
-            character.body.velocity.x = 0;
-            character.body.velocity.y = -100;
-            character.play('walk_up');
-        }
-    	else if (direction == 2) {
-            character.body.velocity.x = -100;
-            character.body.velocity.y = 0;
-            character.play('walk_left');
-        }
-    	else if (direction == 3) {
-            character.body.velocity.y = 100;
-            character.body.velocity.x = 0;
-            character.play('walk_down');
-        }
-    },
-
-    updateCharacter: function (character) {
-    	// add more logic here, called every tick
-        if (character.isCharacterOnHold == false && character.isExecutingTask == false && (character.body.velocity.x == 0 && character.body.velocity.y == 0)){
-            this.setDirection(character, 0);
-        }
-    },
     // uncomment to help debug character bounding boxes
     /*
     render: function () {
@@ -315,52 +270,6 @@ RPG.GameState = {
     	   this.game.debug.bodyInfo(this.gameobjects[i], 32, 32);
         }
     },*/
-    stopCharacter: function (character){
-        character.body.velocity.x = 0;
-        character.body.velocity.y = 0;
-        character.animations.stop();
-        character.frame = this.playerData.initial_frame;
-
-    },
-    isCharacterAvailable: function (character){
-        this.stopCharacter(character);
-        character.isCharacterOnHold = true;
-
-        this.game.time.events.add(Phaser.Timer.SECOND * 4, function (){
-            character.isCharacterOnHold = false;
-        }, this);
-
-        if (this.spaceKey.isDown && !character.isExecutingTask) {
-            character.isExecutingTask = true;
-            //hack to trigger the dialogs!
-            character.key = "pc";
-            this.callAction(character.key, character);
-        }
-    },
-    isActionAvailable: function (character) {
-        if (this.spaceKey.isDown && !character.isExecutingTask) {
-            character.isExecutingTask = true;
-            if (character.key == "pc" || character.key == "coffeemachine") {
-              this.callAction(character.key, character);
-            }
-        }
-        if (character.key == "Door") {
-            character.openDoor();
-        }
-        else if (character.key == "Exit") {
-            this.currentLevel = 1;
-            this.initLevel();
-        }
-    },
-    isDoor: function (character){
-        if (character.key == "Door") {
-            character.openDoor();
-        }
-        else if (character.key == "Exit") {
-            this.currentLevel = 1;
-            this.initLevel();
-        }
-    },
     callAction: function (objectname, character){
         //new Action();
 

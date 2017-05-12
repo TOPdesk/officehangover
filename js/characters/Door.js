@@ -30,3 +30,8 @@ RPG.Door.prototype.openDoor = function() {
     var bodySize = this.data.body_size;
     this.body.setSize(0, 0, bodySize.left, bodySize.top);
 };
+
+/** called whenever a player collides with this door */
+RPG.Door.prototype.handleCollision = function () {
+    this.openDoor();
+};
