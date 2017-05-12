@@ -44,6 +44,30 @@
     }
 ]},
 
+"character1": {"start_options": [1], "messages": [
+    {"id":1, "message": "I am Error",
+        "replies": [
+            {"message": "Continue...", "action": "close_dialog"}
+        ]
+    }
+]},
+
+"character2": {"start_options": [1], "messages": [
+    {"id":1, "message": "Welcome at TOPdesk",
+        "replies": [
+            {"message": "Continue...", "action": "close_dialog"}
+        ]
+    }
+]},
+
+"character3": {"start_options": [1], "messages": [
+    {"id":1, "message": "Did you enjoy the party?",
+        "replies": [
+            {"message": "Continue...", "action": "close_dialog"}
+        ]
+    }
+]},
+
 "pc": {"start_options": [1], "messages": [
 
     {"id":1, "message": "What would you like to do?",

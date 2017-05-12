@@ -16,7 +16,12 @@ RPG.Dialog.prototype.constructor = RPG.Dialog;
 
 RPG.Dialog.prototype.popup = function() {
 	var objectDialogs = this.dialogs[this.objectname];
-	this.showStartDialog(objectDialogs);
+	if (!(this.objectname in this.dialogs)) {
+		console.error ("No dialog found using key: " + this.objectname)
+	}
+	else {
+		this.showStartDialog(objectDialogs);
+	}
 }
 
 RPG.Dialog.prototype.showStartDialog = function(objectDialogs) {

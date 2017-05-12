@@ -68,8 +68,9 @@ RPG.Character.prototype.handleCollision = function () {
 
     if (this.state.spaceKey.isDown && !this.isExecutingTask) {
         this.isExecutingTask = true;
-        // for now, hard-code the dialog to trigger!
-        this.state.callAction("pc", this);
+
+        // invoke the dialog on this character using the spriteName
+        this.state.callAction(this.spriteName, this);
     }
 };
 
