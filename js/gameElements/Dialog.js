@@ -2,10 +2,11 @@
 
 var RPG = RPG || {};
 
-RPG.Dialog = function (state, objectname) {
+RPG.Dialog = function (state, objectname, character) {
 	this.state = state;
 	this.game = state.game;
 	this.objectname = objectname;
+	this.character = character;
 	this.dialogs = JSON.parse(this.game.cache.getText(Constants.DIALOGS));
 
 }
@@ -134,11 +135,10 @@ RPG.Dialog.prototype.conditionsSatisfyGameState = function(condition) {
 RPG.Dialog.prototype.close = function() {
 
 	this.state.uiBlocked = false;
-	this.state.collideObjects = false;
+    this.character.isExecutingTask = false;
 
 	// destroy all components of the dialog
 	this.objects.forEach (function(element) {
 		element.destroy();
 	});
-
 }

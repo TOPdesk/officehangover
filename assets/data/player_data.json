@@ -15,6 +15,21 @@
     },
     "sprite": "pc"
   },
+  "BeerCrate": {
+    "body_size": {
+      "width": 32,
+      "height": 24,
+      "top": 0,
+      "left": 0
+    },
+    "trigger_box": {
+      "width": 32,
+      "height": 24,
+      "top": 0,
+      "left": 0
+    },
+    "sprite": "BeerCrate"
+  },
   "coffeemachine" : {
     "body_size": {
       "width": 36,
@@ -45,12 +60,21 @@
     },
     "sprite": null
   },
+  "Door" : {
+    "body_size": {
+      "width": 64,
+      "height": 96,
+      "top": 0,
+      "left": 0
+    },
+    "sprite": "Door"
+  },
   "animation_walk_right": [143,144,145,146,147,148,149,150,151],
   "animation_walk_left": [117,118,119,120,121,122,123,124,125],
   "animation_walk_down": [130,131,132,133,134,135,136,137,138],
   "animation_walk_up": [104,105,106,107,108,109,110,111,112],
   "animation_wake_up": [265,264,263,262,261,260,14,40,14,40],
-  "player_speed": 200,
+  "player_speed": 300,
   "frames": 5,
   "velocity":{
     "character1": {

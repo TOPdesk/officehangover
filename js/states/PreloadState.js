@@ -15,8 +15,11 @@ RPG.PreloadState = {
 
             this.load.spritesheet(Constants.PLAYER_SPRITE, 'assets/images/player.png', 64, 64, 273);
 
+            this.load.spritesheet('Door', 'assets/images/deur.png', 64, 96, 2);
+
             this.load.image(Constants.COFFEE_MACHINE_SPRITE, 'assets/images/assets_coffee_machine.png');
             this.load.image(Constants.PC_SPRITE, 'assets/images/assets_monitor.png');
+            this.load.image('BeerCrate', 'assets/images/assets_beer_crate.png');
 
             this.load.image(Constants.SCENE, 'assets/images/floor-plan.png');
 
