@@ -2,6 +2,11 @@
 
 var RPG = RPG || {};
 
+/**
+A game object represents non-moving objects spread around the level that you interact with,
+such as the PC, the coffee machine.
+*/
+
 RPG.GameObject = function (state, x, y, key) {
     Phaser.Sprite.call(this, state.game, x, y, state.playerData[key].sprite);
 

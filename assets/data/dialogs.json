@@ -31,6 +31,19 @@
   }
 ]},
 
+"wakeup1": {"start_options": [1], "messages": [
+    {"id":1, "message": "Oof! What a head ache!",
+        "replies": [
+            {"message": "Continue...", "goto": 2}
+        ]
+    },
+    {"id":2, "message": "Oh no, I lost my wallet and my keys! I have to find them!",
+        "replies": [
+            {"message": "Continue...", "action": "close_dialog"}
+        ]
+    }
+]},
+
 "pc": {"start_options": [1], "messages": [
 
     {"id":1, "message": "What would you like to do?",

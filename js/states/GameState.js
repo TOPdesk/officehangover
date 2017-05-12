@@ -55,6 +55,9 @@ RPG.GameState = {
 
         if (this.currentLevel == 0) {
             this.player.wakeUp();
+            this.game.time.events.add(Phaser.Timer.SECOND * 2, function (){
+                this.openDialog("wakeup1", this.player)
+            }, this);
         }
     },
     update: function () {
