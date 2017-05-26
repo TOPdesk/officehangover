@@ -2,11 +2,6 @@
 
 var RPG = RPG || {};
 
-/*var layer1;
-var layer2;
-var layer3;
-var layer4;*/
-
 RPG.GameState = {
     init: function () {
 
@@ -43,7 +38,7 @@ RPG.GameState = {
     initLevel: function() {
         // clear any leftovers from previous level
         this.game.world.removeAll();
-        
+
         var tilemap = Constants.TILEMAP_FLOORS[this.currentLevel];
 
         this.map = this.game.add.tilemap(tilemap);
@@ -59,16 +54,19 @@ RPG.GameState = {
         this.initialiseCharacters();
 
         if (this.currentLevel == 0) {
-            this.wakeUp();
+            this.player.wakeUp();
+            this.game.time.events.add(Phaser.Timer.SECOND * 2, function (){
+                this.openDialog("wakeup1", this.player)
+            }, this);
         }
     },
     update: function () {
-        this.game.physics.arcade.overlap( this.gameshadowobjects, this.player, this.isActionAvailable, null, this);
-        this.game.physics.arcade.collide( this.gameobjects, this.player, this.isActionAvailable, null, this);
-        this.game.physics.arcade.collide( this.gameobjects, this.player, this.isDoor, null, this);
-        this.game.physics.arcade.collide( this.characters, this.player, this.isCharacterAvailable, null, this);
-        this.game.physics.arcade.collide( this.player, this.collisionLayer);
-        this.game.physics.arcade.collide( this.characters, this.collisionLayer, this.setRandomDirection, null, this);
+        this.game.physics.arcade.overlap( this.gameCollisionFrame, this.player, function(gameobj) { gameobj.handleCollision() }, null, this);
+        this.game.physics.arcade.collide( this.gameobjects, this.player, function(gameobj) { gameobj.handleCollision() }, null, this);
+        this.game.physics.arcade.collide( this.characters, this.player);
+        this.game.physics.arcade.overlap( this.charactersCollisionFrame, this.playerCollisionFrame, function(character) { character.parent.handleCollision() }, null, this);
+        this.game.physics.arcade.collide( this.player, this.collisionLayer );
+        this.game.physics.arcade.collide( this.characters, this.collisionLayer, function(character) { character.setRandomDirection() }, null, this);
 
         /*this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
         this.game.physics.arcade.collide(this.player, this.enemies, this.attack, null, this);*/
@@ -82,7 +80,7 @@ RPG.GameState = {
         }
 
         for (var key in this.characters) {
-        	this.updateCharacter(this.characters[key]);
+        	this.characters[key].update();
         }
 
 
@@ -90,9 +88,9 @@ RPG.GameState = {
     initialiseCharacters: function() {
 
     	this.characters = [];
-    	this.charactersshadow = this.game.add.group();
+    	this.charactersCollisionFrame = [];
         this.gameobjects = [];
-        this.gameshadowobjects = [];
+        this.gameCollisionFrame = [];
 
     	for (var key in this.map.objects.Objects)
     	{
@@ -104,23 +102,23 @@ RPG.GameState = {
 
     		if (obj.type == "Start")
     		{
-    	        this.player = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, 1);
+    	        this.player = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
     	        this.add.existing(this.player);
+                this.playerCollisionFrame = new RPG.Player(this, 0, 0, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
+                this.player.addChild(this.playerCollisionFrame);
     	        this.player.body.collideWorldBounds = true;
     	        this.game.camera.follow(this.player);
     		}
     		else if (obj.type == "Character")
     		{
-    	        var character = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT);
-                this.charactersshadow.add(character);
-    	        var character2 = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT);
-    	        this.charactersshadow.add(character2);
-
+    	        var character = new RPG.Character(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
+                this.add.existing(character);
+                var characterFrame = new RPG.Character(this, 0, 0, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
+                character.addChild(characterFrame);
     	        character.body.collideWorldBounds = true;
-    	        this.setRandomDirection (character);
+    	        character.setRandomDirection();
     	        this.characters.push(character);
-
-
+                this.charactersCollisionFrame.push(characterFrame);
     		}
     		else if (obj.type == "PC")
     		{
@@ -128,7 +126,7 @@ RPG.GameState = {
                 //var sprite2 = sprite.addShadow();
     	        this.add.existing(sprite);
     	        this.gameobjects.push(sprite);
-    	        //this.gameshadowobjects.push(sprite2);
+    	        //this.gameCollisionFrame.push(sprite2);
     		}
     		else if (obj.type == "CoffeeMachine")
     		{
@@ -136,7 +134,7 @@ RPG.GameState = {
                 //var sprite2 = sprite.addShadow();
                 this.add.existing(sprite);
     	        this.gameobjects.push(sprite);
-                //this.gameshadowobjects.push(sprite2);
+                //this.gameCollisionFrame.push(sprite2);
     		}
             else if (obj.type == "Exit") {
     	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'Exit');
@@ -148,7 +146,7 @@ RPG.GameState = {
                 this.add.existing(sprite);
                 //var sprite2 = sprite.addShadow();
     	        this.gameobjects.push(sprite);
-                //this.gameshadowobjects.push(sprite2);
+                //this.gameCollisionFrame.push(sprite2);
     		}
             else if (obj.type == "Door") {
                 var sprite = new RPG.Door(this, obj.x, obj.y, 'Door');
@@ -190,11 +188,7 @@ RPG.GameState = {
     gameOver: function () {
         this.game.state.start('GameState', true, false, this.currentLevel);
     },
-    wakeUp: function () {
-    	this.uiBlocked = true;
-        this.player.play(Constants.ANIMATION_WAKE_UP);
-        this.player.animations.currentAnim.onComplete.add(function () {	this.uiBlocked = false;}, this);
-    },
+
     cursorMovement: function () {
         this.player.body.velocity.x = 0;
         this.player.body.velocity.y = 0;
@@ -270,99 +264,24 @@ RPG.GameState = {
         })
     },
 
-    setRandomDirection : function (character) {
-    	this.setDirection (character, Math.floor (Math.random() * 4))
-    },
-
-    setDirection : function (character, direction) {
-    	if (direction == 0) {
-            character.body.velocity.y = 0;
-            character.body.velocity.x = 100;
-            character.play('walk_right');
-        }
-    	else if (direction == 1) {
-            character.body.velocity.x = 0;
-            character.body.velocity.y = -100;
-            character.play('walk_up');
-        }
-    	else if (direction == 2) {
-            character.body.velocity.x = -100;
-            character.body.velocity.y = 0;
-            character.play('walk_left');
-        }
-    	else if (direction == 3) {
-            character.body.velocity.y = 100;
-            character.body.velocity.x = 0;
-            character.play('walk_down');
-        }
-    },
-
-    updateCharacter: function (character) {
-    	// add more logic here, called every tick
-        if (character.isCharacterOnHold == false && character.isExecutingTask == false && (character.body.velocity.x == 0 && character.body.velocity.y == 0)){
-            this.setDirection(character, 0);
-        }
-    },
     // uncomment to help debug character bounding boxes
 /*
     render: function () {
-    	this.game.debug.bodyInfo(this.player, 32, 32);
-    	this.game.debug.body(this.player);
+        this.game.debug.bodyInfo(this.player, 32, 32);
+        this.game.debug.body(this.player);
+        this.game.debug.body(this.playerCollisionFrame);
 
+        for (var i=0; i < this.charactersCollisionFrame.length; i++){
+            this.game.debug.body(this.charactersCollisionFrame[i]);
+        }
         for (var i = 0; i < this.characters.length; ++i) {
             this.game.debug.body(this.characters[i]);
         }
         for (var i = 0; i < this.gameobjects.length; ++i) {
-    	   this.game.debug.body(this.gameobjects[i]);
-    	   this.game.debug.bodyInfo(this.gameobjects[i], 32, 32);
+            this.game.debug.body(this.gameobjects[i]);
+            this.game.debug.bodyInfo(this.gameobjects[i], 32, 32);
         }
     },*/
-    stopCharacter: function (character){
-        character.body.velocity.x = 0;
-        character.body.velocity.y = 0;
-        character.animations.stop();
-        character.frame = this.playerData.initial_frame;
-
-    },
-    isCharacterAvailable: function (character){
-        this.stopCharacter(character);
-        character.isCharacterOnHold = true;
-
-        this.game.time.events.add(Phaser.Timer.SECOND * 4, function (){
-            character.isCharacterOnHold = false;
-        }, this);
-
-        if (this.spaceKey.isDown && !character.isExecutingTask) {
-            character.isExecutingTask = true;
-            //hack to trigger the dialogs!
-            character.key = "pc";
-            this.callAction(character.key, character);
-        }
-    },
-    isActionAvailable: function (character) {
-        if (this.spaceKey.isDown && !character.isExecutingTask) {
-            character.isExecutingTask = true;
-            if (character.key == "pc" || character.key == "coffeemachine") {
-              this.callAction(character.key, character);
-            }
-        }
-        if (character.key == "Door") {
-            character.openDoor();
-        }
-        else if (character.key == "Exit") {
-            this.currentLevel = 1;
-            this.initLevel();
-        }
-    },
-    isDoor: function (character){
-        if (character.key == "Door") {
-            character.openDoor();
-        }
-        else if (character.key == "Exit") {
-            this.currentLevel = 1;
-            this.initLevel();
-        }
-    },
     callAction: function (objectname, character){
         //new Action();
 
