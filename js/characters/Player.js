@@ -2,8 +2,8 @@
 
 var RPG = RPG || {};
 
-RPG.Player = function (state, x, y, spriteName, data, character){
-    RPG.Character.call(this, state, x, y, spriteName, data, character);
+RPG.Player = function (state, x, y, spriteName, data, character, isBodyFrame){
+    RPG.Character.call(this, state, x, y, spriteName, data, character, isBodyFrame);
 
     /*
     this.staminaBar = new RPG.StaminaBar(state, this.x, this.y, 'bar', this.data.stamina);

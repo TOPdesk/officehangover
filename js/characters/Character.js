@@ -2,8 +2,9 @@
 
 var RPG = RPG || {};
 
-RPG.Character = function (state, x, y, spriteName, data, character) {
+RPG.Character = function (state, x, y, spriteName, data, character, isBodyFrame) {
     Phaser.Sprite.call(this, state.game, x, y, spriteName.toLowerCase(), state.playerData[character].initial_frame);
+    isBodyFrame = (typeof isBodyFrame == undefined)? false : isBodyFrame;
 
     this.state = state;
     this.game = state.game;
@@ -24,9 +25,18 @@ RPG.Character = function (state, x, y, spriteName, data, character) {
     this.animations.add('wake_up', this.playerData.animation_wake_up,  this.playerData.frames, false);
 
     this.game.physics.arcade.enable(this);
-    var bodySize = data.body_size
-    this.body.setSize(bodySize.width, bodySize.height, bodySize.left, bodySize.top);
-};
+    var bodySize = data.body_size;
+
+    if (isBodyFrame){
+        var bodySize = data.shadow_size;
+        this.body.setSize(bodySize.width, bodySize.height, bodySize.left, bodySize.top);
+        this.alpha = 0;
+     }else{
+        var bodySize = data.body_size;
+        this.body.setSize(bodySize.width, bodySize.height, bodySize.left, bodySize.top);
+    }
+}
+;
 
 RPG.Character.prototype = Object.create(Phaser.Sprite.prototype);
 RPG.Character.prototype.constructor = RPG.Character;
@@ -59,6 +69,7 @@ RPG.Character.prototype.setDirection = function (direction) {
 };
 
 RPG.Character.prototype.handleCollision = function () {
+
     this.stopMoving();
     this.isCharacterOnHold = true;
 
