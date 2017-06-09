@@ -140,6 +140,8 @@ RPG.GameState = {
     	if (!this.player) {
     		console.error ("No player start position found on map!")
     	}
+
+        this.game.world.bringToTop(this.player);
     },
     initialiseCollisionLayer: function () {
 
