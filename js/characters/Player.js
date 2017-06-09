@@ -22,7 +22,14 @@ RPG.Player.prototype.wakeUp = function () {
 };
 
 RPG.Player.prototype.pickup = function() {
-    this.addChild(new Phaser.Sprite(this.game, x, y - 20, 'BeerCrate'));
+    this.pickupSprite = new RPG.Follower(this.state, 'BeerCrate')
+    var pickupSprite = this.pickupSprite;
+    this.addChild(pickupSprite);
+    this.game.add.existing(pickupSprite);
+}
+
+RPG.Player.prototype.dropoff = function() {
+    this.game.remove(this.pickupSprite);
 }
 
 /* NOT NEEDED RIGHT NOW BUT WILL BE USEFUL IN THE FUTURE*/
