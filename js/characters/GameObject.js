@@ -35,8 +35,10 @@ RPG.GameObject.prototype.handleCollision = function () {
         if (this.key == "pc" || this.key == "coffeemachine") {
           this.state.callAction(this.key, this);
         }
-        else if (this.key == "BeerCrate") {
-            this.state.player.pickup()
+        else if (this.key == "beercrate") {
+            if (this.state.player.canPickup()) {
+                this.state.player.pickup(this)
+            }
         }
     }
     else if (this.key == "exit") {

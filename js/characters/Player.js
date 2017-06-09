@@ -10,6 +10,7 @@ RPG.Player = function (state, x, y, spriteName, data, character, isBodyFrame){
     this.game.add.existing(this.staminaBar);
     */
 
+    this.pickupObject = null;
 };
 
 RPG.Player.prototype = Object.create(Phaser.Sprite.prototype);
@@ -25,15 +26,26 @@ RPG.Player.prototype.wakeUp = function () {
         }, this);
 };
 
-RPG.Player.prototype.pickup = function() {
-    this.pickupSprite = new RPG.Follower(this.state, 'BeerCrate')
+/** check if we can pick up an object. We can only pick up an object if we haven't already picked up one! */
+RPG.Player.prototype.canPickup = function() {
+    return this.pickupObject == null;
+}
+
+RPG.Player.prototype.pickup = function(pickupObject) {
+    if (this.pickupSprite != null) {
+        console.error ("Trying to pick up two objects!");
+        return;
+    }
+    this.pickupSprite = new RPG.Follower(this.state, pickupObject.key)
+    pickupObject.destroy(true);
     var pickupSprite = this.pickupSprite;
     this.addChild(pickupSprite);
     this.game.add.existing(pickupSprite);
 }
 
 RPG.Player.prototype.dropoff = function() {
-    this.game.remove(this.pickupSprite);
+    this.pickupSprite.destroy(true);
+    this.pickupSprite = null;
 }
 
 /* NOT NEEDED RIGHT NOW BUT WILL BE USEFUL IN THE FUTURE*/
