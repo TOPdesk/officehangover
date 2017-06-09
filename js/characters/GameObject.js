@@ -16,7 +16,7 @@ RPG.GameObject = function (state, x, y, key) {
     this.game = state.game;
     this.data = Object.create(state.playerData[key]);
     this.playerData = state.playerData;
-    this.anchor.setTo(0.5);
+    this.anchor.setTo(0, 0);
     this.isExecutingTask = false;
     this.isCharacterOnHold = false;
 

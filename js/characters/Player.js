@@ -21,6 +21,10 @@ RPG.Player.prototype.wakeUp = function () {
     this.animations.currentAnim.onComplete.add(function () { this.state.uiBlocked = false;}, this);
 };
 
+RPG.Player.prototype.pickup = function() {
+    this.addChild(new Phaser.Sprite(this.game, x, y - 20, 'BeerCrate'));
+}
+
 /* NOT NEEDED RIGHT NOW BUT WILL BE USEFUL IN THE FUTURE*/
 /*
 RPG.Player.prototype.collectItem = function(item) {

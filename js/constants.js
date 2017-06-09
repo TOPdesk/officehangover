@@ -26,6 +26,9 @@ var Constants = (function (){
     Constants.CHARACTER1_SPRITE = 'character1';
     Constants.CHARACTER2_SPRITE = 'character2';
     Constants.CHARACTER3_SPRITE = 'character3';
+    Constants.DISH_WASHER_SPRITE = 'dish_washer_sprite';
+    Constants.DIRTY_DISHES_SPRITE = 'dirty_dishes_sprite';
+    
     Constants.SCENE = 'background';
     Constants.STAMINA_BAR = 'bar';
     Constants.ANIMATION_WAKE_UP = 'wake_up';

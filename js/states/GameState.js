@@ -124,6 +124,20 @@ RPG.GameState = {
                 var sprite = new RPG.Door(this, obj.x, obj.y, 'door');
                 this.add.existing(sprite);
                 this.gameobjects.push(sprite);
+            }else if (obj.type == "BeerCrateDropZone") {
+    	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'BeerCrateDropZone');
+    	        this.add.existing(sprite);
+    	        this.gameobjects.push(sprite);
+            }
+            else if (obj.type == "DishWasher") {
+                var sprite = new RPG.GameObject(this, obj.x, obj.y, 'DishWasher');
+                this.add.existing(sprite);
+    	        this.gameobjects.push(sprite);
+            }
+            else if (obj.type == "DirtyDishes") {
+                var sprite = new RPG.GameObject(this, obj.x, obj.y, 'DirtyDishes');
+                this.add.existing(sprite);
+    	        this.gameobjects.push(sprite);
             }
     		else{
     	        var sprite = new RPG.GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
@@ -242,7 +256,7 @@ RPG.GameState = {
     },
 
     // uncomment to help debug character bounding boxes
-
+/*
     render: function () {
         this.game.debug.bodyInfo(this.player, 32, 32);
         this.game.debug.body(this.player);
@@ -258,7 +272,7 @@ RPG.GameState = {
             this.game.debug.body(this.gameobjects[i]);
             this.game.debug.bodyInfo(this.gameobjects[i], 32, 32);
         }
-    },
+    },*/
     callAction: function (objectname, character){
         //new Action();
 
