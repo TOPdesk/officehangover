@@ -1,121 +1,307 @@
 {
-"coffeemachine": {"start_options": [1,8], "messages": [
-  { "id":1, "condition": "return !(state.flags.l1_coffee_machine_fixed);",
-      "message": "The coffee machine shows an error message.",
-      "replies": [
-          {"message": "Press info.", "setflag": ["l1_error_seen"], "goto": 4},
-          {"message": "Walk away..", "actions": ["close_dialog"]}
-      ]
-  }, { "id":4,
-      "message": "Please fix me, error e1029",
-      "replies": [
-          {"message": "Ok.", "actions": ["close_dialog"] },
-          {"message": "How can I do this?", "goto": 7}
-      ]
-  }, { "id":7,
-      "message": "Find a pc and log a call.",
-      "replies": [
-          {"message": "Ok.", "actions": ["close_dialog"]}
-      ]
-  }, { "id":8,
-      "message": "What would you like to drink?",
-      "replies": [
-          {"message": "Coffee","goto": 9 }
-      ]
-  }, {
-      "id": 9, "condition": "return state.flags.l1_coffee_machine_fixed;",
-      "message": "The machine serves you your drink",
-      "replies": [
-          { "message": "Ok", "actions": ["close_dialog", "increase_energy"] }
-      ]
-  }
-]},
+	"coffeemachine": {
+		"start_options": [1, 8],
+		"messages": [{
+			"id": 1,
+			"condition": "return !(state.flags.l1_coffee_machine_fixed);",
+			"message": "The coffee machine shows an error message.",
+			"replies": [{
+					"message": "Press info.",
+					"setflag": ["l1_error_seen"],
+					"goto": 4
+				},
+				{
+					"message": "Walk away..",
+					"actions": ["close_dialog"]
+				}
+			]
+		}, {
+			"id": 4,
+			"message": "Please fix me, error e1029",
+			"replies": [{
+					"message": "Ok.",
+					"actions": ["close_dialog"]
+				},
+				{
+					"message": "How can I do this?",
+					"goto": 7
+				}
+			]
+		}, {
+			"id": 7,
+			"message": "Find a pc and log a call.",
+			"replies": [{
+				"message": "Ok.",
+				"actions": ["close_dialog"]
+			}]
+		}, {
+			"id": 8,
+			"message": "What would you like to drink?",
+			"replies": [{
+				"message": "Coffee",
+				"goto": 9
+			}]
+		}, {
+			"id": 9,
+			"condition": "return state.flags.l1_coffee_machine_fixed;",
+			"message": "The machine serves you your drink",
+			"replies": [{
+				"message": "Ok",
+				"actions": ["close_dialog", "increase_energy"]
+			}]
+		}]
+	},
 
-"wakeup1": {"start_options": [1], "messages": [
-    {"id":1, "message": "Oof! What a head ache!",
-        "replies": [
-            {"message": "Continue...", "goto": 2}
-        ]
-    },
-    {"id":2, "message": "Oh no, I lost my wallet and my keys! I have to find them!",
-        "replies": [
-            {"message": "Continue...", "action": "close_dialog"}
-        ]
-    }
-]},
+	"wakeup1": {
+		"start_options": [1],
+		"messages": [{
+				"id": 1,
+				"message": "Oof! What happened last night? I never remember these office parties. Oh well, maybe it's for the best",
+				"replies": [{
+					"message": "Continue...",
+					"goto": 2
+				}]
+			},
+			{
+				"id": 2,
+				"message": "Wait, where did I put my keys? My wallet's gone too... Did I even lock my bike at all? I develop software for managing items for .. sake.",
+				"replies": [{
+					"message": "Continue...",
+					"action": "close_dialog"
+				}]
+			}
+		]
+	},
 
-"character1": {"start_options": [1], "messages": [
-    {"id":1, "message": "I am Error",
-        "replies": [
-            {"message": "Continue...", "action": "close_dialog"}
-        ]
-    }
-]},
-
-"character2": {"start_options": [1], "messages": [
-    {"id":1, "message": "Welcome at TOPdesk",
-        "replies": [
-            {"message": "Continue...", "action": "close_dialog"}
-        ]
-    }
-]},
-
-"character3": {"start_options": [1], "messages": [
-    {"id":1, "message": "Did you enjoy the party?",
-        "replies": [
-            {"message": "Continue...", "action": "close_dialog"}
-        ]
-    }
-]},
-
-"pc": {"start_options": [1], "messages": [
-
-    {"id":1, "message": "What would you like to do?",
-        "replies": [
-            {"message": "Check facebook", "goto": 6},
-            {"message": "Check e-mail", "goto": 7},
-            {"message": "Log a call", "goto": 10},
-            {"condition": "return state.flags.l1_error_seen;", "message": "Search for error e1029", "goto": 14 },
-            {"message": "Leave...", "action": "close_dialog"}
-        ]
-    }, { "id":6, "message": "One hour passed... You feel tired.",
-        "replies": [
-            {"message": "What a waste of time!", "actions": ["lower_energy"], "goto": 1 }
-        ]
-    }, { "id":7, "message": "You have 1 new email.",
-        "replies": [
-            {"message": "Open it.", "goto": 17 },
-            {"message": "Let's not go into this now. Log a call.", "goto": 10 }
-        ]
-    }, { "id":10, "message": "You are making a ticket in TOPerations. What seems to be the problem?",
-        "replies": [
-            { "condition": "return (state.flags.l1_error_seen && !state.flags.l1_coffee_machine_fixed);",
-                "message": "The coffee machine is broken, it shows error e1029. Submit your call.", "goto": 13 },
-            { "condition": "return state.flags.phone_battery_missing;",
-                "message": "I lost my phone battery.", "goto": 18 },
-            { "message": "On second thought, nevermind...", "goto": 1 }
-        ]
-    }, {"id":13, "message": "Thanks for registering your call. Our coffee machine repairmen will arrive within 15 minutes.",
-        "replies": [
-            { "message": "Thank you!", "setflag": ["l1_coffee_machine_fixed"], "actions": [ "close_dialog" ] }
-        ]
-    }, { "id":14, "message": "You find 1 knowledge item.",
-        "replies": [
-            { "message": "Read it", "goto": 19 },
-            { "message": "I am too tired for this, log a call.", "goto": 10 }
-        ]
-    }, {"id":17, "message": "You see some pictures from yesterdays party. Apparently there were some uniformed police agents at the party. You wonder why?",
-        "replies": [
-            { "message": "Ok", "goto": 1, "actions": ["lower_energy"] }
-        ]
-    }, {"id":18, "message": "Thanks for registering your call. You can get a new phone battery at our ICT department at the 14th floor.",
-        "replies": [
-            { "message": "Thank you!", "clearflag": "state.phone.battery_missing", "actions": ["close_dialog"] }
-        ]
-    }, {"id":19, "message": "It says log a call, a repairman will come to fix this. The machine has to be opened up and a switch needs to be replaced. Let's log a call.",
-        "replies": [
-            { "message": "Ok.", "goto": 1 }
-        ]
-    }
-
-]}}
+	"headache": {
+		"start_options": [1],
+		"messages": [{
+				"id": 1,
+				"message": "I have a splitting headache... like someone's playing table tennis with my brain.",
+				"replies": [{
+					"message": "Continue...",
+					"goto": 2
+				}]
+			},
+			{
+				"id": 2,
+				"message": "Wait, where did I put my keys? My wallet's gone too... Did I even lock my bike at all? I develop software for managing items for .. sake.",
+				"replies": [{
+					"message": "Continue...",
+					"action": "close_dialog"
+				}]
+			}
+		]
+	},
+	"cleaninglady": {
+		"start_options": [1],
+		"messages": [{
+				"id": 1,
+				"message": "Hey, this lady's been cleaning up. Maybe she found my wallet and keys",
+				"replies": [{
+					"message": "Excuse me...",
+					"goto": 2
+				}]
+			},
+			{
+				"id": 2,
+				"message": "I'm pretty busy. What's up?",
+				"replies": [{
+					"message": "I was wondering if you've found my keys and wallet?",
+					"goto": 3
+				}]
+			},
+			{
+				"id": 3,
+				"message": "I found some things, but I don't have time to set up a lost-and-found in this mess. By the way, you look like you work out. Can you clear those beer crates from the stairwell for me? Thanks a bunch",
+				"replies": [{
+					"message": "I guess...",
+					"action": "close_dialog"
+				}]
+			}
+		]
+	},
+	"character1": {
+		"start_options": [
+			1
+		],
+		"messages": [{
+			"id": 1,
+			"message": "I am Error",
+			"replies": [{
+				"message": "Continue...",
+				"action": "close_dialog"
+			}]
+		}]
+	},
+	"cratespickup1": {
+		"start_options": [
+			1
+		],
+		"messages": [{
+			"id": 1,
+			"message": "Okay, let's get these out of the way. Where do I take them?",
+			"replies": [{
+				"message": "Continue...",
+				"action": "close_dialog"
+			}]
+		}]
+	},
+	"character2": {
+		"start_options": [
+			1
+		],
+		"messages": [{
+			"id": 1,
+			"message": "Welcome at TOPdesk",
+			"replies": [{
+				"message": "Continue...",
+				"action": "close_dialog"
+			}]
+		}]
+	},
+	"character3": {
+		"start_options": [
+			1
+		],
+		"messages": [{
+			"id": 1,
+			"message": "Did you enjoy the party?",
+			"replies": [{
+				"message": "Continue...",
+				"action": "close_dialog"
+			}]
+		}]
+	},
+	"pc": {
+		"start_options": [
+			1
+		],
+		"messages": [{
+				"id": 1,
+				"message": "What would you like to do?",
+				"replies": [{
+						"message": "Check facebook",
+						"goto": 6
+					},
+					{
+						"message": "Check e-mail",
+						"goto": 7
+					},
+					{
+						"message": "Log a call",
+						"goto": 10
+					},
+					{
+						"condition": "return state.flags.l1_error_seen;",
+						"message": "Search for error e1029",
+						"goto": 14
+					},
+					{
+						"message": "Leave...",
+						"action": "close_dialog"
+					}
+				]
+			},
+			{
+				"id": 6,
+				"message": "One hour passed... You feel tired.",
+				"replies": [{
+					"message": "What a waste of time!",
+					"actions": [
+						"lower_energy"
+					],
+					"goto": 1
+				}]
+			},
+			{
+				"id": 7,
+				"message": "You have 1 new email.",
+				"replies": [{
+						"message": "Open it.",
+						"goto": 17
+					},
+					{
+						"message": "Let's not go into this now. Log a call.",
+						"goto": 10
+					}
+				]
+			},
+			{
+				"id": 10,
+				"message": "You are making a ticket in TOPerations. What seems to be the problem?",
+				"replies": [{
+						"condition": "return (state.flags.l1_error_seen && !state.flags.l1_coffee_machine_fixed);",
+						"message": "The coffee machine is broken, it shows error e1029. Submit your call.",
+						"goto": 13
+					},
+					{
+						"condition": "return state.flags.phone_battery_missing;",
+						"message": "I lost my phone battery.",
+						"goto": 18
+					},
+					{
+						"message": "On second thought, nevermind...",
+						"goto": 1
+					}
+				]
+			},
+			{
+				"id": 13,
+				"message": "Thanks for registering your call. Our coffee machine repairmen will arrive within 15 minutes.",
+				"replies": [{
+					"message": "Thank you!",
+					"setflag": [
+						"l1_coffee_machine_fixed"
+					],
+					"actions": [
+						"close_dialog"
+					]
+				}]
+			},
+			{
+				"id": 14,
+				"message": "You find 1 knowledge item.",
+				"replies": [{
+						"message": "Read it",
+						"goto": 19
+					},
+					{
+						"message": "I am too tired for this, log a call.",
+						"goto": 10
+					}
+				]
+			},
+			{
+				"id": 17,
+				"message": "You see some pictures from yesterdays party. Apparently there were some uniformed police agents at the party. You wonder why?",
+				"replies": [{
+					"message": "Ok",
+					"goto": 1,
+					"actions": [
+						"lower_energy"
+					]
+				}]
+			},
+			{
+				"id": 18,
+				"message": "Thanks for registering your call. You can get a new phone battery at our ICT department at the 14th floor.",
+				"replies": [{
+					"message": "Thank you!",
+					"clearflag": "state.phone.battery_missing",
+					"actions": [
+						"close_dialog"
+					]
+				}]
+			},
+			{
+				"id": 19,
+				"message": "It says log a call, a repairman will come to fix this. The machine has to be opened up and a switch needs to be replaced. Let's log a call.",
+				"replies": [{
+					"message": "Ok.",
+					"goto": 1
+				}]
+			}
+		]
+	}
+}
