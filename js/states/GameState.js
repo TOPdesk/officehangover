@@ -245,7 +245,7 @@ RPG.GameState = {
     },
 
     // uncomment to help debug character bounding boxes
-
+/*
     render: function () {
         this.game.debug.bodyInfo(this.player, 32, 32);
         this.game.debug.body(this.player);
@@ -261,7 +261,7 @@ RPG.GameState = {
             this.game.debug.body(this.gameobjects[i]);
             this.game.debug.bodyInfo(this.gameobjects[i], 32, 32);
         }
-    },
+    },*/
     callAction: function (objectname, character){
         //new Action();
 
