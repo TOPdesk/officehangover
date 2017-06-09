@@ -61,8 +61,9 @@ RPG.GameState = {
         }
     },
     update: function () {
-        this.game.physics.arcade.overlap( this.gameCollisionFrame, this.player, function(gameobj) { gameobj.handleCollision() }, null, this);
-        this.game.physics.arcade.collide( this.gameobjects, this.player, function(gameobj) { gameobj.handleCollision() }, null, this);
+        this.game.physics.arcade.overlap( this.gameobjects, this.playerCollisionFrame, function(gameobj) { gameobj.handleCollision() }, null, this);
+        this.game.physics.arcade.collide( this.gameobjects, this.player);
+        this.game.physics.arcade.collide( this.movingobjects, this.player, function(gameobj) { gameobj.handleCollision() }, null, this);
         this.game.physics.arcade.collide( this.characters, this.player);
         this.game.physics.arcade.overlap( this.charactersCollisionFrame, this.playerCollisionFrame, function(character) { character.parent.handleCollision() }, null, this);
         this.game.physics.arcade.collide( this.player, this.collisionLayer );
@@ -90,7 +91,7 @@ RPG.GameState = {
     	this.characters = [];
     	this.charactersCollisionFrame = [];
         this.gameobjects = [];
-        this.gameCollisionFrame = [];
+        this.movingobjects = [];
 
     	for (var key in this.map.objects.Objects)
     	{
@@ -123,7 +124,7 @@ RPG.GameState = {
     		else if (obj.type == "Door") {
                 var sprite = new RPG.Door(this, obj.x, obj.y, 'door');
                 this.add.existing(sprite);
-                this.gameobjects.push(sprite);
+                this.movingobjects.push(sprite);
             }
     		else{
     	        var sprite = new RPG.GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
@@ -242,8 +243,8 @@ RPG.GameState = {
     },
 
     // uncomment to help debug character bounding boxes
-/*
-    render: function () {
+
+   /* render: function () {
         this.game.debug.bodyInfo(this.player, 32, 32);
         this.game.debug.body(this.player);
         this.game.debug.body(this.playerCollisionFrame);
