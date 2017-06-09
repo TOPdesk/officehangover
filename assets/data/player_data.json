@@ -15,7 +15,7 @@
     },
     "sprite": "pc"
   },
-  "BeerCrateDropZone": {
+  "beercratedropzone": {
       "body_size": {
       "width": 0,
       "height": 0,
@@ -30,7 +30,7 @@
     },
     "sprite": null
   },
-  "DishWasher": {
+  "dishwasher": {
     "body_size": {
       "width": 60,
       "height": 60,
@@ -45,7 +45,7 @@
     },
     "sprite": "dish_washer_sprite"
   },
-  "DirtyDishes": {
+  "dirtydishes": {
     "body_size": {
       "width": 60,
       "height": 60,
