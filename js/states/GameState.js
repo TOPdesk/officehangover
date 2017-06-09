@@ -133,6 +133,12 @@ RPG.GameState = {
             this.add.existing(this.player);
     	}
 
+        // temporary demo of action cloud
+        var actionCloud = this.game.add.sprite(this.player.x, this.player.y, 'ActionCloud', 0);
+        actionCloud.animations.add('action', [0, 1, 2, 3], 5, true);
+        actionCloud.play('action');
+        // end of demo code
+
     	if (!this.player) {
     		console.error ("No player start position found on map!")
     	}
