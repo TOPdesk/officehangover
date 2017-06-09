@@ -124,20 +124,6 @@ RPG.GameState = {
                 var sprite = new RPG.Door(this, obj.x, obj.y, 'door');
                 this.add.existing(sprite);
                 this.gameobjects.push(sprite);
-            }else if (obj.type == "BeerCrateDropZone") {
-    	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'BeerCrateDropZone');
-    	        this.add.existing(sprite);
-    	        this.gameobjects.push(sprite);
-            }
-            else if (obj.type == "DishWasher") {
-                var sprite = new RPG.GameObject(this, obj.x, obj.y, 'DishWasher');
-                this.add.existing(sprite);
-    	        this.gameobjects.push(sprite);
-            }
-            else if (obj.type == "DirtyDishes") {
-                var sprite = new RPG.GameObject(this, obj.x, obj.y, 'DirtyDishes');
-                this.add.existing(sprite);
-    	        this.gameobjects.push(sprite);
             }
     		else{
     	        var sprite = new RPG.GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
