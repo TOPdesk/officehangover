@@ -8,9 +8,10 @@ such as the PC, the coffee machine.
 */
 
 RPG.GameObject = function (state, x, y, key) {
+        console.log(key);
     Phaser.Sprite.call(this, state.game, x, y, state.playerData[key].sprite);
 
-    this.key = key
+    this.key = key.toLowerCase();
     this.state = state;
     this.game = state.game;
     this.data = Object.create(state.playerData[key]);
@@ -36,7 +37,7 @@ RPG.GameObject.prototype.handleCollision = function () {
           this.state.callAction(this.key, this);
         }
     }
-    else if (this.key == "Exit") {
+    else if (this.key == "exit") {
         this.state.currentLevel = 1;
         this.state.initLevel();
     }

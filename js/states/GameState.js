@@ -120,42 +120,19 @@ RPG.GameState = {
     	        this.characters.push(character);
                 this.charactersCollisionFrame.push(characterFrame);
     		}
-    		else if (obj.type == "PC")
-    		{
-    	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'pc');
-                //var sprite2 = sprite.addShadow();
-    	        this.add.existing(sprite);
-    	        this.gameobjects.push(sprite);
-    	        //this.gameCollisionFrame.push(sprite2);
-    		}
-    		else if (obj.type == "CoffeeMachine")
-    		{
-    	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'coffeemachine');
-                //var sprite2 = sprite.addShadow();
+    		else if (obj.type == "Door") {
+                var sprite = new RPG.Door(this, obj.x, obj.y, 'door');
                 this.add.existing(sprite);
-    	        this.gameobjects.push(sprite);
-                //this.gameCollisionFrame.push(sprite2);
-    		}
-            else if (obj.type == "Exit") {
-    	        var sprite = new RPG.GameObject(this, obj.x, obj.y, 'Exit');
-    	        this.add.existing(sprite);
-    	        this.gameobjects.push(sprite);
+                this.gameobjects.push(sprite);
             }
-            else if (obj.type == "BeerCrate") {
-                var sprite = new RPG.GameObject(this, obj.x, obj.y, 'BeerCrate');
-                this.add.existing(sprite);
-                //var sprite2 = sprite.addShadow();
+    		else{
+    	        var sprite = new RPG.GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
+    	        this.add.existing(sprite);
     	        this.gameobjects.push(sprite);
-                //this.gameCollisionFrame.push(sprite2);
-    		}
-            else if (obj.type == "Door") {
-                var sprite = new RPG.Door(this, obj.x, obj.y, 'Door');
-                this.add.existing(sprite);
-    	        this.gameobjects.push(sprite);
-           }
+    		}/*
     		else {
     			console.error ("Map contains object of undefined type " + obj.type);
-    		}
+    		}*/
 
     	}
 
@@ -265,7 +242,7 @@ RPG.GameState = {
     },
 
     // uncomment to help debug character bounding boxes
-/*
+
     render: function () {
         this.game.debug.bodyInfo(this.player, 32, 32);
         this.game.debug.body(this.player);
@@ -281,7 +258,7 @@ RPG.GameState = {
             this.game.debug.body(this.gameobjects[i]);
             this.game.debug.bodyInfo(this.gameobjects[i], 32, 32);
         }
-    },*/
+    },
     callAction: function (objectname, character){
         //new Action();
 

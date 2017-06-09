@@ -15,7 +15,7 @@
     },
     "sprite": "pc"
   },
-  "BeerCrate": {
+  "beercrate": {
     "body_size": {
       "width": 32,
       "height": 24,
@@ -45,7 +45,7 @@
     },
     "sprite": "coffeemachine"
   },
-  "Exit" : {
+  "exit" : {
     "body_size": {
       "width": 100,
       "height": 100,
@@ -60,7 +60,7 @@
     },
     "sprite": null
   },
-  "Door" : {
+  "door" : {
     "body_size": {
       "width": 64,
       "height": 96,
