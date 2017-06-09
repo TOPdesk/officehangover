@@ -28,7 +28,7 @@ RPG.Character = function (state, x, y, spriteName, data, character, isBodyFrame)
     var bodySize = data.body_size;
 
     if (isBodyFrame){
-        var bodySize = data.shadow_size;
+        var bodySize = data.trigger_box;
         this.body.setSize(bodySize.width, bodySize.height, bodySize.left, bodySize.top);
         this.alpha = 0;
      }else{
