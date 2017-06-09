@@ -18,7 +18,11 @@ RPG.Player.prototype.constructor = RPG.Player;
 RPG.Player.prototype.wakeUp = function () {
     this.state.uiBlocked = true;
     this.play(Constants.ANIMATION_WAKE_UP);
-    this.animations.currentAnim.onComplete.add(function () { this.state.uiBlocked = false;}, this);
+    this.animations.currentAnim.onComplete.add(function () {
+            this.game.time.events.add(Phaser.Timer.SECOND * 0.5, function (){
+                this.state.openDialog("wakeup1", this);
+            }, this);
+        }, this);
 };
 
 RPG.Player.prototype.pickup = function() {

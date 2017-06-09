@@ -55,9 +55,6 @@ RPG.GameState = {
 
         if (this.currentLevel == 0) {
             this.player.wakeUp();
-            this.game.time.events.add(Phaser.Timer.SECOND * 2, function (){
-                this.openDialog("wakeup1", this.player)
-            }, this);
         }
     },
     update: function () {
@@ -71,7 +68,6 @@ RPG.GameState = {
 
         /*this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
         this.game.physics.arcade.collide(this.player, this.enemies, this.attack, null, this);*/
-
         if (!this.uiBlocked){
             this.cursorMovement();
         }

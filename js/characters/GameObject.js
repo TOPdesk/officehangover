@@ -8,7 +8,6 @@ such as the PC, the coffee machine.
 */
 
 RPG.GameObject = function (state, x, y, key) {
-        console.log(key);
     Phaser.Sprite.call(this, state.game, x, y, state.playerData[key].sprite);
 
     this.key = key.toLowerCase();
