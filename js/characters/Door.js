@@ -2,6 +2,8 @@
 
 var RPG = RPG || {};
 
+/** a door is a specialized game object that has two states: open and closed. */
+
 RPG.Door = function (state, x, y, key) {
     Phaser.Sprite.call(this, state.game, x, y, state.playerData[key].sprite);
 
