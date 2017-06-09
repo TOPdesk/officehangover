@@ -124,7 +124,9 @@
     },
     "trigger_box": {
       "width": 40,
-      "height": 70
+      "height": 70,
+      "top": 5,
+      "left": 12
     },
     "initial_frame": 130,
     "stamina": 25,

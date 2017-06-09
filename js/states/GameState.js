@@ -104,7 +104,7 @@ RPG.GameState = {
     		if (obj.type == "Start")
     		{
     	        this.player = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
-    	        this.add.existing(this.player);
+
                 this.playerCollisionFrame = new RPG.Player(this, 0, 0, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
                 this.player.addChild(this.playerCollisionFrame);
     	        this.player.body.collideWorldBounds = true;
@@ -134,7 +134,7 @@ RPG.GameState = {
     		else {
     			console.error ("Map contains object of undefined type " + obj.type);
     		}*/
-
+            this.add.existing(this.player);
     	}
 
     	if (!this.player) {
@@ -244,7 +244,7 @@ RPG.GameState = {
 
     // uncomment to help debug character bounding boxes
 
-   /* render: function () {
+    render: function () {
         this.game.debug.bodyInfo(this.player, 32, 32);
         this.game.debug.body(this.player);
         this.game.debug.body(this.playerCollisionFrame);
@@ -259,7 +259,7 @@ RPG.GameState = {
             this.game.debug.body(this.gameobjects[i]);
             this.game.debug.bodyInfo(this.gameobjects[i], 32, 32);
         }
-    },*/
+    },
     callAction: function (objectname, character){
         //new Action();
 
