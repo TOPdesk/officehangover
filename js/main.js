@@ -3,9 +3,9 @@
 var RPG = RPG || {};
 
 var gameConstant = {
-    width: 1024,
-    height: 720
-}
+	width: 1024,
+	height: 720
+};
 
 RPG.dim = RPG.getGameLandscapeDimensions(gameConstant.width, gameConstant.height);
 

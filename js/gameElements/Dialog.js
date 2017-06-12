@@ -9,28 +9,28 @@ RPG.Dialog = function (state, objectname, character) {
 	this.character = character;
 	this.dialogs = JSON.parse(this.game.cache.getText(Constants.DIALOGS));
 
-}
+};
 
 RPG.Dialog.prototype = Object.create(Object.prototype);
 RPG.Dialog.prototype.constructor = RPG.Dialog;
 
-RPG.Dialog.prototype.popup = function() {
+RPG.Dialog.prototype.popup = function () {
 	var objectDialogs = this.dialogs[this.objectname];
 	if (!(this.objectname in this.dialogs)) {
-		console.error ("No dialog found using key: " + this.objectname)
+		console.error("No dialog found using key: " + this.objectname)
 	}
 	else {
 		this.showStartDialog(objectDialogs);
 	}
-}
+};
 
-RPG.Dialog.prototype.showStartDialog = function(objectDialogs) {
+RPG.Dialog.prototype.showStartDialog = function (objectDialogs) {
 	var dialog = this;
 	var dialogStartId = dialog.findDialogStart(objectDialogs.start_options, objectDialogs.messages);
 	dialog.showDialog(objectDialogs, dialogStartId);
-}
+};
 
-RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
+RPG.Dialog.prototype.showDialog = function (objectDialogs, id) {
 	var game = this.game;
 	var state = this.state;
 	var dialog = this;
@@ -38,7 +38,7 @@ RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
 	this.state.uiBlocked = true;
 
 	// calculate a reasonable margin, 10% of width or 10% of height, whichever is smaller.
-	this.margin = Math.min (this.game.width / 10, this.game.height / 10);
+	this.margin = Math.min(this.game.width / 10, this.game.height / 10);
 	this.lineHeight = 100;
 
 	this.y = this.margin;
@@ -72,7 +72,7 @@ RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
 
 	this.objects.push(msgWidget);
 
-	currentObjectDialog.replies.forEach (function(replyOption) {
+	currentObjectDialog.replies.forEach(function (replyOption) {
 		if (replyOption.condition) {
 			var result = dialog.conditionsSatisfyGameState(replyOption.condition);
 			if (!result) return; // skip this option
@@ -92,22 +92,29 @@ RPG.Dialog.prototype.showDialog = function(objectDialogs, id) {
 				dialog.showDialog(objectDialogs, replyOption.goto);
 			}
 			if (replyOption.actions) {
-				replyOption.actions.forEach(function(action) { /* TODO ACTION*/ })
+				replyOption.actions.forEach(function (action) { /* TODO ACTION*/
+				});
 			}
 			if (replyOption.setflag) {
-				replyOption.setflag.forEach(function(flag) { console.log("Flag " + flag + " is set"); state.flags[flag] = 1 })
+				replyOption.setflag.forEach(function (flag) {
+					console.log("Flag " + flag + " is set");
+					state.flags[flag] = 1;
+				});
 			}
 			if (replyOption.clearflag) {
-				replyOption.clearflag.forEach(function(flag) { console.log("Flag " + flag + " is cleared"); state.flags[flag] = 0 })
+				replyOption.clearflag.forEach(function (flag) {
+					console.log("Flag " + flag + " is cleared");
+					state.flags[flag] = 0;
+				});
 			}
 
 		}, this);
 
 		dialog.objects.push(optionWidget);
 	});
-}
+};
 
-RPG.Dialog.prototype.findDialogStart = function(startOptions, objectMessages) {
+RPG.Dialog.prototype.findDialogStart = function (startOptions, objectMessages) {
 	var dialog = this;
 	for (var i = 0; i < startOptions.length; i++) {
 		var startOptionId = startOptions[i];
@@ -120,7 +127,7 @@ RPG.Dialog.prototype.findDialogStart = function(startOptions, objectMessages) {
 	//TODO do we need error handling?
 };
 
-RPG.Dialog.prototype.findDialog = function(dialogs, idToFind) {
+RPG.Dialog.prototype.findDialog = function (dialogs, idToFind) {
 	for (var i = 0; i < dialogs.length; i++) {
 		if (dialogs[i].id === idToFind) {
 			return dialogs[i];
@@ -129,21 +136,21 @@ RPG.Dialog.prototype.findDialog = function(dialogs, idToFind) {
 	return null;
 };
 
-RPG.Dialog.prototype.conditionsSatisfyGameState = function(condition) {
+RPG.Dialog.prototype.conditionsSatisfyGameState = function (condition) {
 	// turn the condition string into a javascript function and evaluate it
 	var conditionFunc = new Function("state", condition);
 	var result = conditionFunc(this.state);
 	console.log("Checking condition: " + condition + " which results in " + result);
 	return result;
-}
+};
 
-RPG.Dialog.prototype.close = function() {
+RPG.Dialog.prototype.close = function () {
 
 	this.state.uiBlocked = false;
-    this.character.isExecutingTask = false;
+	this.character.isExecutingTask = false;
 
 	// destroy all components of the dialog
-	this.objects.forEach (function(element) {
+	this.objects.forEach(function (element) {
 		element.destroy();
 	});
-}
+};
