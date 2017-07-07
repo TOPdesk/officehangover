@@ -241,27 +241,28 @@ RPG.GameState = {
 			upright: true,
 			downright: true,
 			action: false
-		})
+		});
 	},
 
 	// uncomment to help debug character bounding boxes
-	/*
-		render: function () {
-			this.game.debug.bodyInfo(this.player, 32, 32);
-			this.game.debug.body(this.player);
-			this.game.debug.body(this.playerCollisionFrame);
+/*
+	render: function () {
+		this.game.debug.bodyInfo(this.player, 32, 32);
+		this.game.debug.body(this.player);
+		this.game.debug.body(this.playerCollisionFrame);
 
-			for (var i=0; i < this.charactersCollisionFrame.length; i++){
-				this.game.debug.body(this.charactersCollisionFrame[i]);
-			}
-			for (var i = 0; i < this.characters.length; ++i) {
-				this.game.debug.body(this.characters[i]);
-			}
-			for (var i = 0; i < this.gameobjects.length; ++i) {
-				this.game.debug.body(this.gameobjects[i]);
-				this.game.debug.bodyInfo(this.gameobjects[i], 32, 32);
-			}
-		},*/
+		for (var i=0; i < this.charactersCollisionFrame.length; i++){
+			this.game.debug.body(this.charactersCollisionFrame[i]);
+		}
+		for (var i = 0; i < this.characters.length; ++i) {
+			this.game.debug.body(this.characters[i]);
+		}
+		for (var i = 0; i < this.gameobjects.length; ++i) {
+			this.game.debug.body(this.gameobjects[i]);
+			this.game.debug.bodyInfo(this.gameobjects[i], 32, 32);
+		}
+	},
+*/
 	callAction: function (objectname, character) {
 		//new Action();
 
