@@ -15,8 +15,8 @@
   },
   "beercratedropzone": {
       "body_size": {
-      "width": 0,
-      "height": 0,
+      "width": 256,
+      "height": 128,
       "top": 0,
       "left": 0
     },

@@ -134,6 +134,32 @@
 			}]
 		}]
 	},
+	"BeerCrateDropZone1": {
+		"start_options": [
+			1
+		],
+		"messages": [{
+			"id": 1,
+			"message": "I'm tired carrying this around. Maybe I should put it back...",
+			"replies": [{
+				"message": "Continue...",
+				"action": "close_dialog"
+			}]
+		}]
+	},
+	"BeerCrateDropZone2": {
+		"start_options": [
+			1
+		],
+		"messages": [{
+			"id": 1,
+			"message": "Phew, I guess I can drop the crate off here...",
+			"replies": [{
+				"message": "Continue...",
+				"action": "close_dialog"
+			}]
+		}]
+	},
 	"cratespickup1": {
 		"start_options": [
 			1

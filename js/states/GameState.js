@@ -59,12 +59,23 @@ RPG.GameState = {
 	},
 	update: function () {
 		this.game.physics.arcade.overlap(this.gameobjects, this.playerCollisionFrame, function (gameobj) {gameobj.handleCollision();}, null, this);
+		this.game.physics.arcade.overlap(this.gameobjectZones, this.playerCollisionFrame, function (gameobj) {gameobj.handleCollision();}, null, this);
 		this.game.physics.arcade.collide(this.gameobjects, this.player);
 		this.game.physics.arcade.collide(this.movingobjects, this.player, function (gameobj) {gameobj.handleCollision();}, null, this);
 		this.game.physics.arcade.collide(this.characters, this.player);
 		this.game.physics.arcade.overlap(this.charactersCollisionFrame, this.playerCollisionFrame, function (character) {character.parent.handleCollision();}, null, this);
 		this.game.physics.arcade.collide(this.player, this.collisionLayer);
 		this.game.physics.arcade.collide(this.characters, this.collisionLayer, function (character) {character.setRandomDirection();}, null, this);
+
+		/** record the moment that we first start pressing space */
+		var spaceKeyState = !!(this.spaceKey.isDown);
+		if (spaceKeyState && !this.prevSpaceKeyState) {
+			this.justPressedSpace = 1;
+		}
+		else {
+			this.justPressedSpace = 0;
+		}
+		this.prevSpaceKeyState = spaceKeyState;
 
 		/*this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
 		this.game.physics.arcade.collide(this.player, this.enemies, this.attack, null, this);*/
@@ -81,6 +92,7 @@ RPG.GameState = {
 		}
 
 
+
 	},
 	initialiseCharacters: function () {
 
@@ -88,6 +100,7 @@ RPG.GameState = {
 		this.charactersCollisionFrame = [];
 		this.gameobjects = [];
 		this.movingobjects = [];
+		this.gameobjectZones = [];
 
 		for (var key in this.map.objects.Objects) {
 			var obj = this.map.objects.Objects[key];
@@ -118,6 +131,11 @@ RPG.GameState = {
 				var sprite = new RPG.Door(this, obj.x, obj.y, 'door');
 				this.add.existing(sprite);
 				this.movingobjects.push(sprite);
+			}
+			else if (obj.type == "BeerCrateDropZone") {
+				var sprite = new RPG.BeerCrateDropZone(this, obj.x, obj.y, obj.type.toLowerCase(), obj.name);
+				this.add.existing(sprite);
+				this.gameobjectZones.push(sprite);
 			}
 			else {
 				var sprite = new RPG.GameObject(this, obj.x, obj.y, obj.type.toLowerCase());

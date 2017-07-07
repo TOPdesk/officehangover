@@ -129,70 +129,6 @@
                  "y":35
                 }, 
                 {
-                 "ellipse":true,
-                 "height":20,
-                 "id":13,
-                 "name":"BeerCrate",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"BeerCrate",
-                 "visible":true,
-                 "width":23,
-                 "x":957,
-                 "y":69
-                }, 
-                {
-                 "ellipse":true,
-                 "height":20,
-                 "id":16,
-                 "name":"BeerCrate",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"BeerCrate",
-                 "visible":true,
-                 "width":18,
-                 "x":1005,
-                 "y":103
-                }, 
-                {
-                 "ellipse":true,
-                 "height":0,
-                 "id":17,
-                 "name":"BeerCrate",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"BeerCrate",
-                 "visible":true,
-                 "width":0,
-                 "x":999,
-                 "y":154
-                }, 
-                {
-                 "ellipse":true,
-                 "height":0,
-                 "id":18,
-                 "name":"BeerCrate",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"BeerCrate",
-                 "visible":true,
-                 "width":0,
-                 "x":959,
-                 "y":129
-                }, 
-                {
                  "height":94,
                  "id":19,
                  "name":"Door",
@@ -253,7 +189,7 @@
                  "y":1152
                 }, 
                 {
-                 "height":98,
+                 "height":44,
                  "id":25,
                  "name":"BeerCrateDropZone1",
                  "properties":
@@ -263,9 +199,9 @@
                  "rotation":0,
                  "type":"BeerCrateDropZone",
                  "visible":true,
-                 "width":102,
-                 "x":953,
-                 "y":83
+                 "width":42,
+                 "x":964.666666666667,
+                 "y":127.333333333333
                 }, 
                 {
                  "height":97,

@@ -10,7 +10,8 @@ RPG.Player = function (state, x, y, spriteName, data, character, isBodyFrame) {
 	this.game.add.existing(this.staminaBar);
 	*/
 
-	this.pickupObject = null;
+	this.pickupSprite = null;
+    this.pickupTimer = 0;
 };
 
 RPG.Player.prototype = Object.create(Phaser.Sprite.prototype);
@@ -28,7 +29,12 @@ RPG.Player.prototype.wakeUp = function () {
 
 /** check if we can pick up an object. We can only pick up an object if we haven't already picked up one! */
 RPG.Player.prototype.canPickup = function () {
-	return this.pickupObject == null;
+	return this.pickupSprite == null && (this.pickupTimer == 0);
+};
+
+/** idem, we can only drop an object if we picked up one! */
+RPG.Player.prototype.canDropOff = function () {
+	return this.pickupSprite != null && (this.pickupTimer == 0);
 };
 
 RPG.Player.prototype.pickup = function (pickupObject) {
@@ -41,11 +47,19 @@ RPG.Player.prototype.pickup = function (pickupObject) {
 	var pickupSprite = this.pickupSprite;
 	this.addChild(pickupSprite);
 	this.game.add.existing(pickupSprite);
+    this.pickupTimer = 50;
 };
 
 RPG.Player.prototype.dropoff = function () {
 	this.pickupSprite.destroy(true);
 	this.pickupSprite = null;
+    this.pickupTimer = 50;
+};
+
+RPG.Player.prototype.update = function() {
+    if (this.pickupTimer > 0) {
+        this.pickupTimer -= 1;
+    }
 };
 
 /* NOT NEEDED RIGHT NOW BUT WILL BE USEFUL IN THE FUTURE*/
