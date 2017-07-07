@@ -10,14 +10,14 @@ var RPG = RPG || {};
 RPG.GameObject = function (state, x, y, key) {
 	Phaser.Sprite.call(this, state.game, x, y, state.playerData[key].sprite);
 
-    this.key = key.toLowerCase();
-    this.state = state;
-    this.game = state.game;
-    this.data = Object.create(state.playerData[key]);
-    this.playerData = state.playerData;
-    this.anchor.setTo(0, 0);
-    this.isExecutingTask = false;
-    this.isCharacterOnHold = false;
+	this.key = key.toLowerCase();
+	this.state = state;
+	this.game = state.game;
+	this.data = Object.create(state.playerData[key]);
+	this.playerData = state.playerData;
+	this.anchor.setTo(0, 0);
+	this.isExecutingTask = false;
+	this.isCharacterOnHold = false;
 
 	this.game.physics.arcade.enable(this);
 	var bodySize = this.data.body_size;
