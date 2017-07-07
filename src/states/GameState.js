@@ -31,12 +31,6 @@ export default {
 
 		this.game.stage.backgroundColor = this.playerData.background_color;
 
-		if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
-			this.game.VirtualPad = this.game.plugins.add(Phaser.Plugin.VirtualPad);
-			this.initGUI();
-			this.touchScreen = true;
-		}
-
 		this.initLevel();
 	},
 	initLevel: function () {
@@ -85,10 +79,6 @@ export default {
 		this.game.physics.arcade.collide(this.player, this.enemies, this.attack, null, this);*/
 		if (!this.uiBlocked) {
 			this.cursorMovement();
-		}
-
-		if (this.touchScreen) {
-			this.virtualPadMovement();
 		}
 
 		for (var key in this.characters) {
@@ -217,50 +207,6 @@ export default {
 			this.player.frame = this.playerData.player.initial_frame;
 		}
 
-	},
-	virtualPadMovement: function () {
-
-		this.player.body.velocity.x = 0;
-		this.player.body.velocity.y = 0;
-
-		if (this.player.btnsPressed.left || this.player.btnsPressed.upleft || this.player.btnsPressed.downleft) {
-			this.player.body.velocity.x = -this.playerData.player_speed;
-			this.player.play('walk_left');
-		} else if (this.player.btnsPressed.right || this.player.btnsPressed.upright || this.player.btnsPressed.downright) {
-			this.player.body.velocity.x = this.playerData.player_speed;
-			this.player.play('walk_right');
-		}
-
-		if (this.player.btnsPressed.up || this.player.btnsPressed.upright || this.player.btnsPressed.upleft) {
-			this.player.body.velocity.y = -this.playerData.player_speed;
-			this.player.play('walk_up');
-		} else if (this.player.btnsPressed.down || this.player.btnsPressed.downright || this.player.btnsPressed.downleft) {
-			this.player.body.velocity.y = this.playerData.player_speed;
-			this.player.play('walk_down');
-		}
-
-		if (this.game.input.activePointer.isUp) {
-			this.game.VirtualPad.stopMovement();
-		}
-
-		if (this.player.body.velocity.x == 0 && this.player.body.velocity.y == 0) {
-			this.player.animations.stop();
-			this.player.frame = this.playerData.initial_frame;
-		}
-	},
-
-	initGUI: function () {
-		this.game.VirtualPad.setup(this.player, {
-			left: true,
-			right: true,
-			up: true,
-			down: true,
-			upleft: true,
-			downleft: true,
-			upright: true,
-			downright: true,
-			action: false
-		});
 	},
 
 	// uncomment to help debug character bounding boxes

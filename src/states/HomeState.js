@@ -1,8 +1,9 @@
 import * as Constants from "../constants";
+import textPlugin from "../plugins/Text";
 
 export default {
 	init: function () {
-		this.game.Text = this.game.plugins.add(Phaser.Plugin.Text);
+		this.game.Text = this.game.plugins.add(textPlugin);
 	},
 	create: function () {
 		var background = this.game.add.sprite(0, 0);
