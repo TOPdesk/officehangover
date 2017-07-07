@@ -1,8 +1,4 @@
-'use strict';
-
-var RPG = RPG || {};
-
-RPG.GameOverState = {
+export default {
 	init: function (param) {
 		this.mParam = param;
 	},

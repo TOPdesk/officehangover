@@ -1,8 +1,6 @@
-'use strict';
+import * as Constants from "../constants";
 
-var RPG = RPG || {};
-
-RPG.HomeState = {
+export default {
 	init: function () {
 		this.game.Text = this.game.plugins.add(Phaser.Plugin.Text);
 	},

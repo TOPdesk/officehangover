@@ -1,7 +1,4 @@
-var RPG = RPG || {};
-
-//calculate the dimensions of the game so that 100% of the screen is occupied
-RPG.getGameLandscapeDimensions = function (max_w, max_h) {
+export const getGameLandscapeDimensions = (max_w, max_h) => {
 	//get both w and h of the screen (they might exchange)
 	var w = window.innerWidth * window.devicePixelRatio;
 	var h = window.innerHeight * window.devicePixelRatio;
@@ -27,5 +24,5 @@ RPG.getGameLandscapeDimensions = function (max_w, max_h) {
 	return {
 		w: landW,
 		h: landH
-	}
+	};
 };

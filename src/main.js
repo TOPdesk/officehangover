@@ -1,19 +1,18 @@
-'use strict';
+import * as Constants from "./constants";
+import BootState from "./states/BootState";
+import GameOverState from "./states/GameOverState";
+import GameState from "./states/GameState";
+import HomeState from "./states/HomeState";
+import PreloadState from "./states/PreloadState";
+import {getGameLandscapeDimensions} from "./scaler";
 
-var RPG = RPG || {};
+const dim = getGameLandscapeDimensions(Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
 
-var gameConstant = {
-	width: 1024,
-	height: 720
-};
+const game = new Phaser.Game(dim.w, dim.h, Phaser.CANVAS);
 
-RPG.dim = RPG.getGameLandscapeDimensions(gameConstant.width, gameConstant.height);
-
-RPG.game = new Phaser.Game(RPG.dim.w, RPG.dim.h, Phaser.CANVAS);
-
-RPG.game.state.add(Constants.GAME_STATE, RPG.GameState);
-RPG.game.state.add(Constants.HOME_STATE, RPG.HomeState);
-RPG.game.state.add(Constants.PRELOAD_STATE, RPG.PreloadState);
-RPG.game.state.add(Constants.BOOT_STATE, RPG.BootState);
-RPG.game.state.add(Constants.GAME_OVER_STATE, RPG.GameOverState);
-RPG.game.state.start(Constants.BOOT_STATE);
+game.state.add(Constants.GAME_STATE, GameState);
+game.state.add(Constants.HOME_STATE, HomeState);
+game.state.add(Constants.PRELOAD_STATE, PreloadState);
+game.state.add(Constants.BOOT_STATE, BootState);
+game.state.add(Constants.GAME_OVER_STATE, GameOverState);
+game.state.start(Constants.BOOT_STATE);

@@ -1,41 +1,33 @@
-var Constants = (function () {
+export const GAME_WIDTH = 1024;
+export const GAME_HEIGHT = 720;
 
-	function Constants() {
-	}
+export const BACKGROUND_BOOT_STATE = "#fff";
 
-	Constants.GAME_WIDTH = 1024;
-	Constants.GAME_HEIGHT = 720;
+export const GAME_STATE = 'GameState';
+export const HOME_STATE = 'HomeState';
+export const PRELOAD_STATE = 'PreloadState';
+export const START_STATE = 'StartGame';
+export const BOOT_STATE = 'BootState';
+export const GAME_OVER_STATE = 'GameOverState';
 
-	Constants.BACKGROUND_BOOT_STATE = "#fff";
+export const PLAYER_DATA = 'player_data';
+export const GAME_TEXT = 'text';
+export const DIALOGS = 'dialogs';
+export const PLAYER_START_DATA_INIT = 'player_wake_up';
+export const PLAYER_DATA_INIT = 'player';
+export const PLAYER_SPRITE = 'player_start';
+export const COFFEE_MACHINE_SPRITE = 'coffeemachine';
+export const PC_SPRITE = 'pc';
+export const CHARACTER1_SPRITE = 'character1';
+export const CHARACTER2_SPRITE = 'character2';
+export const CHARACTER3_SPRITE = 'character3';
+export const DISH_WASHER_SPRITE = 'dish_washer_sprite';
+export const DIRTY_DISHES_SPRITE = 'dirty_dishes_sprite';
 
-	Constants.GAME_STATE = 'GameState';
-	Constants.HOME_STATE = 'HomeState';
-	Constants.PRELOAD_STATE = 'PreloadState';
-	Constants.START_STATE = 'StartGame';
-	Constants.BOOT_STATE = 'BootState';
-	Constants.GAME_OVER_STATE = 'GameOverState';
+export const SCENE = 'background';
+export const STAMINA_BAR = 'bar';
+export const ANIMATION_WAKE_UP = 'wake_up';
+export const TILESET_IMAGE = 'tileset1';
+export const TILESET_DATA = 'tileset1.json';
 
-	Constants.PLAYER_DATA = 'player_data';
-	Constants.GAME_TEXT = 'text';
-	Constants.DIALOGS = 'dialogs';
-	Constants.PLAYER_START_DATA_INIT = 'player_wake_up';
-	Constants.PLAYER_DATA_INIT = 'player';
-	Constants.PLAYER_SPRITE = 'player_start';
-	Constants.COFFEE_MACHINE_SPRITE = 'coffeemachine';
-	Constants.PC_SPRITE = 'pc';
-	Constants.CHARACTER1_SPRITE = 'character1';
-	Constants.CHARACTER2_SPRITE = 'character2';
-	Constants.CHARACTER3_SPRITE = 'character3';
-	Constants.DISH_WASHER_SPRITE = 'dish_washer_sprite';
-	Constants.DIRTY_DISHES_SPRITE = 'dirty_dishes_sprite';
-
-	Constants.SCENE = 'background';
-	Constants.STAMINA_BAR = 'bar';
-	Constants.ANIMATION_WAKE_UP = 'wake_up';
-	Constants.TILESET_IMAGE = 'tileset1';
-	Constants.TILESET_DATA = 'tileset1.json';
-
-	Constants.TILEMAP_FLOORS = ['tilemap_floor1', 'tilemap_floor2'];
-
-	return Constants;
-})();
+export const TILEMAP_FLOORS = ['tilemap_floor1', 'tilemap_floor2'];

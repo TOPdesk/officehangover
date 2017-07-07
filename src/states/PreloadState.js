@@ -1,10 +1,7 @@
-'use strict';
+import * as Constants from "../constants";
 
-var RPG = RPG || {};
-
-RPG.PreloadState = {
+export default {
 	preload: function () {
-
 		if (!this.loadLevel) {
 			this.load.onLoadComplete.add(this.processMaps, this);
 			//load all images

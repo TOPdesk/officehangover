@@ -1,8 +1,6 @@
-'use strict';
+import * as Constants from "../constants";
 
-var RPG = RPG || {};
-
-RPG.BootState = {
+export default {
 	init: function () {
 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.pageAlignHorizontally = true;
@@ -15,5 +13,4 @@ RPG.BootState = {
 		this.game.stage.backgroundColor = Constants.BACKGROUND_BOOT_STATE;
 		this.state.start(Constants.PRELOAD_STATE);
 	}
-
 };

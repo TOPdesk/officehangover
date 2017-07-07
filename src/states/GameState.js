@@ -1,8 +1,12 @@
-'use strict';
+import * as Constants from "../constants";
+import Player from "../characters/Player";
+import Character from "../characters/Character";
+import Door from "../characters/Door";
+import BeerCrateDropZone from "../characters/BeerCrateDropZone";
+import GameObject from "../characters/GameObject";
+import Dialog from "../gameElements/Dialog";
 
-var RPG = RPG || {};
-
-RPG.GameState = {
+export default {
 	init: function () {
 
 		this.flags = {};
@@ -110,17 +114,17 @@ RPG.GameState = {
 			obj.y = Math.round(obj.y / 32) * 32;
 
 			if (obj.type == "Start") {
-				this.player = new RPG.Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
+				this.player = new Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
 
-				this.playerCollisionFrame = new RPG.Player(this, 0, 0, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
+				this.playerCollisionFrame = new Player(this, 0, 0, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
 				this.player.addChild(this.playerCollisionFrame);
 				this.player.body.collideWorldBounds = true;
 				this.game.camera.follow(this.player);
 			}
 			else if (obj.type == "Character") {
-				var character = new RPG.Character(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
+				var character = new Character(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
 				this.add.existing(character);
-				var characterFrame = new RPG.Character(this, 0, 0, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
+				var characterFrame = new Character(this, 0, 0, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
 				character.addChild(characterFrame);
 				character.body.collideWorldBounds = true;
 				character.setRandomDirection();
@@ -128,17 +132,17 @@ RPG.GameState = {
 				this.charactersCollisionFrame.push(characterFrame);
 			}
 			else if (obj.type == "Door") {
-				var sprite = new RPG.Door(this, obj.x, obj.y, 'door');
+				var sprite = new Door(this, obj.x, obj.y, 'door');
 				this.add.existing(sprite);
 				this.movingobjects.push(sprite);
 			}
 			else if (obj.type == "BeerCrateDropZone") {
-				var sprite = new RPG.BeerCrateDropZone(this, obj.x, obj.y, obj.type.toLowerCase(), obj.name);
+				var sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type.toLowerCase(), obj.name);
 				this.add.existing(sprite);
 				this.gameobjectZones.push(sprite);
 			}
 			else {
-				var sprite = new RPG.GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
+				var sprite = new GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
 				this.add.existing(sprite);
 				this.gameobjects.push(sprite);
 			}
@@ -293,7 +297,7 @@ RPG.GameState = {
 		this.openDialog(objectname, character);
 	},
 	openDialog: function (objectname, character) {
-		this.dialog = new RPG.Dialog(this, objectname, character);
+		this.dialog = new Dialog(this, objectname, character);
 		this.dialog.popup();
 	},
 

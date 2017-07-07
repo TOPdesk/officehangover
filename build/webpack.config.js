@@ -3,7 +3,7 @@ var path = require('path');
 const resolve = dir => path.join(__dirname, '..', dir);
 
 module.exports = {
-	entry: './src/index.js',
+	entry: './src/main.js',
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, '../dist')
