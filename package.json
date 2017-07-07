@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://git.topdesk.com/apekooi/officehangover"
   },
+  "scripts": {
+    "lint": "eslint \"js/**/*.js\""
+  },
   "devDependencies": {
     "eslint": "^4.1.1",
     "eslint-config-standard": "^10.2.1",
