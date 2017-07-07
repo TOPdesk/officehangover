@@ -14,7 +14,8 @@ RPG.BeerCrateDropZone = function (state, x, y, key, name) {
 	this.playerData = state.playerData;
 	this.name = name;
 
-	this.crateCount = 0;
+	this.crates = [];
+
 	if (name === "BeerCrateDropZone1") {
 		for (var i = 0; i < 6; ++i) {
 			this.makeCrate();
@@ -33,13 +34,20 @@ RPG.BeerCrateDropZone.prototype.constructor = RPG.Door;
 /** called whenever a player collides with this door */
 RPG.BeerCrateDropZone.prototype.makeCrate = function() {
 
-	var nx = this.x + Math.floor(this.crateCount / 3) * 32;
-	var ny = this.y - (this.crateCount % 3) * 32;
-	this.crateCount += 1;
-	var sprite = new RPG.GameObject(this.state, nx, ny, 'beercrate');
-	sprite.beerCrateDropZone = this;
-	this.game.add.existing(sprite);
-	this.state.gameobjects.push(sprite);
+	for (var pos = 0; pos < 20; ++pos) {
+		if (!this.crates[pos] || !this.crates[pos].alive) {
+			var nx = this.x + 64 + Math.floor(pos / 3) * 32;
+			var ny = this.bottom + 96 - (pos % 3) * 24;
+			var sprite = new RPG.GameObject(this.state, nx, ny, 'beercrate');
+			sprite.beerCratePosition = pos;
+			sprite.beerCrateDropZone = this;
+			this.crates[pos] = sprite;
+			this.game.add.existing(sprite);
+			this.state.gameobjects.push(sprite);
+
+			break;
+		}
+	}
 
 };
 

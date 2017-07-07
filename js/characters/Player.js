@@ -11,7 +11,7 @@ RPG.Player = function (state, x, y, spriteName, data, character, isBodyFrame) {
 	*/
 
 	this.pickupSprite = null;
-    this.pickupTimer = 0;
+    this.pickupTimer = 0; // delay before the next pick-up / drop-off action can take place.
 };
 
 RPG.Player.prototype = Object.create(Phaser.Sprite.prototype);
@@ -37,6 +37,10 @@ RPG.Player.prototype.canDropOff = function () {
 	return this.pickupSprite != null && (this.pickupTimer == 0);
 };
 
+/**
+ * Pick up an object. The object will be destroyed and replaced
+ * with a Follower object, which follows the player around.
+ */
 RPG.Player.prototype.pickup = function (pickupObject) {
 	if (this.pickupSprite != null) {
 		console.error("Trying to pick up two objects!");
@@ -47,13 +51,13 @@ RPG.Player.prototype.pickup = function (pickupObject) {
 	var pickupSprite = this.pickupSprite;
 	this.addChild(pickupSprite);
 	this.game.add.existing(pickupSprite);
-    this.pickupTimer = 50;
+    this.pickupTimer = 5; // delay before the next pick-up/drop-off action
 };
 
 RPG.Player.prototype.dropoff = function () {
 	this.pickupSprite.destroy(true);
 	this.pickupSprite = null;
-    this.pickupTimer = 50;
+    this.pickupTimer = 5; // delay before the next pick-up/drop-off action
 };
 
 RPG.Player.prototype.update = function() {

@@ -30,9 +30,9 @@ RPG.GameObject.prototype.constructor = RPG.GameObject;
 
 /** called whenever a player collides with this game object */
 RPG.GameObject.prototype.handleCollision = function () {
-	if (this.state.spaceKey.isDown && !this.isExecutingTask) {
-		this.isExecutingTask = true;
+	if (this.state.justPressedSpace) {
 		if (this.key == "pc" || this.key == "coffeemachine") {
+			this.isExecutingTask = true;
 			this.state.callAction(this.key, this);
 		}
 		else if (this.key == "beercrate") {

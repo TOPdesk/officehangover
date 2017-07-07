@@ -189,7 +189,7 @@
                  "y":1152
                 }, 
                 {
-                 "height":44,
+                 "height":128,
                  "id":25,
                  "name":"BeerCrateDropZone1",
                  "properties":
@@ -199,12 +199,12 @@
                  "rotation":0,
                  "type":"BeerCrateDropZone",
                  "visible":true,
-                 "width":42,
-                 "x":964.666666666667,
-                 "y":127.333333333333
+                 "width":256,
+                 "x":894,
+                 "y":93.9999999999997
                 }, 
                 {
-                 "height":97,
+                 "height":128,
                  "id":27,
                  "name":"BeerCrateDropZone2",
                  "properties":
@@ -214,9 +214,9 @@
                  "rotation":0,
                  "type":"BeerCrateDropZone",
                  "visible":true,
-                 "width":348,
-                 "x":1293,
-                 "y":168
+                 "width":256,
+                 "x":1303.66666666667,
+                 "y":160
                 }, 
                 {
                  "height":60,
