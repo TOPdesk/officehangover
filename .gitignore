@@ -1,3 +1,7 @@
+dist/
+node_modules/
+
+
 # copied from TOPdesk gitignore
 # Eclipse project settings folders
 **/.settings
