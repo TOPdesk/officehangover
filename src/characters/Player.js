@@ -8,7 +8,7 @@ export default class extends Character {
 
 		this.pickupSprite = null;
 		this.pickupTimer = 0; // delay before the next pick-up / drop-off action can take place.
-	};
+	}
 
 	wakeUp() {
 		this.state.uiBlocked = true;
@@ -41,7 +41,7 @@ export default class extends Character {
 		this.addChild(pickupSprite);
 		this.game.add.existing(pickupSprite);
 		this.pickupTimer = 5; // delay before the next pick-up/drop-off action
-	};
+	}
 
 	dropoff() {
 		this.pickupSprite.destroy(true);

@@ -57,7 +57,7 @@ export default {
 	},
 	create: function () {
 		if (this.loadLevel) {
-			this.state.start(Constants.GAME_STATE, true, false, this.currentLevel)
+			this.state.start(Constants.GAME_STATE, true, false, this.currentLevel);
 		} else {
 			this.state.start(Constants.HOME_STATE);
 		}

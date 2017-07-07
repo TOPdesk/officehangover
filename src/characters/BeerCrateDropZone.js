@@ -40,7 +40,7 @@ export default class extends Phaser.Sprite {
 				break;
 			}
 		}
-	};
+	}
 
 	handleCollision() {
 		if (this.state.justPressedSpace) {

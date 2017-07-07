@@ -12,7 +12,7 @@ export default class {
 	popup() {
 		var objectDialogs = this.dialogs[this.objectname];
 		if (!(this.objectname in this.dialogs)) {
-			console.error("No dialog found using key: " + this.objectname)
+			console.error("No dialog found using key: " + this.objectname);
 		}
 		else {
 			this.showStartDialog(objectDialogs);
@@ -87,8 +87,7 @@ export default class {
 					dialog.showDialog(objectDialogs, replyOption.goto);
 				}
 				if (replyOption.actions) {
-					replyOption.actions.forEach(function (action) { /* TODO ACTION*/
-					});
+					// replyOption.actions.forEach(function (action) { /* TODO ACTION*/ });
 				}
 				if (replyOption.setflag) {
 					replyOption.setflag.forEach(function (flag) {

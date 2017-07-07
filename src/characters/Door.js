@@ -24,7 +24,7 @@ export default class extends Phaser.Sprite {
 		this.play('open');
 		var bodySize = this.data.body_size;
 		this.body.setSize(0, 0, bodySize.left, bodySize.top);
-	};
+	}
 
 	/** called whenever a player collides with this door */
 	handleCollision() {

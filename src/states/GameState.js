@@ -132,17 +132,17 @@ export default {
 				this.charactersCollisionFrame.push(characterFrame);
 			}
 			else if (obj.type == "Door") {
-				var sprite = new Door(this, obj.x, obj.y, 'door');
+				let sprite = new Door(this, obj.x, obj.y, 'door');
 				this.add.existing(sprite);
 				this.movingobjects.push(sprite);
 			}
 			else if (obj.type == "BeerCrateDropZone") {
-				var sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type.toLowerCase(), obj.name);
+				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type.toLowerCase(), obj.name);
 				this.add.existing(sprite);
 				this.gameobjectZones.push(sprite);
 			}
 			else {
-				var sprite = new GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
+				let sprite = new GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
 				this.add.existing(sprite);
 				this.gameobjects.push(sprite);
 			}
@@ -166,9 +166,7 @@ export default {
 		this.game.world.bringToTop(this.player);
 	},
 	initialiseCollisionLayer: function () {
-
 		// copy the 'blocking' property from all three layers to the bottom layer, the 'collisionLayer'.
-		var tileProperties = this.map.tilesets[this.map.getTilesetIndex('officehangover')].tileProperties;
 		for (var x = 0; x < this.map.width; ++x) {
 			for (var y = 0; y < this.map.width; ++y) {
 				var tile1 = this.map.getTile(x, y, 0);
@@ -185,7 +183,6 @@ export default {
 					tile1.setCollision(true, true, true, true);
 			}
 		}
-
 	},
 	gameOver: function () {
 		this.game.state.start('GameState', true, false, this.currentLevel);
@@ -267,7 +264,7 @@ export default {
 	},
 
 	// uncomment to help debug character bounding boxes
-/*
+	/*
 	render: function () {
 		this.game.debug.bodyInfo(this.player, 32, 32);
 		this.game.debug.body(this.player);

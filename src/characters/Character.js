@@ -22,21 +22,20 @@ export default class extends Phaser.Sprite {
 		this.animations.add('wake_up', this.playerData.animation_wake_up, this.playerData.frames, false);
 
 		this.game.physics.arcade.enable(this);
-		var bodySize = data.body_size;
 
 		if (isBodyFrame) {
-			var bodySize = data.trigger_box;
-			this.body.setSize(bodySize.width, bodySize.height, bodySize.left, bodySize.top);
+			let { width, height, left, top } = data.trigger_box;
+			this.body.setSize(width, height, left, top);
 			this.alpha = 0;
 		} else {
-			var bodySize = data.body_size;
-			this.body.setSize(bodySize.width, bodySize.height, bodySize.left, bodySize.top);
+			let { width, height, left, top } = data.body_size;
+			this.body.setSize(width, height, left, top);
 		}
 	}
 
 	setRandomDirection() {
 		this.setDirection(Math.floor(Math.random() * 4));
-	};
+	}
 
 	setDirection(direction) {
 		if (direction == 0) {
@@ -59,7 +58,7 @@ export default class extends Phaser.Sprite {
 			this.body.velocity.x = 0;
 			this.play('walk_down');
 		}
-	};
+	}
 
 	handleCollision() {
 		this.stopMoving();
@@ -75,14 +74,14 @@ export default class extends Phaser.Sprite {
 			// invoke the dialog on this character using the spriteName
 			this.state.callAction(this.spriteName, this);
 		}
-	};
+	}
 
-	stopMoving(character) {
+	stopMoving() {
 		this.body.velocity.x = 0;
 		this.body.velocity.y = 0;
 		this.animations.stop();
 		this.frame = this.playerData.initial_frame;
-	};
+	}
 
 	/** update logic, called every game tick */
 	update() {

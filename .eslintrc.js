@@ -13,6 +13,7 @@ module.exports = {
 		"no-console": [1]
 	},
 	globals: {
-		"Phaser": true
+		"Phaser": true,
+		"DocumentTouch": true
 	}
 };
