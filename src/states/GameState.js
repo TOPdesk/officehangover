@@ -85,7 +85,12 @@ export default {
 			this.characters[key].update();
 		}
 
-
+		this.game.world.customSort(function(a, b) {
+			if (a === b) return 0;
+			if (!a.body) return -1;
+			if (!b.body) return 1;
+			return a.body.bottom - b.body.bottom;
+		});
 
 	},
 	initialiseCharacters: function () {
@@ -152,8 +157,6 @@ export default {
 		if (!this.player) {
 			console.error("No player start position found on map!");
 		}
-
-		this.game.world.bringToTop(this.player);
 	},
 	initialiseCollisionLayer: function () {
 		// copy the 'blocking' property from all three layers to the bottom layer, the 'collisionLayer'.
