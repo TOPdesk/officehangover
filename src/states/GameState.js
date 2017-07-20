@@ -49,6 +49,7 @@ export default {
 
 		this.initialiseCollisionLayer();
 
+		this.visibleCharacters = this.game.add.group();
 		this.initialiseCharacters();
 
 		if (this.currentLevel == 0) {
@@ -85,7 +86,7 @@ export default {
 			this.characters[key].update();
 		}
 
-		this.game.world.customSort(function(a, b) {
+		this.visibleCharacters.customSort(function(a, b) {
 			if (a === b) return 0;
 			if (!a.body) return -1;
 			if (!b.body) return 1;
@@ -115,10 +116,11 @@ export default {
 				this.player.addChild(this.playerCollisionFrame);
 				this.player.body.collideWorldBounds = true;
 				this.game.camera.follow(this.player);
+				this.visibleCharacters.add(this.player);
 			}
 			else if (obj.type == "Character") {
 				var character = new Character(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
-				this.add.existing(character);
+				this.visibleCharacters.add(character);
 				var characterFrame = new Character(this, 0, 0, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
 				character.addChild(characterFrame);
 				character.body.collideWorldBounds = true;
@@ -128,7 +130,7 @@ export default {
 			}
 			else if (obj.type == "Door") {
 				let sprite = new Door(this, obj.x, obj.y, 'door');
-				this.add.existing(sprite);
+				this.visibleCharacters.add(sprite);
 				this.movingobjects.push(sprite);
 			}
 			else if (obj.type == "BeerCrateDropZone") {
@@ -138,14 +140,13 @@ export default {
 			}
 			else {
 				let sprite = new GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
-				this.add.existing(sprite);
+				this.visibleCharacters.add(sprite);
 				this.gameobjects.push(sprite);
 			}
 			/*
 			else {
 				console.error ("Map contains object of undefined type " + obj.type);
 			}*/
-			this.add.existing(this.player);
 		}
 
 		// temporary demo of action cloud
