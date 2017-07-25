@@ -4,7 +4,7 @@
   "main": "index.html",
   "repository": {
     "type": "git",
-    "url": "https://git.topdesk.com/apekooi/officehangover"
+    "url": "https://github.com/amarillion/officehangover.git"
   },
   "scripts": {
     "build": "webpack --config build/webpack.config.js",
