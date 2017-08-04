@@ -215,20 +215,23 @@ export default {
 		this.game.debug.body(this.player);
 		this.game.debug.body(this.playerCollisionFrame);
 
-		for (var i=0; i < this.charactersCollisionFrame.length; i++){
+		for (let i=0; i < this.charactersCollisionFrame.length; i++){
 			this.game.debug.body(this.charactersCollisionFrame[i], '#00FF0080');
 		}
-		for (var i = 0; i < this.characters.length; ++i) {
+		for (let i = 0; i < this.characters.length; ++i) {
 			this.game.debug.body(this.characters[i], '#0000FF80');
 		}
-		for (var i = 0; i < this.movingobjects.length; ++i) {
+		for (let i = 0; i < this.movingobjects.length; ++i) {
 			this.game.debug.body(this.movingobjects[i], '#00FFFF80');
 		}
-		for (var i = 0; i < this.gameobjectZones.length; ++i) {
+		for (let i = 0; i < this.gameobjectZones.length; ++i) {
 			this.game.debug.body(this.gameobjectZones[i], '#FF00FF80');
 		}
-		for (var i = 0; i < this.gameobjects.length; ++i) {
+		for (let i = 0; i < this.gameobjects.length; ++i) {
 			this.game.debug.body(this.gameobjects[i], '#FFFF00A0');
+        }
+        for (let i = 0; i < this.dependantgameobjects.length; ++i) {
+			this.game.debug.body(this.dependantgameobjects[i], '#FFFF00A0');
 		}
 	},
 */
