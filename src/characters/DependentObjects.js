@@ -30,6 +30,7 @@ export default class extends GameObject {
 				let tween = this.game.add.tween(actionCloud).to({alpha: 1}, 2000, Phaser.Easing.Linear.None, true);
 				tween.onComplete.add(function () {
 					actionCloud.destroy();
+					this.destroy();
 				}, this);
 
 				this.game.add.tween(dishWasher).to({alpha: 1}, 4000, Phaser.Easing.Linear.None, true);
