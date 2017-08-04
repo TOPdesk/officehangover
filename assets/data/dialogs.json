@@ -121,6 +121,32 @@
 			}
 		]
 	},
+	"dirtydishes":{
+		"start_options": [1, 2],
+		"messages": [{
+			"id": 1,
+			"condition": "return !(state.flags.cleaning_lady_task);",
+			"message": "Temporaty text: Here are some dirty dishes. I am wondering who is going to clean them.",
+			"replies": [{
+				"message": "Continue ...",
+				"action": "close_dialog"
+			}]
+		},
+			{
+				"id": 2,
+				"message": "I already knew the answer before. Me!",
+				"replies": [{
+					"message": "Clean the dishes",
+					"action": "close_dialog"
+					},
+					{
+						"message": "I'll do it later.",
+						"action": "close_dialog"
+					}
+				]
+			}
+		]
+	},
 	"character1": {
 		"start_options": [
 			1
