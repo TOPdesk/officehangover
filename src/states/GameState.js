@@ -5,6 +5,7 @@ import Door from "../characters/Door";
 import BeerCrateDropZone from "../characters/BeerCrateDropZone";
 import GameObject from "../characters/GameObject";
 import Dialog from "../gameElements/Dialog";
+import DependentObjects from "../characters/DependentObjects";
 
 export default {
 	init: function () {
@@ -57,9 +58,11 @@ export default {
 		}
 	},
 	update: function () {
-		this.game.physics.arcade.overlap(this.gameobjects, this.playerCollisionFrame, function (gameobj) {gameobj.handleCollision(this.gameobjects);}, null, this);
+		this.game.physics.arcade.overlap(this.gameobjects, this.playerCollisionFrame, function (gameobj) {gameobj.handleCollision();}, null, this);
+		this.game.physics.arcade.overlap(this.dependentgameobjects, this.playerCollisionFrame, function (gameobj) {gameobj.handleCollision(this.dependentgameobjects);}, null, this);
 		this.game.physics.arcade.overlap(this.gameobjectZones, this.playerCollisionFrame, function (gameobj) {gameobj.handleCollision();}, null, this);
 		this.game.physics.arcade.collide(this.gameobjects, this.player);
+		this.game.physics.arcade.collide(this.dependentgameobjects, this.player);
 		this.game.physics.arcade.collide(this.movingobjects, this.player, function (gameobj) {gameobj.handleCollision();}, null, this);
 		this.game.physics.arcade.collide(this.characters, this.player);
 		this.game.physics.arcade.overlap(this.charactersCollisionFrame, this.playerCollisionFrame, function (character) {character.parent.handleCollision();}, null, this);
@@ -101,6 +104,7 @@ export default {
 		this.gameobjects = [];
 		this.movingobjects = [];
 		this.gameobjectZones = [];
+		this.dependentgameobjects = [];
 
 		for (var key in this.map.objects.Objects) {
 			var obj = this.map.objects.Objects[key];
@@ -137,6 +141,10 @@ export default {
 				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type.toLowerCase(), obj.name);
 				this.add.existing(sprite);
 				this.gameobjectZones.push(sprite);
+			}else if (obj.type == "DishWasher" || obj.type == "DirtyDishes") {
+				let sprite = new DependentObjects(this, obj.x, obj.y, obj.type.toLowerCase());
+				this.visibleCharacters.add(sprite);
+				this.dependentgameobjects.push(sprite);
 			}
 			else {
 				let sprite = new GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
@@ -230,7 +238,7 @@ export default {
 		for (let i = 0; i < this.gameobjects.length; ++i) {
 			this.game.debug.body(this.gameobjects[i], '#FFFF00A0');
         }
-        for (let i = 0; i < this.dependantgameobjects.length; ++i) {
+        for (let i = 0; i < this.dependentgameobjects.length; ++i) {
 			this.game.debug.body(this.dependantgameobjects[i], '#FFFF00A0');
 		}
 	},
