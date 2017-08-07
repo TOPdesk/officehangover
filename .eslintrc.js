@@ -4,7 +4,8 @@ module.exports = {
 		sourceType: "module"
 	},
 	env: {
-		"browser": true
+		"browser": true,
+		"jasmine": true,
 	},
 	extends: "eslint:recommended",
 	rules: {

@@ -9,9 +9,11 @@
   "scripts": {
     "build": "webpack --config build/webpack.config.js",
     "lint": "eslint \"src/**/*.js\"",
-    "watch": "webpack --watch --config build/webpack.config.js"
+    "watch": "webpack --watch --config build/webpack.config.js",
+    "test": "babel-node spec/run.js"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
@@ -22,6 +24,7 @@
     "eslint-plugin-node": "^5.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "jasmine": "^2.7.0",
     "webpack": "^3.1.0"
   }
 }
