@@ -87,7 +87,11 @@ export default class {
 					dialog.showDialog(objectDialogs, replyOption.goto);
 				}
 				if (replyOption.actions) {
-					// replyOption.actions.forEach(function (action) { /* TODO ACTION*/ });
+					replyOption.actions.forEach(function (action) {
+						if (action == "dirtydishes"){
+							console.log("TODO: trigger the action");
+						}
+					});
 				}
 				if (replyOption.setflag) {
 					replyOption.setflag.forEach(function (flag) {
