@@ -237,9 +237,9 @@ export default {
 		}
 		for (let i = 0; i < this.gameobjects.length; ++i) {
 			this.game.debug.body(this.gameobjects[i], '#FFFF00A0');
-        }
-        for (let i = 0; i < this.dependentgameobjects.length; ++i) {
-			this.game.debug.body(this.dependantgameobjects[i], '#FFFF00A0');
+		}
+		for (let i = 0; i < this.dependentgameobjects.length; ++i) {
+			this.game.debug.body(this.dependentgameobjects[i], '#FFFF00A0');
 		}
 	},
 */
