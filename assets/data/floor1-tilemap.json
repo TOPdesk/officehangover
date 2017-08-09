@@ -247,6 +247,22 @@
                  "width":60,
                  "x":387,
                  "y":1060
+                }, 
+                {
+                 "ellipse":true,
+                 "height":0,
+                 "id":33,
+                 "name":"cleaninglady",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":228,
+                 "y":1049
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -255,7 +271,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":33,
+ "nextobjectid":34,
  "orientation":"orthogonal",
  "properties":
     {

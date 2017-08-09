@@ -6,9 +6,10 @@ export default {
 			this.load.onLoadComplete.add(this.processMaps, this);
 			//load all images
 			//params: the reference object, the src for the image, the next two are the size for the frame, total frames in the sheet
-			this.load.spritesheet(Constants.CHARACTER1_SPRITE, 'assets/images/character1.png', 64, 64, 273);
-			this.load.spritesheet(Constants.CHARACTER2_SPRITE, 'assets/images/character2.png', 64, 64, 273);
-			this.load.spritesheet(Constants.CHARACTER3_SPRITE, 'assets/images/character3.png', 64, 64, 273);
+			this.load.spritesheet(Constants.CHARACTER1_SPRITE, 'assets/images/character_braids.png', 64, 64, 273);
+			this.load.spritesheet(Constants.CHARACTER2_SPRITE, 'assets/images/character_greyhair.png', 64, 64, 273);
+			this.load.spritesheet(Constants.CHARACTER3_SPRITE, 'assets/images/character_blondguy.png', 64, 64, 273);
+			this.load.spritesheet(Constants.CLEANINGLADY_SPRITE, 'assets/images/character_dress.png', 64, 64, 273);
 
 			this.load.spritesheet(Constants.PLAYER_SPRITE, 'assets/images/player.png', 64, 64, 273);
 
