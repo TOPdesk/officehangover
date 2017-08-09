@@ -89,9 +89,9 @@ export default class {
 				if (replyOption.actions) {
 					replyOption.actions.forEach(function (action) {
 						if (action == "dirtydishes"){
-							console.log("TODO: trigger the action");
+							this.character.dirtyDishesAction();
 						}
-					});
+					}, this);
 				}
 				if (replyOption.setflag) {
 					replyOption.setflag.forEach(function (flag) {
@@ -109,7 +109,7 @@ export default class {
 			}, this);
 
 			dialog.objects.push(optionWidget);
-		});
+		}, this);
 	}
 
 	findDialogStart(startOptions, objectMessages) {
