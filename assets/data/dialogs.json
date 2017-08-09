@@ -115,8 +115,17 @@
 				"id": 3,
 				"message": "I found some things, but I don't have time to set up a lost-and-found in this mess. By the way, you look like you work out. Can you clear those beer crates from the stairwell for me? Thanks a bunch",
 				"replies": [{
-					"message": "I guess...",
-					"action": "close_dialog"
+					"message": "I guess... Where do I put them?",
+					"goto": 4
+				}]
+			},
+			{
+				"id": 4,
+				"message": "Please put them in the storage room. If the door is locked, just use this key.",
+				"replies": [{
+					"message": "You receive the key to the storage room.",
+					"action": "close_dialog",
+					"setflag": [ "l1_storageroomkey" ]
 				}]
 			}
 		]
@@ -222,6 +231,28 @@
 			"replies": [{
 				"message": "Continue...",
 				"action": "close_dialog"
+			}]
+		}]
+	},
+	"doorlocked": {
+		"start_options": [
+			1, 2
+		],
+		"messages": [{
+			"id": 1,
+			"condition": "return !(state.flags.l1_storageroomkey);",
+			"message": "This door is locked. You'll need to find a key",
+			"replies": [{
+				"message": "Continue...",
+				"action": "close_dialog"
+			}]
+		}, {
+			"id": 2,
+			"condition": "return (state.flags.l1_storageroomkey);",
+			"message": "Great! The door opens with the key you got from the cleaning lady",
+			"replies": [{
+				"message": "Continue...",
+				"actions": [ "close_dialog", "unlock_door" ]
 			}]
 		}]
 	},

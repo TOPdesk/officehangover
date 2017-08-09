@@ -13,7 +13,7 @@ export default {
 
 			this.load.spritesheet(Constants.PLAYER_SPRITE, 'assets/images/player.png', 64, 64, 273);
 
-			this.load.spritesheet('Door', 'assets/images/deur.png', 64, 96, 2);
+			this.load.spritesheet('Door', 'assets/images/deur.png', 64, 96, 3);
 			this.load.spritesheet('ActionCloud', 'assets/images/generic_action_cloud.png', 64, 64, 4);
 
 			this.load.image(Constants.COFFEE_MACHINE_SPRITE, 'assets/images/assets_coffee_machine.png');

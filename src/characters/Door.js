@@ -1,9 +1,10 @@
 /** a door is a specialized game object that has two states: open and closed. */
 export default class extends Phaser.Sprite {
-	constructor(state, x, y, key) {
+	constructor(state, x, y, key, isLocked) {
 		super(state.game, x, y, state.playerData[key].sprite);
 
 		this.key = key;
+		this.isLocked = isLocked;
 		this.state = state;
 		this.game = state.game;
 		this.data = Object.create(state.playerData[key]);
@@ -11,7 +12,15 @@ export default class extends Phaser.Sprite {
 
 		this.animations.add('closed', [0]);
 		this.animations.add('open', [1]);
-		this.play('closed'); // initial state = closed.
+		this.animations.add('locked', [2]);
+
+		if (this.isLocked) {
+			this.play('locked'); // initial state = locked
+		}
+		else {
+			this.play('closed'); // initial state = closed.
+		}
+		
 		this.anchor.setTo(0, 0);
 
 		this.game.physics.arcade.enable(this);
@@ -28,6 +37,16 @@ export default class extends Phaser.Sprite {
 
 	/** called whenever a player collides with this door */
 	handleCollision() {
-		this.openDoor();
+		
+		if (this.isLocked && this.state.justPressedSpace) {
+			this.state.openDialog("doorlocked", this);
+			if (this.state.flags["l1_storageroomkey"]) {
+				this.isLocked = false;
+			}
+		}
+
+		if (!this.isLocked) {
+			this.openDoor();
+		}
 	}
 }
