@@ -29,7 +29,7 @@ export default class extends Phaser.Sprite {
 		for (var pos = 0; pos < 20; ++pos) {
 			if (!this.crates[pos] || !this.crates[pos].alive) {
 				var nx = this.x + 64 + Math.floor(pos / 3) * 32;
-				var ny = this.bottom + 96 - (pos % 3) * 24;
+				var ny = this.bottom + 100 - (pos % 3) * 24;
 				var sprite = new GameObject(this.state, nx, ny, 'beercrate');
 				sprite.beerCratePosition = pos;
 				sprite.beerCrateDropZone = this;
