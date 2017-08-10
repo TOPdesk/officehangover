@@ -94,9 +94,10 @@
 		]
 	},
 	"cleaninglady": {
-		"start_options": [1],
+		"start_options": [1, 5, 6],
 		"messages": [{
 				"id": 1,
+                "condition": "return !(state.flags.l1_clean_dishes);",
 				"message": "Hey, this lady's been cleaning up. Maybe she found my wallet and keys",
 				"replies": [{
 					"message": "Excuse me...",
@@ -113,28 +114,46 @@
 			},
 			{
 				"id": 3,
-				"message": "I found some things, but I don't have time to set up a lost-and-found in this mess. By the way, you look like you work out. Can you clear those beer crates from the stairwell for me? Thanks a bunch",
+				"message": "I found some things, but I don't have time to set up a lost-and-found in this mess. Can you help me with those dirty dishes from the kitchen? Thanks a bunch",
 				"replies": [{
-					"message": "I guess... Where do I put them?",
+					"message": "I guess...",
 					"goto": 4
 				}]
 			},
+            {
+              "id": 4,
+              "message": "When you are done, tell me",
+              "replies": [{
+                "message": "Ok",
+                "action": "close_dialog",
+                "setflag": ["l1_cleaning_lady_task"]
+              }]
+            },
 			{
-				"id": 4,
-				"message": "Please put them in the storage room. If the door is locked, just use this key.",
+				"id": 5,
+                "condition": "return !(state.flags.l1_storageroomkey);",
+				"message": "Thank you very much for helping. There are some lost-and-found things in the storage room. If the door is locked, just use this key.",
 				"replies": [{
 					"message": "You receive the key to the storage room.",
 					"action": "close_dialog",
 					"setflag": [ "l1_storageroomkey" ]
 				}]
-			}
+			},
+            {
+                "id": 6,
+                "message": "Thank you very much for helping.",
+                "replies": [{
+                    "message": "You are welcome",
+                    "action": "close_dialog"
+                }]
+            }
 		]
 	},
 	"dirtydishes":{
 		"start_options": [1, 2],
 		"messages": [{
 			"id": 1,
-			"condition": "return !(state.flags.cleaning_lady_task);",
+			"condition": "return !(state.flags.l1_cleaning_lady_task);",
 			"message": "Temporaty text: Here are some dirty dishes. I am wondering who is going to clean them.",
 			"replies": [{
 				"message": "Continue ...",
@@ -146,7 +165,8 @@
 				"message": "I already knew the answer before. Me!",
 				"replies": [{
 					"message": "Clean the dishes",
-					"actions": ["dirtydishes"]
+					"actions": ["dirtydishes"],
+                    "setflag": ["l1_clean_dishes"]
 					},
 					{
 						"message": "I'll do it later.",
