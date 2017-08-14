@@ -154,7 +154,7 @@
 		"messages": [{
 			"id": 1,
 			"condition": "return !(state.flags.l1_cleaning_lady_task);",
-			"message": "Temporaty text: Here are some dirty dishes. I am wondering who is going to clean them.",
+			"message": "Here are some dirty dishes. I am wondering who is going to clean them.",
 			"replies": [{
 				"message": "Continue ...",
 				"action": "close_dialog"
@@ -162,7 +162,7 @@
 		},
 			{
 				"id": 2,
-				"message": "I already knew the answer before. Me!",
+				"message": "When I said I was wondering who is going to clean them, I already knew the answer. Me!",
 				"replies": [{
 					"message": "Clean the dishes",
 					"actions": ["dirtydishes"],
