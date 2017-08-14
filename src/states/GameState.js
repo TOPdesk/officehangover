@@ -133,7 +133,7 @@ export default {
 				this.charactersCollisionFrame.push(characterFrame);
 			}
 			else if (obj.type == "Door") {
-				let sprite = new Door(this, obj.x, obj.y, 'door', obj.properties["locked"]);
+				let sprite = new Door(this, obj.x, obj.y, 'door', obj.properties && obj.properties["locked"]);
 				this.visibleCharacters.add(sprite);
 				this.movingobjects.push(sprite);
 			}
