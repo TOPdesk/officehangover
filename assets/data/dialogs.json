@@ -237,7 +237,13 @@
 			"message": "Welcome at TOPdesk",
 			"replies": [{
 				"message": "Continue...",
-				"action": "close_dialog"
+				"goto": 2
+			}]
+		},  {
+			"id": 2,
+			"message": "Those beercrates are blocking the way to the second floor. I hope someone pick them up soon.",
+			"replies": [{
+				"message": "Continue..."
 			}]
 		}]
 	},
