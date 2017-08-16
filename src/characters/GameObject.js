@@ -21,7 +21,7 @@ export default class extends Phaser.Sprite {
 	/** called whenever a player collides with this game object */
 	handleCollision() {
 		if (this.state.justPressedSpace) {
-			if (this.key == "pc" || this.key == "coffeemachine") {
+			if (this.key == "pc" || this.key == "coffeemachine" || this.key == "mobile") {
 				this.isExecutingTask = true;
 				this.state.callAction(this.key, this);
 			}
@@ -34,5 +34,12 @@ export default class extends Phaser.Sprite {
 			this.state.currentLevel = 1;
 			this.state.initLevel();
 		}
+	}
+
+	pickMobile (){
+		let tween = this.game.add.tween(this).to({alpha: 0}, 2000, Phaser.Easing.Linear.None, true);
+		tween.onComplete.add(function () {
+			this.destroy();
+		}, this);
 	}
 }

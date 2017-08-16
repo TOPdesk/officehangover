@@ -90,6 +90,8 @@ export default class {
 					replyOption.actions.forEach(function (action) {
 						if (action == "dirtydishes"){
 							this.character.dirtyDishesAction();
+						}else if(action == "pick_mobile"){
+							this.character.pickMobile();
 						}
 					}, this);
 				}
