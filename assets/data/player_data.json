@@ -78,6 +78,19 @@
     },
     "sprite": "coffeemachine"
   },
+  "mobile" : {
+    "body_size": {
+      "width": 10,
+      "height": 16,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 30,
+      "height": 36
+    },
+    "sprite": "mobile"
+  },
   "exit" : {
     "body_size": {
       "width": 64,

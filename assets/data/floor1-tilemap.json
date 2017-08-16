@@ -215,6 +215,17 @@
                  "width":0,
                  "x":226,
                  "y":1078
+                },
+                {
+                 "height":0,
+                 "id":34,
+                 "name":"mobile",
+                 "rotation":0,
+                 "type":"Mobile",
+                 "visible":true,
+                 "width":0,
+                 "x":1350,
+                 "y":120
                 }],
          "opacity":1,
          "type":"objectgroup",
