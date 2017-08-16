@@ -21,6 +21,9 @@ export default {
 			this.load.image(Constants.DISH_WASHER_SPRITE, 'assets/images/assets_dish_washer.png');
 			this.load.image(Constants.DIRTY_DISHES_SPRITE, 'assets/images/assets_dirty_dishes.png');
 			this.load.image('BeerCrate', 'assets/images/assets_beer_crate.png');
+			this.load.image(Constants.MOBILE_SPRITE, 'assets/images/assets_mobile.png');
+
+
 
 			this.load.image(Constants.SCENE, 'assets/images/floor-plan.png');
 
