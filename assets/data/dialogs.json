@@ -176,6 +176,19 @@
 			}
 		]
 	},
+	"mobile":{
+		"start_options": [
+			1
+		],
+		"messages": [{
+			"id": 1,
+			"message": "TEMPORARY: HEY! This is my mobile phone. Now I just need to find the rest of my stuff",
+			"replies": [{
+				"message": "Continue ...",
+				"actions": [ "close_dialog", "pick_mobile" ]
+			}]
+		}]
+	},
 	"character1": {
 		"start_options": [
 			1
