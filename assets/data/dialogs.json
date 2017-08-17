@@ -425,5 +425,183 @@
 				}]
 			}
 		]
+	},
+	"kariomart": {
+		"start_options": [
+			0
+		],
+		"messages": [{
+			"id": 0,
+			"message": "Choose a racer",
+			"replies": [{
+				"message": "Toad",
+				"goto": 1
+			}, {
+				"message": "Baby Mario",
+				"goto": 2
+			}, {
+				"message": "Donkey Kong",
+				"goto": 3
+			}]
+		}, {
+			"id": 1,
+			"message": "With toad's fast acceleration, you start off well. But the heavier racers are starting to overtake you.\nThere is a risky shortcut over a narrow canyon on the left, or you can take the long road and collect some extra coins",
+			"replies": [{
+				"message": "Risky shortcut",
+				"goto": 11
+			}, {
+				"message": "Extra coins",
+				"goto": 12
+			}]
+		}, {
+			"id": 11,
+			"message": "phew, you take the shortcut without the help of Lakitu. But you're still being overtaken.",
+			"replies": [{
+				"message": "Continue...",
+				"goto": 4
+			}]
+		}, {
+			"id": 12,
+			"message": "Good thinking, toad quickly swerves to collect extra coins and gain some extra speed",
+			"replies": [{
+				"message": "Continue...",
+				"goto": 5
+			}]
+		}, {
+			"id": 2,
+			"message": "The race is going well for you. There is a risky shortcut on the left, or you can take the long road and collect some extra coins",
+			"replies": [{
+				"message": "Risky shortcut",
+				"goto": 21
+			}, {
+				"message": "Extra coins",
+				"goto": 22
+			}]
+		}, {
+			"id": 21,
+			"message": "Phew, you take the shortcut without the help of Lakitu. But you're still being overtaken.",
+			"replies": [{
+				"message": "Continue...",
+				"goto": 4
+			}]
+		}, {
+			"id": 22,
+			"message": "Good thinking, toad quickly swerves to collect extra coins and gain some extra speed",
+			"replies": [{
+				"message": "Ok, you got some extra coins but you needed to swerve to get them.",
+				"goto": 4
+			}]
+		}, {
+			"id": 3,
+			"message": "DK is a heavy racer, with slow acceleration. You start at the back of the back, but you're gaining speed. There is a risky shortcut on the left, or you can take the long road and collect some extra coins",
+			"replies": [{
+				"message": "Risky shortcut",
+				"goto": 31
+			}, {
+				"message": "Extra coins",
+				"goto": 32
+			}]
+		}, {
+			"id": 31,
+			"message": "Good thinking, you need to make up for a slow start. You take the shortcut without the help of Lakitu.",
+			"replies": [{
+				"message": "Continue...",
+				"goto": 6
+			}]
+		}, {
+			"id": 32,
+			"message": "Ok, you got some extra coins but you needed to swerve to get them and now you lost speed",
+			"replies": [{
+				"message": "Continue...",
+				"goto": 4
+			}]
+		}, {
+			"id": 4,
+			"message": "You're almost near the end. You managed to fight your way to first place! You hear a beeping noise coming from behind",
+			"replies": [{
+				"message": "Hold back",
+				"goto": 41
+			}, {
+				"message": "Press on",
+				"goto": 42
+			}]
+		}, {
+			"id": 41,
+			"message": "You hold back and are quickly overtaken. You lose the game.",
+			"replies": [{
+				"message": "Continue...",
+				"goto": 7
+			}]
+		}, {
+			"id": 42,
+			"message": "You press on. A blue shield destroys you just before the finish. You lose the game",
+			"replies": [{
+				"message": "Continue...",
+				"goto": 7
+			}]
+		}, {
+			"id": 5,
+			"message": "You're almost near the end. You managed to fight your way to first place! You hear a beeping noise coming from behind",
+			"replies": [{
+				"message": "Hold back",
+				"goto": 51
+			}, {
+				"message": "Press on",
+				"goto": 52
+			}]
+		}, {
+			"id": 51,
+			"message": "You hold back and are quickly overtaken by Baby Mario!. You lose the game.",
+			"replies": [{
+				"message": "Continue...",
+				"goto": 7
+			}]
+		}, {
+			"id": 52,
+			"message": "You press on. A blue shield hits you just before the finish. However, with Toad's fast acceleration, you manage to just stay ahead. You win!",
+			"replies": [{
+				"message": "Yay!",
+				"goto": 8
+			}]
+		}, {
+			"id": 6,
+			"message": "You're almost near the end. You managed to fight your way to first place! You hear a beeping noise coming from behind",
+			"replies": [{
+				"message": "Hold back",
+				"goto": 61
+			}, {
+				"message": "Press on",
+				"goto": 62
+			}]
+		}, {
+			"id": 61,
+			"message": "Good thinking! Baby mario zooms past you, but then a blue shield comes out of nowhere and blows that little bugger to kingdom come! You win easily!",
+			"replies": [{
+				"message": "Yay!",
+				"goto": 8
+			}]
+		}, {
+			"id": 62,
+			"message": "You are hit by a blue shield. You try to get back into the race but it's too late - baby mario wins the game",
+			"replies": [{
+				"message": "Aww...",
+				"goto": 7
+			}]
+		}, {
+			"id": 7,
+			"message": "You LOST!",
+			"replies": [{
+				"message": "Continue...",
+				"actions" : ["close_dialog"]
+			}]
+		}, {
+			"id": 8,
+			"message": "You WIN!",
+			"replies": [{
+				"message": "Continue...",
+				"actions" : ["close_dialog"]
+			}]
+		}]
+
 	}
 }
