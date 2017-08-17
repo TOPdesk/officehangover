@@ -25,12 +25,7 @@ export default class extends Phaser.Sprite {
 				this.isExecutingTask = true;
 				this.state.callAction(this.key, this);
 			}
-			else if (this.key == "beercrate") {
-				if (this.state.player.canPickup()) {
-					this.state.player.pickup(this);
-				}
-			}
-		}else if (this.key == "exit") {
+		} else if (this.key == "exit") {
 			this.state.currentLevel = 1;
 			this.state.initLevel();
 		}

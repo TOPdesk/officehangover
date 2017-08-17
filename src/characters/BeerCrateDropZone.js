@@ -42,19 +42,29 @@ export default class extends Phaser.Sprite {
 		}
 	}
 
+	findCrate() {
+		for (var pos = 0; pos < 20; ++pos) {
+			if (this.crates[pos] && this.crates[pos].alive) {
+				return this.crates[pos];
+			}
+		}		
+	}
+
 	handleCollision() {
 		if (this.state.justPressedSpace) {
+			
 			if (this.state.player.canDropOff()) {
 				this.state.player.dropoff();
 				this.makeCrate();
 			}
-		}
-		else {
-			// TODO: dialog is buggy for some reason...
-			/* if (this.state.player.canDropOff() && !this.isExecutingTask) {
-			 this.isExecutingTask = true;
-			 this.state.callAction(this.name, this);
-			 } */
+			else if (this.state.player.canPickup()) {
+				if (this.name === "BeerCrateDropZone1")  {				
+					this.state.callAction("cratespickup1", this.findCrate());
+				
+					// this.state.player.pickup(this);
+				}				
+			}
+			
 		}
 	}
 }

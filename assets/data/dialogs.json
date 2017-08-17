@@ -237,7 +237,7 @@
 			"message": "Okay, let's get these out of the way. Where do I take them?",
 			"replies": [{
 				"message": "Continue...",
-				"action": "close_dialog"
+				"actions": [ "close_dialog", "pickup_beercrate" ]
 			}]
 		}]
 	},
