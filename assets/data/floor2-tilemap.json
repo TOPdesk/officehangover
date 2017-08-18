@@ -54,6 +54,10 @@
                  "height":18,
                  "id":1,
                  "name":"Player_Start",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Start",
                  "visible":true,
@@ -66,18 +70,26 @@
                  "height":28,
                  "id":2,
                  "name":"Character1",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
                  "width":34,
-                 "x":129,
-                 "y":435
+                 "x":143,
+                 "y":518
                 }, 
                 {
                  "ellipse":true,
                  "height":27,
                  "id":3,
                  "name":"Character2",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -90,6 +102,10 @@
                  "height":28,
                  "id":4,
                  "name":"Character3",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -102,6 +118,10 @@
                  "height":21,
                  "id":5,
                  "name":"PC",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"PC",
                  "visible":true,
@@ -114,6 +134,10 @@
                  "height":24,
                  "id":6,
                  "name":"CoffeeMachine",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"CoffeeMachine",
                  "visible":true,
@@ -125,6 +149,10 @@
                  "height":94,
                  "id":7,
                  "name":"Door",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -136,6 +164,10 @@
                  "height":94,
                  "id":8,
                  "name":"Door",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -147,6 +179,10 @@
                  "height":94,
                  "id":9,
                  "name":"Door",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -158,6 +194,10 @@
                  "height":94,
                  "id":10,
                  "name":"Door",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -169,12 +209,31 @@
                  "height":94,
                  "id":11,
                  "name":"Door",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":58,
                  "x":834,
                  "y":1153
+                }, 
+                {
+                 "height":106,
+                 "id":12,
+                 "name":"KarioMart",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"KarioMart",
+                 "visible":true,
+                 "width":119,
+                 "x":102,
+                 "y":271
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -183,8 +242,12 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":12,
+ "nextobjectid":13,
  "orientation":"orthogonal",
+ "properties":
+    {
+
+    },
  "renderorder":"right-down",
  "tileheight":32,
  "tilesets":[

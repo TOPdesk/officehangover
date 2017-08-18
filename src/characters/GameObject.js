@@ -21,7 +21,7 @@ export default class extends Phaser.Sprite {
 	/** called whenever a player collides with this game object */
 	handleCollision() {
 		if (this.state.justPressedSpace) {
-			if (this.key == "pc" || this.key == "coffeemachine" || this.key == "mobile") {
+			if (this.key == "pc" || this.key == "coffeemachine" || this.key == "mobile" || this.key == "kariomart") {
 				this.isExecutingTask = true;
 				this.state.callAction(this.key, this);
 			}
