@@ -25,6 +25,9 @@ export default {
 		//Stop the following keys from propagating up to the browser
 		this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
 
+		//  Capture all key presses
+		this.game.input.keyboard.addCallbacks(this, null, null, this.keyPress);
+
 		this.playerData = JSON.parse(this.game.cache.getText(Constants.PLAYER_DATA));
 		this.currentLevel = 0; // zero meaning level 1, 1 meaning level 2 of course.
 	},
@@ -96,6 +99,17 @@ export default {
 			return a.body.bottom - b.body.bottom;
 		});
 
+	},
+	keyPress: function(char) {
+		// cheat key
+		if (char === 'n') {
+			this.currentLevel = 1;
+			this.initLevel();
+		// cheat key
+		} else if (char === 'p') {
+			this.currentLevel = 0;
+			this.initLevel();
+		}
 	},
 	initialiseCharacters: function () {
 
