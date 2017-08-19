@@ -6,7 +6,7 @@ export default class {
 		this.game = state.game;
 		this.objectname = objectname;
 		this.character = character;
-		this.dialogs = JSON.parse(this.game.cache.getText(Constants.DIALOGS));
+		this.dialogs = this.game.cache.getJSON(Constants.DIALOGS);
 	}
 
 	popup() {
@@ -26,10 +26,7 @@ export default class {
 	}
 
 	showDialog(objectDialogs, id) {
-		var game = this.game;
-		var state = this.state;
-		var dialog = this;
-
+		
 		this.state.uiBlocked = true;
 
 		// calculate a reasonable margin, 10% of width or 10% of height, whichever is smaller.
@@ -45,9 +42,12 @@ export default class {
 		var yy = this.y;
 
 		this.objects = [];
+		this.optionWidgets = [];
+		this.replies = [];
+		this.objectDialogs = objectDialogs;
 
 		// semi-transparent black background
-		var bg = game.add.graphics(game.width, game.height);
+		var bg = this.game.add.graphics(this.game.width, this.game.height);
 		bg.beginFill("#000000", 0.7);
 		bg.x = this.x;
 		bg.y = this.y;
@@ -56,11 +56,11 @@ export default class {
 
 		this.objects.push(bg);
 
-		var currentObjectDialog = dialog.findDialog(objectDialogs.messages, id);
-
-		var msgWidget = this.game.add.text(this.x, yy, currentObjectDialog.message, {'fill': '#FFA500'});
+		this.currentObjectDialog = this.findDialog(objectDialogs.messages, id);
+		
+		var msgWidget = this.game.add.text(this.x, yy, this.currentObjectDialog.message, {'fill': '#FFA500'});
 		msgWidget.wordWrap = true;
-		msgWidget.wordWrapWidth = dialog.w;
+		msgWidget.wordWrapWidth = this.w;
 
 		msgWidget.fixedToCamera = true;
 		const PADDING = 16;
@@ -68,62 +68,101 @@ export default class {
 
 		this.objects.push(msgWidget);
 
-		currentObjectDialog.replies.forEach(function (replyOption) {
+		for (let replyOption of this.currentObjectDialog.replies) {
 			if (replyOption.condition) {
-				var result = dialog.conditionsSatisfyGameState(replyOption.condition);
-				if (!result) return; // skip this option
+				var result = this.conditionsSatisfyGameState(replyOption.condition);
+				if (!result) continue; // skip this option
 			}
 
-			var optionWidget = game.add.text(dialog.x, yy, replyOption.message, {'fill': '#00FFA5'});
+			var optionWidget = this.game.add.text(this.x, yy, replyOption.message, {'fill': '#00FFA5'});
 			optionWidget.wordWrap = true;
-			optionWidget.wordWrapWidth = dialog.w;
+			optionWidget.wordWrapWidth = this.w;
 
 			yy += optionWidget.height + PADDING;
 
 			optionWidget.fixedToCamera = true;
 			optionWidget.inputEnabled = true;
 			optionWidget.events.onInputDown.add(function () {
-				dialog.close();
-				if (replyOption.goto) {
-					dialog.showDialog(objectDialogs, replyOption.goto);
-				}
-				if (replyOption.actions) {
-					replyOption.actions.forEach(function (action) {
-						if (action == "dirtydishes"){
-							this.character.dirtyDishesAction();
-						} else if(action == "pick_mobile"){
-							this.character.pickMobile();
-						} else if (action === "pickup_beercrate") {
-							this.state.player.pickup(this.character);
-						}
-					}, this);
-				}
-				if (replyOption.setflag) {
-					replyOption.setflag.forEach(function (flag) {
-						console.log("Flag " + flag + " is set");
-						state.flags[flag] = 1;
-					});
-				}
-				if (replyOption.clearflag) {
-					replyOption.clearflag.forEach(function (flag) {
-						console.log("Flag " + flag + " is cleared");
-						state.flags[flag] = 0;
-					});
-				}
-
+				this.activateOption(objectDialogs, replyOption);
 			}, this);
 
-			dialog.objects.push(optionWidget);
-		}, this);
+			this.replies.push(replyOption);
+			this.objects.push(optionWidget);
+			this.optionWidgets.push(optionWidget);
+		}
+
+		this.focusOption(0);
+	}
+
+	spacePressed() {
+		let replyOption = this.replies[this.selectedIndex];
+		if (replyOption !== undefined) {
+			this.activateOption(this.objectDialogs, replyOption);
+		}
+	}
+
+	upPressed() {
+		this.focusOption(this.selectedIndex - 1);
+	}
+	downPressed() {
+		this.focusOption(this.selectedIndex + 1);
+	}
+
+	focusOption(index) {
+		// clear the animation on the old option
+		if (this.tween !== undefined) { this.tween.stop(); }
+		let oldOption = this.optionWidgets[this.selectedIndex];
+		if (oldOption !== undefined) oldOption.alpha = 1.0;
+
+		// selected a new option and wrap around the index
+		this.selectedIndex = index;
+		if (this.selectedIndex < 0) this.selectedIndex = this.optionWidgets.length-1;
+		if (this.selectedIndex >= this.optionWidgets.length) this.selectedIndex = 0;
+
+		// animate the newly selected option
+		let option = this.optionWidgets[this.selectedIndex];
+		this.tween = this.game.add.tween(option).to( { alpha: 0.5 }, 300, "Linear", true).yoyo().loop();
+	}
+
+	activateOption(objectDialogs, replyOption) {
+		this.close();
+		if (replyOption.actions) {
+			for (let action of replyOption.actions) {
+				if (action == "dirtydishes"){
+					this.character.dirtyDishesAction();
+				} else if(action == "pick_mobile"){
+					this.character.pickMobile();
+				} else if (action === "pickup_beercrate") {
+					this.state.player.pickup(this.character);
+				}
+			}
+		}
+		if (replyOption.setflag) {
+			for (let flag of replyOption.setflag) {
+				console.log("Flag " + flag + " is set");
+				this.state.flags[flag] = 1;
+			}
+		}
+		if (replyOption.clearflag) {
+			for (let flag of replyOption.clearflag) {
+				console.log("Flag " + flag + " is cleared");
+				this.state.flags[flag] = 0;
+			}
+		}
+		if (replyOption.goto) {
+			this.showDialog(objectDialogs, replyOption.goto);
+		}
+		else {
+			this.state.closeDialog();
+		}
 	}
 
 	findDialogStart(startOptions, objectMessages) {
-		var dialog = this;
 		for (var i = 0; i < startOptions.length; i++) {
 			var startOptionId = startOptions[i];
-			var startOptionValue = dialog.findDialog(objectMessages, startOptionId);
+			var startOptionValue = this.findDialog(objectMessages, startOptionId);
 			// first option that has no condition or a condition that is satisfied
-			if (!startOptionValue.condition || dialog.conditionsSatisfyGameState(startOptionValue.condition)) {
+			if (!startOptionValue.condition || this.conditionsSatisfyGameState(startOptionValue.condition)) {
 				return startOptionId;
 			}
 		}
@@ -150,10 +189,12 @@ export default class {
 	close() {
 		this.state.uiBlocked = false;
 		this.character.isExecutingTask = false;
+		// this.game.input.keyboard.removeCallbacks(this); //TODO
 
 		// destroy all components of the dialog
 		this.objects.forEach(function (element) {
 			element.destroy();
 		});
 	}
+	
 }

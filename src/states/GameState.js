@@ -22,6 +22,19 @@ export default {
 		this.cursors = this.game.input.keyboard.createCursorKeys();
 		this.spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
+		// Capture key presses for dialogs
+		this.cursors.up.onDown.add(function() {
+			if(this.dialog) { this.dialog.upPressed(); }
+		}, this);
+
+		this.cursors.down.onDown.add(function() { 
+			if(this.dialog) { this.dialog.downPressed(); }
+		}, this);
+		this.spaceKey.onDown.add(function() {
+			if(this.dialog) { this.dialog.spacePressed(); }
+			else { this.justPressedSpace = 1; }
+		}, this);
+
 		//Stop the following keys from propagating up to the browser
 		this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
 
@@ -76,16 +89,6 @@ export default {
 		this.game.physics.arcade.collide(this.player, this.collisionLayer);
 		this.game.physics.arcade.collide(this.characters, this.collisionLayer, function (character) {character.setRandomDirection();}, null, this);
 
-		/** record the moment that we first start pressing space */
-		var spaceKeyState = !!(this.spaceKey.isDown);
-		if (spaceKeyState && !this.prevSpaceKeyState) {
-			this.justPressedSpace = 1;
-		}
-		else {
-			this.justPressedSpace = 0;
-		}
-		this.prevSpaceKeyState = spaceKeyState;
-
 		/*this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
 		this.game.physics.arcade.collide(this.player, this.enemies, this.attack, null, this);*/
 		if (!this.uiBlocked) {
@@ -103,6 +106,8 @@ export default {
 			return a.body.bottom - b.body.bottom;
 		});
 
+		// any space action should be handled before this.
+		this.justPressedSpace = 0;
 	},
 	keyPress: function(char) {
 		// cheat key
@@ -268,8 +273,14 @@ export default {
 		this.openDialog(objectname, character);
 	},
 	openDialog: function (objectname, character) {
+
+		if (this.dialog) { return; } // Can't activate dialog when one is already active.
+
 		this.dialog = new Dialog(this, objectname, character);
 		this.dialog.popup();
 	},
+	closeDialog() {
+		delete (this.dialog);
+	}
 
 };
