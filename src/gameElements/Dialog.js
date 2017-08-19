@@ -63,7 +63,8 @@ export default class {
 		msgWidget.wordWrapWidth = dialog.w;
 
 		msgWidget.fixedToCamera = true;
-		yy += this.lineHeight; //TODO - multi-line?
+		const PADDING = 16;
+		yy += msgWidget.height + 2 * PADDING;
 
 		this.objects.push(msgWidget);
 
@@ -77,7 +78,7 @@ export default class {
 			optionWidget.wordWrap = true;
 			optionWidget.wordWrapWidth = dialog.w;
 
-			yy += dialog.lineHeight; //TODO: multi-line?
+			yy += optionWidget.height + PADDING;
 
 			optionWidget.fixedToCamera = true;
 			optionWidget.inputEnabled = true;
