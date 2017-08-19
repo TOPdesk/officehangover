@@ -8,6 +8,7 @@ export default class extends Phaser.Sprite {
 		this.data = Object.create(data);
 		this.playerData = state.playerData;
 		this.anchor.setTo(0.5);
+		this.scale.setTo(1.5);
 		this.x = x;
 		this.y = y;
 		this.spriteName = spriteName.toLowerCase();
