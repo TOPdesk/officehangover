@@ -41,6 +41,8 @@ export default {
 			this.load.json('floor1-tilemap-json', 'assets/data/floor1-tilemap.json');
 			this.load.json('floor2-tilemap-json', 'assets/data/floor2-tilemap.json');
 			this.load.json('tileset.json', 'assets/data/tileset.json');
+
+			this.load.audio('door_open', 'assets/sounds/door_open.mp3');
 		}
 	},
 	processMaps: function () {

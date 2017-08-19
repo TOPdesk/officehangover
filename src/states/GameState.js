@@ -30,6 +30,10 @@ export default {
 
 		this.playerData = JSON.parse(this.game.cache.getText(Constants.PLAYER_DATA));
 		this.currentLevel = 0; // zero meaning level 1, 1 meaning level 2 of course.
+
+		this.sfx = {};
+		this.sfx.door_open = this.game.add.audio('door_open');
+		// add other sounds to sfx dictionary here!
 	},
 	create: function () {
 

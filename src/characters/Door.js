@@ -31,6 +31,7 @@ export default class extends Phaser.Sprite {
 
 	openDoor() {
 		this.play('open');
+		this.state.sfx.door_open.play();
 		var bodySize = this.data.body_size;
 		this.body.setSize(0, 0, bodySize.left, bodySize.top);
 	}
