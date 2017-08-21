@@ -216,7 +216,7 @@
       ],
       "messages": [{
         "id": 1,
-        "message": "HEY! Is Chuck. The plant",
+        "message": "HEY! It is Chuck. The plant!",
         "replies": [{
           "message": "Continue ...",
           "action": "close_dialog"
