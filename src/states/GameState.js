@@ -281,6 +281,7 @@ export default {
 
 		if (this.dialog) { return; } // Can't activate dialog when one is already active.
 
+		this.player.stopMoving();
 		this.dialog = new Dialog(this, objectname, character);
 		this.dialog.popup();
 	},
