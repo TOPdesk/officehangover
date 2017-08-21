@@ -17,7 +17,7 @@
 			]
 		}, {
 			"id": 4,
-			"message": "Please fix me, error e1029",
+			"message": "Grinder out of alignment. Error e1029. Please fix me!",
 			"replies": [{
 					"message": "Ok.",
 					"actions": ["close_dialog"]
@@ -40,10 +40,31 @@
 			"replies": [{
 				"message": "Coffee",
 				"goto": 9
+			}, {
+				"message": "Cappuccino",
+				"goto": 9				
+			}, {
+				"message": "Choco deluxe",
+				"goto": 9				
 			}]
 		}, {
 			"id": 9,
-			"condition": "return state.flags.l1_coffee_machine_fixed;",
+			"message": "Do you want milk or sugar?",
+			"replies": [{
+				"message": "No thanks",
+				"goto": 10
+			}, {
+				"message": "Milk",
+				"goto": 10				
+			}, {
+				"message": "Sugar",
+				"goto": 10	
+			}, {
+				"message": "Milk and Sugar",
+				"goto": 10	
+			}]
+		}, {
+			"id": 10,
 			"message": "The machine serves you your drink",
 			"replies": [{
 				"message": "Ok",
@@ -58,7 +79,7 @@
 				"id": 1,
 				"message": "Oof! What happened last night? I never remember these office parties. Oh well, maybe it's for the best",
 				"replies": [{
-					"message": "Continue...",
+					"message": "Press space to continue...",
 					"goto": 2
 				}]
 			},
@@ -182,7 +203,7 @@
 		],
 		"messages": [{
 			"id": 1,
-			"message": "TEMPORARY: HEY! This is my mobile phone. Now I just need to find the rest of my stuff",
+			"message": "HEY! This is my mobile phone. Now I just need to find the rest of my stuff. I should check the other floors",
 			"replies": [{
 				"message": "Continue ...",
 				"actions": [ "close_dialog", "pick_mobile" ]
@@ -247,14 +268,14 @@
 		],
 		"messages": [{
 			"id": 1,
-			"message": "Welcome at TOPdesk",
+			"message": "Did you enjoy the party?",
 			"replies": [{
 				"message": "Continue...",
 				"goto": 2
 			}]
 		},  {
 			"id": 2,
-			"message": "Those beercrates are blocking the way to the second floor. I hope someone pick them up soon.",
+			"message": "Those beercrates are blocking the way to the second floor. I hope someone will pick them up soon.",
 			"replies": [{
 				"message": "Continue..."
 			}]
@@ -266,7 +287,7 @@
 		],
 		"messages": [{
 			"id": 1,
-			"message": "Did you enjoy the party?",
+			"message": "Wow, that was some party last night, huh?",
 			"replies": [{
 				"message": "Continue...",
 				"action": "close_dialog"
