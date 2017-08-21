@@ -1,8 +1,9 @@
 export default class extends Phaser.Sprite {
-	constructor(state, x, y, key) {
+	constructor(state, x, y, key, type) {
 		super(state.game, x, y, state.playerData[key].sprite);
 
 		this.key = key.toLowerCase();
+		this.type = (type == null) ? "" : type.toLowerCase();
 		this.state = state;
 		this.game = state.game;
 		this.data = Object.create(state.playerData[key]);
@@ -21,7 +22,7 @@ export default class extends Phaser.Sprite {
 	/** called whenever a player collides with this game object */
 	handleCollision() {
 		if (this.state.justPressedSpace) {
-			if (this.key == "pc" || this.key == "coffeemachine" || this.key == "mobile" || this.key == "kariomart" || this.key == "chuck") {
+			if (this.type == "actionable") {
 				this.isExecutingTask = true;
 				this.state.callAction(this.key, this);
 			}

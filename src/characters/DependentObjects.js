@@ -2,7 +2,7 @@ import GameObject from "./GameObject";
 
 export default class extends GameObject {
 	constructor (state, x, y, key){
-		super (state, x, y, key);
+		super (state, x, y, key, null);
 
 		this.dependentObject = null;
 
