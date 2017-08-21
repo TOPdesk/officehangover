@@ -226,6 +226,17 @@
                  "width":0,
                  "x":1350,
                  "y":120
+                },
+                {
+                 "height":0,
+                 "id":35,
+                 "name":"chuck",
+                 "rotation":0,
+                 "type":"chuck",
+                 "visible":true,
+                 "width":0,
+                 "x":700,
+                 "y":1500
                 }],
          "opacity":1,
          "type":"objectgroup",

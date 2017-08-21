@@ -210,6 +210,19 @@
 			}]
 		}]
 	},
+    "chuck":{
+      "start_options": [
+        1
+      ],
+      "messages": [{
+        "id": 1,
+        "message": "HEY! Is Chuck. The plant",
+        "replies": [{
+          "message": "Continue ...",
+          "action": "close_dialog"
+        }]
+      }]
+    },
 	"character1": {
 		"start_options": [
 			1

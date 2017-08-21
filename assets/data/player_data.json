@@ -104,6 +104,19 @@
     },
     "sprite": "mobile"
   },
+  "chuck" : {
+    "body_size": {
+      "width": 64,
+      "height": 32,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 104,
+      "height": 52
+    },
+    "sprite": "chuck"
+  },
   "exit" : {
     "body_size": {
       "width": 64,
@@ -131,7 +144,7 @@
   "animation_walk_down": [130,131,132,133,134,135,136,137,138],
   "animation_walk_up": [104,105,106,107,108,109,110,111,112],
   "animation_wake_up": [265,264,263,262,261,260,14,40,14,40,130],
-  "player_speed": 300,
+  "player_speed": 500,
   "frames": 5,
   "velocity":{
     "character1": {

@@ -34,3 +34,4 @@ export const TILESET_DATA = 'tileset1.json';
 export const TILEMAP_FLOORS = ['tilemap_floor1', 'tilemap_floor2'];
 
 export const MOBILE_SPRITE = 'mobile';
+export const PLANT_SPRITE = 'chuck';
