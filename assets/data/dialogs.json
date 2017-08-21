@@ -68,6 +68,7 @@
 			"message": "The machine serves you your drink",
 			"replies": [{
 				"message": "Ok",
+				"setflag": ["l1_get_coffee"],
 				"actions": ["close_dialog", "increase_energy"]
 			}]
 		}]
@@ -170,6 +171,47 @@
             }
 		]
 	},
+	"coffeeadict": {
+		"start_options": [3],
+		"messages": [{
+				"id": 1,
+                "condition": "return !(state.flags.l1_get_coffee);",
+				"message": "TEMPORARY: The coffee machine is not working again. I'd kill for a coffee.",
+				"replies": [{
+					"message": "Ok...",
+					"goto": 2
+				}]
+			},
+			{
+				"id": 2,
+				"message": "TEMPORARY: The last borrel I found something. I'll exchange it for a coffee",
+				"replies": [{
+					"message": "(This guy has a problem with the coffee)",
+					"action": "close_dialog"
+				}]
+			},
+			{
+				"id": 3,
+				"message": "TEMPORARY: Hey you have a coffee! I NEED IT!!!! ",
+				"replies": [{
+					"message": "Give the coffee to the addict guy",
+					"goto": 4
+				},
+				{
+					"message": "Keep the coffee for yourself",
+					"action": "close_dialog"
+				}]
+			},
+			{
+				"id": 4,
+				"message": "TEMPORARY: Thank you so much! Here you have in return.",
+				"replies": [{
+					"message": "The addict guy returns you your keys!",
+					"action": "close_dialog"
+				}]
+			}
+		]
+	},
 	"dirtydishes":{
 		"start_options": [1, 2],
 		"messages": [{
@@ -181,21 +223,20 @@
 				"action": "close_dialog"
 			}]
 		},
-			{
-				"id": 2,
-				"message": "When I said I was wondering who is going to clean them, I already knew the answer. Me!",
-				"replies": [{
-					"message": "Clean the dishes",
-					"actions": ["dirtydishes"],
-                    "setflag": ["l1_clean_dishes"]
-					},
-					{
-						"message": "I'll do it later.",
-						"action": "close_dialog"
-					}
-				]
-			}
-		]
+		{
+			"id": 2,
+			"message": "When I said I was wondering who is going to clean them, I already knew the answer. Me!",
+			"replies": [{
+				"message": "Clean the dishes",
+				"actions": ["dirtydishes"],
+				"setflag": ["l1_clean_dishes"]
+				},
+				{
+					"message": "I'll do it later.",
+					"action": "close_dialog"
+				}
+			]
+		}]
 	},
 	"mobile":{
 		"start_options": [
