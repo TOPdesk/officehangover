@@ -123,23 +123,35 @@
 
                     },
                  "rotation":0,
-                 "type":"PC",
+                 "type":"actionable",
                  "visible":true,
                  "width":24,
                  "x":659,
-                 "y":506
+                 "y":506,
+				"properties":
+					{
+						"subtype":"PC"
+					},
+				"propertytypes":
+					{
+						"subtype":"string"
+					}
                 }, 
                 {
                  "ellipse":true,
                  "height":24,
                  "id":6,
                  "name":"CoffeeMachine",
-                 "properties":
-                    {
-
-                    },
+				"properties":
+					{
+						"subtype":"CoffeeMachine"
+					},
+				"propertytypes":
+					{
+						"subtype":"string"
+					},
                  "rotation":0,
-                 "type":"CoffeeMachine",
+                 "type":"actionable",
                  "visible":true,
                  "width":25,
                  "x":1085,
@@ -224,12 +236,16 @@
                  "height":106,
                  "id":12,
                  "name":"KarioMart",
-                 "properties":
-                    {
-
-                    },
+				"properties":
+					{
+						"subtype":"KarioMart"
+					},
+				"propertytypes":
+					{
+						"subtype":"string"
+					},
                  "rotation":0,
-                 "type":"KarioMart",
+                 "type":"actionable",
                  "visible":true,
                  "width":119,
                  "x":102,
