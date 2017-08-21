@@ -123,7 +123,7 @@
 
                     },
                  "rotation":0,
-                 "type":"actionable",
+                 "type":"Actionable",
                  "visible":true,
                  "width":24,
                  "x":659,
@@ -151,7 +151,7 @@
 						"subtype":"string"
 					},
                  "rotation":0,
-                 "type":"actionable",
+                 "type":"Actionable",
                  "visible":true,
                  "width":25,
                  "x":1085,
@@ -245,7 +245,7 @@
 						"subtype":"string"
 					},
                  "rotation":0,
-                 "type":"actionable",
+                 "type":"Actionable",
                  "visible":true,
                  "width":119,
                  "x":102,
