@@ -130,6 +130,32 @@
     },
     "sprite": null
   },
+  "postit" : {
+    "body_size": {
+      "width": 32,
+      "height": 32,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 44,
+      "height": 44
+    },
+    "sprite": null
+  },
+  "firstaid" : {
+    "body_size": {
+      "width": 32,
+      "height": 32,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 44,
+      "height": 44
+    },
+    "sprite": null
+  },
   "door" : {
     "body_size": {
       "width": 64,

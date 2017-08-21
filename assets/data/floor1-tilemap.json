@@ -237,7 +237,51 @@
                  "width":0,
                  "x":700,
                  "y":1500
-                }],
+                },
+				{
+				"height":32,
+				"id":36,
+				"name":"PostIt1",
+				"rotation":0,
+				"type":"postit",
+				"visible":true,
+				"width":32,
+				"x":320,
+				"y":320
+				},
+				{
+				"height":32,
+				"id":37,
+				"name":"PostIt2",
+				"rotation":0,
+				"type":"postit",
+				"visible":true,
+				"width":32,
+				"x":416,
+				"y":320
+				},
+				{
+				"height":32,
+				"id":38,
+				"name":"PostIt3",
+				"rotation":0,
+				"type":"postit",
+				"visible":true,
+				"width":32,
+				"x":1376,
+				"y":416
+				},
+				{
+				"height":32,
+				"id":39,
+				"name":"FirstAidKit",
+				"rotation":0,
+				"type":"firstaid",
+				"visible":true,
+				"width":32,
+				"x":1696,
+				"y":96
+				}],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
