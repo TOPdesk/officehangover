@@ -252,14 +252,23 @@
 		}]
 	},
     "chuck":{
-      "start_options": [
-        1
-      ],
+      "start_options": [1],
       "messages": [{
         "id": 1,
         "message": "HEY! It is Chuck. The plant!",
         "replies": [{
           "message": "Continue ...",
+          "action": "close_dialog"
+        }]
+      }]
+    },
+    "postit":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "",
+        "replies": [{
+          "message": "I hate baby Mario",
           "action": "close_dialog"
         }]
       }]
