@@ -22,6 +22,7 @@ export const CHARACTER1_SPRITE = 'character1';
 export const CHARACTER2_SPRITE = 'character2';
 export const CHARACTER3_SPRITE = 'character3';
 export const CLEANINGLADY_SPRITE = 'cleaninglady';
+export const COFFEEADDICT_SPRITE = 'coffeeaddict';
 export const DISH_WASHER_SPRITE = 'dish_washer_sprite';
 export const DIRTY_DISHES_SPRITE = 'dirty_dishes_sprite';
 
