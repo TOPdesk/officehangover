@@ -106,8 +106,16 @@
                  "visible":true,
                  "width":62,
                  "x":943,
-                 "y":81.6666666666667
-                }, 
+                 "y":81.6666666666667,
+				"properties":
+					{
+						"subtype":"Exit"
+					},
+				"propertytypes":
+					{
+						"subtype":"string"
+					}
+                },
                 {
                  "height":94,
                  "id":19,
@@ -221,66 +229,115 @@
                  "id":34,
                  "name":"mobile",
                  "rotation":0,
-                 "type":"Mobile",
+                 "type":"actionable",
                  "visible":true,
                  "width":0,
                  "x":1350,
-                 "y":120
+                 "y":120,
+				"properties":
+					{
+						"subtype":"Mobile"
+					},
+				"propertytypes":
+					{
+						"subtype":"string"
+					}
                 },
                 {
                  "height":0,
                  "id":35,
                  "name":"chuck",
                  "rotation":0,
-                 "type":"chuck",
+                 "type":"actionable",
                  "visible":true,
                  "width":0,
                  "x":700,
-                 "y":1500
+                 "y":1500,
+				"properties":
+					{
+						"subtype":"chuck"
+					},
+				"propertytypes":
+					{
+						"subtype":"string"
+					}
                 },
 				{
 				"height":32,
 				"id":36,
 				"name":"PostIt1",
 				"rotation":0,
-				"type":"postit",
+				"type":"actionable",
 				"visible":true,
 				"width":32,
 				"x":320,
-				"y":320
+				"y":320,
+				"properties":
+					{
+						"subtype":"postit"
+					},
+				"propertytypes":
+					{
+						"subtype":"string"
+					}
 				},
 				{
 				"height":32,
 				"id":37,
 				"name":"PostIt2",
 				"rotation":0,
-				"type":"postit",
+				"type":"actionable",
+				"subtype": "",
 				"visible":true,
 				"width":32,
 				"x":416,
-				"y":320
+				"y":320,
+				"properties":
+					{
+						"subtype":"postit"
+					},
+				"propertytypes":
+					{
+						"subtype":"string"
+					}
 				},
 				{
 				"height":32,
 				"id":38,
 				"name":"PostIt3",
 				"rotation":0,
-				"type":"postit",
+				"type":"actionable",
 				"visible":true,
 				"width":32,
 				"x":1376,
-				"y":416
+				"y":416,
+				"properties":
+					{
+						"subtype":"postit"
+					},
+				"propertytypes":
+					{
+						"subtype":"string"
+					}
 				},
 				{
 				"height":32,
 				"id":39,
 				"name":"FirstAidKit",
 				"rotation":0,
-				"type":"firstaid",
+				"type":"actionable",
 				"visible":true,
 				"width":32,
 				"x":1696,
-				"y":96
+				"y":96,
+					"properties":
+					{
+						"subtype":"firstaid"
+					},
+					"propertytypes":
+					{
+						"subtype":"string"
+					}
 				}],
          "opacity":1,
          "type":"objectgroup",
