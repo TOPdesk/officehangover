@@ -262,13 +262,57 @@
         }]
       }]
     },
-    "postit":{
+    "postit1":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Ugh! I smell like a human",
+        "replies": [{
+          "message": "sniff.. sniff..",
+          "action": "close_dialog"
+        }]
+      }]
+    },
+    "postit2":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "The post-it reads: Look behind you a three headed monkey!",
+        "replies": [{
+          "message": "WHERE!!!!",
+          "action": "close_dialog"
+        }]
+      }]
+    },
+    "postit3":{
       "start_options": [1],
       "messages": [{
         "id": 1,
 		"message": "The post-it reads: I hate baby Mario",
         "replies": [{
           "message": "Allrighty then...",
+          "action": "close_dialog"
+        }]
+      }]
+    },
+    "postit4":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "The post-it reads: I hate baby Mario",
+        "replies": [{
+          "message": "Allrighty then...",
+          "action": "close_dialog"
+        }]
+      }]
+    },
+    "firstaidkit":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+        "message": "This may be helpful for my HUGE headache...",
+        "replies": [{
+          "message": "(glup,glup)",
           "action": "close_dialog"
         }]
       }]
