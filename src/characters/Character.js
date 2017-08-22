@@ -13,9 +13,15 @@ export default class extends Phaser.Sprite {
 		this.y = y;
 		this.spriteName = obj.name.toLowerCase();
 		this.initialFrame = state.playerData[character].initial_frame;
+		
+		// isExecutingTask is set to true to prevent movement while you are interacting with a character through a dialog. 
 		this.isExecutingTask = false;
+
+		// isCharacterOnHold makes a character pause and restart after a collision
 		this.isCharacterOnHold = false;
-		this.isStopped = obj.properties && obj.properties["stopped"];
+
+		// isStopped is a flag to make a character permanently stop moving.
+		this.isStopped = obj.properties && !!obj.properties["stopped"];
 
 		this.animations.add('walk_right', this.playerData.animation_walk_right, this.playerData.frames, true);
 		this.animations.add('walk_up', this.playerData.animation_walk_up, this.playerData.frames, true);
@@ -41,6 +47,7 @@ export default class extends Phaser.Sprite {
 	}
 
 	setDirection(direction) {
+
 		if (direction == 0) {
 			this.body.velocity.y = 0;
 			this.body.velocity.x = 100;
@@ -67,9 +74,11 @@ export default class extends Phaser.Sprite {
 		this.stopMoving();
 		this.isCharacterOnHold = true;
 
-		this.game.time.events.add(Phaser.Timer.SECOND * 4, function () {
-			this.isCharacterOnHold = false;
-		}, this);
+		if (!this.isStopped) {
+			this.game.time.events.add(Phaser.Timer.SECOND * 4, function () {
+				this.isCharacterOnHold = false;
+			}, this);
+		}
 
 		if (this.state.justPressedSpace && !this.isExecutingTask) {
 			// invoke the dialog on this character using the spriteName

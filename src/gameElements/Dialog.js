@@ -134,6 +134,9 @@ export default class {
 					this.character.pickMobile();
 				} else if (action === "pickup_beercrate") {
 					this.state.player.pickup(this.character);
+				} else if (action === "move_around") {
+					this.character.isStopped = false;
+					this.character.setRandomDirection();
 				}
 			}
 		}

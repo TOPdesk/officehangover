@@ -39,6 +39,7 @@
 			"message": "What would you like to drink?",
 			"replies": [{
 				"message": "Coffee",
+				"setflag": ["l1_get_coffee"],
 				"goto": 9
 			}, {
 				"message": "Cappuccino",
@@ -68,7 +69,6 @@
 			"message": "The machine serves you your drink",
 			"replies": [{
 				"message": "Ok",
-				"setflag": ["l1_get_coffee"],
 				"actions": ["close_dialog", "increase_energy"]
 			}]
 		}]
@@ -204,10 +204,10 @@
 			},
 			{
 				"id": 4,
-				"message": "Thank you so much! Here you have in return.",
+				"message": "Thank you so much! Here you have something in return. I'll let you through now",
 				"replies": [{
 					"message": "The addict guy returns you your keys!",
-					"action": "close_dialog"
+					"actions": [ "close_dialog", "move_around" ]
 				}]
 			}
 		]
