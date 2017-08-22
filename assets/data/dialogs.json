@@ -266,9 +266,9 @@
       "start_options": [1],
       "messages": [{
         "id": 1,
-		"message": "",
+		"message": "The post-it reads: I hate baby Mario",
         "replies": [{
-          "message": "I hate baby Mario",
+          "message": "Allrighty then...",
           "action": "close_dialog"
         }]
       }]
