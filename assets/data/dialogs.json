@@ -273,6 +273,17 @@
         }]
       }]
     },
+    "lift":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "It reads: The lift has been inactive since that incident with the North-Korean spy...",
+        "replies": [{
+          "message": "Continue...",
+          "action": "close_dialog"
+        }]
+      }]
+    },
 	"character1": {
 		"start_options": [
 			1
