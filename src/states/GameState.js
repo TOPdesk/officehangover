@@ -159,7 +159,7 @@ export default {
 				character.body.collideWorldBounds = true;
 				if(character.isStopped){
 					character.body.immovable = true;
-					character.body.moves = false;
+					character.stopMoving();
 				}else{
 					character.setRandomDirection();
 				}

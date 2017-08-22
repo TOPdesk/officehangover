@@ -88,7 +88,7 @@ export default class extends Phaser.Sprite {
 
 	/** update logic, called every game tick */
 	update() {
-		if (this.isCharacterOnHold == false && this.isExecutingTask == false && (this.body.velocity.x == 0 && this.body.velocity.y == 0)) {
+		if (this.isCharacterOnHold == false && this.isExecutingTask == false && (this.body.velocity.x == 0 && this.body.velocity.y == 0)&& !this.isStopped) {
 			this.setDirection(0);
 		}
 	}
