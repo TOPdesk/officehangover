@@ -1,6 +1,6 @@
 export default class extends Phaser.Sprite {
-	constructor(state, x, y, spriteName, data, character, isBodyFrame) {
-		super(state.game, x, y, spriteName.toLowerCase(), state.playerData[character].initial_frame);
+	constructor(state, x, y, obj, data, character, isBodyFrame) {
+		super(state.game, x, y, obj.name.toLowerCase(), state.playerData[character].initial_frame);
 		isBodyFrame = (typeof isBodyFrame == undefined) ? false : isBodyFrame;
 
 		this.state = state;
@@ -11,10 +11,11 @@ export default class extends Phaser.Sprite {
 		this.scale.setTo(1.5);
 		this.x = x;
 		this.y = y;
-		this.spriteName = spriteName.toLowerCase();
+		this.spriteName = obj.name.toLowerCase();
 		this.initialFrame = state.playerData[character].initial_frame;
 		this.isExecutingTask = false;
 		this.isCharacterOnHold = false;
+		this.isStopped = obj.properties && obj.properties["stopped"];
 
 		this.animations.add('walk_right', this.playerData.animation_walk_right, this.playerData.frames, true);
 		this.animations.add('walk_up', this.playerData.animation_walk_up, this.playerData.frames, true);
@@ -32,6 +33,7 @@ export default class extends Phaser.Sprite {
 			let { width, height, left, top } = data.body_size;
 			this.body.setSize(width, height, left, top);
 		}
+
 	}
 
 	setRandomDirection() {

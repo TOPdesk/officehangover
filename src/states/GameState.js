@@ -90,7 +90,7 @@ export default {
 		this.game.physics.arcade.collide(this.characters, this.player);
 		this.game.physics.arcade.overlap(this.charactersCollisionFrame, this.playerCollisionFrame, function (character) {character.parent.handleCollision();}, null, this);
 		this.game.physics.arcade.collide(this.player, this.collisionLayer);
-		this.game.physics.arcade.collide(this.characters, this.collisionLayer, function (character) {character.setRandomDirection();}, null, this);
+		this.game.physics.arcade.collide(this.characters, this.collisionLayer, function (character) {if(!character.isStopped){character.setRandomDirection();}}, null, this);
 
 		/*this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
 		this.game.physics.arcade.collide(this.player, this.enemies, this.attack, null, this);*/
@@ -143,21 +143,27 @@ export default {
 			obj.y = Math.round(obj.y / 32) * 32;
 
 			if (obj.type == "Start") {
-				this.player = new Player(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
+				this.player = new Player(this, obj.x, obj.y, obj, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
 
-				this.playerCollisionFrame = new Player(this, 0, 0, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
+				this.playerCollisionFrame = new Player(this, 0, 0, obj, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
 				this.player.addChild(this.playerCollisionFrame);
 				this.player.body.collideWorldBounds = true;
 				this.game.camera.follow(this.player);
 				this.visibleCharacters.add(this.player);
 			}
 			else if (obj.type == "Character") {
-				var character = new Character(this, obj.x, obj.y, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
+				var character = new Character(this, obj.x, obj.y, obj, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
 				this.visibleCharacters.add(character);
-				var characterFrame = new Character(this, 0, 0, obj.name, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
+				var characterFrame = new Character(this, 0, 0, obj, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
 				character.addChild(characterFrame);
 				character.body.collideWorldBounds = true;
-				character.setRandomDirection();
+				if(character.isStopped){
+					character.body.immovable = true;
+					character.body.moves = false;
+				}else{
+					character.setRandomDirection();
+				}
+
 				this.characters.push(character);
 				this.charactersCollisionFrame.push(characterFrame);
 			}

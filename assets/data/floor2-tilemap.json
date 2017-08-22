@@ -104,14 +104,14 @@
                  "name":"coffeeaddict",
                  "properties":
                     {
-
+                        "stopped": "1"
                     },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
                  "width":26,
-                 "x":1447,
-                 "y":1026
+                 "x":992,
+                 "y":96
                 }, 
                 {
                  "ellipse":true,

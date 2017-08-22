@@ -3,8 +3,8 @@ import Follower from "./Follower";
 import * as Constants from "../constants";
 
 export default class extends Character {
-	constructor(state, x, y, spriteName, data, character, isBodyFrame) {
-		super(state, x, y, spriteName, data, character, isBodyFrame);
+	constructor(state, x, y, obj, data, character, isBodyFrame) {
+		super(state, x, y, obj, data, character, isBodyFrame);
 
 		this.pickupSprite = null;
 		this.pickupTimer = 0; // delay before the next pick-up / drop-off action can take place.
