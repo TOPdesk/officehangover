@@ -257,6 +257,22 @@
                  "width":92.25,
                  "x":961,
                  "y":929
+                },
+                {
+                 "height":32,
+                 "id":15,
+                 "name":"PostIt4",
+                 "properties":
+                 {
+                   "subtype":"postit",
+                   "dialogkey": "PostIt4"
+                 },
+                 "rotation":0,
+                 "type":"Actionable",
+                 "visible":true,
+                 "width":32,
+                 "x":1408,
+                 "y":1376
                 }],
          "opacity":1,
          "type":"objectgroup",
