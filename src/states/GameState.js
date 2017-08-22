@@ -11,6 +11,7 @@ export default {
 	init: function () {
 
 		this.flags = {};
+		this.inputChars = []; // for cheat codes
 
 		//Flag to made the action of an object available.
 		//this.isExecutingTask = false;
@@ -56,8 +57,10 @@ export default {
 	},
 	initLevel: function () {
 		// clear any leftovers from previous level
+		this.uiBlocked = false;
 		this.game.world.removeAll();
-
+		delete this.dialog;
+		
 		var tilemap = Constants.TILEMAP_FLOORS[this.currentLevel];
 
 		this.map = this.game.add.tilemap(tilemap);
@@ -110,14 +113,17 @@ export default {
 		this.justPressedSpace = 0;
 	},
 	keyPress: function(char) {
-		// cheat key
-		if (char === 'n') {
+		this.inputChars.push(char);
+		if (this.inputChars.length > 5) { this.inputChars.shift(); }
+
+		let cheatCode = this.inputChars.join("");
+		if (cheatCode === "iddqd") {
 			this.currentLevel = 1;
 			this.initLevel();
-		// cheat key
-		} else if (char === 'p') {
+		}
+		else if (cheatCode === "idkfa") {
 			this.currentLevel = 0;
-			this.initLevel();
+			this.initLevel();			
 		}
 	},
 	initialiseCharacters: function () {
