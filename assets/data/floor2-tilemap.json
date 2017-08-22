@@ -221,7 +221,7 @@
                  "y":1153
                 }, 
                 {
-                 "height":106,
+                 "height":66,
                  "id":12,
                  "name":"KarioMart",
                  "properties":
@@ -231,9 +231,9 @@
                  "rotation":0,
                  "type":"Actionable",
                  "visible":true,
-                 "width":119,
-                 "x":102,
-                 "y":271
+                 "width":92,
+                 "x":109,
+                 "y":274
                 }, 
                 {
                  "height":57,

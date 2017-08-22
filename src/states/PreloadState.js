@@ -25,6 +25,7 @@ export default {
 			this.load.image('BeerCrate', 'assets/images/assets_beer_crate.png');
 			this.load.image(Constants.MOBILE_SPRITE, 'assets/images/assets_mobile.png');
 			this.load.image(Constants.PLANT_SPRITE, 'assets/images/assets_chuck.png');
+			this.load.image('kariomart_sprite', 'assets/images/kariomart.png');
 
 
 
