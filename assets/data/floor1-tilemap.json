@@ -230,7 +230,8 @@
                  "name":"mobile",
                  "properties":
                     {
-                     "subtype":"Mobile"
+                      "subtype":"Mobile",
+                      "dialogkey":"mobile"
                     },
                  "propertytypes":
                     {
@@ -249,7 +250,8 @@
                  "name":"chuck",
                  "properties":
                     {
-                     "subtype":"chuck"
+                      "subtype":"chuck",
+                      "dialogkey":"chuck"
                     },
                  "propertytypes":
                     {
@@ -268,7 +270,8 @@
                  "name":"PostIt1",
                  "properties":
                     {
-                     "subtype":"postit"
+                      "subtype":"postit",
+                      "dialogkey": "PostIt1"
                     },
                  "propertytypes":
                     {
@@ -287,7 +290,8 @@
                  "name":"PostIt2",
                  "properties":
                     {
-                     "subtype":"postit"
+                      "subtype":"postit",
+                      "dialogkey": "PostIt2"
                     },
                  "propertytypes":
                     {
@@ -306,7 +310,8 @@
                  "name":"PostIt3",
                  "properties":
                     {
-                     "subtype":"postit"
+                      "subtype":"postit",
+                      "dialogkey":"PostIt3"
                     },
                  "propertytypes":
                     {
@@ -325,7 +330,8 @@
                  "name":"FirstAidKit",
                  "properties":
                     {
-                     "subtype":"firstaid"
+                     "subtype":"firstaid",
+                      "dialogkey": "FirstAidKit"
                     },
                  "propertytypes":
                     {
@@ -344,7 +350,8 @@
                  "name":"Lift",
                  "properties":
                     {
-                     "subtype":"Lift"
+                      "subtype":"Lift",
+                      "dialogkey":"Lift"
                     },
                  "propertytypes":
                     {
@@ -363,7 +370,8 @@
                  "name":"Lift",
                  "properties":
                     {
-                     "subtype":"Lift"
+                      "subtype":"Lift",
+                      "dialogkey":"Lift"
                     },
                  "propertytypes":
                     {

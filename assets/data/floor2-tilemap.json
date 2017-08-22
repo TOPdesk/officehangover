@@ -108,7 +108,8 @@
                  "name":"PC",
                  "properties":
                     {
-                     "subtype":"PC"
+                      "subtype":"PC",
+                      "dialogkey":"PC"
                     },
                  "propertytypes":
                     {
@@ -128,7 +129,8 @@
                  "name":"CoffeeMachine",
                  "properties":
                     {
-                     "subtype":"CoffeeMachine"
+                      "subtype":"CoffeeMachine",
+                      "dialogkey":"CoffeeMachine"
                     },
                  "propertytypes":
                     {
@@ -202,7 +204,8 @@
                  "name":"KarioMart",
                  "properties":
                     {
-                     "subtype":"KarioMart"
+                      "subtype":"KarioMart",
+                      "dialogkey":"KarioMart"
                     },
                  "propertytypes":
                     {
@@ -221,7 +224,8 @@
                  "name":"Lift",
                  "properties":
                     {
-                     "subtype":"Lift"
+                      "subtype":"Lift",
+                      "dialogkey":"Lift"
                     },
                  "propertytypes":
                     {
@@ -240,7 +244,8 @@
                  "name":"Lift",
                  "properties":
                     {
-                     "subtype":"Lift"
+                      "subtype":"Lift",
+                      "dialogkey":"Lift"
                     },
                  "propertytypes":
                     {
