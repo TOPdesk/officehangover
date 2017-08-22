@@ -176,7 +176,7 @@
 		"messages": [{
 				"id": 1,
                 "condition": "return !(state.flags.l1_get_coffee);",
-				"message": "TEMPORARY: The coffee machine is not working again. I'd kill for a coffee.",
+				"message": "The coffee machine is not working again. I'd kill for a coffee.",
 				"replies": [{
 					"message": "Ok...",
 					"goto": 2
@@ -184,7 +184,7 @@
 			},
 			{
 				"id": 2,
-				"message": "TEMPORARY: The last borrel I found something. I'll exchange it for a coffee",
+				"message": "The last borrel I found something. I'll exchange it for a coffee",
 				"replies": [{
 					"message": "(This guy has a problem with the coffee)",
 					"action": "close_dialog"
@@ -192,7 +192,7 @@
 			},
 			{
 				"id": 3,
-				"message": "TEMPORARY: Hey you have a coffee! I NEED IT!!!! ",
+				"message": "Hey you have a coffee! I NEED IT!!!! ",
 				"replies": [{
 					"message": "Give the coffee to the addict guy",
 					"goto": 4
@@ -204,7 +204,7 @@
 			},
 			{
 				"id": 4,
-				"message": "TEMPORARY: Thank you so much! Here you have in return.",
+				"message": "Thank you so much! Here you have in return.",
 				"replies": [{
 					"message": "The addict guy returns you your keys!",
 					"action": "close_dialog"
