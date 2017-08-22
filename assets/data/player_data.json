@@ -28,8 +28,8 @@
   },
   "kariomart": {
       "body_size": {
-      "width": 256,
-      "height": 128,
+      "width": 128,
+      "height": 96,
       "top": 0,
       "left": 0
     },
