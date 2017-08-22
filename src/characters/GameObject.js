@@ -23,7 +23,6 @@ export default class extends Phaser.Sprite {
 	handleCollision() {
 		if (this.state.justPressedSpace) {
 			if (this.type == "actionable") {
-				this.isExecutingTask = true;
 				this.state.callAction(this.key, this);
 			}
 		} else if (this.key == "exit") {

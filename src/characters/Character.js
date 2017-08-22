@@ -72,8 +72,6 @@ export default class extends Phaser.Sprite {
 		}, this);
 
 		if (this.state.justPressedSpace && !this.isExecutingTask) {
-			this.isExecutingTask = true;
-
 			// invoke the dialog on this character using the spriteName
 			this.state.callAction(this.spriteName, this);
 		}

@@ -13,10 +13,6 @@ export default {
 		this.flags = {};
 		this.inputChars = []; // for cheat codes
 
-		//Flag to made the action of an object available.
-		//this.isExecutingTask = false;
-		//this.isCharacterOnHold = false;
-
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 		this.game.physics.arcade.gravity.y = 0;
 
@@ -292,6 +288,10 @@ export default {
 	openDialog: function (objectname, character) {
 
 		if (this.dialog) { return; } // Can't activate dialog when one is already active.
+
+		if (character !== undefined) {
+			character.isExecutingTask = true;
+		}
 
 		this.player.stopMoving();
 		this.dialog = new Dialog(this, objectname, character);
