@@ -178,12 +178,12 @@ export default {
 				this.dependentgameobjects.push(sprite);
 			}
 			else if (obj.type == "Actionable") {
-				let sprite = new GameObject(this, obj.x, obj.y, obj.properties.subtype.toLowerCase(), obj.type.toLowerCase());
+				let sprite = new GameObject(this, obj.x, obj.y, obj.properties.subtype.toLowerCase(), obj.type.toLowerCase(), obj.properties.dialogkey.toLowerCase());
 				this.visibleCharacters.add(sprite);
 				this.dependentgameobjects.push(sprite);
 			}
 			else {
-				let sprite = new GameObject(this, obj.x, obj.y, obj.type.toLowerCase(), null);
+				let sprite = new GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
 				this.visibleCharacters.add(sprite);
 				this.gameobjects.push(sprite);
 			}
