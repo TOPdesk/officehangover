@@ -37,7 +37,7 @@ export default {
 
 			//load text
 			this.load.text(Constants.PLAYER_DATA, 'assets/data/player_data.json');
-			this.load.text(Constants.GAME_TEXT, 'assets/data/text.json');
+			this.load.json(Constants.GAME_TEXT, 'assets/data/text.json');
 			this.load.json(Constants.DIALOGS, 'assets/data/dialogs.json');
 
 			this.load.image(Constants.TILESET_IMAGE, 'assets/images/tileset1.png');

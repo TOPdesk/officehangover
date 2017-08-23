@@ -4,6 +4,7 @@ import textPlugin from "../plugins/Text";
 export default {
 	init: function () {
 		this.game.Text = this.game.plugins.add(textPlugin);
+		this.textData = this.game.cache.getJSON(Constants.GAME_TEXT);
 	},
 	create: function () {
 		var background = this.game.add.sprite(0, 0);
@@ -20,6 +21,7 @@ export default {
 		var newGame = this.game.add.text(menuPositionX, menuPositionY + 120, 'New Game');
 		newGame.inputEnabled = true;
 		var credits = this.game.add.text(menuPositionX, menuPositionY + 180, 'Credits');
+		credits.inputEnabled = true;
 
 		continueGame.events.onInputDown.add(function () {
 			this.state.start(Constants.GAME_STATE);
@@ -31,8 +33,6 @@ export default {
 			continueGame.destroy();
 			credits.destroy();
 
-			this.textData = JSON.parse(this.game.cache.getText(Constants.GAME_TEXT));
-
 			this.game.Text.setup();
 
 			this.game.Text.create(this.textData.intro_text, menuPositionX / 2, menuPositionY, {}, (function () {
@@ -40,5 +40,20 @@ export default {
 			}).bind(this));
 
 		}, this);
+
+		credits.events.onInputDown.add(function () {
+			menu.destroy();
+			newGame.destroy();
+			continueGame.destroy();
+			credits.destroy();
+
+			this.game.Text.setup();
+
+			this.game.Text.create(this.textData.credits, menuPositionX / 2, menuPositionY, {}, (function () {
+				this.state.start(Constants.HOME_STATE);
+			}).bind(this));
+
+		}, this);
+
 	}
 };
