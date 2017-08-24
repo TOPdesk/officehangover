@@ -5,6 +5,7 @@ export const BACKGROUND_BOOT_STATE = "#fff";
 
 export const GAME_STATE = 'GameState';
 export const HOME_STATE = 'HomeState';
+export const TEXT_STATE = 'TextState';
 export const PRELOAD_STATE = 'PreloadState';
 export const START_STATE = 'StartGame';
 export const BOOT_STATE = 'BootState';
