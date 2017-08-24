@@ -15,14 +15,11 @@ export default class {
 	}
 	
 	create() {
-		var background = this.game.add.sprite(0, 0);
-		background.width = this.game.world.width;
-		background.height = this.game.world.height;
-		background.inputEnabled = true;
+		this.game.stage.backgroundColor = Constants.BACKGROUND_BOOT_STATE;
 
 		this.game.Text.setup();
 
-		this.game.Text.create(this.displayText, background.width / 10, background.height / 10, {}, (function () {
+		this.game.Text.create(this.displayText, this.game.world.width / 10, this.game.world.height / 10, {}, (function () {
 
 			this.game.time.events.add(Phaser.Timer.SECOND * 3, function () {
 				this.state.start(this.nextState);

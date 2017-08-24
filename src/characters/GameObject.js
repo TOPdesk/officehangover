@@ -1,3 +1,5 @@
+import * as Constants from "../constants";
+
 export default class extends Phaser.Sprite {
 	constructor(state, x, y, key, type, dialogkey) {
 		super(state.game, x, y, state.playerData[key].sprite);
@@ -27,8 +29,13 @@ export default class extends Phaser.Sprite {
 				this.state.callAction(this.dialogkey, this);
 			}
 		} else if (this.key == "exit") {
-			this.state.currentLevel = 1;
-			this.state.initLevel();
+			if (this.state.currentLevel == 0) {
+				this.state.currentLevel = 1;
+				this.state.initLevel();
+			}
+			else {
+				this.state.state.start(Constants.TEXT_STATE, true, false, "the_end", Constants.HOME_STATE);
+			}
 		}
 	}
 

@@ -92,7 +92,11 @@
                  "name":"coffeeaddict",
                  "properties":
                     {
-                    "stopped": "1"
+                     "stopped":"1"
+                    },
+                 "propertytypes":
+                    {
+                     "stopped":"string"
                     },
                  "rotation":0,
                  "type":"Character",
@@ -108,11 +112,12 @@
                  "name":"PC",
                  "properties":
                     {
-                      "subtype":"PC",
-                      "dialogkey":"PC"
+                     "dialogkey":"PC",
+                     "subtype":"PC"
                     },
                  "propertytypes":
                     {
+                     "dialogkey":"string",
                      "subtype":"string"
                     },
                  "rotation":0,
@@ -129,11 +134,12 @@
                  "name":"CoffeeMachine",
                  "properties":
                     {
-                      "subtype":"CoffeeMachine",
-                      "dialogkey":"CoffeeMachine"
+                     "dialogkey":"CoffeeMachine",
+                     "subtype":"CoffeeMachine"
                     },
                  "propertytypes":
                     {
+                     "dialogkey":"string",
                      "subtype":"string"
                     },
                  "rotation":0,
@@ -204,11 +210,12 @@
                  "name":"KarioMart",
                  "properties":
                     {
-                      "subtype":"KarioMart",
-                      "dialogkey":"KarioMart"
+                     "dialogkey":"KarioMart",
+                     "subtype":"KarioMart"
                     },
                  "propertytypes":
                     {
+                     "dialogkey":"string",
                      "subtype":"string"
                     },
                  "rotation":0,
@@ -224,11 +231,12 @@
                  "name":"Lift",
                  "properties":
                     {
-                      "subtype":"Lift",
-                      "dialogkey":"Lift"
+                     "dialogkey":"Lift",
+                     "subtype":"Lift"
                     },
                  "propertytypes":
                     {
+                     "dialogkey":"string",
                      "subtype":"string"
                     },
                  "rotation":0,
@@ -244,11 +252,12 @@
                  "name":"Lift",
                  "properties":
                     {
-                      "subtype":"Lift",
-                      "dialogkey":"Lift"
+                     "dialogkey":"Lift",
+                     "subtype":"Lift"
                     },
                  "propertytypes":
                     {
+                     "dialogkey":"string",
                      "subtype":"string"
                     },
                  "rotation":0,
@@ -257,22 +266,46 @@
                  "width":92.25,
                  "x":961,
                  "y":929
-                },
+                }, 
                 {
                  "height":32,
                  "id":15,
                  "name":"PostIt4",
                  "properties":
-                 {
-                   "subtype":"postit",
-                   "dialogkey": "PostIt4"
-                 },
+                    {
+                     "dialogkey":"PostIt4",
+                     "subtype":"postit"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
                  "rotation":0,
                  "type":"Actionable",
                  "visible":true,
                  "width":32,
                  "x":1408,
                  "y":1376
+                }, 
+                {
+                 "height":34,
+                 "id":15,
+                 "name":"Exit1",
+                 "properties":
+                    {
+                     "subtype":"Exit"
+                    },
+                 "propertytypes":
+                    {
+                     "subtype":"string"
+                    },
+                 "rotation":0,
+                 "type":"Exit",
+                 "visible":true,
+                 "width":62,
+                 "x":921,
+                 "y":45
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -281,7 +314,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":15,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":32,

@@ -7,6 +7,7 @@ export default {
 		this.textData = this.game.cache.getJSON(Constants.GAME_TEXT);
 	},
 	create: function () {
+		this.game.stage.backgroundColor = Constants.BACKGROUND_BOOT_STATE;
 		var background = this.game.add.sprite(0, 0);
 		background.width = this.game.world.width;
 		background.height = this.game.world.height;
