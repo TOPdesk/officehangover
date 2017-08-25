@@ -1,7 +1,8 @@
 import * as Constants from "../constants";
 
-export default {
-	preload: function () {
+export default class {
+	
+	preload() {
 		if (!this.loadLevel) {
 			this.load.onLoadComplete.add(this.processMaps, this);
 			//load all images
@@ -48,8 +49,9 @@ export default {
 
 			this.load.audio('door_open', 'assets/sounds/door_open.mp3');
 		}
-	},
-	processMaps: function () {
+	}
+	
+	processMaps() {
 		// after loading all data, put the tilemap.json and the tileset.json together,
 		var map1 = this.game.cache.getJSON('floor1-tilemap-json');
 		var map2 = this.game.cache.getJSON('floor2-tilemap-json');
@@ -60,16 +62,19 @@ export default {
 		// and convert them to Phaser tilemaps.
 		this.load.tilemap(Constants.TILEMAP_FLOORS[0], null, map1, Phaser.Tilemap.TILED_JSON);
 		this.load.tilemap(Constants.TILEMAP_FLOORS[1], null, map2, Phaser.Tilemap.TILED_JSON);
-	},
-	init: function (level) {
+	}
+	
+	init(level) {
 		this.currentLevel = level || 'world';
 		this.loadLevel = level ? true : false;
-	},
-	create: function () {
+	}
+	
+	create() {
 		if (this.loadLevel) {
 			this.state.start(Constants.GAME_STATE, true, false, this.currentLevel);
 		} else {
 			this.state.start(Constants.HOME_STATE);
 		}
 	}
-};
+
+}

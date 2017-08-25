@@ -1,12 +1,14 @@
 import * as Constants from "../constants";
 import textPlugin from "../plugins/Text";
 
-export default {
-	init: function () {
+export default class {
+	
+	init() {
 		this.game.Text = this.game.plugins.add(textPlugin);
 		this.textData = this.game.cache.getJSON(Constants.GAME_TEXT);
-	},
-	create: function () {
+	}
+
+	create() {
 		this.game.stage.backgroundColor = Constants.BACKGROUND_BOOT_STATE;
 		var background = this.game.add.sprite(0, 0);
 		background.width = this.game.world.width;
@@ -36,6 +38,6 @@ export default {
 			this.state.start(Constants.TEXT_STATE, true, false, "credits", Constants.HOME_STATE);
 
 		}, this);
-
 	}
-};
+
+}
