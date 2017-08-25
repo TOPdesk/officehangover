@@ -38,7 +38,7 @@ export default {
 		//  Capture all key presses
 		this.game.input.keyboard.addCallbacks(this, null, null, this.keyPress);
 
-		this.playerData = JSON.parse(this.game.cache.getText(Constants.PLAYER_DATA));
+		this.playerData = this.game.cache.getJSON(Constants.PLAYER_DATA);
 		this.currentLevel = 0; // zero meaning level 1, 1 meaning level 2 of course.
 
 		this.sfx = {};
