@@ -62,18 +62,9 @@ export default class {
 		this.load.tilemap(Constants.TILEMAP_FLOORS[0], null, map1, Phaser.Tilemap.TILED_JSON);
 		this.load.tilemap(Constants.TILEMAP_FLOORS[1], null, map2, Phaser.Tilemap.TILED_JSON);
 	}
-	
-	init(level) {
-		this.currentLevel = level || 'world';
-		this.loadLevel = level ? true : false;
-	}
-	
+
 	create() {
-		if (this.loadLevel) {
-			this.state.start(Constants.GAME_STATE, true, false, this.currentLevel);
-		} else {
-			this.state.start(Constants.HOME_STATE);
-		}
+		this.state.start(Constants.HOME_STATE);
 	}
 
 }

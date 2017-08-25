@@ -40,6 +40,8 @@ export default {
 
 		this.playerData = this.game.cache.getJSON(Constants.PLAYER_DATA);
 		this.currentLevel = 0; // zero meaning level 1, 1 meaning level 2 of course.
+		//Adding the level to the localStorage
+		localStorage.level = this.currentLevel;
 
 		this.sfx = {};
 		this.sfx.door_open = this.game.add.audio('door_open');
