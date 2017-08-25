@@ -288,9 +288,9 @@
       "start_options": [1],
       "messages": [{
         "id": 1,
-		"message": "The post-it reads: I hate baby Mario",
+		"message": "Do you know the new emergencies phone number? ",
         "replies": [{
-          "message": "Allrighty then...",
+          "message": "0118 999 881 999 119 7253",
           "action": "close_dialog"
         }]
       }]
