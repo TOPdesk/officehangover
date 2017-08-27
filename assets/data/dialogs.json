@@ -356,14 +356,25 @@
 	},
 	"BeerCrateDropZone1": {
 		"start_options": [
-			1
+			1, 2
 		],
 		"messages": [{
 			"id": 1,
+			"condition": "return (!state.flags.l1_second_return && state.player.canDropOff());",
 			"message": "I'm tired carrying this around. Maybe I should put it back...",
 			"replies": [{
 				"message": "Continue...",
+				"setflag": ["l1_second_return"],
 				"action": "close_dialog"
+			}]
+		}, {
+			"id": 2,
+			"condition": "return (!state.flags.l1_second_pickup && state.player.canPickup());",
+			"message": "Okay, let's get these out of the way. Where do I take them?",
+			"replies": [{
+				"message": "Continue...",
+				"setflag": ["l1_second_pickup"],
+				"actions": [ "close_dialog" ]
 			}]
 		}]
 	},
@@ -373,23 +384,12 @@
 		],
 		"messages": [{
 			"id": 1,
+			"condition": "return !state.flags.l1_second_transfer",
 			"message": "Phew, I guess I can drop the crate off here...",
 			"replies": [{
 				"message": "Continue...",
+				"setflag": ["l1_second_transfer"],
 				"action": "close_dialog"
-			}]
-		}]
-	},
-	"cratespickup1": {
-		"start_options": [
-			1
-		],
-		"messages": [{
-			"id": 1,
-			"message": "Okay, let's get these out of the way. Where do I take them?",
-			"replies": [{
-				"message": "Continue...",
-				"actions": [ "close_dialog", "pickup_beercrate" ]
 			}]
 		}]
 	},

@@ -173,8 +173,6 @@ class DialogWindow {
 					this.character.dirtyDishesAction();
 				} else if(action == "pick_mobile"){
 					this.character.pickMobile();
-				} else if (action === "pickup_beercrate") {
-					this.state.player.pickup(this.character);
 				} else if (action === "move_around") {
 					this.character.isStopped = false;
 					this.character.setRandomDirection();
@@ -202,15 +200,17 @@ class DialogWindow {
 	}
 
 	findDialogStart(startOptions, objectMessages) {
-		for (var i = 0; i < startOptions.length; i++) {
-			var startOptionId = startOptions[i];
-			var startOptionValue = this.findDialog(objectMessages, startOptionId);
+		for (let startOptionId of startOptions) {
+			let startOptionValue = this.findDialog(objectMessages, startOptionId);
+			if (!startOptionValue) {
+				throw("Could not find dialog for id: " + startOptionId);
+			}
 			// first option that has no condition or a condition that is satisfied
 			if (!startOptionValue.condition || this.conditionsSatisfyGameState(startOptionValue.condition)) {
 				return startOptionId;
 			}
 		}
-		//TODO do we need error handling?
+		return undefined; // no dialog option satisfying game state found.
 	}
 
 	findDialog(dialogs, idToFind) {
