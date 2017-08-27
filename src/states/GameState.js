@@ -79,6 +79,9 @@ export default {
 		}
 	},
 	update: function () {
+		// if the player just pressed space, then set an 'unhandled action' flag
+		this.player.unhandledAction = (this.justPressedSpace === 1);
+
 		this.game.physics.arcade.overlap(this.gameobjects, this.playerCollisionFrame, function (gameobj) {gameobj.handleCollision();}, null, this);
 		this.game.physics.arcade.overlap(this.dependentgameobjects, this.playerCollisionFrame, function (gameobj) {gameobj.handleCollision(this.dependentgameobjects);}, null, this);
 		this.game.physics.arcade.overlap(this.gameobjectZones, this.playerCollisionFrame, function (gameobj) {gameobj.handleCollision();}, null, this);
@@ -89,6 +92,11 @@ export default {
 		this.game.physics.arcade.overlap(this.charactersCollisionFrame, this.playerCollisionFrame, function (character) {character.parent.handleCollision();}, null, this);
 		this.game.physics.arcade.collide(this.player, this.collisionLayer);
 		this.game.physics.arcade.collide(this.characters, this.collisionLayer, function (character) {if(!character.isStopped){character.setRandomDirection();}}, null, this);
+
+		// if the unhandled action wasn't handled in one of the collision routines, let the player handle it.
+		if (this.player.unhandledAction) {
+			this.player.handleUnhandledAction();
+		}
 
 		/*this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
 		this.game.physics.arcade.collide(this.player, this.enemies, this.attack, null, this);*/

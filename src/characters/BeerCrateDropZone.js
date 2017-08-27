@@ -51,18 +51,19 @@ export default class extends Phaser.Sprite {
 	}
 
 	handleCollision() {
-		if (this.state.justPressedSpace) {
+		if (this.state.player.unhandledAction) {
 			
 			if (this.state.player.canDropOff()) {
 				this.state.player.dropoff();
 				this.makeCrate();
+				this.state.player.unhandledAction = false;
 			}
 			else if (this.state.player.canPickup()) {
 				if (this.name === "BeerCrateDropZone1")  {				
 					this.state.callAction("cratespickup1", this.findCrate());
-				
+					this.state.player.unhandledAction = false;
 					// this.state.player.pickup(this);
-				}				
+				}		
 			}
 			
 		}

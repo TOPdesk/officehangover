@@ -24,8 +24,9 @@ export default class extends Phaser.Sprite {
 
 	/** called whenever a player collides with this game object */
 	handleCollision() {
-		if (this.state.justPressedSpace) {
+		if (this.state.player.unhandledAction) {
 			if (this.type == "actionable") {
+				this.state.player.unhandledAction = false;
 				this.state.callAction(this.dialogkey, this);
 			}
 		} else if (this.key == "exit") {

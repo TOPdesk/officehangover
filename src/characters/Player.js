@@ -30,6 +30,13 @@ export default class extends Character {
 		return this.pickupSprite != null && (this.pickupTimer == 0);
 	}
 
+	/** called whenever you press space and there is no other dialog or event taking place */
+	handleUnhandledAction() {
+		if (this.canDropOff()) {
+			this.state.openDialog("NoDropZone", this);
+		}
+	}
+
 	pickup(pickupObject) {
 		if (this.pickupSprite != null) {
 			console.error("Trying to pick up two objects!");
