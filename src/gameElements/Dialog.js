@@ -2,8 +2,10 @@ import * as Constants from "../constants";
 
 export default class {
 
-	constructor(state) {
+	constructor(game, state) {
 		this.state = state;
+		this.game = game;
+		this.dialogData = this.game.cache.getJSON(Constants.DIALOGS);
 	}
 
 	upPressed() {
@@ -31,8 +33,22 @@ export default class {
 		}
 
 		this.state.player.stopMoving();
-		this.activeDialog = new DialogWindow(this.state, this, objectname, character);
-		this.activeDialog.popup();
+		this.popup(objectname, character);
+	}
+
+	popup(objectname, character) {
+		if (!(objectname in this.dialogData)) {
+			console.error("No dialog found using key: " + objectname);
+		}
+		else {
+			let objectDialogs = this.dialogData[objectname];
+			let dialog = new DialogWindow(this.state, this, objectname, character);
+			var dialogStartId = dialog.findDialogStart(objectDialogs.start_options, objectDialogs.messages);
+			if (dialogStartId) {
+				this.activeDialog = dialog;
+				this.activeDialog.showDialog(objectDialogs, dialogStartId);
+			}
+		}
 	}
 
 	closeDialog() {
@@ -48,23 +64,6 @@ class DialogWindow {
 		this.game = state.game;
 		this.objectname = objectname;
 		this.character = character;
-		this.dialogs = this.game.cache.getJSON(Constants.DIALOGS);
-	}
-
-	popup() {
-		var objectDialogs = this.dialogs[this.objectname];
-		if (!(this.objectname in this.dialogs)) {
-			console.error("No dialog found using key: " + this.objectname);
-		}
-		else {
-			this.showStartDialog(objectDialogs);
-		}
-	}
-
-	showStartDialog(objectDialogs) {
-		var dialog = this;
-		var dialogStartId = dialog.findDialogStart(objectDialogs.start_options, objectDialogs.messages);
-		dialog.showDialog(objectDialogs, dialogStartId);
 	}
 
 	showDialog(objectDialogs, id) {

@@ -18,7 +18,7 @@ export default {
 
 		this.cursors = this.game.input.keyboard.createCursorKeys();
 		this.spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-		this.dialogs = new DialogManager(this);
+		this.dialogs = new DialogManager(this.game, this);
 		
 		// Capture key presses for dialogs
 		this.cursors.up.onDown.add(function() {
