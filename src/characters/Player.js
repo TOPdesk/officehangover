@@ -15,7 +15,7 @@ export default class extends Character {
 		this.play(Constants.ANIMATION_WAKE_UP);
 		this.animations.currentAnim.onComplete.add(function () {
 			this.game.time.events.add(Phaser.Timer.SECOND * 0.5, function () {
-				this.state.openDialog("wakeup1", this);
+				this.state.dialogs.open("wakeup1", this);
 			}, this);
 		}, this);
 	}
@@ -33,7 +33,7 @@ export default class extends Character {
 	/** called whenever you press space and there is no other dialog or event taking place */
 	handleUnhandledAction() {
 		if (this.canDropOff()) {
-			this.state.openDialog("NoDropZone", this);
+			this.state.dialogs.open("NoDropZone", this);
 		}
 	}
 

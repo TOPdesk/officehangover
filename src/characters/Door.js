@@ -40,7 +40,7 @@ export default class extends Phaser.Sprite {
 	handleCollision() {
 		
 		if (this.isLocked && this.state.player.unhandledAction) {
-			this.state.openDialog("doorlocked", this);
+			this.state.dialogs.open("doorlocked", this);
 			this.state.player.unhandledAction = false;
 			if (this.state.flags["l1_storageroomkey"]) {
 				this.isLocked = false;

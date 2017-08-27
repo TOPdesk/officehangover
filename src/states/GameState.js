@@ -4,7 +4,7 @@ import Character from "../characters/Character";
 import Door from "../characters/Door";
 import BeerCrateDropZone from "../characters/BeerCrateDropZone";
 import GameObject from "../characters/GameObject";
-import Dialog from "../gameElements/Dialog";
+import DialogManager from "../gameElements/Dialog";
 import DependentObjects from "../characters/DependentObjects";
 
 export default {
@@ -18,18 +18,24 @@ export default {
 
 		this.cursors = this.game.input.keyboard.createCursorKeys();
 		this.spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
+		this.dialogs = new DialogManager(this);
+		
 		// Capture key presses for dialogs
 		this.cursors.up.onDown.add(function() {
-			if(this.dialog) { this.dialog.upPressed(); }
+			this.dialogs.upPressed();
 		}, this);
 
 		this.cursors.down.onDown.add(function() { 
-			if(this.dialog) { this.dialog.downPressed(); }
+			this.dialogs.downPressed();
 		}, this);
+
 		this.spaceKey.onDown.add(function() {
-			if(this.dialog) { this.dialog.spacePressed(); }
-			else { this.justPressedSpace = 1; }
+			if (this.dialogs.hasActiveDialog()) {
+				this.dialogs.spacePressed();
+			}
+			else {
+				this.justPressedSpace = 1; 
+			}
 		}, this);
 
 		//Stop the following keys from propagating up to the browser
@@ -57,7 +63,8 @@ export default {
 		// clear any leftovers from previous level
 		this.uiBlocked = false;
 		this.game.world.removeAll();
-		delete this.dialog;
+		// make sure there are no active dialogs remaining
+		this.dialogs.closeDialog();
 		
 		var tilemap = Constants.TILEMAP_FLOORS[this.currentLevel];
 
@@ -290,25 +297,8 @@ export default {
 	},
 */
 	callAction: function (objectname, character) {
-		//new Action();
 
-		//TEMP: call openDialog directly for testing
-		this.openDialog(objectname, character);
-	},
-	openDialog: function (objectname, character) {
-
-		if (this.dialog) { return; } // Can't activate dialog when one is already active.
-
-		if (character !== undefined) {
-			character.isExecutingTask = true;
-		}
-
-		this.player.stopMoving();
-		this.dialog = new Dialog(this, objectname, character);
-		this.dialog.popup();
-	},
-	closeDialog() {
-		delete (this.dialog);
+		this.dialogs.open(objectname, character);
 	}
 
 };

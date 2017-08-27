@@ -1,8 +1,50 @@
 import * as Constants from "../constants";
 
 export default class {
-	constructor(state, objectname, character) {
+
+	constructor(state) {
 		this.state = state;
+	}
+
+	upPressed() {
+		if (this.activeDialog) { this.activeDialog.upPressed(); }
+	}
+
+	downPressed() {
+		if (this.activeDialog) { this.activeDialog.downPressed(); }
+	}
+
+	spacePressed() {
+		if (this.activeDialog) { this.activeDialog.spacePressed(); }
+	}
+
+	hasActiveDialog() {
+		return !!(this.activeDialog);
+	}
+
+	open(objectname, character) {
+
+		if (this.activeDialog) { return; } // Can't activate dialog when one is already active.
+
+		if (character !== undefined) {
+			character.isExecutingTask = true;
+		}
+
+		this.state.player.stopMoving();
+		this.activeDialog = new DialogWindow(this.state, this, objectname, character);
+		this.activeDialog.popup();
+	}
+
+	closeDialog() {
+		delete (this.activeDialog);
+	}
+}
+
+class DialogWindow {
+
+	constructor(state, dialogManager, objectname, character) {
+		this.state = state;
+		this.dialogManager = dialogManager;
 		this.game = state.game;
 		this.objectname = objectname;
 		this.character = character;
@@ -156,7 +198,7 @@ export default class {
 			this.showDialog(objectDialogs, replyOption.goto);
 		}
 		else {
-			this.state.closeDialog();
+			this.dialogManager.closeDialog();
 		}
 	}
 

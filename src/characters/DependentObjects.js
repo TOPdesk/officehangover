@@ -19,7 +19,7 @@ export default class extends GameObject {
 					return obj.key == 'dishwasher';
 				});
 				this.state.player.unhandledAction = false;
-				this.state.callAction(this.key, this);
+				this.state.dialogs.open(this.key, this);
 			}
 		}
 	}
