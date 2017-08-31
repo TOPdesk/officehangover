@@ -66,6 +66,14 @@
                  "height":28,
                  "id":2,
                  "name":"Character1",
+                 "properties":
+                    {
+                     "dialogkey":"l2_character1"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string"
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -78,6 +86,14 @@
                  "height":27,
                  "id":3,
                  "name":"Character2",
+                 "properties":
+                    {
+                     "dialogkey":"l2_character2"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string"
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -92,10 +108,12 @@
                  "name":"coffeeaddict",
                  "properties":
                     {
+                     "dialogkey":"coffeeaddict",
                      "stopped":"1"
                     },
                  "propertytypes":
                     {
+                     "dialogkey":"string",
                      "stopped":"string"
                     },
                  "rotation":0,

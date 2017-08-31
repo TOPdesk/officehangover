@@ -328,7 +328,7 @@
         }]
       }]
     },
-	"character1": {
+	"l1_character1": {
 		"start_options": [
 			1
 		],
@@ -393,7 +393,7 @@
 			}]
 		}]
 	},
-	"character2": {
+	"l1_character2": {
 		"start_options": [
 			1
 		],
@@ -412,13 +412,39 @@
 			}]
 		}]
 	},
-	"character3": {
+	"l1_character3": {
 		"start_options": [
 			1
 		],
 		"messages": [{
 			"id": 1,
 			"message": "Wow, that was some party last night, huh?",
+			"replies": [{
+				"message": "Continue...",
+				"action": "close_dialog"
+			}]
+		}]
+	},
+	"l2_character1": {
+		"start_options": [
+			1
+		],
+		"messages": [{
+			"id": 1,
+			"message": "Are you lost? This is the Communications floor.",
+			"replies": [{
+				"message": "Continue...",
+				"action": "close_dialog"
+			}]
+		}]
+	},
+	"l2_character2": {
+		"start_options": [
+			1
+		],
+		"messages": [{
+			"id": 1,
+			"message": "I can't wait to see the pictures of last night!",
 			"replies": [{
 				"message": "Continue...",
 				"action": "close_dialog"

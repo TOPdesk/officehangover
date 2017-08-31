@@ -1,5 +1,5 @@
 export default class extends Phaser.Sprite {
-	constructor(state, x, y, obj, data, character, isBodyFrame) {
+	constructor(state, x, y, obj, data, character, isBodyFrame, dialogkey) {
 		super(state.game, x, y, obj.name.toLowerCase(), state.playerData[character].initial_frame);
 		isBodyFrame = (typeof isBodyFrame == undefined) ? false : isBodyFrame;
 
@@ -13,7 +13,13 @@ export default class extends Phaser.Sprite {
 		this.y = y;
 		this.spriteName = obj.name.toLowerCase();
 		this.initialFrame = state.playerData[character].initial_frame;
+		this.dialogkey = obj.properties && obj.properties.dialogkey.toLowerCase();
 		
+		// fail fast if dialog key is missing
+		if (!this.state.dialogs.dialogKeyExists(this.dialogkey) && obj.type !== "Start") {
+			throw ("Could not find dialog key: " + this.dialogkey + " for character " + obj.name);
+		}
+
 		// isExecutingTask is set to true to prevent movement while you are interacting with a character through a dialog. 
 		this.isExecutingTask = false;
 
@@ -82,7 +88,7 @@ export default class extends Phaser.Sprite {
 
 		if (this.state.justPressedSpace && !this.isExecutingTask) {
 			// invoke the dialog on this character using the spriteName
-			this.state.callAction(this.spriteName, this);
+			this.state.callAction(this.dialogkey, this);
 		}
 	}
 

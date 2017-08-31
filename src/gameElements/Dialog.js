@@ -24,6 +24,10 @@ export default class {
 		return !!(this.activeDialog);
 	}
 
+	dialogKeyExists(dialogkey) {
+		return (dialogkey in this.dialogData);
+	}
+
 	open(objectname, character) {
 
 		if (this.activeDialog) { return; } // Can't activate dialog when one is already active.
