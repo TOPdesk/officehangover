@@ -324,6 +324,27 @@
                  "width":62,
                  "x":921,
                  "y":45
+                }, 
+                {
+                 "height":32,
+                 "id":16,
+                 "name":"PostIt1",
+                 "properties":
+                    {
+                     "dialogkey":"postit4",
+                     "subtype":"postit"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
+                 "rotation":0,
+                 "type":"Actionable",
+                 "visible":true,
+                 "width":32,
+                 "x":356,
+                 "y":258
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -332,7 +353,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":16,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":32,
