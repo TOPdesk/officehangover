@@ -175,8 +175,8 @@ class DialogWindow {
 			for (let action of replyOption.actions) {
 				if (action == "dirtydishes"){
 					this.character.dirtyDishesAction();
-				} else if(action == "pick_mobile"){
-					this.character.pickMobile();
+				} else if(action == "pick_object"){
+					this.character.pickObject();
 				} else if (action === "move_around") {
 					this.character.isStopped = false;
 					this.character.setRandomDirection();

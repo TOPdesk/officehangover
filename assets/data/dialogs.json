@@ -247,7 +247,7 @@
 			"message": "HEY! This is my mobile phone. Now I just need to find the rest of my stuff. I should check the other floors",
 			"replies": [{
 				"message": "Continue ...",
-				"actions": [ "close_dialog", "pick_mobile" ]
+				"actions": [ "close_dialog", "pick_object" ]
 			}]
 		}]
 	},

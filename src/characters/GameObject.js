@@ -40,7 +40,7 @@ export default class extends Phaser.Sprite {
 		}
 	}
 
-	pickMobile (){
+	pickObject (){
 		let tween = this.game.add.tween(this).to({alpha: 0}, 2000, Phaser.Easing.Linear.None, true);
 		tween.onComplete.add(function () {
 			this.destroy();
