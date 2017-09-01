@@ -188,12 +188,15 @@ class DialogWindow {
 				console.log("Flag " + flag + " is set");
 				this.state.flags[flag] = 1;
 			}
+			localStorage.setItem("flags", JSON.stringify(this.state.flags));
+
 		}
 		if (replyOption.clearflag) {
 			for (let flag of replyOption.clearflag) {
 				console.log("Flag " + flag + " is cleared");
 				this.state.flags[flag] = 0;
 			}
+			localStorage.setItem("flags", JSON.stringify(this.state.flags));
 		}
 		if (replyOption.goto) {
 			this.showDialog(objectDialogs, replyOption.goto);

@@ -10,7 +10,14 @@ import DependentObjects from "../characters/DependentObjects";
 export default {
 	init: function () {
 
-		this.flags = {};
+
+		//ckeck the localstorage
+		if(typeof localStorage.getItem('flags') !== undefined) {
+			this.flags = JSON.parse(localStorage.getItem('flags'));
+		}else{
+			this.flags = {};
+		}
+
 		this.inputChars = []; // for cheat codes
 
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
