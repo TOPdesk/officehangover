@@ -52,6 +52,8 @@ export default {
 		this.game.input.keyboard.addCallbacks(this, null, null, this.keyPress);
 
 		this.playerData = this.game.cache.getJSON(Constants.PLAYER_DATA);
+
+		//TODO: load the level from the local storage
 		this.currentLevel = 0; // zero meaning level 1, 1 meaning level 2 of course.
 		//Adding the level to the localStorage
 		localStorage.level = this.currentLevel;
@@ -88,7 +90,7 @@ export default {
 		this.visibleCharacters = this.game.add.group();
 		this.initialiseCharacters();
 
-		if (this.currentLevel == 0) {
+		if (this.currentLevel == 0 && !this.flags['l1_wake_up']) {
 			this.player.wakeUp();
 		}
 	},
