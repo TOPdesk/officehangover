@@ -90,7 +90,8 @@ export default {
 		this.visibleCharacters = this.game.add.group();
 		this.initialiseCharacters();
 
-		if (this.currentLevel == 0 && !this.flags['l1_wake_up']) {
+		//if (this.currentLevel == 0 && !this.flags['l1_wake_up']) {
+		if (this.currentLevel == 0) {
 			this.player.wakeUp();
 		}
 	},
