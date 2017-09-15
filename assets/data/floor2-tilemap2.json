@@ -246,6 +246,92 @@
                  "width":24,
                  "x":688,
                  "y":633.5
+                }, 
+                {
+                 "height":66,
+                 "id":40,
+                 "name":"KarioMart",
+                 "properties":
+                    {
+                     "dialogkey":"KarioMart",
+                     "subtype":"KarioMart"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
+                 "rotation":0,
+                 "type":"Actionable",
+                 "visible":true,
+                 "width":92,
+                 "x":144,
+                 "y":311
+                }, 
+                {
+                 "height":32,
+                 "id":41,
+                 "name":"PostIt1",
+                 "properties":
+                    {
+                     "dialogkey":"postit4",
+                     "subtype":"postit"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
+                 "rotation":0,
+                 "type":"Actionable",
+                 "visible":true,
+                 "width":32,
+                 "x":416.666666666667,
+                 "y":320
+                }, 
+                {
+                 "ellipse":true,
+                 "height":28,
+                 "id":43,
+                 "name":"coffeeaddict",
+                 "properties":
+                    {
+                     "dialogkey":"coffeeaddict",
+                     "stopped":"1"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "stopped":"string"
+                    },
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":26,
+                 "x":1026.33333333333,
+                 "y":140.666666666667
+                }, 
+                {
+                 "ellipse":true,
+                 "height":24,
+                 "id":44,
+                 "name":"CoffeeMachine",
+                 "properties":
+                    {
+                     "dialogkey":"CoffeeMachine",
+                     "subtype":"CoffeeMachine"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
+                 "rotation":0,
+                 "type":"Actionable",
+                 "visible":true,
+                 "width":25,
+                 "x":1123.5,
+                 "y":1349.33333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -253,7 +339,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":40,
+ "nextobjectid":45,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.0.2",
