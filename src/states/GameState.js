@@ -59,6 +59,8 @@ export default {
 
 		this.sfx = {};
 		this.sfx.door_open = this.game.add.audio('door_open');
+		this.sfx.coffee_machine_broken = this.game.add.audio('coffee_machine_broken');
+		this.sfx.coffee_machine_serve = this.game.add.audio('coffee_machine_serve');
 		// add other sounds to sfx dictionary here!
 	},
 	create: function () {

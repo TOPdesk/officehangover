@@ -47,6 +47,8 @@ export default class {
 			this.load.json('tileset.json', 'assets/data/tileset.json');
 
 			this.load.audio('door_open', 'assets/sounds/door_open.mp3');
+			this.load.audio('coffee_machine_broken', 'assets/sounds/coffee-broken.mp3');
+			this.load.audio('coffee_machine_serve', 'assets/sounds/coffee-pouring.mp3');
 		}
 	}
 	

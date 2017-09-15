@@ -183,7 +183,12 @@ class DialogWindow {
 				} else if (action === "move_around") {
 					this.character.isStopped = false;
 					this.character.setRandomDirection();
+				} else if (action === "pour_coffee") {
+					this.state.sfx.coffee_machine_serve.play();
+				}  else if (action === "machine_broken") {
+					this.state.sfx.coffee_machine_broken.play();
 				}
+
 			}
 		}
 		if (replyOption.setflag) {

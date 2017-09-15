@@ -8,6 +8,7 @@
 			"replies": [{
 					"message": "Press info.",
 					"setflag": ["l1_error_seen"],
+					"actions": ["machine_broken"],
 					"goto": 4
 				},
 				{
@@ -53,15 +54,19 @@
 			"message": "Do you want milk or sugar?",
 			"replies": [{
 				"message": "No thanks",
+				"actions": ["pour_coffee"],
 				"goto": 10
 			}, {
 				"message": "Milk",
-				"goto": 10				
+				"actions": ["pour_coffee"],
+				"goto": 10
 			}, {
 				"message": "Sugar",
+				"actions": ["pour_coffee"],
 				"goto": 10	
 			}, {
 				"message": "Milk and Sugar",
+				"actions": ["pour_coffee"],
 				"goto": 10	
 			}]
 		}, {
