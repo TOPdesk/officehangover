@@ -13,7 +13,6 @@ export default class {
 			this.load.spritesheet(Constants.CLEANINGLADY_SPRITE, 'assets/images/character_dress.png', 64, 64, 273);
 			this.load.spritesheet(Constants.COFFEEADDICT_SPRITE, 'assets/images/character_blondguy.png', 64, 64, 273);
 
-
 			this.load.spritesheet(Constants.PLAYER_SPRITE, 'assets/images/player.png', 64, 64, 273);
 
 			this.load.spritesheet('Door', 'assets/images/deur.png', 64, 96, 3);
@@ -27,12 +26,11 @@ export default class {
 			this.load.image(Constants.MOBILE_SPRITE, 'assets/images/assets_mobile.png');
 			this.load.image(Constants.PLANT_SPRITE, 'assets/images/assets_chuck.png');
 			this.load.image('kariomart_sprite', 'assets/images/kariomart.png');
-
-
+			this.load.image(Constants.GAME_BACKGROUND, 'assets/images/provisional_pop_up_background.png');
+			this.load.image(Constants.CANCEL_BUTTON, 'assets/images/provisional_cancel_button.png');
+			this.load.image(Constants.ACCEPT_BUTTON, 'assets/images/provisional_accept_button.png');
 
 			this.load.image(Constants.SCENE, 'assets/images/floor-plan.png');
-
-			this.load.image(Constants.STAMINA_BAR, 'assets/images/bar-health.png');
 
 			this.game.load.bitmapFont('desyrel', 'assets/fonts/nokia16black.png', 'assets/fonts/nokia16black.xml');
 

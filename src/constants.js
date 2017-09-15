@@ -37,3 +37,7 @@ export const TILEMAP_FLOORS = ['tilemap_floor1', 'tilemap_floor2'];
 
 export const MOBILE_SPRITE = 'mobile';
 export const PLANT_SPRITE = 'chuck';
+
+export const POP_UP_BACKGROUND = 'game_background';
+export const ACCEPT_BUTTON = 'accept_button';
+export const CANCEL_BUTTON = 'cancel_button';

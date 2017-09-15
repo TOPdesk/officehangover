@@ -38,7 +38,45 @@ export default class {
 		entryPosition += 60;
 
 		newGame.events.onInputDown.add(function () {
-			this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
+			if(localStorage.getItem('flags') !== null) {
+				console.log('remove local storage');
+
+				//  You can drag the pop-up window around
+				let popup = this.game.add.sprite(400, 400, Constants.GAME_BACKGROUND);
+				popup.alpha = 0.8;
+				popup.anchor.set(0.5);
+				popup.scale.set(1);
+
+				//  Position the close button to the top-right of the popup sprite (minus 8px for spacing)
+				var pw = (popup.width / 2) - 30;
+				var ph = (popup.height / 2) - 8;
+
+				//  And click the close button to close it
+				var cancelButton = this.game.make.sprite(pw+200, -ph, Constants.CANCEL_BUTTON);
+				cancelButton.inputEnabled = true;
+				cancelButton.input.priorityID = 1;
+				cancelButton.input.useHandCursor = true;
+				cancelButton.events.onInputDown.add(function (){
+					//close the pop up
+					popup.destroy();
+				}, this);
+				popup.addChild(cancelButton);
+
+				//  And click the close button to close it
+				var acceptButton = this.game.make.sprite(pw, -ph, Constants.ACCEPT_BUTTON);
+				acceptButton.inputEnabled = true;
+				acceptButton.input.priorityID = 1;
+				acceptButton.input.useHandCursor = true;
+				acceptButton.events.onInputDown.add(function (){
+					//remove the local storage and go to the game
+					localStorage.clear();
+					this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
+				}, this);
+				popup.addChild(acceptButton);
+
+			}else {
+				this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
+			}
 		}, this);
 
 		var credits = this.game.add.text(menuPositionX, menuPositionY + entryPosition, 'Credits');
