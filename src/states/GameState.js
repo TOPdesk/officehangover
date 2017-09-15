@@ -89,10 +89,14 @@ export default {
 		this.visibleCharacters = this.game.add.group();
 		this.initialiseCharacters();
 
-		//if (this.currentLevel == 0 && !this.flags['l1_wake_up']) {
-		if (this.currentLevel == 0) {
+		if (typeof(this.flags['l1_wake_up'])=== undefined) {
+			this.flags['l1_wake_up'] = 0;
+		}
+
+		if (this.currentLevel == 0 && !this.flags['l1_wake_ip']) {
 			this.player.wakeUp();
 		}
+
 	},
 	update: function () {
 		// if the player just pressed space, then set an 'unhandled action' flag

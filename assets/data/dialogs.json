@@ -77,6 +77,7 @@
 	"wakeup1": {
 		"start_options": [1],
 		"messages": [{
+			    "condition": "return !(state.flags.l1_wake_up);",
 				"id": 1,
 				"message": "Oof! What happened last night? I never remember these office parties. Oh well, maybe it's for the best",
 				"replies": [{
@@ -89,7 +90,8 @@
 				"message": "Wait, where did I put my keys? My wallet's gone too... Did I even lock my bike at all? I develop software for managing items for .. sake.",
 				"replies": [{
 					"message": "Continue...",
-					"action": "close_dialog"
+					"action": "close_dialog",
+					"setflag": ["l1_wake_up"]
 				}]
 			}
 		]
