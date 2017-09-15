@@ -46,6 +46,7 @@
         }, 
         {
          "draworder":"topdown",
+         "height":0,
          "name":"Objects",
          "objects":[
                 {
@@ -53,6 +54,10 @@
                  "height":0,
                  "id":4,
                  "name":"Player_Start",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Start",
                  "visible":true,
@@ -61,52 +66,12 @@
                  "y":149
                 }, 
                 {
-                 "ellipse":true,
-                 "height":0,
-                 "id":5,
-                 "name":"Character1",
-                 "rotation":0,
-                 "type":"Character",
-                 "visible":true,
-                 "width":0,
-                 "x":448,
-                 "y":430
-                }, 
-                {
-                 "ellipse":true,
-                 "height":0,
-                 "id":6,
-                 "name":"Character2",
-                 "rotation":0,
-                 "type":"Character",
-                 "visible":true,
-                 "width":0,
-                 "x":1263,
-                 "y":687
-                }, 
-                {
-                 "ellipse":true,
-                 "height":0,
-                 "id":7,
-                 "name":"Character3",
-                 "rotation":0,
-                 "type":"Character",
-                 "visible":true,
-                 "width":0,
-                 "x":1542,
-                 "y":616
-                }, 
-                {
                  "height":34,
                  "id":12,
                  "name":"Exit1",
                  "properties":
                     {
                      "subtype":"Exit"
-                    },
-                 "propertytypes":
-                    {
-                     "subtype":"string"
                     },
                  "rotation":0,
                  "type":"Exit",
@@ -119,6 +84,10 @@
                  "height":94,
                  "id":19,
                  "name":"Door",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -130,6 +99,10 @@
                  "height":94,
                  "id":20,
                  "name":"Door",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -141,6 +114,10 @@
                  "height":94,
                  "id":22,
                  "name":"Door",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -149,47 +126,13 @@
                  "y":1248
                 }, 
                 {
-                 "height":61.75,
-                 "id":34,
-                 "name":"Lift",
-                 "properties":
-                    {
-                     "subtype":"Lift"
-                    },
-                 "propertytypes":
-                    {
-                     "subtype":"string"
-                    },
-                 "rotation":0,
-                 "type":"Actionable",
-                 "visible":true,
-                 "width":91.125,
-                 "x":993.875,
-                 "y":1050.25
-                }, 
-                {
-                 "height":51.25,
-                 "id":35,
-                 "name":"Lift",
-                 "properties":
-                    {
-                     "subtype":"Lift"
-                    },
-                 "propertytypes":
-                    {
-                     "subtype":"string"
-                    },
-                 "rotation":0,
-                 "type":"Actionable",
-                 "visible":true,
-                 "width":90.375,
-                 "x":672.625,
-                 "y":1058.75
-                }, 
-                {
                  "height":94,
                  "id":36,
                  "name":"Door",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -201,51 +144,16 @@
                  "height":94,
                  "id":37,
                  "name":"Door",
+                 "properties":
+                    {
+
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":58,
                  "x":1474,
                  "y":738
-                }, 
-                {
-                 "height":0,
-                 "id":38,
-                 "name":"chuck",
-                 "properties":
-                    {
-                     "subtype":"chuck"
-                    },
-                 "propertytypes":
-                    {
-                     "subtype":"string"
-                    },
-                 "rotation":0,
-                 "type":"Actionable",
-                 "visible":true,
-                 "width":0,
-                 "x":53.3333333333333,
-                 "y":1645.33333333333
-                }, 
-                {
-                 "ellipse":true,
-                 "height":21,
-                 "id":39,
-                 "name":"PC",
-                 "properties":
-                    {
-                     "subtype":"PC"
-                    },
-                 "propertytypes":
-                    {
-                     "subtype":"string"
-                    },
-                 "rotation":0,
-                 "type":"Actionable",
-                 "visible":true,
-                 "width":24,
-                 "x":688,
-                 "y":633.5
                 }, 
                 {
                  "height":66,
@@ -256,17 +164,12 @@
                      "dialogkey":"KarioMart",
                      "subtype":"KarioMart"
                     },
-                 "propertytypes":
-                    {
-                     "dialogkey":"string",
-                     "subtype":"string"
-                    },
                  "rotation":0,
                  "type":"Actionable",
                  "visible":true,
                  "width":92,
-                 "x":144,
-                 "y":311
+                 "x":135,
+                 "y":301
                 }, 
                 {
                  "height":32,
@@ -276,11 +179,6 @@
                     {
                      "dialogkey":"postit4",
                      "subtype":"postit"
-                    },
-                 "propertytypes":
-                    {
-                     "dialogkey":"string",
-                     "subtype":"string"
                     },
                  "rotation":0,
                  "type":"Actionable",
@@ -299,11 +197,6 @@
                      "dialogkey":"coffeeaddict",
                      "stopped":"1"
                     },
-                 "propertytypes":
-                    {
-                     "dialogkey":"string",
-                     "stopped":"string"
-                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -321,28 +214,124 @@
                      "dialogkey":"CoffeeMachine",
                      "subtype":"CoffeeMachine"
                     },
-                 "propertytypes":
-                    {
-                     "dialogkey":"string",
-                     "subtype":"string"
-                    },
                  "rotation":0,
                  "type":"Actionable",
                  "visible":true,
                  "width":25,
                  "x":1123.5,
                  "y":1349.33333333333
+                }, 
+                {
+                 "ellipse":true,
+                 "height":28,
+                 "id":45,
+                 "name":"Character1",
+                 "properties":
+                    {
+                     "dialogkey":"l2_character1"
+                    },
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":34,
+                 "x":426,
+                 "y":456
+                }, 
+                {
+                 "ellipse":true,
+                 "height":21,
+                 "id":46,
+                 "name":"PC",
+                 "properties":
+                    {
+                     "dialogkey":"PC",
+                     "subtype":"PC"
+                    },
+                 "rotation":0,
+                 "type":"Actionable",
+                 "visible":true,
+                 "width":24,
+                 "x":694,
+                 "y":631.5
+                }, 
+                {
+                 "height":57,
+                 "id":47,
+                 "name":"Lift",
+                 "properties":
+                    {
+                     "dialogkey":"Lift",
+                     "subtype":"Lift"
+                    },
+                 "rotation":0,
+                 "type":"Actionable",
+                 "visible":true,
+                 "width":93,
+                 "x":673.5,
+                 "y":1054.5
+                }, 
+                {
+                 "height":57,
+                 "id":48,
+                 "name":"Lift",
+                 "properties":
+                    {
+                     "dialogkey":"Lift",
+                     "subtype":"Lift"
+                    },
+                 "rotation":0,
+                 "type":"Actionable",
+                 "visible":true,
+                 "width":93,
+                 "x":993.5,
+                 "y":1055.5
+                }, 
+                {
+                 "ellipse":true,
+                 "height":27,
+                 "id":49,
+                 "name":"Character2",
+                 "properties":
+                    {
+                     "dialogkey":"l2_character2"
+                    },
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":24,
+                 "x":1250,
+                 "y":678.5
+                }, 
+                {
+                 "height":0,
+                 "id":50,
+                 "name":"chuck",
+                 "properties":
+                    {
+                     "dialogkey":"chuck",
+                     "subtype":"chuck"
+                    },
+                 "rotation":0,
+                 "type":"Actionable",
+                 "visible":true,
+                 "width":0,
+                 "x":47,
+                 "y":1634
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
+         "width":0,
          "x":0,
          "y":0
         }],
- "nextobjectid":45,
+ "nextobjectid":51,
  "orientation":"orthogonal",
+ "properties":
+    {
+
+    },
  "renderorder":"right-down",
- "tiledversion":"1.0.2",
  "tileheight":32,
  "tilesets":[
         {
@@ -350,7 +339,6 @@
          "source":"tileset.json"
         }],
  "tilewidth":32,
- "type":"map",
  "version":1,
  "width":60
 }

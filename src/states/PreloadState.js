@@ -43,7 +43,7 @@ export default class {
 			this.load.image(Constants.TILESET_IMAGE, 'assets/images/tileset1.png');
 
 			this.load.json('floor1-tilemap-json', 'assets/data/floor1-tilemap.json');
-			this.load.json('floor2-tilemap-json', 'assets/data/floor2-tilemap.json');
+			this.load.json('floor2-tilemap-json', 'assets/data/floor2-tilemap2.json');
 			this.load.json('tileset.json', 'assets/data/tileset.json');
 
 			this.load.audio('door_open', 'assets/sounds/door_open.mp3');
