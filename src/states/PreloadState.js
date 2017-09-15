@@ -41,7 +41,8 @@ export default class {
 			this.load.json(Constants.DIALOGS, 'assets/data/dialogs.json');
 
 			this.load.image(Constants.TILESET_IMAGE, 'assets/images/tileset1.png');
-
+			this.load.spritesheet("tileset_as_sprites", 'assets/images/tileset1.png', 32, 32, 460);
+			
 			this.load.json('floor1-tilemap-json', 'assets/data/floor1-tilemap.json');
 			this.load.json('floor2-tilemap-json', 'assets/data/floor2-tilemap2.json');
 			this.load.json('tileset.json', 'assets/data/tileset.json');

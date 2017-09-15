@@ -75,21 +75,38 @@ export default {
 		this.game.world.removeAll();
 		// make sure there are no active dialogs remaining
 		this.dialogs.closeDialog();
-		
+
+		this.visibleCharacters = this.game.add.group();
+		this.initialiseCharacters();
+
 		var tilemap = Constants.TILEMAP_FLOORS[this.currentLevel];
 
 		this.map = this.game.add.tilemap(tilemap);
 		this.map.addTilesetImage('officehangover', Constants.TILESET_IMAGE);
 
 		this.collisionLayer = this.map.createLayer('Floor and Walls');
-		this.map.createLayer('Shadows');
+		this.map.createLayer('Shadows').resizeWorld();
 		this.map.createLayer('Bottom Objects');
-		this.map.createLayer('Top Objects').resizeWorld();
+		
+		// for the Top Object layer, we create horizontal strips of tiles
+		// that can be sorted together with the Character objects.
+		for (var y = 0; y < this.map.width; ++y) {
+			let strip = new Phaser.SpriteBatch(this.game, null, "Top_row" + y, false);
+			strip.body = {
+				// we only need to define the bottom to sort correctly
+				bottom: (y + 1) * 32
+			};
+			this.visibleCharacters.add(strip);
+
+			for (var x = 0; x < this.map.width; ++x) {
+				var tile3 = this.map.getTile(x, y, 3);
+				if (tile3 !== null) {
+					strip.add (new Phaser.Image(this.game, x * 32, y * 32, "tileset_as_sprites", tile3.index - 1));
+				}
+			}
+		}
 
 		this.initialiseCollisionLayer();
-
-		this.visibleCharacters = this.game.add.group();
-		this.initialiseCharacters();
 
 		if (typeof(this.flags['l1_wake_up'])=== undefined) {
 			this.flags['l1_wake_up'] = 0;
@@ -135,7 +152,7 @@ export default {
 			if (!a.body) return -1;
 			if (!b.body) return 1;
 			return a.body.bottom - b.body.bottom;
-		});
+		}, this);
 
 		// any space action should be handled before this.
 		this.justPressedSpace = 0;
