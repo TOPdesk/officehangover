@@ -77,6 +77,7 @@
 	"wakeup1": {
 		"start_options": [1],
 		"messages": [{
+			    "condition": "return !(state.flags.l1_wake_up);",
 				"id": 1,
 				"message": "Oof! What happened last night? I never remember these office parties. Oh well, maybe it's for the best",
 				"replies": [{

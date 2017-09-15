@@ -51,6 +51,9 @@ export default class {
 			if (dialogStartId !== undefined) {
 				this.activeDialog = dialog;
 				this.activeDialog.showDialog(objectDialogs, dialogStartId);
+			}else {
+				this.state.uiBlocked = false;
+				character.isExecutingTask = false;
 			}
 		}
 	}
