@@ -76,9 +76,6 @@ export default {
 		// make sure there are no active dialogs remaining
 		this.dialogs.closeDialog();
 
-		this.visibleCharacters = this.game.add.group();
-		this.initialiseCharacters();
-
 		var tilemap = Constants.TILEMAP_FLOORS[this.currentLevel];
 
 		this.map = this.game.add.tilemap(tilemap);
@@ -87,6 +84,8 @@ export default {
 		this.collisionLayer = this.map.createLayer('Floor and Walls');
 		this.map.createLayer('Shadows').resizeWorld();
 		this.map.createLayer('Bottom Objects');
+
+		this.visibleCharacters = this.game.add.group();
 		
 		// for the Top Object layer, we create horizontal strips of tiles
 		// that can be sorted together with the Character objects.
@@ -106,6 +105,7 @@ export default {
 			}
 		}
 
+		this.initialiseCharacters();
 		this.initialiseCollisionLayer();
 
 		if (typeof(this.flags['l1_wake_up'])=== undefined) {
