@@ -48,7 +48,7 @@ export default class {
 			let objectDialogs = this.dialogData[objectname];
 			let dialog = new DialogWindow(this.state, this, objectname, character);
 			var dialogStartId = dialog.findDialogStart(objectDialogs.start_options, objectDialogs.messages);
-			if (dialogStartId) {
+			if (dialogStartId !== undefined) {
 				this.activeDialog = dialog;
 				this.activeDialog.showDialog(objectDialogs, dialogStartId);
 			}
