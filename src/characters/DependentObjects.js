@@ -1,14 +1,17 @@
 import GameObject from "./GameObject";
 
 export default class extends GameObject {
-	constructor (state, x, y, key){
+	constructor (state, x, y, key, properties){
 		super (state, x, y, key, null);
 
 		this.dependentObject = null;
+		this.properties = properties;
 
-		if(this.key == "dishwasher"){
-			this.alpha = 0;
+		if (!this.state.flags.hasOwnProperty(this.properties.statuskey)){
+			this.state.flags[this.properties.statuskey] = 0;
 		}
+
+		this.alpha = (this.properties.subordinate)? this.state.flags[this.properties.statuskey] : !this.state.flags[this.properties.statuskey];
 	}
 
 	/** called whenever a player collides with this game object */

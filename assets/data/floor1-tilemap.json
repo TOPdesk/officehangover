@@ -218,6 +218,16 @@
                  "height":60,
                  "id":28,
                  "name":"DishWasher1",
+				"properties":
+				{
+					"statuskey": "l1_clean_dishes",
+					"subordinate": true
+				},
+				"propertytypes":
+				{
+					"dialogkey":"string",
+					"subordinate": "bool"
+				},
                  "rotation":0,
                  "type":"DishWasher",
                  "visible":true,
@@ -229,6 +239,16 @@
                  "height":60,
                  "id":29,
                  "name":"DirtyDishes1",
+				"properties":
+				{
+					"statuskey": "l1_clean_dishes",
+					"subordinate": false
+				},
+				"propertytypes":
+				{
+					"statuskey":"string",
+					"subordinate": "bool"
+				},
                  "rotation":0,
                  "type":"DirtyDishes",
                  "visible":true,

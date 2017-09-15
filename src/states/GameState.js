@@ -203,7 +203,7 @@ export default {
 				this.add.existing(sprite);
 				this.gameobjectZones.push(sprite);
 			}else if (obj.type == "DishWasher" || obj.type == "DirtyDishes") {
-				let sprite = new DependentObjects(this, obj.x, obj.y, obj.type.toLowerCase());
+				let sprite = new DependentObjects(this, obj.x, obj.y, obj.type.toLowerCase(), obj.properties);
 				this.visibleCharacters.add(sprite);
 				this.dependentgameobjects.push(sprite);
 			}
