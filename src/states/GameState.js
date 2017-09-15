@@ -10,12 +10,11 @@ import DependentObjects from "../characters/DependentObjects";
 export default {
 	init: function () {
 
+		this.flags = {};
 
 		//ckeck the localstorage
-		if(typeof localStorage.getItem('flags') !== undefined) {
+		if(localStorage.getItem('flags')) {
 			this.flags = JSON.parse(localStorage.getItem('flags'));
-		}else{
-			this.flags = {};
 		}
 
 		this.inputChars = []; // for cheat codes
