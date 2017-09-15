@@ -13,7 +13,7 @@ export default {
 		this.flags = {};
 
 		//ckeck the localstorage
-		if(localStorage.getItem('flags')) {
+		if(localStorage.getItem('flags') !== null) {
 			this.flags = JSON.parse(localStorage.getItem('flags'));
 		}
 
