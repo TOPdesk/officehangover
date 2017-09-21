@@ -18,12 +18,12 @@ export default class {
 		var menuPositionY = this.game.world.height / 2 - 180;
 		var menuPositionX = this.game.world.centerX / 2;
 
-		this.game.add.text(menuPositionX, menuPositionY, 'MENU', {'fill': '#FFA500'});
+		this.game.add.text(menuPositionX, menuPositionY, 'MENU', Constants.TITLE_STYLE);
 
 		var entryPosition = 60;
 
 		if(localStorage.level) {
-			var continueGame = this.game.add.text(menuPositionX, menuPositionY + entryPosition, 'Continue Game');
+			var continueGame = this.game.add.text(menuPositionX, menuPositionY + entryPosition, 'Continue Game', Constants.GENERAL_STYLE);
 			continueGame.inputEnabled = true;
 
 			continueGame.events.onInputDown.add(function () {
@@ -33,13 +33,12 @@ export default class {
 			entryPosition += 60;
 		}
 
-		var newGame = this.game.add.text(menuPositionX, menuPositionY + entryPosition, 'New Game');
+		var newGame = this.game.add.text(menuPositionX, menuPositionY + entryPosition, 'New Game', Constants.GENERAL_STYLE);
 		newGame.inputEnabled = true;
 		entryPosition += 60;
 
 		newGame.events.onInputDown.add(function () {
 			if(localStorage.getItem('flags') !== null) {
-				console.log('remove local storage');
 
 				//  You can drag the pop-up window around
 				let popup = this.game.add.sprite(400, 400, Constants.GAME_BACKGROUND);
@@ -79,7 +78,7 @@ export default class {
 			}
 		}, this);
 
-		var credits = this.game.add.text(menuPositionX, menuPositionY + entryPosition, 'Credits');
+		var credits = this.game.add.text(menuPositionX, menuPositionY + entryPosition, 'Credits', Constants.GENERAL_STYLE);
 		credits.inputEnabled = true;
 
 		credits.events.onInputDown.add(function () {

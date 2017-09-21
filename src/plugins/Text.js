@@ -1,3 +1,4 @@
+import * as Constants from "../constants";
 export default class extends Phaser.Plugin {
 	constructor(game, parent) {
 		super(game, parent);
@@ -21,7 +22,7 @@ export default class extends Phaser.Plugin {
 
 		//TODO: Add a customize styling
 
-		this.text = this.game.add.text(posX, posY, "", {font: "28px Arial", fill: "#ff0044", align: "left"});
+		this.text = this.game.add.text(posX, posY, "", Constants.INTRO_STYLE);
 
 		this.nextLine();
 	}

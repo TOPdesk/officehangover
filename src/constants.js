@@ -41,3 +41,9 @@ export const PLANT_SPRITE = 'chuck';
 export const POP_UP_BACKGROUND = 'game_background';
 export const ACCEPT_BUTTON = 'accept_button';
 export const CANCEL_BUTTON = 'cancel_button';
+
+export const GENERAL_STYLE = { font: "32px pixelFont", fill: "#000000"};
+export const TITLE_STYLE = {font: "36px pixelFont", fill: '#FFA500'};
+export const INTRO_STYLE = {font: "32px pixelFont", fill: "#ff0044", align: "left"};
+export const MESSAGE_STYLE = {font: "32px pixelFont", fill: '#FFA500'};
+export const OPTION_STYLE = {font: "32px pixelFont", fill: '#00FFA5'};

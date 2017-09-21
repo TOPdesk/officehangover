@@ -106,7 +106,7 @@ class DialogWindow {
 
 		this.currentObjectDialog = this.findDialog(objectDialogs.messages, id);
 		
-		var msgWidget = this.game.add.text(this.x, yy, this.currentObjectDialog.message, {'fill': '#FFA500'});
+		var msgWidget = this.game.add.text(this.x, yy, this.currentObjectDialog.message, Constants.MESSAGE_STYLE);
 		msgWidget.wordWrap = true;
 		msgWidget.wordWrapWidth = this.w;
 
@@ -122,7 +122,7 @@ class DialogWindow {
 				if (!result) continue; // skip this option
 			}
 
-			var optionWidget = this.game.add.text(this.x, yy, replyOption.message, {'fill': '#00FFA5'});
+			var optionWidget = this.game.add.text(this.x, yy, replyOption.message, Constants.OPTION_STYLE);
 			optionWidget.wordWrap = true;
 			optionWidget.wordWrapWidth = this.w;
 

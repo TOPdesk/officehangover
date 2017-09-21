@@ -32,7 +32,7 @@ export default class {
 
 			this.load.image(Constants.SCENE, 'assets/images/floor-plan.png');
 
-			this.game.load.bitmapFont('desyrel', 'assets/fonts/nokia16black.png', 'assets/fonts/nokia16black.xml');
+			//this.game.load.bitmapFont('desyrel', 'assets/fonts/nokia16black.png', 'assets/fonts/nokia16black.xml');
 
 			this.load.json(Constants.PLAYER_DATA, 'assets/data/player_data.json');
 			this.load.json(Constants.GAME_TEXT, 'assets/data/text.json');
