@@ -273,7 +273,8 @@
                  "properties":
                     {
                      "dialogkey":"mobile",
-                     "subtype":"Mobile"
+                     "subtype":"Mobile",
+                     "statuskey": "l1_mobile_picked"
                     },
                  "rotation":0,
                  "type":"Actionable",
