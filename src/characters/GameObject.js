@@ -32,7 +32,9 @@ export default class extends Phaser.Sprite {
 		} else if (this.key == "exit") {
 			if (this.state.currentLevel == 0) {
 				this.state.currentLevel = 1;
+				localStorage.setItem("level", this.state.currentLevel);
 				this.state.initLevel();
+
 			}
 			else {
 				this.state.state.start(Constants.TEXT_STATE, true, false, "the_end", Constants.HOME_STATE);

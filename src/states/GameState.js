@@ -52,10 +52,8 @@ export default {
 
 		this.playerData = this.game.cache.getJSON(Constants.PLAYER_DATA);
 
-		//TODO: load the level from the local storage
-		this.currentLevel = 0; // zero meaning level 1, 1 meaning level 2 of course.
-		//Adding the level to the localStorage
-		localStorage.level = this.currentLevel;
+
+		this.currentLevel = (typeof localStorage.level != 'undefined')? localStorage.level : 0;
 
 		this.sfx = {};
 		this.sfx.door_open = this.game.add.audio('door_open');
@@ -108,7 +106,7 @@ export default {
 		this.initialiseCharacters();
 		this.initialiseCollisionLayer();
 
-		if (typeof(this.flags['l1_wake_up'])=== undefined) {
+		if (typeof(this.flags['l1_wake_up'])=== 'undefined') {
 			this.flags['l1_wake_up'] = 0;
 		}
 
@@ -227,7 +225,7 @@ export default {
 				this.dependentgameobjects.push(sprite);
 			}
 			else if (obj.type == "Actionable") {
-				if (typeof (obj.properties.statuskey) === undefined || (typeof (obj.properties.statuskey) !== undefined && !this.flags[obj.properties.statuskey])){
+				if (typeof (obj.properties.statuskey) === 'undefined' || (typeof (obj.properties.statuskey) !== 'undefined' && !this.flags[obj.properties.statuskey])){
 					let sprite = new GameObject(this, obj.x, obj.y, obj.properties.subtype.toLowerCase(), obj.type.toLowerCase(), obj.properties.dialogkey.toLowerCase());
 					this.visibleCharacters.add(sprite);
 					this.dependentgameobjects.push(sprite);
