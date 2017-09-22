@@ -12,6 +12,11 @@ export default class extends GameObject {
 		}
 
 		this.alpha = (this.properties.subordinate)? this.state.flags[this.properties.statuskey] : !this.state.flags[this.properties.statuskey];
+
+		//TODO: No build the object if it is not necessary.
+		if(!this.properties.subordinate && this.state.flags[this.properties.statuskey]){
+			this.destroy();
+		}
 	}
 
 	/** called whenever a player collides with this game object */
