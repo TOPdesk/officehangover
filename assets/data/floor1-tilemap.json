@@ -225,7 +225,7 @@
                  "properties":
                     {
                      "statuskey":"l1_clean_dishes",
-                     "subordinate":"true"
+                     "subordinate": true
                     },
                  "rotation":0,
                  "type":"DishWasher",
@@ -241,7 +241,7 @@
                  "properties":
                     {
                      "statuskey":"l1_clean_dishes",
-                     "subordinate":"false"
+                     "subordinate": false
                     },
                  "rotation":0,
                  "type":"DirtyDishes",
