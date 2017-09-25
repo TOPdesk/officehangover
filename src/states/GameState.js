@@ -52,8 +52,12 @@ export default {
 
 		this.playerData = this.game.cache.getJSON(Constants.PLAYER_DATA);
 
-
-		this.currentLevel = (typeof localStorage.level != 'undefined')? localStorage.level : 0;
+		if (localStorage.getItem('flags') === null){
+			this.currentLevel = 0;
+			localStorage.level = this.currentLevel;
+		}else {
+			this.currentLevel = localStorage.level;
+		}
 
 		this.sfx = {};
 		this.sfx.door_open = this.game.add.audio('door_open');
@@ -166,7 +170,7 @@ export default {
 		}
 		else if (cheatCode === "idkfa") {
 			this.currentLevel = 0;
-			this.initLevel();			
+			this.initLevel();
 		}
 	},
 	initialiseCharacters: function () {
