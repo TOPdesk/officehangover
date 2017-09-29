@@ -117,7 +117,7 @@ export default {
 			this.flags['l1_wake_up'] = 0;
 		}
 
-		if (this.currentLevel == 0 && !this.flags['l1_wake_ip']) {
+		if (this.currentLevel == 0 && !this.flags['l1_wake_up']) {
 			this.player.wakeUp();
 		}
 
