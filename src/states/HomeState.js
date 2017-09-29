@@ -9,6 +9,7 @@ export default class {
 	}
 
 	create() {
+		this.game.sound.stopAll();
 		this.menuMusic = this.game.add.audio(Constants.MENU_MUSIC, Constants.MUSIC_VOLUME, Constants.LOOP_MUSIC);
 		this.menuMusic.play();
 		this.introSound = this.game.add.audio('typing', 1);
