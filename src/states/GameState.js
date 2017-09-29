@@ -60,9 +60,11 @@ export default {
 		}
 
 		this.sfx = {};
-		this.sfx.door_open = this.game.add.audio('door_open');
-		this.sfx.coffee_machine_broken = this.game.add.audio('coffee_machine_broken');
-		this.sfx.coffee_machine_serve = this.game.add.audio('coffee_machine_serve');
+		this.sfx.door_open = this.game.add.audio('door_open', Constants.SFX_VOLUME);
+		this.sfx.coffee_machine_broken = this.game.add.audio('coffee_machine_broken', Constants.SFX_VOLUME);
+		this.sfx.coffee_machine_serve = this.game.add.audio('coffee_machine_serve', Constants.SFX_VOLUME);
+		this.sfx.game_music = this.game.add.audio(Constants.GAME_MUSIC, Constants.MUSIC_VOLUME, Constants.LOOP_MUSIC);
+		this.sfx.game_music.play();
 		// add other sounds to sfx dictionary here!
 	},
 	create: function () {
