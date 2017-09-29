@@ -213,7 +213,7 @@
 				"id": 4,
 				"message": "Thank you so much! Here you have something in return. I'll let you through now",
 				"replies": [{
-					"message": "The addict guy returns you your keys!",
+					"message": "The addict guy hands you your keys!",
 					"actions": [ "close_dialog", "move_around" ]
 				}]
 			}
