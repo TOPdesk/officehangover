@@ -39,7 +39,7 @@ export const MOBILE_SPRITE = 'mobile';
 export const PLANT_SPRITE = 'chuck';
 
 /*POP UP*/
-export const POP_UP_BACKGROUND = 'game_background';
+export const MENU_BACKGROUND = 'game_background';
 export const ACCEPT_BUTTON = 'accept_button';
 export const CANCEL_BUTTON = 'cancel_button';
 

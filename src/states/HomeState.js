@@ -12,9 +12,11 @@ export default class {
 		this.menuMusic = this.game.add.audio(Constants.MENU_MUSIC, Constants.MUSIC_VOLUME, Constants.LOOP_MUSIC);
 		this.menuMusic.play();
 		this.game.stage.backgroundColor = Constants.BACKGROUND_BOOT_STATE;
-		var background = this.game.add.sprite(0, 0);
+
+		var background = this.game.add.sprite(0, 0, Constants.MENU_BACKGROUND);
 		background.width = this.game.world.width;
 		background.height = this.game.world.height;
+		background.alpha = 0.8;
 		background.inputEnabled = true;
 
 		var menuPositionY = this.game.world.height / 2 - 180;
