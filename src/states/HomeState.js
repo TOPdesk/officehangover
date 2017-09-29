@@ -11,6 +11,7 @@ export default class {
 	create() {
 		this.menuMusic = this.game.add.audio(Constants.MENU_MUSIC, Constants.MUSIC_VOLUME, Constants.LOOP_MUSIC);
 		this.menuMusic.play();
+		this.introSound = this.game.add.audio('typing', Constants.SFX_VOLUME);
 		this.game.stage.backgroundColor = Constants.BACKGROUND_BOOT_STATE;
 
 		var background = this.game.add.sprite(0, 0, Constants.MENU_BACKGROUND);
@@ -74,11 +75,13 @@ export default class {
 					//remove the local storage and go to the game
 					localStorage.clear();
 					this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
+					this.playIntroTyping();
 				}, this);
 				popup.addChild(acceptButton);
 
 			}else {
 				this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
+				this.playIntroTyping();
 			}
 		}, this);
 
@@ -89,6 +92,11 @@ export default class {
 			this.state.start(Constants.TEXT_STATE, true, false, "credits", Constants.HOME_STATE);
 
 		}, this);
+	}
+
+	playIntroTyping() {
+		this.introSound.play();
+		this.menuMusic.volume -= Constants.MUSIC_VOLUME_MUTE_DIFFERENCE;
 	}
 
 }

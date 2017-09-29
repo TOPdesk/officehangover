@@ -48,6 +48,7 @@ export default class {
 			this.load.audio('door_open', 'assets/sounds/door_open.mp3');
 			this.load.audio('coffee_machine_broken', 'assets/sounds/coffee-broken.mp3');
 			this.load.audio('coffee_machine_serve', 'assets/sounds/coffee-pouring.mp3');
+			this.load.audio('typing', 'assets/sounds/typing.mp3');
 			this.load.audio(Constants.MENU_MUSIC, 'assets/sounds/menu_music.mp3');
 			this.load.audio(Constants.GAME_MUSIC, 'assets/sounds/game_music.mp3');
 		}

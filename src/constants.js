@@ -51,6 +51,7 @@ export const MESSAGE_STYLE = {font: "32px pixelFont", fill: '#FCB174'};
 export const OPTION_STYLE = {font: "32px pixelFont", fill: '#00FFA5'};
 
 export const MUSIC_VOLUME = 0.3;
+export const MUSIC_VOLUME_MUTE_DIFFERENCE = 0.25;
 export const SFX_VOLUME = 1;
 export const LOOP_MUSIC = true;
 export const MENU_MUSIC = 'menu_music';
