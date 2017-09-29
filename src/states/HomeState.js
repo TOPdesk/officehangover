@@ -11,7 +11,7 @@ export default class {
 	create() {
 		this.menuMusic = this.game.add.audio(Constants.MENU_MUSIC, Constants.MUSIC_VOLUME, Constants.LOOP_MUSIC);
 		this.menuMusic.play();
-		this.introSound = this.game.add.audio('typing', Constants.SFX_VOLUME);
+		this.introSound = this.game.add.audio('typing', 1);
 		this.game.stage.backgroundColor = Constants.BACKGROUND_BOOT_STATE;
 
 		var background = this.game.add.sprite(0, 0, Constants.MENU_BACKGROUND);
@@ -96,7 +96,7 @@ export default class {
 
 	playIntroTyping() {
 		this.introSound.play();
-		this.menuMusic.volume -= Constants.MUSIC_VOLUME_MUTE_DIFFERENCE;
+		this.menuMusic.volume = Constants.MUSIC_VOLUME_LOW;
 	}
 
 }
