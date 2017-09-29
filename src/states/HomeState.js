@@ -29,7 +29,6 @@ export default class {
 			continueGame.inputEnabled = true;
 
 			continueGame.events.onInputDown.add(function () {
-				this.music.stop();
 				this.state.start(Constants.GAME_STATE);
 			}, this);
 
@@ -72,13 +71,11 @@ export default class {
 				acceptButton.events.onInputDown.add(function (){
 					//remove the local storage and go to the game
 					localStorage.clear();
-					this.menuMusic.stop();
 					this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
 				}, this);
 				popup.addChild(acceptButton);
 
 			}else {
-				this.menuMusic.stop();
 				this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
 			}
 		}, this);
