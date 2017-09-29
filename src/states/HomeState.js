@@ -19,10 +19,10 @@ export default class {
 		background.alpha = 0.8;
 		background.inputEnabled = true;
 
-		var menuPositionY = this.game.world.height / 2 - 180;
-		var menuPositionX = this.game.world.centerX / 2;
+		var menuPositionY = this.game.world.height / 3;
+		var menuPositionX = this.game.world.width / 3;
 
-		this.game.add.text(menuPositionX, menuPositionY, 'MENU', Constants.TITLE_STYLE);
+		this.game.add.text(menuPositionX, menuPositionY, 'MENU', Constants.MENU_TITLE_STYLE);
 
 		var entryPosition = 60;
 
