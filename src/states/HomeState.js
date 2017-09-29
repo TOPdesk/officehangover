@@ -9,6 +9,8 @@ export default class {
 	}
 
 	create() {
+		this.menuMusic = this.game.add.audio(Constants.MENU_MUSIC, Constants.MUSIC_VOLUME, Constants.LOOP_MUSIC);
+		this.menuMusic.play();
 		this.game.stage.backgroundColor = Constants.BACKGROUND_BOOT_STATE;
 		var background = this.game.add.sprite(0, 0);
 		background.width = this.game.world.width;
@@ -27,6 +29,7 @@ export default class {
 			continueGame.inputEnabled = true;
 
 			continueGame.events.onInputDown.add(function () {
+				this.music.stop();
 				this.state.start(Constants.GAME_STATE);
 			}, this);
 
@@ -69,11 +72,13 @@ export default class {
 				acceptButton.events.onInputDown.add(function (){
 					//remove the local storage and go to the game
 					localStorage.clear();
+					this.menuMusic.stop();
 					this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
 				}, this);
 				popup.addChild(acceptButton);
 
 			}else {
+				this.menuMusic.stop();
 				this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
 			}
 		}, this);

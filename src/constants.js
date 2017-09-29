@@ -47,3 +47,9 @@ export const TITLE_STYLE = {font: "36px pixelFont", fill: '#FFA500'};
 export const INTRO_STYLE = {font: "32px pixelFont", fill: "#ff0044", align: "left"};
 export const MESSAGE_STYLE = {font: "32px pixelFont", fill: '#FFA500'};
 export const OPTION_STYLE = {font: "32px pixelFont", fill: '#00FFA5'};
+
+export const MUSIC_VOLUME = 0.3;
+export const SFX_VOLUME = 1;
+export const LOOP_MUSIC = true;
+export const MENU_MUSIC = 'menu_music';
+export const GAME_MUSIC = 'game_music';
