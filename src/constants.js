@@ -38,14 +38,16 @@ export const TILEMAP_FLOORS = ['tilemap_floor1', 'tilemap_floor2'];
 export const MOBILE_SPRITE = 'mobile';
 export const PLANT_SPRITE = 'chuck';
 
+/*POP UP*/
 export const POP_UP_BACKGROUND = 'game_background';
 export const ACCEPT_BUTTON = 'accept_button';
 export const CANCEL_BUTTON = 'cancel_button';
 
-export const GENERAL_STYLE = { font: "32px pixelFont", fill: "#000000"};
-export const TITLE_STYLE = {font: "36px pixelFont", fill: '#FFA500'};
-export const INTRO_STYLE = {font: "32px pixelFont", fill: "#ff0044", align: "left"};
-export const MESSAGE_STYLE = {font: "32px pixelFont", fill: '#FFA500'};
+/*FONT STYLING*/
+export const GENERAL_STYLE = { font: "32px pixelFont", fill: "#5b5b5b"};
+export const MENU_TITLE_STYLE = {font: "36px pixelFont", fill: '#61447F'};
+export const INTRO_STYLE = {font: "32px pixelFont", fill: "#FD88D5", align: "left"};
+export const MESSAGE_STYLE = {font: "32px pixelFont", fill: '#FCB174'};
 export const OPTION_STYLE = {font: "32px pixelFont", fill: '#00FFA5'};
 
 export const MUSIC_VOLUME = 0.3;
