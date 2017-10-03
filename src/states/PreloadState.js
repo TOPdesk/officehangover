@@ -27,8 +27,7 @@ export default class {
 			this.load.image(Constants.PLANT_SPRITE, 'assets/images/assets_chuck.png');
 			this.load.image('kariomart_sprite', 'assets/images/kariomart.png');
 			this.load.image(Constants.MENU_BACKGROUND, 'assets/images/menu_brackground.png');
-			this.load.image(Constants.CANCEL_BUTTON, 'assets/images/provisional_cancel_button.png');
-			this.load.image(Constants.ACCEPT_BUTTON, 'assets/images/provisional_accept_button.png');
+			this.load.image(Constants.POPUP_BACKGROUND, 'assets/images/popup_background.png');
 
 			this.load.image(Constants.SCENE, 'assets/images/floor-plan.png');
 

@@ -40,8 +40,7 @@ export const PLANT_SPRITE = 'chuck';
 
 /*POP UP*/
 export const MENU_BACKGROUND = 'game_background';
-export const ACCEPT_BUTTON = 'accept_button';
-export const CANCEL_BUTTON = 'cancel_button';
+export const POPUP_BACKGROUND = 'popup_background';
 
 /*FONT STYLING*/
 export const GENERAL_STYLE = { font: "32px pixelFont", fill: "#5b5b5b"};
