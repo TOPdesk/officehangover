@@ -49,13 +49,13 @@ export default class {
 				popup.width = 300;
 				popup.height = 250;
 
-				/*let popup = new Phaser.Graphics(this.game, 10, 10);
-				popup.lineStyle(3, 0x000000, 1.0);
-				popup.beginFill(0xf5f4f6);
-				let rect = popup.drawRect(100,200,100, 50);
-				popup.endFill();
+				let popupText = 'Attention! Starting a new game will erase your previously saved progress.\nDo you want to start a new game?';
 
-				console.log(popup);*/
+				let popupTextObject = this.game.add.text (20, 20, popupText, Constants.POPUP_MESSAGE_STYLE);
+				popupTextObject.wordWrap = true;
+				popupTextObject.wordWrapWidth = 280;
+
+				popup.addChild(popupTextObject);
 
 				let cancelButton = new Phaser.Graphics(this.game);
 				cancelButton.lineStyle(3, 0x000000, 1.0);
