@@ -45,9 +45,7 @@ export default class {
 		newGame.events.onInputDown.add(function () {
 			if(localStorage.getItem('flags') !== null) {
 
-				//
-
-				let popup = this.game.add.sprite (10, 10, Constants.POPUP_BACKGROUND);
+				let popup = this.game.add.sprite (this.game.world.width / 3, this.game.world.height / 3, Constants.POPUP_BACKGROUND);
 				popup.width = 300;
 				popup.height = 250;
 
@@ -72,7 +70,7 @@ export default class {
 					popup.destroy();
 				}, this);
 
-				let cancelText = this.game.add.text(10, 10, 'Cancel', Constants.GENERAL_STYLE);
+				let cancelText = this.game.add.text(20, popup.height - 75 + 10, 'Cancel', Constants.GENERAL_STYLE);
 				cancelButton.addChild(cancelText);
 				popup.addChild(cancelButton);
 
@@ -91,46 +89,9 @@ export default class {
 					this.playIntroTyping();
 				}, this);
 
-				let acceptText = this.game.add.text(10, 10, 'Accept', Constants.GENERAL_STYLE);
+				let acceptText = this.game.add.text(popup.width - 125 + 10,  popup.height - 65 , 'Accept', Constants.GENERAL_STYLE);
 				acceptButton.addChild(acceptText);
 				popup.addChild(acceptButton);
-
-				//this.game.add.graphics(popup);
-				//this.game.add(popup, false, 0);
-				window.graphics = popup;
-				//  You can drag the pop-up window around
-				/*let popup = this.game.add.sprite(400, 400, Constants.GAME_BACKGROUND);
-				popup.alpha = 0.8;
-				popup.anchor.set(0.5);
-				popup.scale.set(1);*/
-				//  Position the close button to the top-right of the popup sprite (minus 8px for spacing)
-				/*var pw = (popup.width / 2) - 30;
-				var ph = (popup.height / 2) - 8;*/
-
-				//  And click the close button to close it
-				/*var cancelButton = this.game.make.sprite(pw+200, -ph, Constants.CANCEL_BUTTON);
-				cancelButton.inputEnabled = true;
-				cancelButton.input.priorityID = 1;
-				cancelButton.input.useHandCursor = true;
-				cancelButton.events.onInputDown.add(function (){
-					//close the pop up
-					popup.destroy();
-				}, this);
-				popup.addChild(cancelButton);*/
-
-				//  And click the close button to close it
-				/*var acceptButton = this.game.make.sprite(pw, -ph, Constants.ACCEPT_BUTTON);
-				acceptButton.inputEnabled = true;
-				acceptButton.input.priorityID = 1;
-				acceptButton.input.useHandCursor = true;
-				acceptButton.events.onInputDown.add(function (){
-					//remove the local storage and go to the game
-					localStorage.clear();
-					this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
-					this.playIntroTyping();
-				}, this);
-				popup.addChild(acceptButton);*/
-
 			}else {
 				this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
 				this.playIntroTyping();
