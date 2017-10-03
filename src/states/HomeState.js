@@ -13,7 +13,6 @@ export default class {
 		this.menuMusic = this.game.add.audio(Constants.MENU_MUSIC, Constants.MUSIC_VOLUME, Constants.LOOP_MUSIC);
 		this.menuMusic.play();
 		this.introSound = this.game.add.audio('typing', 1);
-		this.game.stage.backgroundColor = Constants.BACKGROUND_BOOT_STATE;
 
 		var background = this.game.add.sprite(0, 0, Constants.MENU_BACKGROUND);
 		background.width = this.game.world.width;
@@ -46,18 +45,25 @@ export default class {
 		newGame.events.onInputDown.add(function () {
 			if(localStorage.getItem('flags') !== null) {
 
-				//  You can drag the pop-up window around
-				let popup = this.game.add.sprite(400, 400, Constants.GAME_BACKGROUND);
-				popup.alpha = 0.8;
-				popup.anchor.set(0.5);
-				popup.scale.set(1);
+				//
 
-				//  Position the close button to the top-right of the popup sprite (minus 8px for spacing)
-				var pw = (popup.width / 2) - 30;
-				var ph = (popup.height / 2) - 8;
+				let popup = this.game.add.sprite (10, 10, Constants.POPUP_BACKGROUND);
+				popup.width = 300;
+				popup.height = 250;
 
-				//  And click the close button to close it
-				var cancelButton = this.game.make.sprite(pw+200, -ph, Constants.CANCEL_BUTTON);
+				/*let popup = new Phaser.Graphics(this.game, 10, 10);
+				popup.lineStyle(3, 0x000000, 1.0);
+				popup.beginFill(0xf5f4f6);
+				let rect = popup.drawRect(100,200,100, 50);
+				popup.endFill();
+
+				console.log(popup);*/
+
+				let cancelButton = new Phaser.Graphics(this.game);
+				cancelButton.lineStyle(3, 0x000000, 1.0);
+				cancelButton.beginFill(0xf5f5f5);
+				cancelButton.drawRoundedRect(10, popup.height - 75 ,100, 50);
+				cancelButton.endFill();
 				cancelButton.inputEnabled = true;
 				cancelButton.input.priorityID = 1;
 				cancelButton.input.useHandCursor = true;
@@ -65,10 +71,16 @@ export default class {
 					//close the pop up
 					popup.destroy();
 				}, this);
+
+				let cancelText = this.game.add.text(10, 10, 'Cancel', Constants.GENERAL_STYLE);
+				cancelButton.addChild(cancelText);
 				popup.addChild(cancelButton);
 
-				//  And click the close button to close it
-				var acceptButton = this.game.make.sprite(pw, -ph, Constants.ACCEPT_BUTTON);
+				let acceptButton = new Phaser.Graphics (this.game);
+				acceptButton.lineStyle(3, 0x000000, 1.0);
+				acceptButton.beginFill(0xfbfbfb);
+				acceptButton.drawRoundedRect(popup.width - 125 , popup.height - 75 ,100, 50);
+				acceptButton.endFill();
 				acceptButton.inputEnabled = true;
 				acceptButton.input.priorityID = 1;
 				acceptButton.input.useHandCursor = true;
@@ -78,7 +90,46 @@ export default class {
 					this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
 					this.playIntroTyping();
 				}, this);
+
+				let acceptText = this.game.add.text(10, 10, 'Accept', Constants.GENERAL_STYLE);
+				acceptButton.addChild(acceptText);
 				popup.addChild(acceptButton);
+
+				//this.game.add.graphics(popup);
+				//this.game.add(popup, false, 0);
+				window.graphics = popup;
+				//  You can drag the pop-up window around
+				/*let popup = this.game.add.sprite(400, 400, Constants.GAME_BACKGROUND);
+				popup.alpha = 0.8;
+				popup.anchor.set(0.5);
+				popup.scale.set(1);*/
+				//  Position the close button to the top-right of the popup sprite (minus 8px for spacing)
+				/*var pw = (popup.width / 2) - 30;
+				var ph = (popup.height / 2) - 8;*/
+
+				//  And click the close button to close it
+				/*var cancelButton = this.game.make.sprite(pw+200, -ph, Constants.CANCEL_BUTTON);
+				cancelButton.inputEnabled = true;
+				cancelButton.input.priorityID = 1;
+				cancelButton.input.useHandCursor = true;
+				cancelButton.events.onInputDown.add(function (){
+					//close the pop up
+					popup.destroy();
+				}, this);
+				popup.addChild(cancelButton);*/
+
+				//  And click the close button to close it
+				/*var acceptButton = this.game.make.sprite(pw, -ph, Constants.ACCEPT_BUTTON);
+				acceptButton.inputEnabled = true;
+				acceptButton.input.priorityID = 1;
+				acceptButton.input.useHandCursor = true;
+				acceptButton.events.onInputDown.add(function (){
+					//remove the local storage and go to the game
+					localStorage.clear();
+					this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
+					this.playIntroTyping();
+				}, this);
+				popup.addChild(acceptButton);*/
 
 			}else {
 				this.state.start(Constants.TEXT_STATE, true, false, "intro_text", Constants.GAME_STATE);
