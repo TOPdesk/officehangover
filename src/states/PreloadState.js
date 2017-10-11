@@ -50,6 +50,9 @@ export default class {
 			this.load.audio('typing', 'assets/sounds/typing.mp3');
 			this.load.audio(Constants.MENU_MUSIC, 'assets/sounds/menu_music.mp3');
 			this.load.audio(Constants.GAME_MUSIC, 'assets/sounds/game_music.mp3');
+
+			//TODO: Quick fix
+			this.game.add.text(0, 0, '', Constants.MENU_TITLE_STYLE);
 		}
 	}
 	
