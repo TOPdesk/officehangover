@@ -1,0 +1,13 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background: black;
+    -webkit-filter: blur(0.000001px);
+    -webkit-font-smoothing: antialiased;
+}
+
+
+@font-face {
+    font-family: 'pixelFont';
+    src: url('../assets/fonts/final_fantasy_36_font.woff') format('woff');
+}

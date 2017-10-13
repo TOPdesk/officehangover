@@ -1,0 +1,32 @@
+{
+  "intro_text": [
+    "You wake up in a large room. There is a lot of noise.",
+    "You blink a few times. Where am I?",
+    "Some flashbacks. There was a party. There was beer, tequila.", 
+    "An office party. You check your pockets.", 
+    "Phone gone, wallet gone, keys gone.",  
+    "Oh no..... Your head hurts, you need coffee and your bed.",  
+    "Let's find your stuff and go home. But first, coffee.. "
+  ],
+  "credits": [
+    "Programming:",
+    "Jalitha Wills, Rebeca Alonso, Martijn van Iersel\n",
+    "Level Design and Graphics:",
+    "Martin de Rooij, Bart Klinge\n",
+    "Music:",
+    "Lajos Uti\n\n",
+    "created by TOPdesk employees as a promotional asset.",
+    "Looking for a cool Job in development? topdesk.com/jobs."
+  ],
+  "the_end": [
+    "Congratulations, you reached the end of this game!",
+    "There are no more floors (yet).",
+    "",
+    "Would you like this game to be longer?",
+    "Do you have cool ideas?",
+    "We're looking for volunteers!",
+    "Programmers, Artists, Musicians and Writers,",
+    "of all experience levels are welcome to join.",
+    "Contact JalithaW for details."
+  ]
+}

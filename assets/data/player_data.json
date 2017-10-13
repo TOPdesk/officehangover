@@ -1,0 +1,219 @@
+{
+  "backgroung_color":"#000",
+  "pc": {
+    "body_size": {
+      "width": 36,
+      "height": 36,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 56,
+      "height": 56
+    },
+    "sprite": "pc"
+  },
+  "beercratedropzone": {
+      "body_size": {
+      "width": 256,
+      "height": 128,
+      "top": 0,
+      "left": 0
+    },
+    "trigger_box": {
+      "width": 100,
+      "height": 100
+    },
+    "sprite": null
+  },
+  "kariomart": {
+      "body_size": {
+      "width": 128,
+      "height": 96,
+      "top": 0,
+      "left": 0
+    },
+    "trigger_box": {
+      "width": 100,
+      "height": 100
+    },
+    "sprite": "kariomart_sprite"
+  },
+  "dishwasher": {
+    "body_size": {
+      "width": 60,
+      "height": 60,
+      "top": 0,
+      "left": 0
+    },
+    "trigger_box": {
+      "width": 80,
+      "height": 80
+    },
+    "sprite": "dish_washer_sprite"
+  },
+  "dirtydishes": {
+    "body_size": {
+      "width": 60,
+      "height": 60,
+      "top": 0,
+      "left": 0
+    },
+    "trigger_box": {
+      "width": 80,
+      "height": 80
+    },
+    "sprite": "dirty_dishes_sprite"
+  },
+  "beercrate": {
+    "body_size": {
+      "width": 32,
+      "height": 34,
+      "top": 0,
+      "left": 0
+    },
+    "trigger_box": {
+      "width": 38,
+      "height": 30
+    },
+    "sprite": "BeerCrate"
+  },
+  "coffeemachine" : {
+    "body_size": {
+      "width": 36,
+      "height": 68,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 56,
+      "height": 88
+    },
+    "sprite": "coffeemachine"
+  },
+  "mobile" : {
+    "body_size": {
+      "width": 10,
+      "height": 16,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 30,
+      "height": 36
+    },
+    "sprite": "mobile"
+  },
+  "chuck" : {
+    "body_size": {
+      "width": 64,
+      "height": 32,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 104,
+      "height": 52
+    },
+    "sprite": "chuck"
+  },
+  "exit" : {
+    "body_size": {
+      "width": 64,
+      "height": 32,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 150,
+      "height": 150
+    },
+    "sprite": null
+  },
+  "postit" : {
+    "body_size": {
+      "width": 32,
+      "height": 32,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 44,
+      "height": 44
+    },
+    "sprite": null
+  },
+  "lift" : {
+    "body_size": {
+      "width": 32,
+      "height": 32,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 44,
+      "height": 44
+    },
+    "sprite": null
+  },
+  "firstaid" : {
+    "body_size": {
+      "width": 32,
+      "height": 32,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 44,
+      "height": 44
+    },
+    "sprite": null
+  },
+  "door" : {
+    "body_size": {
+      "width": 64,
+      "height": 96,
+      "top": 0,
+      "left": 0
+    },
+    "sprite": "Door"
+  },
+  "animation_walk_right": [143,144,145,146,147,148,149,150,151],
+  "animation_walk_left": [117,118,119,120,121,122,123,124,125],
+  "animation_walk_down": [130,131,132,133,134,135,136,137,138],
+  "animation_walk_up": [104,105,106,107,108,109,110,111,112],
+  "animation_wake_up": [265,264,263,262,261,260,14,40,14,40,130],
+  "player_speed": 400,
+  "frames": 5,
+  "velocity":{
+    "character1": {
+      "velocity": 200
+    },
+    "character2": {
+      "velocity": 150
+    }
+  },
+  "player": {
+    "body_size": {
+      "width": 32,
+      "height": 24,
+      "top": 40,
+      "left": 16
+    },
+    "trigger_box": {
+      "width": 40,
+      "height": 70,
+      "top": 5,
+      "left": 12
+    },
+    "initial_frame": 130,
+    "stamina": 25,
+    "items": [],
+    "quests": [
+    ]
+  },
+  "player_wake_up": {
+    "initial_frame": 265,
+    "stamina": 25
+  }
+}
