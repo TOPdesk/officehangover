@@ -29,11 +29,11 @@ export default class extends Phaser.Sprite {
 		// isStopped is a flag to make a character permanently stop moving.
 		this.isStopped = obj.properties && !!obj.properties["stopped"];
 
-		this.animations.add('walk_right', this.playerData.animation_walk_right, this.playerData.frames, true);
+		this.animations.add('walk_right', this.playerData.animation_walk_right, this.f.frames, true);
 		this.animations.add('walk_up', this.playerData.animation_walk_up, this.playerData.frames, true);
 		this.animations.add('walk_left', this.playerData.animation_walk_left, this.playerData.frames, true);
 		this.animations.add('walk_down', this.playerData.animation_walk_down, this.playerData.frames, true);
-		this.animations.add('wake_up', this.playerData.animation_wake_up, this.playerData.frames, false);
+		this.animations.add('wake_up', this.playerData.animation_wake_up, this.playerData.wakeUpFrames, false);
 
 		this.game.physics.arcade.enable(this);
 
@@ -45,7 +45,6 @@ export default class extends Phaser.Sprite {
 			let { width, height, left, top } = data.body_size;
 			this.body.setSize(width, height, left, top);
 		}
-
 	}
 
 	setRandomDirection() {
