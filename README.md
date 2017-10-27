@@ -1,21 +1,9 @@
 # Office Hangover
 
-## License
+## License and contributors
 
-Officehangover is an open source project.
-You may re-use this code in accordance with the terms of the GNU GENERAL PUBLIC LICENSE Version 3. See COPYING.txt for details.
-
-## Authors
-
-This game is created by the following TOPdesk employees:
-
-* Jalitha Wills
-* Martin de Rooij
-* Rebeca Alonso
-* Martijn van Iersel
-* Bart Klinge
-* Lajos Uti
-* Fijke Roelofs
+* The MIT License, see [LICENSE](https://github.com/TOPdesk/officehangover/raw/master/LICENSE).
+* For contributors, see [AUTHORS](https://github.com/TOPdesk/officehangover/raw/master/AUTHORS).
 
 # Instructions for developers
 
@@ -29,4 +17,3 @@ Alternatively, use `npm run watch` to continually monitor the source for changes
 
 ## Linting the project
 ESLint has been set up to check the code for errors. To run it, execute `npm run lint` from a terminal window.
-

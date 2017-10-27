@@ -1,3 +1,7 @@
+// Copyright (c) 2017, TOPdesk. Please see the AUTHORS file for details.
+// All rights reserved. Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
+
 export const getGameLandscapeDimensions = (max_w, max_h) => {
 	//get both w and h of the screen (they might exchange)
 	var w = window.innerWidth * window.devicePixelRatio;
