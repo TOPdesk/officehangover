@@ -170,16 +170,16 @@
 			},
             {
                 "id": 6,
-                "message": "Thank you very much for helping.",
+                "message": "Thank you very much for helping. There are some lost-and-found things in the storage room.",
                 "replies": [{
-                    "message": "You are welcome",
+                    "message": "Ok ...",
                     "action": "close_dialog"
                 }]
             }
 		]
 	},
 	"coffeeaddict": {
-		"start_options": [1, 3],
+		"start_options": [1, 3, 5],
 		"messages": [{
 				"id": 1,
                 "condition": "return !(state.flags.l1_get_coffee);",
@@ -211,10 +211,18 @@
 			},
 			{
 				"id": 4,
+				"condition": "return !(state.flags.l2_yourhousekeys);",
 				"message": "Thank you so much! Here you have something in return. I'll let you through now",
 				"replies": [{
 					"message": "The addict guy hands you your keys!",
-					"actions": [ "close_dialog", "move_around" ]
+					"actions": [ "close_dialog", "l2_yourhousekeys", "move_around"]
+				}]
+			},{
+				"id": 5,
+				"message": "Thanks again, for the coffee",
+				"replies": [{
+					"message": "No worries!",
+					"goto": 2
 				}]
 			}
 		]
