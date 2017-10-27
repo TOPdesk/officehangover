@@ -25,7 +25,12 @@ export default {
 		this.cursors = this.game.input.keyboard.createCursorKeys();
 		this.spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		this.dialogs = new DialogManager(this.game, this);
-		
+
+		//Volume keys
+		this.upVolume = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_ADD);
+		this.downVolume = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_SUBTRACT);
+		this.mute = this.game.input.keyboard.addKey(Phaser.Keyboard.M);
+
 		// Capture key presses for dialogs
 		this.cursors.up.onDown.add(function() {
 			this.dialogs.upPressed();
@@ -42,6 +47,22 @@ export default {
 			else {
 				this.justPressedSpace = 1; 
 			}
+		}, this);
+
+		this.upVolume.onDown.add(function (){
+			if (this.sfx.game_music.volume < 1){
+				this.sfx.game_music.volume += 0.1;
+			}
+		}, this);
+
+		this.downVolume.onDown.add(function (){
+			if (this.sfx.game_music.volume >0){
+				this.sfx.game_music.volume -= 0.1;
+			}
+		}, this);
+
+		this.mute.onDown.add(function (){
+			this.sfx.game_music.mute = !this.sfx.game_music.mute;
 		}, this);
 
 		//Stop the following keys from propagating up to the browser
