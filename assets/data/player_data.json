@@ -183,8 +183,8 @@
   "animation_walk_down": [130,131,132,133,134,135,136,137,138],
   "animation_walk_up": [104,105,106,107,108,109,110,111,112],
   "animation_wake_up": [265,264,263,262,261,260,14,40,14,40,130],
-  "player_speed": 400,
-  "frames": 5,
+  "player_speed": 550,
+  "frames": 9,
   "velocity":{
     "character1": {
       "velocity": 200
