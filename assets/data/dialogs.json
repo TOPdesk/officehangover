@@ -303,7 +303,7 @@
         }]
       }]
     },
-    "postit4":{
+    "postit21":{
       "start_options": [1],
       "messages": [{
         "id": 1,
@@ -312,7 +312,164 @@
           "message": "Allrighty then...",
           "action": "close_dialog"
         }]
-      }]
+      }
+	  ]
+    },
+    "postit22":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Add text ...",
+        "replies": [{
+          "message": "TODO",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
+    },
+    "postit23":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Add text ...",
+        "replies": [{
+          "message": "TODO",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
+    },
+    "postit24":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Add text ...",
+        "replies": [{
+          "message": "TODO",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
+    },
+    "postit25":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Add text ...",
+        "replies": [{
+          "message": "TODO",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
+    },
+    "postit26":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Add text ...",
+        "replies": [{
+          "message": "TODO",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
+    },
+    "pc21":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Is locked",
+        "replies": [{
+          "message": "Continue",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
+    },
+    "pc22":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Is locked",
+        "replies": [{
+          "message": "Continue",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
+    },
+    "pc23":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Is locked",
+        "replies": [{
+          "message": "Continue",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
+    },
+    "pc24":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Is locked",
+        "replies": [{
+          "message": "Continue",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
+    },
+    "pc25":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Is locked",
+        "replies": [{
+          "message": "Continue",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
+    },
+    "pc26":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Is locked",
+        "replies": [{
+          "message": "Continue",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
+    },
+    "pc27":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Is locked",
+        "replies": [{
+          "message": "Continue",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
+    },
+    "pc28":{
+      "start_options": [1],
+      "messages": [{
+        "id": 1,
+		"message": "Is locked",
+        "replies": [{
+          "message": "Continue",
+          "action": "close_dialog"
+        }]
+      }
+	  ]
     },
     "firstaidkit":{
       "start_options": [1],

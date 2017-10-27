@@ -143,6 +143,19 @@
     },
     "sprite": null
   },
+  "keyboard" : {
+    "body_size": {
+      "width": 64,
+      "height": 64,
+      "top": -2,
+      "left": -2
+    },
+    "trigger_box": {
+      "width": 74,
+      "height": 74
+    },
+    "sprite": null
+  },
   "lift" : {
     "body_size": {
       "width": 32,
