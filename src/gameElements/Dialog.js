@@ -176,6 +176,22 @@ class DialogWindow {
 		this.tween = this.game.add.tween(option).to( { alpha: 0.5 }, 300, "Linear", true).yoyo().loop();
 	}
 
+	transferAllCrates() {
+		let src = this.state.gameobjectZones.find(function (obj) {
+			return obj.name == "BeerCrateDropZone1";
+		});
+		let dest = this.state.gameobjectZones.find(function (obj) {
+			return obj.name == "BeerCrateDropZone2";
+		});
+
+		while (src.hasCrates()) {
+			let crate = src.findCrate();
+			crate.destroy();
+			
+			dest.makeCrate();
+		}
+	}
+
 	activateOption(objectDialogs, replyOption) {
 		this.close();
 		if (replyOption.actions) {
@@ -189,10 +205,11 @@ class DialogWindow {
 					this.character.setRandomDirection();
 				} else if (action === "pour_coffee") {
 					this.state.sfx.coffee_machine_serve.play();
-				}  else if (action === "machine_broken") {
+				} else if (action === "machine_broken") {
 					this.state.sfx.coffee_machine_broken.play();
+				} else if (action === "transfer_remaining_crates") {
+					this.transferAllCrates();
 				}
-
 			}
 		}
 		if (replyOption.setflag) {

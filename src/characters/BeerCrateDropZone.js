@@ -50,10 +50,15 @@ export default class extends Phaser.Sprite {
 		this.state.setFlag(this.flagkey, this.crates.length);
 	}
 
-	findCrate() {
+	hasCrates() {
+		return this.crates.length > 0;
+	}
 
+	findCrate() {
 		if (this.crates.length > 0) {
-			return this.crates.pop();
+			let result = this.crates.pop();
+			this.state.setFlag(this.flagkey, this.crates.length);
+			return result;
 		} 
 		else {
 			return undefined;
@@ -78,7 +83,6 @@ export default class extends Phaser.Sprite {
 					if (crate !== undefined) {
 						this.state.player.pickup(crate);
 					}
-					this.state.setFlag(this.flagkey, this.crates.length);
 				}		
 			}
 			

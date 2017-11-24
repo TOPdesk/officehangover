@@ -34,7 +34,6 @@ export default class {
 		if(localStorage.flags) {
 			var continueGame = this.game.add.text(menuPositionX, menuPositionY + entryPosition, 'Continue Game', Constants.GENERAL_STYLE);
 			continueGame.inputEnabled = true;
-
 			continueGame.events.onInputDown.add(function () {
 				this.state.start(Constants.GAME_STATE);
 			}, this);
