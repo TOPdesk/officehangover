@@ -12,14 +12,52 @@ import DialogManager from "../gameElements/Dialog";
 import DependentObjects from "../characters/DependentObjects";
 
 export default {
-	init: function () {
 
-		this.flags = {};
-
-		//ckeck the localstorage
-		if(localStorage.getItem('flags') !== null) {
-			this.flags = JSON.parse(localStorage.getItem('flags'));
+	/**
+	 * Get a flag, with option default value if the flag doesn't exist.
+	 * 
+	 * Always use the getter and setter to access the flags.
+	 * This way you can be sure that the flags are saved in localStorage
+	 */
+	getFlag: function(key, defaultVal) {
+		if (key in this._flags) {
+			return this._flags[key];
 		}
+		else {
+			return defaultVal;
+		}
+	},
+
+	/*
+		Set a flag and update local storage
+
+		Always use the getter and setter to access the flags.
+		This way you can be sure that the flags are saved in localStorage
+	*/
+	setFlag: function(key, value) {
+		this._flags[key] = value;
+		localStorage.setItem("flags", JSON.stringify(this._flags));
+		console.log("Flag " + key + " is set to " + value);
+	},
+
+	/**
+	 * initialize flags. read them from localstorage if possible
+	 */ 
+	initFlags: function() {
+		this._flags = {};
+		//check the localstorage
+		if(localStorage.getItem('flags') !== null) {
+			try {
+				this._flags = JSON.parse(localStorage.getItem('flags'));
+			} 
+			catch (e) { 
+				console.error (e + "\nCouldn't parse flags from local storage. Falling back to empty start"); 
+			}
+		} 
+	},
+
+	init: function () {
+		this.initFlags();
 
 		this.inputChars = []; // for cheat codes
 
@@ -56,12 +94,7 @@ export default {
 
 		this.playerData = this.game.cache.getJSON(Constants.PLAYER_DATA);
 
-		if (localStorage.getItem('flags') === null){
-			this.currentLevel = 0;
-			localStorage.level = this.currentLevel;
-		}else {
-			this.currentLevel = localStorage.level;
-		}
+		this.currentLevel = this.getFlag("currentLevel", 0);
 
 		this.sfx = {};
 		this.sfx.door_open = this.game.add.audio('door_open', Constants.SFX_VOLUME);
@@ -117,11 +150,9 @@ export default {
 		this.initialiseCharacters();
 		this.initialiseCollisionLayer();
 
-		if (typeof(this.flags['l1_wake_up'])=== 'undefined') {
-			this.flags['l1_wake_up'] = 0;
-		}
+		let wakeup = this.getFlag("l1_wake_up", 0);
 
-		if (this.currentLevel == 0 && !this.flags['l1_wake_up']) {
+		if (this.currentLevel == 0 && !wakeup) {
 			this.player.wakeUp();
 		}
 
@@ -236,7 +267,7 @@ export default {
 				this.dependentgameobjects.push(sprite);
 			}
 			else if (obj.type == "Actionable") {
-				if (typeof (obj.properties.statuskey) === 'undefined' || (typeof (obj.properties.statuskey) !== 'undefined' && !this.flags[obj.properties.statuskey])){
+				if (typeof (obj.properties.statuskey) === 'undefined' || (typeof (obj.properties.statuskey) !== 'undefined' && !this.getFlag(obj.properties.statuskey))) {
 					let sprite = new GameObject(this, obj.x, obj.y, obj.properties.subtype.toLowerCase(), obj.type.toLowerCase(), obj.properties.dialogkey.toLowerCase());
 					this.visibleCharacters.add(sprite);
 					this.dependentgameobjects.push(sprite);

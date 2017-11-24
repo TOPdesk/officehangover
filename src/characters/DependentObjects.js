@@ -11,14 +11,12 @@ export default class extends GameObject {
 		this.dependentObject = null;
 		this.properties = properties;
 
-		if (!this.state.flags.hasOwnProperty(this.properties.statuskey)){
-			this.state.flags[this.properties.statuskey] = 0;
-		}
+		let status = this.state.getFlag(this.properties.statuskey, 0);
 
-		this.alpha = (this.properties.subordinate)? this.state.flags[this.properties.statuskey] : !this.state.flags[this.properties.statuskey];
+		this.alpha = this.properties.subordinate ? status : !status;
 
 		//TODO: No build the object if it is not necessary.
-		if(!this.properties.subordinate && this.state.flags[this.properties.statuskey]){
+		if(!this.properties.subordinate && status){
 			this.destroy();
 		}
 	}

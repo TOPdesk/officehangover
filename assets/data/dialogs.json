@@ -3,7 +3,7 @@
 		"start_options": [1, 8],
 		"messages": [{
 			"id": 1,
-			"condition": "return !(state.flags.l1_coffee_machine_fixed);",
+			"condition": "return !(state.getFlag('l1_coffee_machine_fixed'));",
 			"message": "The coffee machine shows an error message.",
 			"replies": [{
 					"message": "Press info.",
@@ -82,7 +82,7 @@
 	"wakeup1": {
 		"start_options": [1],
 		"messages": [{
-			    "condition": "return !(state.flags.l1_wake_up);",
+			    "condition": "return !(state.getFlag('l1_wake_up'));",
 				"id": 1,
 				"message": "Oof! What happened last night? I never remember these office parties. Oh well, maybe it's for the best",
 				"replies": [{
@@ -126,7 +126,7 @@
 		"start_options": [1, 5, 6],
 		"messages": [{
 				"id": 1,
-                "condition": "return !(state.flags.l1_clean_dishes);",
+                "condition": "return !(state.getFlag('l1_clean_dishes'));",
 				"message": "Hey, this lady's been cleaning up. Maybe she found my wallet and keys",
 				"replies": [{
 					"message": "Excuse me...",
@@ -160,7 +160,7 @@
             },
 			{
 				"id": 5,
-                "condition": "return !(state.flags.l1_storageroomkey);",
+                "condition": "return !(state.getFlag('l1_storageroomkey'));",
 				"message": "Thank you very much for helping. There are some lost-and-found things in the storage room. If the door is locked, just use this key.",
 				"replies": [{
 					"message": "You receive the key to the storage room.",
@@ -182,7 +182,7 @@
 		"start_options": [1, 3],
 		"messages": [{
 				"id": 1,
-                "condition": "return !(state.flags.l1_get_coffee);",
+                "condition": "return !(state.getFlag('l1_get_coffee'));",
 				"message": "The coffee machine is not working again. I'd kill for a coffee.",
 				"replies": [{
 					"message": "Ok...",
@@ -223,7 +223,7 @@
 		"start_options": [1, 2],
 		"messages": [{
 			"id": 1,
-			"condition": "return !(state.flags.l1_cleaning_lady_task);",
+			"condition": "return !(state.getFlag('l1_cleaning_lady_task'));",
 			"message": "Here are some dirty dishes. I am wondering who is going to clean them.",
 			"replies": [{
 				"message": "Continue ...",
@@ -525,7 +525,7 @@
 		],
 		"messages": [{
 			"id": 1,
-			"condition": "return (!state.flags.l1_second_return && state.player.canDropOff());",
+			"condition": "return (!state.getFlag('l1_second_return') && state.player.canDropOff());",
 			"message": "I'm tired carrying this around. Maybe I should put it back...",
 			"replies": [{
 				"message": "Continue...",
@@ -534,7 +534,7 @@
 			}]
 		}, {
 			"id": 2,
-			"condition": "return (!state.flags.l1_second_pickup && state.player.canPickup());",
+			"condition": "return (!state.getFlag('l1_second_pickup') && state.player.canPickup());",
 			"message": "Okay, let's get these out of the way. Where do I take them?",
 			"replies": [{
 				"message": "Continue...",
@@ -549,7 +549,7 @@
 		],
 		"messages": [{
 			"id": 1,
-			"condition": "return !state.flags.l1_second_transfer",
+			"condition": "return !state.getFlag('l1_second_transfer')",
 			"message": "Phew, I guess I can drop the crate off here...",
 			"replies": [{
 				"message": "Continue...",
@@ -622,7 +622,7 @@
 		],
 		"messages": [{
 			"id": 1,
-			"condition": "return !(state.flags.l1_storageroomkey);",
+			"condition": "return !(state.getFlag('l1_storageroomkey'));",
 			"message": "This door is locked. You'll need to find a key",
 			"replies": [{
 				"message": "Continue...",
@@ -630,7 +630,7 @@
 			}]
 		}, {
 			"id": 2,
-			"condition": "return (state.flags.l1_storageroomkey);",
+			"condition": "return (state.getFlag('l1_storageroomkey'));",
 			"message": "Great! The door opens with the key you got from the cleaning lady",
 			"replies": [{
 				"message": "Continue...",
@@ -658,7 +658,7 @@
 						"goto": 10
 					},
 					{
-						"condition": "return state.flags.l1_error_seen;",
+						"condition": "return state.getFlag('l1_error_seen');",
 						"message": "Search for error e1029",
 						"goto": 14
 					},
@@ -696,12 +696,12 @@
 				"id": 10,
 				"message": "You are making a ticket in TOPerations. What seems to be the problem?",
 				"replies": [{
-						"condition": "return (state.flags.l1_error_seen && !state.flags.l1_coffee_machine_fixed);",
+						"condition": "return (state.getFlag('l1_error_seen') && !state.getFlag('l1_coffee_machine_fixed');",
 						"message": "The coffee machine is broken, it shows error e1029. Submit your call.",
 						"goto": 13
 					},
 					{
-						"condition": "return state.flags.phone_battery_missing;",
+						"condition": "return state.getFlag('phone_battery_missing');",
 						"message": "I lost my phone battery.",
 						"goto": 18
 					},

@@ -20,7 +20,7 @@ export default class extends Phaser.Sprite {
 		this.animations.add('locked', [2]);
 
 		if (this.isLocked) {
-			if ( this.state.flags["l1_storageroomdooropen"] === 1) {
+			if ( this.state.getFlag("l1_storageroomdooropen") === 1) {
 				this.play('open');
 				this.isLocked = false;
 			}
@@ -53,9 +53,9 @@ export default class extends Phaser.Sprite {
 		if (this.isLocked && this.state.player.unhandledAction) {
 			this.state.dialogs.open("doorlocked", this);
 			this.state.player.unhandledAction = false;
-			if (this.state.flags["l1_storageroomkey"]) {
+			if (this.state.getFlag("l1_storageroomkey")) {
 				this.isLocked = false;
-				this.state.flags["l1_storageroomdooropen"] = 1;
+				this.state.setFlag("l1_storageroomdooropen", 1);
 			}
 		}
 

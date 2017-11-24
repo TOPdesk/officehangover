@@ -11,14 +11,16 @@ export default class extends Phaser.Sprite {
 	constructor(state, x, y, key, name, properties) {
 		super(state.game, x, y, state.playerData[key].sprite);
 
-		let initialCount = properties && properties["initialCount"];
-
 		this.key = key;
 		this.state = state;
 		this.game = state.game;
 		this.data = Object.create(state.playerData[key]);
 		this.playerData = state.playerData;
 		this.name = name;
+		this.flagkey = "l1_" + name + "_crates";
+
+		let mapDefinedInitialCount = properties && properties["initialCount"];
+		let initialCount = this.state.getFlag(this.flagkey, mapDefinedInitialCount);
 
 		this.crates = [];
 
@@ -33,29 +35,29 @@ export default class extends Phaser.Sprite {
 	}
 
 	makeCrate() {
-		for (var pos = 0; pos < 20; ++pos) {
-			if (!this.crates[pos] || !this.crates[pos].alive) {
-				var nx = this.x + 96 - Math.floor(pos / STACK_HEIGHT) * 32;
-				var ny = this.bottom + 100 - (pos % STACK_HEIGHT) * 24;
-				var sprite = new GameObject(this.state, nx, ny, 'beercrate');
-				sprite.beerCratePosition = pos;
-				sprite.beerCrateDropZone = this;
-				this.crates[pos] = sprite;
-				this.game.add.existing(sprite);
-				this.state.gameobjects.push(sprite);
+		let pos = this.crates.length;
+		
+		var nx = this.x + 96 - Math.floor(pos / STACK_HEIGHT) * 32;
+		var ny = this.bottom + 100 - (pos % STACK_HEIGHT) * 24;
+		var sprite = new GameObject(this.state, nx, ny, 'beercrate');
+		
+		sprite.beerCratePosition = pos;
+		sprite.beerCrateDropZone = this;
 
-				break;
-			}
-		}
+		this.crates.push(sprite);
+		this.game.add.existing(sprite);
+		this.state.gameobjects.push(sprite);
+		this.state.setFlag(this.flagkey, this.crates.length);
 	}
 
 	findCrate() {
-		for (var pos = 19; pos >= 0; --pos) {
-			if (this.crates[pos] && this.crates[pos].alive) {
-				return this.crates[pos];
-			}
+
+		if (this.crates.length > 0) {
+			return this.crates.pop();
+		} 
+		else {
+			return undefined;
 		}
-		return undefined;
 	}
 
 	handleCollision() {
@@ -76,6 +78,7 @@ export default class extends Phaser.Sprite {
 					if (crate !== undefined) {
 						this.state.player.pickup(crate);
 					}
+					this.state.setFlag(this.flagkey, this.crates.length);
 				}		
 			}
 			
