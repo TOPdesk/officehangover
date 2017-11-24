@@ -4,9 +4,14 @@
 
 import GameObject from "./GameObject";
 
+const STACK_HEIGHT = 3;
+
 export default class extends Phaser.Sprite {
-	constructor(state, x, y, key, name) {
+	
+	constructor(state, x, y, key, name, properties) {
 		super(state.game, x, y, state.playerData[key].sprite);
+
+		let initialCount = properties && properties["initialCount"];
 
 		this.key = key;
 		this.state = state;
@@ -17,10 +22,8 @@ export default class extends Phaser.Sprite {
 
 		this.crates = [];
 
-		if (name === "BeerCrateDropZone1") {
-			for (var i = 0; i < 6; ++i) {
-				this.makeCrate();
-			}
+		for (var i = 0; i < initialCount; ++i) {
+			this.makeCrate();
 		}
 
 		this.game.physics.arcade.enable(this);
@@ -32,8 +35,8 @@ export default class extends Phaser.Sprite {
 	makeCrate() {
 		for (var pos = 0; pos < 20; ++pos) {
 			if (!this.crates[pos] || !this.crates[pos].alive) {
-				var nx = this.x + 64 + Math.floor(pos / 3) * 32;
-				var ny = this.bottom + 100 - (pos % 3) * 24;
+				var nx = this.x + 96 - Math.floor(pos / STACK_HEIGHT) * 32;
+				var ny = this.bottom + 100 - (pos % STACK_HEIGHT) * 24;
 				var sprite = new GameObject(this.state, nx, ny, 'beercrate');
 				sprite.beerCratePosition = pos;
 				sprite.beerCrateDropZone = this;
@@ -47,7 +50,7 @@ export default class extends Phaser.Sprite {
 	}
 
 	findCrate() {
-		for (var pos = 0; pos < 20; ++pos) {
+		for (var pos = 19; pos >= 0; --pos) {
 			if (this.crates[pos] && this.crates[pos].alive) {
 				return this.crates[pos];
 			}

@@ -4,11 +4,12 @@
 
 /** a door is a specialized game object that has two states: open and closed. */
 export default class extends Phaser.Sprite {
-	constructor(state, x, y, key, isLocked) {
+	constructor(state, x, y, key, properties) {
 		super(state.game, x, y, state.playerData[key].sprite);
 
+		this.isLocked = properties && properties["locked"];
+
 		this.key = key;
-		this.isLocked = isLocked;
 		this.state = state;
 		this.game = state.game;
 		this.data = Object.create(state.playerData[key]);

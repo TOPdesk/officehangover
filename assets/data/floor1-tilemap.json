@@ -74,6 +74,10 @@
                     {
                      "dialogkey":"l1_character1"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string"
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -89,6 +93,10 @@
                  "properties":
                     {
                      "dialogkey":"l1_character2"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string"
                     },
                  "rotation":0,
                  "type":"Character",
@@ -106,6 +114,10 @@
                     {
                      "dialogkey":"l1_character3"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string"
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -120,6 +132,10 @@
                  "properties":
                     {
                      "subtype":"Exit"
+                    },
+                 "propertytypes":
+                    {
+                     "subtype":"string"
                     },
                  "rotation":0,
                  "type":"Exit",
@@ -164,7 +180,11 @@
                  "name":"Door",
                  "properties":
                     {
-                     "locked":"1"
+                     "locked":true
+                    },
+                 "propertytypes":
+                    {
+                     "locked":"bool"
                     },
                  "rotation":0,
                  "type":"Door",
@@ -194,7 +214,11 @@
                  "name":"BeerCrateDropZone1",
                  "properties":
                     {
-
+                     "initialCount":8
+                    },
+                 "propertytypes":
+                    {
+                     "initialCount":"int"
                     },
                  "rotation":0,
                  "type":"BeerCrateDropZone",
@@ -209,7 +233,11 @@
                  "name":"BeerCrateDropZone2",
                  "properties":
                     {
-
+                     "initialCount":4
+                    },
+                 "propertytypes":
+                    {
+                     "initialCount":"int"
                     },
                  "rotation":0,
                  "type":"BeerCrateDropZone",
@@ -225,7 +253,12 @@
                  "properties":
                     {
                      "statuskey":"l1_clean_dishes",
-                     "subordinate": true
+                     "subordinate":true
+                    },
+                 "propertytypes":
+                    {
+                     "statuskey":"string",
+                     "subordinate":"bool"
                     },
                  "rotation":0,
                  "type":"DishWasher",
@@ -241,7 +274,12 @@
                  "properties":
                     {
                      "statuskey":"l1_clean_dishes",
-                     "subordinate": false
+                     "subordinate":false
+                    },
+                 "propertytypes":
+                    {
+                     "statuskey":"string",
+                     "subordinate":"bool"
                     },
                  "rotation":0,
                  "type":"DirtyDishes",
@@ -259,6 +297,10 @@
                     {
                      "dialogkey":"cleaninglady"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string"
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -273,8 +315,14 @@
                  "properties":
                     {
                      "dialogkey":"mobile",
-                     "subtype":"Mobile",
-                     "statuskey": "l1_mobile_picked"
+                     "statuskey":"l1_mobile_picked",
+                     "subtype":"Mobile"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "statuskey":"string",
+                     "subtype":"string"
                     },
                  "rotation":0,
                  "type":"Actionable",
@@ -292,6 +340,11 @@
                      "dialogkey":"chuck",
                      "subtype":"chuck"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
                  "rotation":0,
                  "type":"Actionable",
                  "visible":true,
@@ -307,6 +360,11 @@
                     {
                      "dialogkey":"PostIt1",
                      "subtype":"postit"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
                     },
                  "rotation":0,
                  "type":"Actionable",
@@ -324,6 +382,11 @@
                      "dialogkey":"PostIt2",
                      "subtype":"postit"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
                  "rotation":0,
                  "type":"Actionable",
                  "visible":true,
@@ -339,6 +402,11 @@
                     {
                      "dialogkey":"PostIt3",
                      "subtype":"postit"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
                     },
                  "rotation":0,
                  "type":"Actionable",
@@ -356,6 +424,11 @@
                      "dialogkey":"FirstAidKit",
                      "subtype":"firstaid"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
                  "rotation":0,
                  "type":"Actionable",
                  "visible":true,
@@ -372,6 +445,11 @@
                      "dialogkey":"Lift",
                      "subtype":"Lift"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
                  "rotation":0,
                  "type":"Actionable",
                  "visible":true,
@@ -387,6 +465,11 @@
                     {
                      "dialogkey":"Lift",
                      "subtype":"Lift"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
                     },
                  "rotation":0,
                  "type":"Actionable",

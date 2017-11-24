@@ -222,12 +222,12 @@ export default {
 				this.charactersCollisionFrame.push(characterFrame);
 			}
 			else if (obj.type == "Door") {
-				let sprite = new Door(this, obj.x, obj.y, 'door', obj.properties && obj.properties["locked"]);
+				let sprite = new Door(this, obj.x, obj.y, 'door', obj.properties);
 				this.visibleCharacters.add(sprite);
 				this.movingobjects.push(sprite);
 			}
 			else if (obj.type == "BeerCrateDropZone") {
-				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type.toLowerCase(), obj.name);
+				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type.toLowerCase(), obj.name, obj.properties);
 				this.add.existing(sprite);
 				this.gameobjectZones.push(sprite);
 			}else if (obj.type == "DishWasher" || obj.type == "DirtyDishes") {
