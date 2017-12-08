@@ -17,3 +17,8 @@ Alternatively, use `npm run watch` to continually monitor the source for changes
 
 ## Linting the project
 ESLint has been set up to check the code for errors. To run it, execute `npm run lint` from a terminal window.
+
+## Running the development server
+Run `npm run start` to run the development server on port 8000. Point your browser to http://localhost:8000/ to run the game. 
+The code will be watched for changes and rebuilt automatically.
+You can override the port number using the PORT env variable, e.g. `PORT=9001 npm run start`. 
