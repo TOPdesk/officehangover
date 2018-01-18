@@ -703,7 +703,7 @@
 				"id": 10,
 				"message": "You are making a ticket in TOPerations. What seems to be the problem?",
 				"replies": [{
-						"condition": "return (state.getFlag('l1_error_seen') && !state.getFlag('l1_coffee_machine_fixed');",
+						"condition": "return (state.getFlag('l1_error_seen') && !state.getFlag('l1_coffee_machine_fixed'));",
 						"message": "The coffee machine is broken, it shows error e1029. Submit your call.",
 						"goto": 13
 					},
