@@ -2,10 +2,11 @@
 // All rights reserved. Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-export default class extends Phaser.Sprite {
-	constructor(state, x, y, obj, data, character, isBodyFrame, dialogkey) {
+import DefaultSprite from "./DefaultSprite";
+
+export default class extends DefaultSprite {
+	constructor(state, x, y, obj, data, character, dialogkey) {
 		super(state.game, x, y, obj.name.toLowerCase(), state.playerData[character].initial_frame);
-		isBodyFrame = (typeof isBodyFrame == undefined) ? false : isBodyFrame;
 
 		this.state = state;
 		this.game = state.game;
@@ -41,15 +42,8 @@ export default class extends Phaser.Sprite {
 
 		this.game.physics.arcade.enable(this);
 
-		if (isBodyFrame) {
-			let { width, height, left, top } = data.trigger_box;
-			this.body.setSize(width, height, left, top);
-			this.alpha = 0;
-		} else {
-			let { width, height, left, top } = data.body_size;
-			this.body.setSize(width, height, left, top);
-		}
-
+		let { width, height, left, top } = data.body_size;
+		this.body.setSize(width, height, left, top);
 	}
 
 	setRandomDirection() {
@@ -80,7 +74,7 @@ export default class extends Phaser.Sprite {
 		}
 	}
 
-	handleCollision() {
+	handleOverlap() {
 		this.stopMoving();
 		this.isCharacterOnHold = true;
 

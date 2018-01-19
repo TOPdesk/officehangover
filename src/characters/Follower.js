@@ -2,11 +2,13 @@
 // All rights reserved. Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
+import DefaultSprite from "./DefaultSprite";
+
 /**
  * A follower is an object, like a beer crate, tgat follows the player around
  * after it is picked up.
  */
-export default class extends Phaser.Sprite {
+export default class extends DefaultSprite {
 	constructor(state, key) {
 		super(state.game, state.player.x, state.player.y, state.playerData[key].sprite);
 

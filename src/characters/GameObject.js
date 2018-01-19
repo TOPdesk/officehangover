@@ -2,9 +2,10 @@
 // All rights reserved. Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
+import DefaultSprite from "./DefaultSprite";
 import * as Constants from "../constants";
 
-export default class extends Phaser.Sprite {
+export default class extends DefaultSprite {
 	constructor(state, x, y, key, type, dialogkey) {
 		super(state.game, x, y, state.playerData[key].sprite);
 
@@ -26,8 +27,8 @@ export default class extends Phaser.Sprite {
 
 	}
 
-	/** called whenever a player collides with this game object */
-	handleCollision() {
+	/** called whenever a player is very near to this game object */
+	handleOverlap() {
 		if (this.state.player.unhandledAction) {
 			if (this.type == "actionable") {
 				this.state.player.unhandledAction = false;

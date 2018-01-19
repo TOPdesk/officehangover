@@ -2,8 +2,10 @@
 // All rights reserved. Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
+import DefaultSprite from "./DefaultSprite";
+
 /** a door is a specialized game object that has two states: open and closed. */
-export default class extends Phaser.Sprite {
+export default class extends DefaultSprite {
 	constructor(state, x, y, key, properties) {
 		super(state.game, x, y, state.playerData[key].sprite);
 

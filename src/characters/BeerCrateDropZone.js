@@ -2,11 +2,12 @@
 // All rights reserved. Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
+import DefaultSprite from "./DefaultSprite";
 import GameObject from "./GameObject";
 
 const STACK_HEIGHT = 3;
 
-export default class extends Phaser.Sprite {
+export default class extends DefaultSprite {
 	
 	constructor(state, x, y, key, name, properties) {
 		super(state.game, x, y, state.playerData[key].sprite);
@@ -46,7 +47,7 @@ export default class extends Phaser.Sprite {
 
 		this.crates.push(sprite);
 		this.game.add.existing(sprite);
-		this.state.gameobjects.push(sprite);
+		this.state.staticSolids.push(sprite);
 		this.state.setFlag(this.flagkey, this.crates.length);
 	}
 
@@ -65,7 +66,7 @@ export default class extends Phaser.Sprite {
 		}
 	}
 
-	handleCollision() {
+	handleOverlap() {
 		if (this.state.player.unhandledAction) {
 			
 			if (this.state.player.canDropOff()) {

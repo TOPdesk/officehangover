@@ -177,10 +177,10 @@ class DialogWindow {
 	}
 
 	transferAllCrates() {
-		let src = this.state.gameobjectZones.find(function (obj) {
+		let src = this.state.interactionZones.find(function (obj) {
 			return obj.name == "BeerCrateDropZone1";
 		});
-		let dest = this.state.gameobjectZones.find(function (obj) {
+		let dest = this.state.interactionZones.find(function (obj) {
 			return obj.name == "BeerCrateDropZone2";
 		});
 

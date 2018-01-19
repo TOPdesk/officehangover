@@ -22,10 +22,10 @@ export default class extends GameObject {
 	}
 
 	/** called whenever a player collides with this game object */
-	handleCollision(gameObjects) {
+	handleOverlap() {
 		if (this.state.player.unhandledAction) {
 			if (this.key == "dirtydishes") {
-				this.dependentObject = gameObjects.find(function (obj) {
+				this.dependentObject = this.state.staticSolids.find(function (obj) {
 					return obj.key == 'dishwasher';
 				});
 				this.state.player.unhandledAction = false;

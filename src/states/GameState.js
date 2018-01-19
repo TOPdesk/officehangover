@@ -127,6 +127,8 @@ export default {
 		this.map.createLayer('Shadows').resizeWorld();
 		this.map.createLayer('Bottom Objects');
 
+		// visible characters are any object that is visible on the map
+		// using a custom z-ordering.
 		this.visibleCharacters = this.game.add.group();
 		
 		// for the Top Object layer, we create horizontal strips of tiles
@@ -161,14 +163,16 @@ export default {
 		// if the player just pressed space, then set an 'unhandled action' flag
 		this.player.unhandledAction = (this.justPressedSpace === 1);
 
-		this.game.physics.arcade.overlap(this.gameobjects, this.playerCollisionFrame, function (gameobj) {gameobj.handleCollision();}, null, this);
-		this.game.physics.arcade.overlap(this.dependentgameobjects, this.playerCollisionFrame, function (gameobj) {gameobj.handleCollision(this.dependentgameobjects);}, null, this);
-		this.game.physics.arcade.overlap(this.gameobjectZones, this.playerCollisionFrame, function (gameobj) {gameobj.handleCollision();}, null, this);
-		this.game.physics.arcade.collide(this.gameobjects, this.player);
-		this.game.physics.arcade.collide(this.dependentgameobjects, this.player);
-		this.game.physics.arcade.collide(this.movingobjects, this.player, function (gameobj) {gameobj.handleCollision();}, null, this);
+		// interact with various objects when the zone around the player overlaps with it...
+		this.game.physics.arcade.overlap(this.staticSolids, this.player.zone, function (gameobj) {gameobj.handleOverlap();}, null, this);
+		this.game.physics.arcade.overlap(this.interactionZones, this.player.zone, function (gameobj) {gameobj.handleOverlap();}, null, this);
+		this.game.physics.arcade.overlap(this.characters, this.player.zone, function (character) {character.handleOverlap();}, null, this);
+
+		// collision - these prevent the player from walking through solid objects
+		this.game.physics.arcade.collide(this.staticSolids, this.player, function (gameobj) { gameobj.handleCollision();} );
 		this.game.physics.arcade.collide(this.characters, this.player);
-		this.game.physics.arcade.overlap(this.charactersCollisionFrame, this.playerCollisionFrame, function (character) {character.parent.handleCollision();}, null, this);
+		
+		// collisions of moving objects with the tilemap
 		this.game.physics.arcade.collide(this.player, this.collisionLayer);
 		this.game.physics.arcade.collide(this.characters, this.collisionLayer, function (character) {if(!character.isStopped){character.setRandomDirection();}}, null, this);
 
@@ -177,8 +181,6 @@ export default {
 			this.player.handleUnhandledAction();
 		}
 
-		/*this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
-		this.game.physics.arcade.collide(this.player, this.enemies, this.attack, null, this);*/
 		if (!this.uiBlocked) {
 			this.cursorMovement();
 		}
@@ -213,12 +215,14 @@ export default {
 	},
 	initialiseCharacters: function () {
 
+		// characters are moving objects that check for collision with the tilemap
 		this.characters = [];
-		this.charactersCollisionFrame = [];
-		this.gameobjects = [];
-		this.movingobjects = [];
-		this.gameobjectZones = [];
-		this.dependentgameobjects = [];
+
+		// game objects are static, solid objects that do not need to check for collision with the tilemap
+		this.staticSolids = [];
+
+		// interaction zones are static, non-solid objects that players and characters can walk through.
+		this.interactionZones = [];
 
 		for (var key in this.map.objects.Objects) {
 			var obj = this.map.objects.Objects[key];
@@ -228,19 +232,15 @@ export default {
 			obj.y = Math.round(obj.y / 32) * 32;
 
 			if (obj.type == "Start") {
-				this.player = new Player(this, obj.x, obj.y, obj, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
+				this.player = new Player(this, obj.x, obj.y, obj, this.playerData.player, Constants.PLAYER_DATA_INIT);
 
-				this.playerCollisionFrame = new Player(this, 0, 0, obj, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
-				this.player.addChild(this.playerCollisionFrame);
 				this.player.body.collideWorldBounds = true;
 				this.game.camera.follow(this.player);
 				this.visibleCharacters.add(this.player);
 			}
 			else if (obj.type == "Character") {
-				var character = new Character(this, obj.x, obj.y, obj, this.playerData.player, Constants.PLAYER_DATA_INIT, false);
+				var character = new Character(this, obj.x, obj.y, obj, this.playerData.player, Constants.PLAYER_DATA_INIT);
 				this.visibleCharacters.add(character);
-				var characterFrame = new Character(this, 0, 0, obj, this.playerData.player, Constants.PLAYER_DATA_INIT, true);
-				character.addChild(characterFrame);
 				character.body.collideWorldBounds = true;
 				if(character.isStopped){
 					character.body.immovable = true;
@@ -250,33 +250,32 @@ export default {
 				}
 
 				this.characters.push(character);
-				this.charactersCollisionFrame.push(characterFrame);
 			}
 			else if (obj.type == "Door") {
 				let sprite = new Door(this, obj.x, obj.y, 'door', obj.properties);
 				this.visibleCharacters.add(sprite);
-				this.movingobjects.push(sprite);
+				this.staticSolids.push(sprite);
 			}
 			else if (obj.type == "BeerCrateDropZone") {
 				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type.toLowerCase(), obj.name, obj.properties);
 				this.add.existing(sprite);
-				this.gameobjectZones.push(sprite);
+				this.interactionZones.push(sprite);
 			}else if (obj.type == "DishWasher" || obj.type == "DirtyDishes") {
 				let sprite = new DependentObjects(this, obj.x, obj.y, obj.type.toLowerCase(), obj.properties);
 				this.visibleCharacters.add(sprite);
-				this.dependentgameobjects.push(sprite);
+				this.staticSolids.push(sprite);
 			}
 			else if (obj.type == "Actionable") {
 				if (typeof (obj.properties.statuskey) === 'undefined' || (typeof (obj.properties.statuskey) !== 'undefined' && !this.getFlag(obj.properties.statuskey))) {
 					let sprite = new GameObject(this, obj.x, obj.y, obj.properties.subtype.toLowerCase(), obj.type.toLowerCase(), obj.properties.dialogkey.toLowerCase());
 					this.visibleCharacters.add(sprite);
-					this.dependentgameobjects.push(sprite);
+					this.staticSolids.push(sprite);
 				}
 			}
 			else {
 				let sprite = new GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
 				this.visibleCharacters.add(sprite);
-				this.gameobjects.push(sprite);
+				this.staticSolids.push(sprite);
 			}
 			/*
 			else {
@@ -348,28 +347,19 @@ export default {
 	render: function () {
 		this.game.debug.bodyInfo(this.player, 32, 32);
 		this.game.debug.body(this.player);
-		this.game.debug.body(this.playerCollisionFrame);
+		this.game.debug.body(this.player.zone, '#00FFFF80');
 
-		for (let i=0; i < this.charactersCollisionFrame.length; i++){
-			this.game.debug.body(this.charactersCollisionFrame[i], '#00FF0080');
-		}
 		for (let i = 0; i < this.characters.length; ++i) {
 			this.game.debug.body(this.characters[i], '#0000FF80');
 		}
-		for (let i = 0; i < this.movingobjects.length; ++i) {
-			this.game.debug.body(this.movingobjects[i], '#00FFFF80');
+		for (let i = 0; i < this.interactionZones.length; ++i) {
+			this.game.debug.body(this.interactionZones[i], '#FF00FF80');
 		}
-		for (let i = 0; i < this.gameobjectZones.length; ++i) {
-			this.game.debug.body(this.gameobjectZones[i], '#FF00FF80');
-		}
-		for (let i = 0; i < this.gameobjects.length; ++i) {
-			this.game.debug.body(this.gameobjects[i], '#FFFF00A0');
-		}
-		for (let i = 0; i < this.dependentgameobjects.length; ++i) {
-			this.game.debug.body(this.dependentgameobjects[i], '#FFFF00A0');
+		for (let i = 0; i < this.staticSolids.length; ++i) {
+			this.game.debug.body(this.staticSolids[i], '#FFFF00A0');
 		}
 	},
-*/
+	*/
 	callAction: function (objectname, character) {
 
 		this.dialogs.open(objectname, character);
