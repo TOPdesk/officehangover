@@ -5,7 +5,10 @@
 import DefaultSprite from "./DefaultSprite";
 import PLAYER_DATA from "./player_data.json";
 
-/** a door is a specialized game object that has two states: open and closed. */
+/** 
+ * a door is a specialized game object that has different states: open and closed.
+ * Furthermore, a door could be locked
+ */
 export default class extends DefaultSprite {
 	constructor(state, x, y, key, properties) {
 		super(state.game, x, y, PLAYER_DATA[key].sprite);

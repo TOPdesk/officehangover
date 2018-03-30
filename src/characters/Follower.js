@@ -6,7 +6,7 @@ import DefaultSprite from "./DefaultSprite";
 import PLAYER_DATA from "./player_data.json";
 
 /**
- * A follower is an object, like a beer crate, tgat follows the player around
+ * A follower is an object, like a beer crate, that follows the player around
  * after it is picked up.
  */
 export default class extends DefaultSprite {
