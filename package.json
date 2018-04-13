@@ -2,6 +2,7 @@
   "name": "officehangover",
   "version": "1.0.0",
   "main": "index.html",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/topdesk/officehangover.git"
