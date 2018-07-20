@@ -3,13 +3,13 @@
 // license that can be found in the LICENSE file.
 
 import * as Constants from "../constants";
+import DIALOGS from "../dialogs.js";
 
 export default class {
 
 	constructor(game, state) {
 		this.state = state;
 		this.game = game;
-		this.dialogData = this.game.cache.getJSON(Constants.DIALOGS);
 	}
 
 	upPressed() {
@@ -29,7 +29,7 @@ export default class {
 	}
 
 	dialogKeyExists(dialogkey) {
-		return (dialogkey in this.dialogData);
+		return (dialogkey in DIALOGS);
 	}
 
 	open(objectname, character) {
@@ -45,11 +45,11 @@ export default class {
 	}
 
 	popup(objectname, character) {
-		if (!(objectname in this.dialogData)) {
+		if (!(objectname in DIALOGS)) {
 			console.error("No dialog found using key: " + objectname);
 		}
 		else {
-			let objectDialogs = this.dialogData[objectname];
+			let objectDialogs = DIALOGS[objectname];
 			let dialog = new DialogWindow(this.state, this, objectname, character);
 			var dialogStartId = dialog.findDialogStart(objectDialogs.start_options, objectDialogs.messages);
 			if (dialogStartId !== undefined) {

@@ -1,4 +1,4 @@
-{
+const DIALOGS = {
 	"CoffeeMachine": {
 		"start_options": [1, 8],
 		"messages": [{
@@ -954,4 +954,5 @@
 		}]
 
 	}
-}
+};
+export default DIALOGS;

@@ -17,7 +17,6 @@ export const GAME_OVER_STATE = 'GameOverState';
 
 export const PLAYER_DATA = 'player_data';
 export const GAME_TEXT = 'text';
-export const DIALOGS = 'dialogs';
 export const PLAYER_START_DATA_INIT = 'player_wake_up';
 export const PLAYER_DATA_INIT = 'player';
 export const PLAYER_SPRITE = 'player_start';
