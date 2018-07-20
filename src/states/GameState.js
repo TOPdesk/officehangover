@@ -267,7 +267,7 @@ export default {
 			}
 			else if (obj.type == "Actionable") {
 				if (typeof (obj.properties.statuskey) === 'undefined' || (typeof (obj.properties.statuskey) !== 'undefined' && !this.getFlag(obj.properties.statuskey))) {
-					let sprite = new GameObject(this, obj.x, obj.y, obj.properties.subtype.toLowerCase(), obj.type.toLowerCase(), obj.properties.dialogkey.toLowerCase());
+					let sprite = new GameObject(this, obj.x, obj.y, obj.properties.subtype.toLowerCase(), obj.type.toLowerCase(), obj.properties.dialogkey);
 					this.visibleCharacters.add(sprite);
 					this.staticSolids.push(sprite);
 				}

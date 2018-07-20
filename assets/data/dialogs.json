@@ -1,5 +1,5 @@
 {
-	"coffeemachine": {
+	"CoffeeMachine": {
 		"start_options": [1, 8],
 		"messages": [{
 			"id": 1,
@@ -270,7 +270,7 @@
         }]
       }]
     },
-    "postit1":{
+    "PostIt1":{
       "start_options": [1],
       "messages": [{
         "id": 1,
@@ -281,7 +281,7 @@
         }]
       }]
     },
-    "postit2":{
+    "PostIt2":{
       "start_options": [1],
       "messages": [{
         "id": 1,
@@ -292,7 +292,7 @@
         }]
       }]
     },
-    "postit3":{
+    "PostIt3":{
       "start_options": [1],
       "messages": [{
         "id": 1,
@@ -471,7 +471,7 @@
       }
 	  ]
     },
-    "firstaidkit":{
+    "FirstAidKit":{
       "start_options": [1],
       "messages": [{
         "id": 1,
@@ -482,7 +482,7 @@
         }]
       }]
     },
-    "lift":{
+    "Lift":{
       "start_options": [1],
       "messages": [{
         "id": 1,
@@ -645,7 +645,7 @@
 			}]
 		}]
 	},
-	"pc": {
+	"PC": {
 		"start_options": [
 			1
 		],
@@ -776,7 +776,7 @@
 			}
 		]
 	},
-	"kariomart": {
+	"KarioMart": {
 		"start_options": [
 			0
 		],

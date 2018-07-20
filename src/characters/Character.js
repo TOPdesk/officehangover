@@ -18,7 +18,7 @@ export default class extends DefaultSprite {
 		this.y = y;
 		this.spriteName = obj.name.toLowerCase();
 		this.initialFrame = state.playerData[character].initial_frame;
-		this.dialogkey = obj.properties && obj.properties.dialogkey && obj.properties.dialogkey.toLowerCase();
+		this.dialogkey = obj.properties && obj.properties.dialogkey;
 		
 		// fail fast if dialog key is missing
 		if (!this.state.dialogs.dialogKeyExists(this.dialogkey) && obj.type !== "Start") {
