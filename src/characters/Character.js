@@ -5,7 +5,7 @@
 import DefaultSprite from "./DefaultSprite";
 
 export default class extends DefaultSprite {
-	constructor(state, x, y, obj, data, character, dialogkey) {
+	constructor(state, x, y, obj, data, character) {
 		super(state.game, x, y, obj.name.toLowerCase(), state.playerData[character].initial_frame);
 
 		this.state = state;

@@ -5,7 +5,8 @@ const DIALOGS = {
 			"id": 1,
 			"condition": "return !(state.getFlag('l1_coffee_machine_fixed'));",
 			"message": "The coffee machine shows an error message.",
-			"replies": [{
+			"replies": [
+				{
 					"message": "Press info.",
 					"setflag": ["l1_error_seen"],
 					"actions": ["machine_broken"],
@@ -19,7 +20,8 @@ const DIALOGS = {
 		}, {
 			"id": 4,
 			"message": "Grinder out of alignment. Error e1029. Please fix me!",
-			"replies": [{
+			"replies": [
+				{
 					"message": "Ok.",
 					"actions": ["close_dialog"]
 				},
@@ -44,10 +46,10 @@ const DIALOGS = {
 				"goto": 9
 			}, {
 				"message": "Cappuccino",
-				"goto": 9				
+				"goto": 9
 			}, {
 				"message": "Choco deluxe",
-				"goto": 9				
+				"goto": 9
 			}]
 		}, {
 			"id": 9,
@@ -63,11 +65,11 @@ const DIALOGS = {
 			}, {
 				"message": "Sugar",
 				"actions": ["pour_coffee"],
-				"goto": 10	
+				"goto": 10
 			}, {
 				"message": "Milk and Sugar",
 				"actions": ["pour_coffee"],
-				"goto": 10	
+				"goto": 10
 			}]
 		}, {
 			"id": 10,
@@ -81,8 +83,9 @@ const DIALOGS = {
 
 	"wakeup1": {
 		"start_options": [1],
-		"messages": [{
-			    "condition": "return !(state.getFlag('l1_wake_up'));",
+		"messages": [
+			{
+				"condition": "return !(state.getFlag('l1_wake_up'));",
 				"id": 1,
 				"message": "Oof! What happened last night? I never remember these office parties. Oh well, maybe it's for the best",
 				"replies": [{
@@ -104,7 +107,8 @@ const DIALOGS = {
 
 	"headache": {
 		"start_options": [1],
-		"messages": [{
+		"messages": [
+			{
 				"id": 1,
 				"message": "I have a splitting headache... like someone's playing table tennis with my brain.",
 				"replies": [{
@@ -124,9 +128,10 @@ const DIALOGS = {
 	},
 	"cleaninglady": {
 		"start_options": [1, 5, 6],
-		"messages": [{
+		"messages": [
+			{
 				"id": 1,
-                "condition": "return !(state.getFlag('l1_clean_dishes'));",
+				"condition": "return !(state.getFlag('l1_clean_dishes'));",
 				"message": "Hey, this lady's been cleaning up. Maybe she found my wallet and keys",
 				"replies": [{
 					"message": "Excuse me...",
@@ -149,40 +154,43 @@ const DIALOGS = {
 					"goto": 4
 				}]
 			},
-            {
-              "id": 4,
-              "message": "When you are done, tell me",
-              "replies": [{
-                "message": "Ok",
-                "action": "close_dialog",
-                "setflag": ["l1_cleaning_lady_task"]
-              }]
-            },
+			{
+				"id": 4,
+				"message": "When you are done, tell me",
+				"replies": [{
+					"message": "Ok",
+					"action": "close_dialog",
+					"setflag": ["l1_cleaning_lady_task"]
+				}]
+			},
 			{
 				"id": 5,
-                "condition": "return !(state.getFlag('l1_storageroomkey'));",
+				"condition": "return !(state.getFlag('l1_storageroomkey'));",
 				"message": "Thank you very much for helping. There are some lost-and-found things in the storage room. If the door is locked, just use this key.",
 				"replies": [{
 					"message": "You receive the key to the storage room.",
 					"action": "close_dialog",
-					"setflag": [ "l1_storageroomkey" ]
+					"setflag": ["l1_storageroomkey"]
 				}]
 			},
-            {
-                "id": 6,
-                "message": "Thank you very much for helping.",
-                "replies": [{
-                    "message": "You are welcome",
-                    "action": "close_dialog"
-                }]
-            }
+			{
+				"id": 6,
+				"message": "Thank you very much for helping.",
+				"replies": [
+					{
+						"message": "You are welcome",
+						"action": "close_dialog"
+					}
+				]
+			}
 		]
 	},
 	"coffeeaddict": {
 		"start_options": [1, 3],
-		"messages": [{
+		"messages": [
+			{
 				"id": 1,
-                "condition": "return !(state.getFlag('l1_get_coffee'));",
+				"condition": "return !(state.getFlag('l1_get_coffee'));",
 				"message": "The coffee machine is not working again. I'd kill for a coffee.",
 				"replies": [{
 					"message": "Ok...",
@@ -214,12 +222,12 @@ const DIALOGS = {
 				"message": "Thank you so much! Here you have something in return. I'll let you through now",
 				"replies": [{
 					"message": "The addict guy hands you your keys!",
-					"actions": [ "close_dialog", "move_around" ]
+					"actions": ["close_dialog", "move_around"]
 				}]
 			}
 		]
 	},
-	"dirtydishes":{
+	"dirtydishes": {
 		"start_options": [1, 2],
 		"messages": [{
 			"id": 1,
@@ -237,15 +245,15 @@ const DIALOGS = {
 				"message": "Clean the dishes",
 				"actions": ["dirtydishes"],
 				"setflag": ["l1_clean_dishes"]
-				},
-				{
-					"message": "I'll do it later.",
-					"action": "close_dialog"
-				}
+			},
+			{
+				"message": "I'll do it later.",
+				"action": "close_dialog"
+			}
 			]
 		}]
 	},
-	"mobile":{
+	"mobile": {
 		"start_options": [
 			1
 		],
@@ -254,245 +262,245 @@ const DIALOGS = {
 			"message": "HEY! This is my mobile phone. Now I just need to find the rest of my stuff. I should check the other floors",
 			"replies": [{
 				"message": "Continue ...",
-				"actions": [ "close_dialog", "pick_object" ],
+				"actions": ["close_dialog", "pick_object"],
 				"setflag": ["l1_mobile_picked"]
 			}]
 		}]
 	},
-    "chuck":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-        "message": "HEY! It is Chuck. The plant!",
-        "replies": [{
-          "message": "Continue ...",
-          "action": "close_dialog"
-        }]
-      }]
-    },
-    "PostIt1":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Ugh! I smell like a human",
-        "replies": [{
-          "message": "sniff.. sniff..",
-          "action": "close_dialog"
-        }]
-      }]
-    },
-    "PostIt2":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "The post-it reads: Look behind you a three headed monkey!",
-        "replies": [{
-          "message": "WHERE!!!!",
-          "action": "close_dialog"
-        }]
-      }]
-    },
-    "PostIt3":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Do you know the new emergencies phone number? ",
-        "replies": [{
-          "message": "0118 999 881 999 119 7253",
-          "action": "close_dialog"
-        }]
-      }]
-    },
-    "postit21":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "The post-it reads: I hate baby Mario",
-        "replies": [{
-          "message": "Allrighty then...",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "postit22":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Add text ...",
-        "replies": [{
-          "message": "TODO",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "postit23":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Add text ...",
-        "replies": [{
-          "message": "TODO",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "postit24":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Add text ...",
-        "replies": [{
-          "message": "TODO",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "postit25":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Add text ...",
-        "replies": [{
-          "message": "TODO",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "postit26":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Add text ...",
-        "replies": [{
-          "message": "TODO",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "pc21":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Is locked",
-        "replies": [{
-          "message": "Continue",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "pc22":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Is locked",
-        "replies": [{
-          "message": "Continue",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "pc23":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Is locked",
-        "replies": [{
-          "message": "Continue",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "pc24":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Is locked",
-        "replies": [{
-          "message": "Continue",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "pc25":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Is locked",
-        "replies": [{
-          "message": "Continue",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "pc26":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Is locked",
-        "replies": [{
-          "message": "Continue",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "pc27":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Is locked",
-        "replies": [{
-          "message": "Continue",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "pc28":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "Is locked",
-        "replies": [{
-          "message": "Continue",
-          "action": "close_dialog"
-        }]
-      }
-	  ]
-    },
-    "FirstAidKit":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-        "message": "This may be helpful for my HUGE headache...",
-        "replies": [{
-          "message": "(glup,glup)",
-          "action": "close_dialog"
-        }]
-      }]
-    },
-    "Lift":{
-      "start_options": [1],
-      "messages": [{
-        "id": 1,
-		"message": "It reads: The lift has been inactive since that incident with the North-Korean spy...",
-        "replies": [{
-          "message": "Continue...",
-          "action": "close_dialog"
-        }]
-      }]
-    },
+	"chuck": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "HEY! It is Chuck. The plant!",
+			"replies": [{
+				"message": "Continue ...",
+				"action": "close_dialog"
+			}]
+		}]
+	},
+	"PostIt1": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Ugh! I smell like a human",
+			"replies": [{
+				"message": "sniff.. sniff..",
+				"action": "close_dialog"
+			}]
+		}]
+	},
+	"PostIt2": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "The post-it reads: Look behind you a three headed monkey!",
+			"replies": [{
+				"message": "WHERE!!!!",
+				"action": "close_dialog"
+			}]
+		}]
+	},
+	"PostIt3": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Do you know the new emergencies phone number? ",
+			"replies": [{
+				"message": "0118 999 881 999 119 7253",
+				"action": "close_dialog"
+			}]
+		}]
+	},
+	"postit21": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "The post-it reads: I hate baby Mario",
+			"replies": [{
+				"message": "Allrighty then...",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"postit22": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Add text ...",
+			"replies": [{
+				"message": "TODO",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"postit23": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Add text ...",
+			"replies": [{
+				"message": "TODO",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"postit24": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Add text ...",
+			"replies": [{
+				"message": "TODO",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"postit25": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Add text ...",
+			"replies": [{
+				"message": "TODO",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"postit26": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Add text ...",
+			"replies": [{
+				"message": "TODO",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"pc21": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Is locked",
+			"replies": [{
+				"message": "Continue",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"pc22": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Is locked",
+			"replies": [{
+				"message": "Continue",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"pc23": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Is locked",
+			"replies": [{
+				"message": "Continue",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"pc24": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Is locked",
+			"replies": [{
+				"message": "Continue",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"pc25": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Is locked",
+			"replies": [{
+				"message": "Continue",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"pc26": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Is locked",
+			"replies": [{
+				"message": "Continue",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"pc27": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Is locked",
+			"replies": [{
+				"message": "Continue",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"pc28": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "Is locked",
+			"replies": [{
+				"message": "Continue",
+				"action": "close_dialog"
+			}]
+		}
+		]
+	},
+	"FirstAidKit": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "This may be helpful for my HUGE headache...",
+			"replies": [{
+				"message": "(glup,glup)",
+				"action": "close_dialog"
+			}]
+		}]
+	},
+	"Lift": {
+		"start_options": [1],
+		"messages": [{
+			"id": 1,
+			"message": "It reads: The lift has been inactive since that incident with the North-Korean spy...",
+			"replies": [{
+				"message": "Continue...",
+				"action": "close_dialog"
+			}]
+		}]
+	},
 	"l1_character1": {
 		"start_options": [
 			1
@@ -539,7 +547,7 @@ const DIALOGS = {
 			"replies": [{
 				"message": "Continue...",
 				"setflag": ["l1_second_pickup"],
-				"actions": [ "close_dialog" ]
+				"actions": ["close_dialog"]
 			}]
 		}]
 	},
@@ -576,7 +584,7 @@ const DIALOGS = {
 				"message": "Continue...",
 				"goto": 2
 			}]
-		},  {
+		}, {
 			"id": 2,
 			"message": "Those beercrates are blocking the way to the second floor. I hope someone will pick them up soon.",
 			"replies": [{
@@ -641,7 +649,7 @@ const DIALOGS = {
 			"message": "Great! The door opens with the key you got from the cleaning lady",
 			"replies": [{
 				"message": "Continue...",
-				"actions": [ "close_dialog", "unlock_door" ]
+				"actions": ["close_dialog", "unlock_door"]
 			}]
 		}]
 	},
@@ -650,130 +658,130 @@ const DIALOGS = {
 			1
 		],
 		"messages": [{
-				"id": 1,
-				"message": "What would you like to do?",
-				"replies": [{
-						"message": "Check facebook",
-						"goto": 6
-					},
-					{
-						"message": "Check e-mail",
-						"goto": 7
-					},
-					{
-						"message": "Log a call",
-						"goto": 10
-					},
-					{
-						"condition": "return state.getFlag('l1_error_seen');",
-						"message": "Search for error e1029",
-						"goto": 14
-					},
-					{
-						"message": "Leave...",
-						"action": "close_dialog"
-					}
-				]
+			"id": 1,
+			"message": "What would you like to do?",
+			"replies": [{
+				"message": "Check facebook",
+				"goto": 6
 			},
 			{
-				"id": 6,
-				"message": "One hour passed... You feel tired.",
-				"replies": [{
-					"message": "What a waste of time!",
-					"actions": [
-						"lower_energy"
-					],
-					"goto": 1
-				}]
+				"message": "Check e-mail",
+				"goto": 7
 			},
 			{
-				"id": 7,
-				"message": "You have 1 new email.",
-				"replies": [{
-						"message": "Open it.",
-						"goto": 17
-					},
-					{
-						"message": "Let's not go into this now. Log a call.",
-						"goto": 10
-					}
-				]
+				"message": "Log a call",
+				"goto": 10
 			},
 			{
-				"id": 10,
-				"message": "You are making a ticket in TOPerations. What seems to be the problem?",
-				"replies": [{
-						"condition": "return (state.getFlag('l1_error_seen') && !state.getFlag('l1_coffee_machine_fixed'));",
-						"message": "The coffee machine is broken, it shows error e1029. Submit your call.",
-						"goto": 13
-					},
-					{
-						"condition": "return state.getFlag('phone_battery_missing');",
-						"message": "I lost my phone battery.",
-						"goto": 18
-					},
-					{
-						"message": "On second thought, nevermind...",
-						"goto": 1
-					}
-				]
+				"condition": "return state.getFlag('l1_error_seen');",
+				"message": "Search for error e1029",
+				"goto": 14
 			},
 			{
-				"id": 13,
-				"message": "Thanks for registering your call. Our coffee machine repairmen will arrive within 15 minutes.",
-				"replies": [{
-					"message": "Thank you!",
-					"setflag": [
-						"l1_coffee_machine_fixed"
-					],
-					"actions": [
-						"close_dialog"
-					]
-				}]
-			},
-			{
-				"id": 14,
-				"message": "You find 1 knowledge item.",
-				"replies": [{
-						"message": "Read it",
-						"goto": 19
-					},
-					{
-						"message": "I am too tired for this, log a call.",
-						"goto": 10
-					}
-				]
-			},
-			{
-				"id": 17,
-				"message": "You see some pictures from yesterdays party. Apparently there were some uniformed police agents at the party. You wonder why?",
-				"replies": [{
-					"message": "Ok",
-					"goto": 1,
-					"actions": [
-						"lower_energy"
-					]
-				}]
-			},
-			{
-				"id": 18,
-				"message": "Thanks for registering your call. You can get a new phone battery at our ICT department at the 14th floor.",
-				"replies": [{
-					"message": "Thank you!",
-					"clearflag": "state.phone.battery_missing",
-					"actions": [
-						"close_dialog"
-					]
-				}]
-			},
-			{
-				"id": 19,
-				"message": "It says log a call, a repairman will come to fix this. The machine has to be opened up and a switch needs to be replaced. Let's log a call.",
-				"replies": [{
-					"message": "Ok.",
-					"goto": 1
-				}]
+				"message": "Leave...",
+				"action": "close_dialog"
 			}
+			]
+		},
+		{
+			"id": 6,
+			"message": "One hour passed... You feel tired.",
+			"replies": [{
+				"message": "What a waste of time!",
+				"actions": [
+					"lower_energy"
+				],
+				"goto": 1
+			}]
+		},
+		{
+			"id": 7,
+			"message": "You have 1 new email.",
+			"replies": [{
+				"message": "Open it.",
+				"goto": 17
+			},
+			{
+				"message": "Let's not go into this now. Log a call.",
+				"goto": 10
+			}
+			]
+		},
+		{
+			"id": 10,
+			"message": "You are making a ticket in TOPerations. What seems to be the problem?",
+			"replies": [{
+				"condition": "return (state.getFlag('l1_error_seen') && !state.getFlag('l1_coffee_machine_fixed'));",
+				"message": "The coffee machine is broken, it shows error e1029. Submit your call.",
+				"goto": 13
+			},
+			{
+				"condition": "return state.getFlag('phone_battery_missing');",
+				"message": "I lost my phone battery.",
+				"goto": 18
+			},
+			{
+				"message": "On second thought, nevermind...",
+				"goto": 1
+			}
+			]
+		},
+		{
+			"id": 13,
+			"message": "Thanks for registering your call. Our coffee machine repairmen will arrive within 15 minutes.",
+			"replies": [{
+				"message": "Thank you!",
+				"setflag": [
+					"l1_coffee_machine_fixed"
+				],
+				"actions": [
+					"close_dialog"
+				]
+			}]
+		},
+		{
+			"id": 14,
+			"message": "You find 1 knowledge item.",
+			"replies": [{
+				"message": "Read it",
+				"goto": 19
+			},
+			{
+				"message": "I am too tired for this, log a call.",
+				"goto": 10
+			}
+			]
+		},
+		{
+			"id": 17,
+			"message": "You see some pictures from yesterdays party. Apparently there were some uniformed police agents at the party. You wonder why?",
+			"replies": [{
+				"message": "Ok",
+				"goto": 1,
+				"actions": [
+					"lower_energy"
+				]
+			}]
+		},
+		{
+			"id": 18,
+			"message": "Thanks for registering your call. You can get a new phone battery at our ICT department at the 14th floor.",
+			"replies": [{
+				"message": "Thank you!",
+				"clearflag": "state.phone.battery_missing",
+				"actions": [
+					"close_dialog"
+				]
+			}]
+		},
+		{
+			"id": 19,
+			"message": "It says log a call, a repairman will come to fix this. The machine has to be opened up and a switch needs to be replaced. Let's log a call.",
+			"replies": [{
+				"message": "Ok.",
+				"goto": 1
+			}]
+		}
 		]
 	},
 	"KarioMart": {
@@ -942,14 +950,14 @@ const DIALOGS = {
 			"message": "You LOST!",
 			"replies": [{
 				"message": "Continue...",
-				"actions" : ["close_dialog"]
+				"actions": ["close_dialog"]
 			}]
 		}, {
 			"id": 8,
 			"message": "You WIN!",
 			"replies": [{
 				"message": "Continue...",
-				"actions" : ["close_dialog"]
+				"actions": ["close_dialog"]
 			}]
 		}]
 

@@ -11,7 +11,7 @@ module.exports = {
 	rules: {
 		"indent": [2, "tab"],
 		"semi": [2, "always"],
-		"no-console": [1]
+		"no-console": [0]
 	},
 	globals: {
 		"Phaser": true,
