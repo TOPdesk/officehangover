@@ -30,7 +30,7 @@ export default class {
 			this.load.image(Constants.MOBILE_SPRITE, 'assets/images/assets_mobile.png');
 			this.load.image(Constants.PLANT_SPRITE, 'assets/images/assets_chuck.png');
 			this.load.image('kariomart_sprite', 'assets/images/kariomart.png');
-			this.load.image(Constants.MENU_BACKGROUND, 'assets/images/menu_brackground.png');
+			this.load.image(Constants.MENU_BACKGROUND, 'assets/images/SplashScreen.png');
 			this.load.image(Constants.POPUP_BACKGROUND, 'assets/images/popup_background.png');
 
 			this.load.image(Constants.SCENE, 'assets/images/floor-plan.png');

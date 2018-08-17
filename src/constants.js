@@ -46,9 +46,9 @@ export const MENU_BACKGROUND = 'game_background';
 export const POPUP_BACKGROUND = 'popup_background';
 
 /*FONT STYLING*/
-export const GENERAL_STYLE = { font: "32px pixelFont", fill: "#5b5b5b"};
+export const GENERAL_STYLE = { font: "32px pixelFont", fill: "#ff8888"};
 export const POPUP_MESSAGE_STYLE = { font: "26px pixelFont", fill: "#5b5b5b"};
-export const MENU_TITLE_STYLE = {font: "36px pixelFont", fill: '#61447F'};
+export const MENU_TITLE_STYLE = {font: "36px pixelFont", fill: '#81649F'};
 export const INTRO_STYLE = {font: "32px pixelFont", fill: "#FD88D5", align: "left"};
 export const MESSAGE_STYLE = {font: "32px pixelFont", fill: '#FCB174'};
 export const OPTION_STYLE = {font: "32px pixelFont", fill: '#00FFA5'};
