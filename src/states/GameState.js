@@ -231,14 +231,14 @@ export default {
 			obj.x = Math.round(obj.x / 32) * 32;
 			obj.y = Math.round(obj.y / 32) * 32;
 
-			if (obj.type == "Start") {
+			if (obj.type === "Start") {
 				this.player = new Player(this, obj.x, obj.y, obj, this.playerData.player, Constants.PLAYER_DATA_INIT);
 
 				this.player.body.collideWorldBounds = true;
 				this.game.camera.follow(this.player);
 				this.visibleCharacters.add(this.player);
 			}
-			else if (obj.type == "Character") {
+			else if (obj.type === "Character") {
 				var character = new Character(this, obj.x, obj.y, obj, this.playerData.player, Constants.PLAYER_DATA_INIT);
 				this.visibleCharacters.add(character);
 				character.body.collideWorldBounds = true;
@@ -251,28 +251,28 @@ export default {
 
 				this.characters.push(character);
 			}
-			else if (obj.type == "Door") {
+			else if (obj.type === "Door") {
 				let sprite = new Door(this, obj.x, obj.y, 'door', obj.properties);
 				this.visibleCharacters.add(sprite);
 				this.staticSolids.push(sprite);
 			}
-			else if (obj.type == "BeerCrateDropZone") {
+			else if (obj.type === "BeerCrateDropZone") {
 				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type.toLowerCase(), obj.name, obj.properties);
 				this.add.existing(sprite);
 				this.interactionZones.push(sprite);
-			}else if (obj.type == "DishWasher" || obj.type == "DirtyDishes") {
+			}else if (obj.type === "DishWasher" || obj.type === "DirtyDishes") {
 				let sprite = new DependentObjects(this, obj.x, obj.y, obj.type.toLowerCase(), obj.properties);
 				this.visibleCharacters.add(sprite);
 				this.staticSolids.push(sprite);
 			}
-			else if (obj.type == "Actionable") {
+			else if (obj.type === "Actionable") {
 				if (typeof (obj.properties.statuskey) === 'undefined' || (typeof (obj.properties.statuskey) !== 'undefined' && !this.getFlag(obj.properties.statuskey))) {
-					let sprite = new GameObject(this, obj.x, obj.y, obj.properties.subtype.toLowerCase(), obj.type.toLowerCase(), obj.properties.dialogkey);
+					let sprite = new GameObject(this, obj.x, obj.y, obj.properties.subtype.toLowerCase(), obj.type.toLowerCase(), obj.properties);
 					this.visibleCharacters.add(sprite);
 					this.staticSolids.push(sprite);
 				}
 			}
-			else if (obj.type == "Exit") {
+			else if (obj.type === "Exit") {
 				let sprite = new GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
 				this.visibleCharacters.add(sprite);
 				this.staticSolids.push(sprite);

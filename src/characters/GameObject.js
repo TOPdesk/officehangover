@@ -6,12 +6,13 @@ import DefaultSprite from "./DefaultSprite";
 import * as Constants from "../constants";
 
 export default class extends DefaultSprite {
-	constructor(state, x, y, key, type, dialogkey) {
+	constructor(state, x, y, key, type, properties) {
 		super(state.game, x, y, state.playerData[key].sprite);
 
 		this.key = key.toLowerCase();
 		this.type = (type == null) ? "" : type.toLowerCase();
-		this.dialogkey = dialogkey;
+		this.properties = properties || {};
+		this.dialogkey = this.properties.dialogkey;
 		this.state = state;
 		this.game = state.game;
 		this.data = Object.create(state.playerData[key]);
