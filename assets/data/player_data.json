@@ -1,6 +1,6 @@
 {
   "backgroung_color":"#000",
-  "pc": {
+  "PC": {
     "body_size": {
       "width": 36,
       "height": 36,
@@ -13,7 +13,7 @@
     },
     "sprite": "pc"
   },
-  "beercratedropzone": {
+  "BeerCrateDropZone": {
       "body_size": {
       "width": 256,
       "height": 128,
@@ -26,7 +26,7 @@
     },
     "sprite": null
   },
-  "kariomart": {
+  "KarioMart": {
       "body_size": {
       "width": 128,
       "height": 96,
@@ -39,7 +39,7 @@
     },
     "sprite": "kariomart_sprite"
   },
-  "dishwasher": {
+  "DishWasher": {
     "body_size": {
       "width": 60,
       "height": 60,
@@ -52,7 +52,7 @@
     },
     "sprite": "dish_washer_sprite"
   },
-  "dirtydishes": {
+  "DirtyDishes": {
     "body_size": {
       "width": 60,
       "height": 60,
@@ -65,7 +65,7 @@
     },
     "sprite": "dirty_dishes_sprite"
   },
-  "beercrate": {
+  "BeerCrate": {
     "body_size": {
       "width": 32,
       "height": 34,
@@ -78,7 +78,7 @@
     },
     "sprite": "BeerCrate"
   },
-  "coffeemachine" : {
+  "CoffeeMachine" : {
     "body_size": {
       "width": 36,
       "height": 68,
@@ -91,7 +91,7 @@
     },
     "sprite": "coffeemachine"
   },
-  "mobile" : {
+  "Mobile" : {
     "body_size": {
       "width": 10,
       "height": 16,
@@ -117,7 +117,7 @@
     },
     "sprite": "chuck"
   },
-  "exit" : {
+  "Exit" : {
     "body_size": {
       "width": 64,
       "height": 32,
@@ -156,7 +156,7 @@
     },
     "sprite": null
   },
-  "lift" : {
+  "Lift" : {
     "body_size": {
       "width": 32,
       "height": 32,
@@ -182,7 +182,7 @@
     },
     "sprite": null
   },
-  "door" : {
+  "Door" : {
     "body_size": {
       "width": 64,
       "height": 96,

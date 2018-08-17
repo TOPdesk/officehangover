@@ -251,22 +251,22 @@ export default {
 				this.characters.push(character);
 			}
 			else if (obj.type === "Door") {
-				let sprite = new Door(this, obj.x, obj.y, 'door', obj.properties);
+				let sprite = new Door(this, obj.x, obj.y, "Door", obj.properties);
 				this.visibleCharacters.add(sprite);
 				this.staticSolids.push(sprite);
 			}
 			else if (obj.type === "BeerCrateDropZone") {
-				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type.toLowerCase(), obj.name, obj.properties);
+				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type, obj.name, obj.properties);
 				this.add.existing(sprite);
 				this.interactionZones.push(sprite);
 			} 
 			else if (obj.type === "Actionable") {
-				let sprite = new GameObject(this, obj.x, obj.y, "actionable", obj.properties);
+				let sprite = new GameObject(this, obj.x, obj.y, "Actionable", obj.properties);
 				this.visibleCharacters.add(sprite);
 				this.staticSolids.push(sprite);
 			}
 			else if (obj.type === "Exit") {
-				let sprite = new GameObject(this, obj.x, obj.y, "exit");
+				let sprite = new GameObject(this, obj.x, obj.y, "Exit");
 				this.visibleCharacters.add(sprite);
 				this.staticSolids.push(sprite);
 			}

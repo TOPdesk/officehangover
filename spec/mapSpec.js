@@ -2,6 +2,7 @@ import DIALOGS from "../src/dialogs.js";
 
 import floor1 from "../assets/data/floor1-tilemap.json";
 import floor2 from "../assets/data/floor2-tilemap2.json";
+import playerData from "../assets/data/player_data.json";
 
 describe("Tilemaps", function() {
 
@@ -43,10 +44,14 @@ describe("Tilemaps", function() {
 
 				if (object.type !== "Character" && object.type !== "Actionable") { continue; }
 				
-				let dialogKey = object.properties["dialogkey"];
-				
+				let dialogKey = object.properties["dialogkey"];				
 				if (dialogKey !== undefined) {
 					expect(Object.keys(DIALOGS)).toContain(dialogKey);
+				}
+
+				let subtype = object.properties["subtype"];
+				if (subtype !== undefined) {
+					expect(Object.keys(playerData)).toContain(subtype);
 				}
 			}
 		});

@@ -40,7 +40,7 @@ export default class extends DefaultSprite {
 		
 		var nx = this.x + 96 - Math.floor(pos / STACK_HEIGHT) * 32;
 		var ny = this.bottom + 100 - (pos % STACK_HEIGHT) * 24;
-		var sprite = new GameObject(this.state, nx, ny, 'beercrate');
+		var sprite = new GameObject(this.state, nx, ny, "BeerCrate");
 		
 		sprite.beerCratePosition = pos;
 		sprite.beerCrateDropZone = this;

@@ -4,14 +4,16 @@
 
 import DefaultSprite from "./DefaultSprite";
 import * as Constants from "../constants";
+import assert from "../assert.js";
 
 export default class extends DefaultSprite {
 	constructor(state, x, y, type, properties) {
-		let key = (properties && properties.subtype && properties.subtype.toLowerCase()) || type;
+		let key = (properties && properties.subtype) || type;
+		assert(key in state.playerData, "Key: '" + key + "' is not in playerData");
 		super(state.game, x, y, state.playerData[key].sprite);
 
 		this.key = key;
-		this.type = type && type.toLowerCase();
+		this.type = type;
 		this.properties = properties || {};
 		this.dialogkey = this.properties.dialogkey;
 		this.state = state;
@@ -41,12 +43,12 @@ export default class extends DefaultSprite {
 	/** called whenever a player is very near to this game object */
 	handleOverlap() {
 		if (this.state.player.unhandledAction) {
-			if (this.type == "actionable") {
+			if (this.type === "Actionable") {
 				this.state.player.unhandledAction = false;
 				this.state.callAction(this.dialogkey, this);
 			}
 	
-		} else if (this.type == "exit") {
+		} else if (this.type === "Exit") {
 			if (this.state.currentLevel == 0) {
 				this.state.currentLevel = 1;
 				this.state.setFlag("currentLevel", this.state.currentLevel);
