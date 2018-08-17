@@ -2,7 +2,7 @@ import DIALOGS from "../src/dialogs.js";
 
 import floor1 from "../assets/data/floor1-tilemap.json";
 import floor2 from "../assets/data/floor2-tilemap2.json";
-import playerData from "../assets/data/player_data.json";
+import PLAYER_DATA from "../src/characters/player_data.json";
 
 describe("Tilemaps", function() {
 
@@ -51,7 +51,7 @@ describe("Tilemaps", function() {
 
 				let subtype = object.properties["subtype"];
 				if (subtype !== undefined) {
-					expect(Object.keys(playerData)).toContain(subtype);
+					expect(Object.keys(PLAYER_DATA)).toContain(subtype);
 				}
 			}
 		});

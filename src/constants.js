@@ -15,7 +15,6 @@ export const START_STATE = 'StartGame';
 export const BOOT_STATE = 'BootState';
 export const GAME_OVER_STATE = 'GameOverState';
 
-export const PLAYER_DATA = 'player_data';
 export const GAME_TEXT = 'text';
 export const PLAYER_START_DATA_INIT = 'player_wake_up';
 export const PLAYER_DATA_INIT = 'player';

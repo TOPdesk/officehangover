@@ -3,21 +3,21 @@
 // license that can be found in the LICENSE file.
 
 import DefaultSprite from "./DefaultSprite";
+import PLAYER_DATA from "./player_data.json";
 
 export default class extends DefaultSprite {
 	constructor(state, x, y, obj, data, character) {
-		super(state.game, x, y, obj.name.toLowerCase(), state.playerData[character].initial_frame);
+		super(state.game, x, y, obj.name.toLowerCase(), PLAYER_DATA[character].initial_frame);
 
 		this.state = state;
 		this.game = state.game;
 		this.data = Object.create(data);
-		this.playerData = state.playerData;
 		this.anchor.setTo(0.5);
 		this.scale.setTo(1.5);
 		this.x = x;
 		this.y = y;
 		this.spriteName = obj.name.toLowerCase();
-		this.initialFrame = state.playerData[character].initial_frame;
+		this.initialFrame = PLAYER_DATA[character].initial_frame;
 		this.dialogkey = obj.properties && obj.properties.dialogkey;
 		
 		// fail fast if dialog key is missing
@@ -34,11 +34,11 @@ export default class extends DefaultSprite {
 		// isStopped is a flag to make a character permanently stop moving.
 		this.isStopped = obj.properties && !!obj.properties["stopped"];
 
-		this.animations.add('walk_right', this.playerData.animation_walk_right, this.playerData.frames, true);
-		this.animations.add('walk_up', this.playerData.animation_walk_up, this.playerData.frames, true);
-		this.animations.add('walk_left', this.playerData.animation_walk_left, this.playerData.frames, true);
-		this.animations.add('walk_down', this.playerData.animation_walk_down, this.playerData.frames, true);
-		this.animations.add('wake_up', this.playerData.animation_wake_up, this.playerData.frames, false);
+		this.animations.add('walk_right', PLAYER_DATA.animation_walk_right, PLAYER_DATA.frames, true);
+		this.animations.add('walk_up', PLAYER_DATA.animation_walk_up, PLAYER_DATA.frames, true);
+		this.animations.add('walk_left', PLAYER_DATA.animation_walk_left, PLAYER_DATA.frames, true);
+		this.animations.add('walk_down', PLAYER_DATA.animation_walk_down, PLAYER_DATA.frames, true);
+		this.animations.add('wake_up', PLAYER_DATA.animation_wake_up, PLAYER_DATA.frames, false);
 
 		this.game.physics.arcade.enable(this);
 
@@ -94,7 +94,7 @@ export default class extends DefaultSprite {
 		this.body.velocity.x = 0;
 		this.body.velocity.y = 0;
 		this.animations.stop();
-		this.frame = this.playerData.initial_frame;
+		this.frame = PLAYER_DATA.initial_frame;
 	}
 
 	/** update logic, called every game tick */

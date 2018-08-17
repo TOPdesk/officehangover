@@ -3,6 +3,7 @@
 // license that can be found in the LICENSE file.
 
 import DefaultSprite from "./DefaultSprite";
+import PLAYER_DATA from "./player_data.json";
 
 /**
  * A follower is an object, like a beer crate, tgat follows the player around
@@ -10,7 +11,7 @@ import DefaultSprite from "./DefaultSprite";
  */
 export default class extends DefaultSprite {
 	constructor(state, key) {
-		super(state.game, state.player.x, state.player.y, state.playerData[key].sprite);
+		super(state.game, state.player.x, state.player.y, PLAYER_DATA[key].sprite);
 
 		this.followee = state.player;
 		// queue of coordinates of the followee
@@ -20,7 +21,7 @@ export default class extends DefaultSprite {
 		this.key = key;
 		this.state = state;
 		this.game = state.game;
-		this.data = Object.create(state.playerData[key]);
+		this.data = Object.create(PLAYER_DATA[key]);
 		this.anchor.setTo(0, 0);
 	}
 

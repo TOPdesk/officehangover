@@ -3,6 +3,7 @@
 // license that can be found in the LICENSE file.
 
 import DefaultSprite from "./DefaultSprite";
+import PLAYER_DATA from "./player_data.json";
 
 /**
  * Area around the player that always moves with he player.
@@ -16,7 +17,7 @@ export default class extends DefaultSprite {
 		this.scale.setTo(1.5);
 
 		this.game.physics.arcade.enable(this);
-		let { width, height, left, top } = state.playerData.player.trigger_box;
+		let { width, height, left, top } = PLAYER_DATA.player.trigger_box;
 		this.body.setSize(width, height, left, top);
 		this.anchor.setTo(1);
 

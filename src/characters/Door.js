@@ -3,19 +3,19 @@
 // license that can be found in the LICENSE file.
 
 import DefaultSprite from "./DefaultSprite";
+import PLAYER_DATA from "./player_data.json";
 
 /** a door is a specialized game object that has two states: open and closed. */
 export default class extends DefaultSprite {
 	constructor(state, x, y, key, properties) {
-		super(state.game, x, y, state.playerData[key].sprite);
+		super(state.game, x, y, PLAYER_DATA[key].sprite);
 
 		this.isLocked = properties && properties["locked"];
 
 		this.key = key;
 		this.state = state;
 		this.game = state.game;
-		this.data = Object.create(state.playerData[key]);
-		this.playerData = state.playerData;
+		this.data = Object.create(PLAYER_DATA[key]);
 
 		this.animations.add('closed', [0]);
 		this.animations.add('open', [1]);

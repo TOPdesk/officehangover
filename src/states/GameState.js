@@ -9,6 +9,7 @@ import Door from "../characters/Door";
 import BeerCrateDropZone from "../characters/BeerCrateDropZone";
 import GameObject from "../characters/GameObject";
 import DialogManager from "../gameElements/Dialog";
+import PLAYER_DATA from "../characters/player_data.json";
 
 export default {
 
@@ -91,8 +92,6 @@ export default {
 		//  Capture all key presses
 		this.game.input.keyboard.addCallbacks(this, null, null, this.keyPress);
 
-		this.playerData = this.game.cache.getJSON(Constants.PLAYER_DATA);
-
 		this.currentLevel = this.getFlag("currentLevel", 0);
 
 		this.sfx = {};
@@ -106,7 +105,7 @@ export default {
 	},
 	create: function () {
 
-		this.game.stage.backgroundColor = this.playerData.background_color;
+		this.game.stage.backgroundColor = PLAYER_DATA.background_color;
 
 		this.initLevel();
 	},
@@ -231,14 +230,14 @@ export default {
 			obj.y = Math.round(obj.y / 32) * 32;
 
 			if (obj.type === "Start") {
-				this.player = new Player(this, obj.x, obj.y, obj, this.playerData.player, Constants.PLAYER_DATA_INIT);
+				this.player = new Player(this, obj.x, obj.y, obj, PLAYER_DATA.player, Constants.PLAYER_DATA_INIT);
 
 				this.player.body.collideWorldBounds = true;
 				this.game.camera.follow(this.player);
 				this.visibleCharacters.add(this.player);
 			}
 			else if (obj.type === "Character") {
-				var character = new Character(this, obj.x, obj.y, obj, this.playerData.player, Constants.PLAYER_DATA_INIT);
+				var character = new Character(this, obj.x, obj.y, obj, PLAYER_DATA.player, Constants.PLAYER_DATA_INIT);
 				this.visibleCharacters.add(character);
 				character.body.collideWorldBounds = true;
 				if(character.isStopped){
@@ -308,20 +307,20 @@ export default {
 		this.player.body.velocity.y = 0;
 
 		if (this.cursors.left.isDown) {
-			this.player.body.velocity.x = -this.playerData.player_speed;
+			this.player.body.velocity.x = -PLAYER_DATA.player_speed;
 			this.player.play('walk_left');
 		} else if (this.cursors.right.isDown) {
-			this.player.body.velocity.x = this.playerData.player_speed;
+			this.player.body.velocity.x = PLAYER_DATA.player_speed;
 			this.player.play('walk_right');
 		}
 
 		if (this.cursors.up.isDown) {
-			this.player.body.velocity.y = -this.playerData.player_speed;
+			this.player.body.velocity.y = -PLAYER_DATA.player_speed;
 			if ((this.cursors.up.isDown || this.player.btnsPressed.up) && (!this.cursors.left.isDown && !this.cursors.right.isDown)) {
 				this.player.play('walk_up');
 			}
 		} else if (this.cursors.down.isDown) {
-			this.player.body.velocity.y = this.playerData.player_speed;
+			this.player.body.velocity.y = PLAYER_DATA.player_speed;
 			if ((this.cursors.down.isDown) && (!this.cursors.left.isDown && !this.cursors.right.isDown)) {
 				this.player.play('walk_down');
 			}
@@ -329,7 +328,7 @@ export default {
 
 		if (this.player.body.velocity.x == 0 && this.player.body.velocity.y == 0) {
 			this.player.animations.stop();
-			this.player.frame = this.playerData.player.initial_frame;
+			this.player.frame = PLAYER_DATA.player.initial_frame;
 		}
 
 	},

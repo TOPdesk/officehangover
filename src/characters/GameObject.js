@@ -5,12 +5,13 @@
 import DefaultSprite from "./DefaultSprite";
 import * as Constants from "../constants";
 import assert from "../assert.js";
+import PLAYER_DATA from "./player_data.json";
 
 export default class extends DefaultSprite {
 	constructor(state, x, y, type, properties) {
 		let key = (properties && properties.subtype) || type;
-		assert(key in state.playerData, "Key: '" + key + "' is not in playerData");
-		super(state.game, x, y, state.playerData[key].sprite);
+		assert(key in PLAYER_DATA, "Key: '" + key + "' is not in playerData");
+		super(state.game, x, y, PLAYER_DATA[key].sprite);
 
 		this.key = key;
 		this.type = type;
@@ -18,8 +19,7 @@ export default class extends DefaultSprite {
 		this.dialogkey = this.properties.dialogkey;
 		this.state = state;
 		this.game = state.game;
-		this.data = Object.create(state.playerData[key]);
-		this.playerData = state.playerData;
+		this.data = Object.create(PLAYER_DATA[key]);
 		this.anchor.setTo(0, 0);
 		this.isExecutingTask = false;
 		this.isCharacterOnHold = false;

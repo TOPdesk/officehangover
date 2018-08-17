@@ -4,19 +4,19 @@
 
 import DefaultSprite from "./DefaultSprite";
 import GameObject from "./GameObject";
+import PLAYER_DATA from "./player_data.json";
 
 const STACK_HEIGHT = 3;
 
 export default class extends DefaultSprite {
 	
 	constructor(state, x, y, key, name, properties) {
-		super(state.game, x, y, state.playerData[key].sprite);
+		super(state.game, x, y, PLAYER_DATA[key].sprite);
 
 		this.key = key;
 		this.state = state;
 		this.game = state.game;
-		this.data = Object.create(state.playerData[key]);
-		this.playerData = state.playerData;
+		this.data = Object.create(PLAYER_DATA[key]);
 		this.name = name;
 		this.flagkey = "l1_" + name + "_crates";
 
