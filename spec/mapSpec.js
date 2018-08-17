@@ -29,7 +29,7 @@ describe("Tilemaps", function() {
 		
 		it("Objects should be of suitable type", function() {
 			let allowedTypes = [ "Character", "Exit", "Start", "Door", "Actionable", 
-				"BeerCrateDropZone", "DishWasher", "DirtyDishes" ];
+				"BeerCrateDropZone" ];
 
 			for (let object of objects) {
 				expect(allowedTypes).toContain(object.type);

@@ -6,11 +6,12 @@ import DefaultSprite from "./DefaultSprite";
 import * as Constants from "../constants";
 
 export default class extends DefaultSprite {
-	constructor(state, x, y, key, type, properties) {
+	constructor(state, x, y, type, properties) {
+		let key = (properties && properties.subtype && properties.subtype.toLowerCase()) || type;
 		super(state.game, x, y, state.playerData[key].sprite);
 
-		this.key = key.toLowerCase();
-		this.type = (type == null) ? "" : type.toLowerCase();
+		this.key = key;
+		this.type = type && type.toLowerCase();
 		this.properties = properties || {};
 		this.dialogkey = this.properties.dialogkey;
 		this.state = state;
@@ -21,10 +22,19 @@ export default class extends DefaultSprite {
 		this.isExecutingTask = false;
 		this.isCharacterOnHold = false;
 
-		this.game.physics.arcade.enable(this);
-		var bodySize = this.data.body_size;
-		this.body.setSize(bodySize.width, bodySize.height, bodySize.left, bodySize.top);
-		this.body.immovable = true;
+		let status = this.state.getFlag(this.properties.statuskey, 0);
+		this.alpha = this.properties.startHidden ? status : !status;
+
+		//TODO: No build the object if it is not necessary.
+		if(!this.properties.startHidden && status) {
+			this.destroy();
+		}
+		else {
+			this.game.physics.arcade.enable(this);
+			var bodySize = this.data.body_size;
+			this.body.setSize(bodySize.width, bodySize.height, bodySize.left, bodySize.top);
+			this.body.immovable = true;	
+		}
 
 	}
 
@@ -35,7 +45,8 @@ export default class extends DefaultSprite {
 				this.state.player.unhandledAction = false;
 				this.state.callAction(this.dialogkey, this);
 			}
-		} else if (this.key == "exit") {
+	
+		} else if (this.type == "exit") {
 			if (this.state.currentLevel == 0) {
 				this.state.currentLevel = 1;
 				this.state.setFlag("currentLevel", this.state.currentLevel);

@@ -227,7 +227,7 @@ const DIALOGS = {
 			}
 		]
 	},
-	"dirtydishes": {
+	"DirtyDishes": {
 		"start_options": [1, 2],
 		"messages": [{
 			"id": 1,

@@ -253,15 +253,17 @@
                  "properties":
                     {
                      "statuskey":"l1_clean_dishes",
-                     "subordinate":true
+                     "subtype":"DishWasher",
+                     "startHidden":true
                     },
                  "propertytypes":
                     {
                      "statuskey":"string",
-                     "subordinate":"bool"
+                     "subtype":"string",
+                     "startHidden":"bool"
                     },
                  "rotation":0,
-                 "type":"DishWasher",
+                 "type":"Actionable",
                  "visible":true,
                  "width":60,
                  "x":270,
@@ -274,15 +276,17 @@
                  "properties":
                     {
                      "statuskey":"l1_clean_dishes",
-                     "subordinate":false
+                     "dialogkey":"DirtyDishes",
+                     "subtype":"DirtyDishes"
                     },
                  "propertytypes":
                     {
                      "statuskey":"string",
-                     "subordinate":"bool"
+                     "dialogkey":"string",
+                     "subtype":"string"
                     },
                  "rotation":0,
-                 "type":"DirtyDishes",
+                 "type":"Actionable",
                  "visible":true,
                  "width":60,
                  "x":386,

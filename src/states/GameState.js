@@ -9,7 +9,6 @@ import Door from "../characters/Door";
 import BeerCrateDropZone from "../characters/BeerCrateDropZone";
 import GameObject from "../characters/GameObject";
 import DialogManager from "../gameElements/Dialog";
-import DependentObjects from "../characters/DependentObjects";
 
 export default {
 
@@ -260,20 +259,14 @@ export default {
 				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type.toLowerCase(), obj.name, obj.properties);
 				this.add.existing(sprite);
 				this.interactionZones.push(sprite);
-			}else if (obj.type === "DishWasher" || obj.type === "DirtyDishes") {
-				let sprite = new DependentObjects(this, obj.x, obj.y, obj.type.toLowerCase(), obj.properties);
+			} 
+			else if (obj.type === "Actionable") {
+				let sprite = new GameObject(this, obj.x, obj.y, "actionable", obj.properties);
 				this.visibleCharacters.add(sprite);
 				this.staticSolids.push(sprite);
 			}
-			else if (obj.type === "Actionable") {
-				if (typeof (obj.properties.statuskey) === 'undefined' || (typeof (obj.properties.statuskey) !== 'undefined' && !this.getFlag(obj.properties.statuskey))) {
-					let sprite = new GameObject(this, obj.x, obj.y, obj.properties.subtype.toLowerCase(), obj.type.toLowerCase(), obj.properties);
-					this.visibleCharacters.add(sprite);
-					this.staticSolids.push(sprite);
-				}
-			}
 			else if (obj.type === "Exit") {
-				let sprite = new GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
+				let sprite = new GameObject(this, obj.x, obj.y, "exit");
 				this.visibleCharacters.add(sprite);
 				this.staticSolids.push(sprite);
 			}
