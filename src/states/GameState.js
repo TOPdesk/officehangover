@@ -272,15 +272,14 @@ export default {
 					this.staticSolids.push(sprite);
 				}
 			}
-			else {
+			else if (obj.type == "Exit") {
 				let sprite = new GameObject(this, obj.x, obj.y, obj.type.toLowerCase());
 				this.visibleCharacters.add(sprite);
 				this.staticSolids.push(sprite);
 			}
-			/*
 			else {
-				console.error ("Map contains object of undefined type " + obj.type);
-			}*/
+				throw ("Map contains object of undefined type " + obj.type);
+			}
 		}
 
 
