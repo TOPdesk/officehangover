@@ -4,6 +4,7 @@
 
 import * as Constants from "../constants";
 import DIALOGS from "../dialogs.js";
+import SpecialActions from "../SpecialActions.js";
 
 export default class {
 
@@ -176,28 +177,12 @@ class DialogWindow {
 		this.tween = this.game.add.tween(option).to( { alpha: 0.5 }, 300, "Linear", true).yoyo().loop();
 	}
 
-	transferAllCrates() {
-		let src = this.state.interactionZones.find(function (obj) {
-			return obj.name == "BeerCrateDropZone1";
-		});
-		let dest = this.state.interactionZones.find(function (obj) {
-			return obj.name == "BeerCrateDropZone2";
-		});
-
-		while (src.hasCrates()) {
-			let crate = src.findCrate();
-			crate.destroy();
-			
-			dest.makeCrate();
-		}
-	}
-
 	activateOption(objectDialogs, replyOption) {
 		this.close();
 		if (replyOption.actions) {
 			for (let action of replyOption.actions) {
 				if (action == "dirtydishes"){
-					this.character.dirtyDishesAction();
+					SpecialActions.dirtyDishesAction(this.game, this.state, this.character);
 				} else if(action == "pick_object"){
 					this.character.pickObject();
 				} else if (action === "move_around") {
@@ -208,7 +193,7 @@ class DialogWindow {
 				} else if (action === "machine_broken") {
 					this.state.sfx.coffee_machine_broken.play();
 				} else if (action === "transfer_remaining_crates") {
-					this.transferAllCrates();
+					SpecialActions.transferAllCrates(this.game, this.state, this.character);
 				}
 			}
 		}
