@@ -9,11 +9,9 @@ import GameState from "./states/GameState";
 import HomeState from "./states/HomeState";
 import PreloadState from "./states/PreloadState";
 import TextState from "./states/TextState";
-import {getGameLandscapeDimensions} from "./scaler";
 
-const dim = getGameLandscapeDimensions(Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
-
-const game = new Phaser.Game(dim.w, dim.h, Phaser.CANVAS);
+// fix game canvas size, scaled up to screen size with 16:10 aspect ratio, black bars around
+const game = new Phaser.Game(1280, 800, Phaser.CANVAS);
 
 game.state.add(Constants.GAME_STATE, GameState);
 game.state.add(Constants.HOME_STATE, HomeState);
