@@ -10,13 +10,15 @@ const STACK_HEIGHT = 3;
 
 export default class extends DefaultSprite {
 	
-	constructor(state, x, y, key, name, obj) {
+	constructor(state, x, y, obj) {
+		let key = obj.type;
+		let name = obj.name;
 		super(state.game, x, y, PLAYER_DATA[key].sprite);
-
+		
 		this.key = key;
 		this.state = state;
 		this.game = state.game;
-		this.data = Object.create(PLAYER_DATA[key]);
+		this.data = Object.create(PLAYER_DATA[obj.type]);
 		this.name = name;
 		this.flagkey = "l1_" + name + "_crates";
 
@@ -43,7 +45,7 @@ export default class extends DefaultSprite {
 
 		console.log (this.x, this.y, this.width, this.height, nx, ny);
 
-		var sprite = new GameObject(this.state, nx, ny, "BeerCrate");
+		var sprite = new GameObject(this.state, nx, ny, { type: "BeerCrate" });
 		
 		sprite.beerCratePosition = pos;
 		sprite.beerCrateDropZone = this;

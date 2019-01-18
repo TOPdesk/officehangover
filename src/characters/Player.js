@@ -6,10 +6,11 @@ import Character from "./Character";
 import PlayerZone from "./PlayerZone";
 import Follower from "./Follower";
 import * as Constants from "../constants";
+import PLAYER_DATA from "../characters/player_data.json";
 
 export default class extends Character {
-	constructor(state, x, y, obj, data, character) {
-		super(state, x, y, obj, data, character);
+	constructor(state, x, y, obj) {
+		super(state, x, y, obj, PLAYER_DATA.player, Constants.PLAYER_DATA_INIT);
 
 		this.pickupSprite = null;
 		this.pickupTimer = 0; // delay before the next pick-up / drop-off action can take place.

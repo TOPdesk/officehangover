@@ -6,18 +6,18 @@ import DefaultSprite from "./DefaultSprite";
 import PLAYER_DATA from "./player_data.json";
 
 export default class extends DefaultSprite {
-	constructor(state, x, y, obj, data, character) {
-		super(state.game, x, y, obj.name.toLowerCase(), PLAYER_DATA[character].initial_frame);
+	constructor(state, x, y, obj) {
+		super(state.game, x, y, obj.name.toLowerCase(), PLAYER_DATA.player.initial_frame);
 
 		this.state = state;
 		this.game = state.game;
-		this.data = Object.create(data);
+		this.data = Object.create(PLAYER_DATA.player);
 		this.anchor.setTo(0.5);
 		this.scale.setTo(1.5);
 		this.x = x;
 		this.y = y;
 		this.spriteName = obj.name.toLowerCase();
-		this.initialFrame = PLAYER_DATA[character].initial_frame;
+		this.initialFrame = PLAYER_DATA.player.initial_frame;
 		this.dialogkey = obj.properties && obj.properties.dialogkey;
 		
 		// fail fast if dialog key is missing
@@ -42,7 +42,7 @@ export default class extends DefaultSprite {
 
 		this.game.physics.arcade.enable(this);
 
-		let { width, height, left, top } = data.body_size;
+		let { width, height, left, top } = PLAYER_DATA.player.body_size;
 		this.body.setSize(width, height, left, top);
 	}
 

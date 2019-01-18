@@ -230,14 +230,14 @@ export default {
 			obj.y = Math.round(obj.y / 32) * 32;
 
 			if (obj.type === "Start") {
-				this.player = new Player(this, obj.x, obj.y, obj, PLAYER_DATA.player, Constants.PLAYER_DATA_INIT);
+				this.player = new Player(this, obj.x, obj.y, obj);
 
 				this.player.body.collideWorldBounds = true;
 				this.game.camera.follow(this.player);
 				this.visibleCharacters.add(this.player);
 			}
 			else if (obj.type === "Character") {
-				var character = new Character(this, obj.x, obj.y, obj, PLAYER_DATA.player, Constants.PLAYER_DATA_INIT);
+				var character = new Character(this, obj.x, obj.y, obj);
 				this.visibleCharacters.add(character);
 				character.body.collideWorldBounds = true;
 				if(character.isStopped){
@@ -250,22 +250,22 @@ export default {
 				this.characters.push(character);
 			}
 			else if (obj.type === "Door") {
-				let sprite = new Door(this, obj.x, obj.y, "Door", obj.properties);
+				let sprite = new Door(this, obj.x, obj.y, obj);
 				this.visibleCharacters.add(sprite);
 				this.staticSolids.push(sprite);
 			}
 			else if (obj.type === "BeerCrateDropZone") {
-				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type, obj.name, obj);
+				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj);
 				this.add.existing(sprite);
 				this.interactionZones.push(sprite);
 			} 
 			else if (obj.type === "Actionable") {
-				let sprite = new GameObject(this, obj.x, obj.y, "Actionable", obj.properties);
+				let sprite = new GameObject(this, obj.x, obj.y, obj);
 				this.visibleCharacters.add(sprite);
 				this.staticSolids.push(sprite);
 			}
 			else if (obj.type === "Exit") {
-				let sprite = new GameObject(this, obj.x, obj.y, "Exit");
+				let sprite = new GameObject(this, obj.x, obj.y, obj);
 				this.visibleCharacters.add(sprite);
 				this.staticSolids.push(sprite);
 			}

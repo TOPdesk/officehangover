@@ -8,7 +8,9 @@ import assert from "../assert.js";
 import PLAYER_DATA from "./player_data.json";
 
 export default class extends DefaultSprite {
-	constructor(state, x, y, type, properties) {
+	constructor(state, x, y, obj) {
+		let type = obj.type;
+		let properties = obj.properties || {};
 		let key = (properties && properties.subtype) || type;
 		assert(key in PLAYER_DATA, "Key: '" + key + "' is not in playerData");
 		super(state.game, x, y, PLAYER_DATA[key].sprite);

@@ -10,15 +10,16 @@ import PLAYER_DATA from "./player_data.json";
  * Furthermore, a door could be locked
  */
 export default class extends DefaultSprite {
-	constructor(state, x, y, key, properties) {
-		super(state.game, x, y, PLAYER_DATA[key].sprite);
+	constructor(state, x, y, obj) {
+		super(state.game, x, y, PLAYER_DATA.Door.sprite);
 
+		let properties = obj.properties || {};
 		this.isLocked = properties && properties["locked"];
 
-		this.key = key;
+		this.key = "Door";
 		this.state = state;
 		this.game = state.game;
-		this.data = Object.create(PLAYER_DATA[key]);
+		this.data = Object.create(PLAYER_DATA.Door);
 
 		this.animations.add('closed', [0]);
 		this.animations.add('open', [1]);
