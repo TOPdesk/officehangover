@@ -10,7 +10,7 @@ const STACK_HEIGHT = 3;
 
 export default class extends DefaultSprite {
 	
-	constructor(state, x, y, key, name, properties) {
+	constructor(state, x, y, key, name, obj) {
 		super(state.game, x, y, PLAYER_DATA[key].sprite);
 
 		this.key = key;
@@ -20,26 +20,29 @@ export default class extends DefaultSprite {
 		this.name = name;
 		this.flagkey = "l1_" + name + "_crates";
 
+		let properties = obj.properties || {};
 		let mapDefinedInitialCount = properties && properties["initialCount"];
 		let initialCount = this.state.getFlag(this.flagkey, mapDefinedInitialCount);
 
 		this.crates = [];
 
+		this.game.physics.arcade.enable(this);
+		this.body.setSize(obj.width, obj.height);
+		this.body.immovable = true;
+
 		for (var i = 0; i < initialCount; ++i) {
 			this.makeCrate();
 		}
-
-		this.game.physics.arcade.enable(this);
-		var bodySize = this.data.body_size;
-		this.body.setSize(bodySize.width, bodySize.height, bodySize.left, bodySize.top);
-		this.body.immovable = true;
 	}
 
 	makeCrate() {
 		let pos = this.crates.length;
 		
-		var nx = this.x + 96 - Math.floor(pos / STACK_HEIGHT) * 32;
-		var ny = this.bottom + 100 - (pos % STACK_HEIGHT) * 24;
+		var nx = this.x + Math.floor(pos / STACK_HEIGHT) * 32;
+		var ny = this.body.bottom - 32 - (pos % STACK_HEIGHT) * 24;
+
+		console.log (this.x, this.y, this.width, this.height, nx, ny);
+
 		var sprite = new GameObject(this.state, nx, ny, "BeerCrate");
 		
 		sprite.beerCratePosition = pos;

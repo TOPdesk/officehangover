@@ -8,7 +8,7 @@ const SpecialActions = {
 	dirtyDishesAction(game, state, sprite) {
 
 		let dependentObject = state.staticSolids.find(function (obj) {
-			return obj.key == 'dishwasher';
+			return obj.key === 'DishWasher';
 		});
 
 		let actionCloud = game.add.sprite(sprite.x, sprite.y, 'ActionCloud', 0);

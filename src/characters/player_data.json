@@ -2,10 +2,10 @@
   "backgroung_color":"#000",
   "PC": {
     "body_size": {
-      "width": 36,
-      "height": 36,
-      "top": -2,
-      "left": -2
+      "width": 24,
+      "height": 24,
+      "top": -8,
+      "left": -8
     },
     "trigger_box": {
       "width": 56,

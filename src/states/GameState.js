@@ -255,7 +255,7 @@ export default {
 				this.staticSolids.push(sprite);
 			}
 			else if (obj.type === "BeerCrateDropZone") {
-				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type, obj.name, obj.properties);
+				let sprite = new BeerCrateDropZone(this, obj.x, obj.y, obj.type, obj.name, obj);
 				this.add.existing(sprite);
 				this.interactionZones.push(sprite);
 			} 

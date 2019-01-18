@@ -46,7 +46,6 @@
         }, 
         {
          "draworder":"topdown",
-         "height":0,
          "name":"Objects",
          "objects":[
                 {
@@ -54,10 +53,6 @@
                  "height":0,
                  "id":4,
                  "name":"Player_Start",
-                 "properties":
-                    {
-
-                    },
                  "rotation":0,
                  "type":"Start",
                  "visible":true,
@@ -148,10 +143,6 @@
                  "height":94,
                  "id":19,
                  "name":"Door",
-                 "properties":
-                    {
-
-                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -163,10 +154,6 @@
                  "height":94,
                  "id":20,
                  "name":"Door",
-                 "properties":
-                    {
-
-                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -197,10 +184,6 @@
                  "height":94,
                  "id":22,
                  "name":"Door",
-                 "properties":
-                    {
-
-                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -209,7 +192,7 @@
                  "y":1248
                 }, 
                 {
-                 "height":104,
+                 "height":94,
                  "id":25,
                  "name":"BeerCrateDropZone1",
                  "properties":
@@ -223,9 +206,9 @@
                  "rotation":0,
                  "type":"BeerCrateDropZone",
                  "visible":true,
-                 "width":256,
-                 "x":895,
-                 "y":133
+                 "width":191,
+                 "x":898,
+                 "y":160
                 }, 
                 {
                  "height":128,
@@ -242,9 +225,9 @@
                  "rotation":0,
                  "type":"BeerCrateDropZone",
                  "visible":true,
-                 "width":394,
-                 "x":1378,
-                 "y":173
+                 "width":415,
+                 "x":1344,
+                 "y":192
                 }, 
                 {
                  "height":60,
@@ -252,15 +235,15 @@
                  "name":"DishWasher1",
                  "properties":
                     {
+                     "startHidden":true,
                      "statuskey":"l1_clean_dishes",
-                     "subtype":"DishWasher",
-                     "startHidden":true
+                     "subtype":"DishWasher"
                     },
                  "propertytypes":
                     {
+                     "startHidden":"bool",
                      "statuskey":"string",
-                     "subtype":"string",
-                     "startHidden":"bool"
+                     "subtype":"string"
                     },
                  "rotation":0,
                  "type":"Actionable",
@@ -275,14 +258,14 @@
                  "name":"DirtyDishes1",
                  "properties":
                     {
-                     "statuskey":"l1_clean_dishes",
                      "dialogkey":"DirtyDishes",
+                     "statuskey":"l1_clean_dishes",
                      "subtype":"DirtyDishes"
                     },
                  "propertytypes":
                     {
-                     "statuskey":"string",
                      "dialogkey":"string",
+                     "statuskey":"string",
                      "subtype":"string"
                     },
                  "rotation":0,
@@ -485,17 +468,13 @@
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":55,
          "x":0,
          "y":0
         }],
  "nextobjectid":36,
  "orientation":"orthogonal",
- "properties":
-    {
-
-    },
  "renderorder":"right-down",
+ "tiledversion":"1.0.3",
  "tileheight":32,
  "tilesets":[
         {
@@ -503,6 +482,7 @@
          "source":"tileset.json"
         }],
  "tilewidth":32,
+ "type":"map",
  "version":1,
  "width":60
 }
