@@ -46,7 +46,6 @@
         }, 
         {
          "draworder":"topdown",
-         "height":0,
          "name":"Objects",
          "objects":[
                 {
@@ -54,10 +53,6 @@
                  "height":0,
                  "id":4,
                  "name":"Player_Start",
-                 "properties":
-                    {
-
-                    },
                  "rotation":0,
                  "type":"Start",
                  "visible":true,
@@ -73,6 +68,10 @@
                  "properties":
                     {
                      "dialogkey":"l1_character1"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string"
                     },
                  "rotation":0,
                  "type":"Character",
@@ -90,6 +89,10 @@
                     {
                      "dialogkey":"l1_character2"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string"
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -106,6 +109,10 @@
                     {
                      "dialogkey":"l1_character3"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string"
+                    },
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -121,6 +128,10 @@
                     {
                      "subtype":"Exit"
                     },
+                 "propertytypes":
+                    {
+                     "subtype":"string"
+                    },
                  "rotation":0,
                  "type":"Exit",
                  "visible":true,
@@ -132,10 +143,6 @@
                  "height":94,
                  "id":19,
                  "name":"Door",
-                 "properties":
-                    {
-
-                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -147,10 +154,6 @@
                  "height":94,
                  "id":20,
                  "name":"Door",
-                 "properties":
-                    {
-
-                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -164,7 +167,11 @@
                  "name":"Door",
                  "properties":
                     {
-                     "locked":"1"
+                     "locked":true
+                    },
+                 "propertytypes":
+                    {
+                     "locked":"bool"
                     },
                  "rotation":0,
                  "type":"Door",
@@ -177,10 +184,6 @@
                  "height":94,
                  "id":22,
                  "name":"Door",
-                 "properties":
-                    {
-
-                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -189,19 +192,23 @@
                  "y":1248
                 }, 
                 {
-                 "height":104,
+                 "height":94,
                  "id":25,
                  "name":"BeerCrateDropZone1",
                  "properties":
                     {
-
+                     "initialCount":8
+                    },
+                 "propertytypes":
+                    {
+                     "initialCount":"int"
                     },
                  "rotation":0,
                  "type":"BeerCrateDropZone",
                  "visible":true,
-                 "width":256,
-                 "x":895,
-                 "y":133
+                 "width":191,
+                 "x":898,
+                 "y":160
                 }, 
                 {
                  "height":128,
@@ -209,14 +216,18 @@
                  "name":"BeerCrateDropZone2",
                  "properties":
                     {
-
+                     "initialCount":4
+                    },
+                 "propertytypes":
+                    {
+                     "initialCount":"int"
                     },
                  "rotation":0,
                  "type":"BeerCrateDropZone",
                  "visible":true,
-                 "width":394,
-                 "x":1378,
-                 "y":173
+                 "width":415,
+                 "x":1344,
+                 "y":192
                 }, 
                 {
                  "height":60,
@@ -224,11 +235,18 @@
                  "name":"DishWasher1",
                  "properties":
                     {
+                     "startHidden":true,
                      "statuskey":"l1_clean_dishes",
-                     "subordinate": true
+                     "subtype":"DishWasher"
+                    },
+                 "propertytypes":
+                    {
+                     "startHidden":"bool",
+                     "statuskey":"string",
+                     "subtype":"string"
                     },
                  "rotation":0,
-                 "type":"DishWasher",
+                 "type":"Actionable",
                  "visible":true,
                  "width":60,
                  "x":270,
@@ -240,11 +258,18 @@
                  "name":"DirtyDishes1",
                  "properties":
                     {
+                     "dialogkey":"DirtyDishes",
                      "statuskey":"l1_clean_dishes",
-                     "subordinate": false
+                     "subtype":"DirtyDishes"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "statuskey":"string",
+                     "subtype":"string"
                     },
                  "rotation":0,
-                 "type":"DirtyDishes",
+                 "type":"Actionable",
                  "visible":true,
                  "width":60,
                  "x":386,
@@ -258,6 +283,10 @@
                  "properties":
                     {
                      "dialogkey":"cleaninglady"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string"
                     },
                  "rotation":0,
                  "type":"Character",
@@ -273,8 +302,14 @@
                  "properties":
                     {
                      "dialogkey":"mobile",
-                     "subtype":"Mobile",
-                     "statuskey": "l1_mobile_picked"
+                     "statuskey":"l1_mobile_picked",
+                     "subtype":"Mobile"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "statuskey":"string",
+                     "subtype":"string"
                     },
                  "rotation":0,
                  "type":"Actionable",
@@ -292,6 +327,11 @@
                      "dialogkey":"chuck",
                      "subtype":"chuck"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
                  "rotation":0,
                  "type":"Actionable",
                  "visible":true,
@@ -307,6 +347,11 @@
                     {
                      "dialogkey":"PostIt1",
                      "subtype":"postit"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
                     },
                  "rotation":0,
                  "type":"Actionable",
@@ -324,6 +369,11 @@
                      "dialogkey":"PostIt2",
                      "subtype":"postit"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
                  "rotation":0,
                  "type":"Actionable",
                  "visible":true,
@@ -339,6 +389,11 @@
                     {
                      "dialogkey":"PostIt3",
                      "subtype":"postit"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
                     },
                  "rotation":0,
                  "type":"Actionable",
@@ -356,6 +411,11 @@
                      "dialogkey":"FirstAidKit",
                      "subtype":"firstaid"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
                  "rotation":0,
                  "type":"Actionable",
                  "visible":true,
@@ -371,6 +431,11 @@
                     {
                      "dialogkey":"Lift",
                      "subtype":"Lift"
+                    },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
                     },
                  "rotation":0,
                  "type":"Actionable",
@@ -388,6 +453,11 @@
                      "dialogkey":"Lift",
                      "subtype":"Lift"
                     },
+                 "propertytypes":
+                    {
+                     "dialogkey":"string",
+                     "subtype":"string"
+                    },
                  "rotation":0,
                  "type":"Actionable",
                  "visible":true,
@@ -398,17 +468,13 @@
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":55,
          "x":0,
          "y":0
         }],
  "nextobjectid":36,
  "orientation":"orthogonal",
- "properties":
-    {
-
-    },
  "renderorder":"right-down",
+ "tiledversion":"1.0.3",
  "tileheight":32,
  "tilesets":[
         {
@@ -416,6 +482,7 @@
          "source":"tileset.json"
         }],
  "tilewidth":32,
+ "type":"map",
  "version":1,
  "width":60
 }
