@@ -37,13 +37,12 @@ describe("Tilemaps", function() {
 			}
 		});
 
-		it("Referenced dialog keys should exist", function() {		
-			for (let object of objects) {
-			
+		for (let object of objects) {
+			if (object.type !== "Character" && object.type !== "Actionable") { continue; }
+			it("Referenced dialog keys should exist for " + object.name, function() {		
+				
 				expect (object.properties).toBeDefined();
 
-				if (object.type !== "Character" && object.type !== "Actionable") { continue; }
-				
 				let dialogKey = object.properties["dialogkey"];				
 				if (dialogKey !== undefined) {
 					expect(Object.keys(DIALOGS)).toContain(dialogKey);
@@ -53,8 +52,8 @@ describe("Tilemaps", function() {
 				if (subtype !== undefined) {
 					expect(Object.keys(PLAYER_DATA)).toContain(subtype);
 				}
-			}
-		});
+			});
+		}
 
 	}
 
